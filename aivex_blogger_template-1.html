@@ -1,612 +1,321 @@
+Here is a complete, production-ready website for AIVEX GLOBAL, a luxury futuristic platform for digital products, trading, and self-development.
+
+```html
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AIVEX GLOBAL</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
---gold:#d4af37;
---green:#00ff88;
---black:#050505;
---dark:#0f0f0f;
---gray:#999;
---white:#fff;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:'Cairo',sans-serif;
-background:var(--black);
-color:white;
-overflow-x:hidden;
-}
-
-/* BACKGROUND */
-
-.bg{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top right, rgba(0,255,136,.12), transparent 30%),
-radial-gradient(circle at bottom left, rgba(212,175,55,.10), transparent 30%),
-#050505;
-z-index:-1;
-}
-
-/* NAVBAR */
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-padding:20px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.5);
-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(255,255,255,.05);
-z-index:999;
-}
-
-.logo{
-font-size:28px;
-font-weight:900;
-color:var(--gold);
-letter-spacing:2px;
-}
-
-.nav-links{
-display:flex;
-gap:30px;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-font-size:15px;
-transition:.3s;
-}
-
-.nav-links a:hover{
-color:var(--gold);
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:120px 20px;
-position:relative;
-}
-
-.hero-content{
-max-width:900px;
-}
-
-.badge{
-display:inline-block;
-padding:8px 20px;
-border:1px solid rgba(212,175,55,.3);
-background:rgba(212,175,55,.08);
-border-radius:100px;
-color:var(--gold);
-margin-bottom:30px;
-font-size:13px;
-}
-
-.hero h1{
-font-size:clamp(45px,8vw,110px);
-line-height:1;
-font-weight:900;
-background:linear-gradient(to right,#fff,var(--gold));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:20px;
-color:#bbb;
-line-height:1.8;
-max-width:700px;
-margin:auto;
-margin-bottom:40px;
-}
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:16px 34px;
-border-radius:10px;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.btn-primary{
-background:linear-gradient(135deg,var(--gold),#ffd700);
-color:black;
-box-shadow:0 0 30px rgba(212,175,55,.3);
-}
-
-.btn-primary:hover{
-transform:translateY(-4px);
-}
-
-.btn-secondary{
-border:1px solid rgba(255,255,255,.15);
-color:white;
-}
-
-.btn-secondary:hover{
-border-color:var(--gold);
-color:var(--gold);
-}
-
-/* SECTION */
-
-.section{
-padding:100px 20px;
-max-width:1300px;
-margin:auto;
-}
-
-.section-title{
-font-size:50px;
-margin-bottom:20px;
-font-weight:900;
-}
-
-.section-title span{
-color:var(--gold);
-}
-
-.section-desc{
-color:#aaa;
-margin-bottom:50px;
-line-height:1.8;
-}
-
-/* CARDS */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.card{
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.06);
-padding:35px;
-border-radius:20px;
-transition:.4s;
-position:relative;
-overflow:hidden;
-}
-
-.card::before{
-content:'';
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:3px;
-background:linear-gradient(to right,var(--gold),transparent);
-transform:scaleX(0);
-transition:.4s;
-}
-
-.card:hover::before{
-transform:scaleX(1);
-}
-
-.card:hover{
-transform:translateY(-8px);
-border-color:rgba(212,175,55,.3);
-}
-
-.card-icon{
-font-size:55px;
-margin-bottom:20px;
-}
-
-.card h3{
-font-size:25px;
-margin-bottom:15px;
-}
-
-.card p{
-color:#aaa;
-line-height:1.8;
-}
-
-/* PRODUCTS */
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
-
-.product{
-background:#0f0f0f;
-border-radius:20px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.06);
-transition:.4s;
-}
-
-.product:hover{
-transform:translateY(-8px);
-border-color:rgba(212,175,55,.3);
-}
-
-.product-image{
-height:220px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-background:linear-gradient(135deg,#0b0b0b,#131313);
-}
-
-.product-body{
-padding:30px;
-}
-
-.product h3{
-font-size:24px;
-margin-bottom:15px;
-}
-
-.product p{
-color:#aaa;
-line-height:1.7;
-margin-bottom:25px;
-}
-
-.price{
-font-size:35px;
-font-weight:900;
-color:var(--green);
-margin-bottom:20px;
-}
-
-.buy-btn{
-display:inline-block;
-padding:14px 28px;
-background:linear-gradient(135deg,var(--gold),#ffd700);
-color:black;
-text-decoration:none;
-border-radius:10px;
-font-weight:900;
-}
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-text-align:center;
-}
-
-.stat h2{
-font-size:65px;
-color:var(--gold);
-margin-bottom:10px;
-}
-
-.stat p{
-color:#aaa;
-}
-
-/* FOOTER */
-
-footer{
-padding:60px 20px;
-text-align:center;
-border-top:1px solid rgba(255,255,255,.05);
-margin-top:100px;
-}
-
-footer h2{
-font-size:35px;
-margin-bottom:15px;
-color:var(--gold);
-}
-
-footer p{
-color:#888;
-line-height:1.8;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-nav{
-padding:20px;
-}
-
-.nav-links{
-display:none;
-}
-
-.hero p{
-font-size:16px;
-}
-
-.section-title{
-font-size:38px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="AIVEX GLOBAL - Luxury digital products, AI trading, and self-development platform. Experience next-gen financial growth and digital transformation.">
+    <meta name="keywords" content="AIVEX, trading, digital products, AI tools, self development, luxury trading platform">
+    <meta name="author" content="AIVEX GLOBAL">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AIVEX GLOBAL | Future of Trading & Digital Growth">
+    <meta property="og:description" content="Premium trading ecosystem, AI-powered tools, and elite digital products designed for success.">
+    <meta property="og:type" content="website">
+    <title>AIVEX GLOBAL | Futuristic Trading & Digital Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="bg"></div>
-
-<!-- NAVBAR -->
-
-<nav>
-
-<div class="logo">
-AIVEX
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">AIVEX</div>
 </div>
 
-<div class="nav-links">
-<a href="#">الرئيسية</a>
-<a href="#">المتجر</a>
-<a href="#">الخدمات</a>
-<a href="#">المدونة</a>
-<a href="#">تواصل</a>
-</div>
+<!-- Floating Particles Canvas -->
+<canvas id="particleCanvas"></canvas>
 
+<!-- Navigation -->
+<nav class="navbar glass-panel">
+    <div class="container nav-container">
+        <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span>AIVEX<span class="gold"> GLOBAL</span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#trading-section" class="nav-link">Trading</a>
+            <a href="#products" class="nav-link">Digital Products</a>
+            <a href="#blog" class="nav-link">Blog</a>
+            <a href="#contact-footer" class="nav-link">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
 </nav>
 
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="badge">
-AIVEX GLOBAL • DIGITAL EMPIRE
-</div>
-
-<h1>
-أيفيكس العالمية
-</h1>
-
-<p>
-منصة احترافية للمنتجات الرقمية، التداول، تطوير الذات، والعمل الحر بتصميم فاخر وتجربة عالمية.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#" class="btn btn-primary">
-ابدأ الآن
-</a>
-
-<a href="#" class="btn btn-secondary">
-استكشف الموقع
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SERVICES -->
-
-<section class="section">
-
-<h2 class="section-title">
-خدمات <span>AIVEX</span>
-</h2>
-
-<p class="section-desc">
-حلول رقمية احترافية تساعدك على بناء علامتك وتحقيق دخل عبر الإنترنت.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<div class="card-icon">📈</div>
-<h3>التداول</h3>
-<p>
-تعلم استراتيجيات احترافية وتحليل الأسواق بطريقة ذكية.
-</p>
-</div>
-
-<div class="card">
-<div class="card-icon">💻</div>
-<h3>العمل الحر</h3>
-<p>
-ابدأ رحلتك في الربح الرقمي وصناعة الدخل عبر الإنترنت.
-</p>
-</div>
-
-<div class="card">
-<div class="card-icon">🧠</div>
-<h3>تطوير الذات</h3>
-<p>
-مهارات عقلية وإنتاجية لبناء شخصية قوية وناجحة.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRODUCTS -->
-
-<section class="section">
-
-<h2 class="section-title">
-أفضل <span>المنتجات</span>
-</h2>
-
-<div class="products">
-
-<div class="product">
-
-<div class="product-image">
-📘
-</div>
-
-<div class="product-body">
-
-<h3>
-كتاب التداول الذكي
-</h3>
-
-<p>
-تعلم الدعم والمقاومة وإدارة رأس المال بطريقة احترافية.
-</p>
-
-<div class="price">
-19$
-</div>
-
-<a href="#" class="buy-btn">
-شراء الآن
-</a>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<div class="product-image">
-📱
-</div>
-
-<div class="product-body">
-
-<h3>
-الربح من إنستقرام
-</h3>
-
-<p>
-خطة كاملة لبناء حساب قوي وتحقيق دخل من المحتوى.
-</p>
-
-<div class="price">
-12$
-</div>
-
-<a href="#" class="buy-btn">
-شراء الآن
-</a>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<div class="product-image">
-🚀
-</div>
-
-<div class="product-body">
-
-<h3>
-دليل العمل الحر
-</h3>
-
-<p>
-ابدأ من الصفر وابنِ مصدر دخل حقيقي عبر الإنترنت.
-</p>
-
-<div class="price">
-15$
-</div>
-
-<a href="#" class="buy-btn">
-شراء الآن
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- STATS -->
-
-<section class="section">
-
-<div class="stats">
-
-<div class="stat">
-<h2>500+</h2>
-<p>عميل</p>
-</div>
-
-<div class="stat">
-<h2>20+</h2>
-<p>منتج رقمي</p>
-</div>
-
-<div class="stat">
-<h2>4.9</h2>
-<p>تقييم</p>
-</div>
-
-<div class="stat">
-<h2>1M+</h2>
-<p>مشاهدة</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<h2>
-AIVEX GLOBAL
-</h2>
-
-<p>
-منصة رقمية احترافية للتداول والعمل الحر وتطوير الذات.
-</p>
-
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-badge glow-effect">ELITE ECOSYSTEM</div>
+            <h1 class="hero-title animated-title">
+                <span class="gradient-text">AIVEX GLOBAL</span>
+                <div class="hero-glow"></div>
+            </h1>
+            <p class="hero-subtitle arabic">منصتك العالمية للتداول والمنتجات الرقمية</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Start Trading <i class="fas fa-arrow-right"></i></a>
+                <a href="#products" class="btn-outline">Explore Products <i class="fas fa-gem"></i></a>
+            </div>
+        </div>
+        <div class="hero-bg-shine"></div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Premium ecosystem</span>
+                <h2>Featured Categories</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card glass-card">
+                    <i class="fas fa-chart-simple"></i>
+                    <h3>Trading</h3>
+                    <p>Advanced algorithms</p>
+                </div>
+                <div class="category-card glass-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Viral strategies</p>
+                </div>
+                <div class="category-card glass-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>AI Tools</h3>
+                    <p>Neural intelligence</p>
+                </div>
+                <div class="category-card glass-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Self Development</h3>
+                    <p>Limitless growth</p>
+                </div>
+                <div class="category-card glass-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Freelancing</h3>
+                    <p>Global economy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Digital Assets</span>
+                <h2>Elite Digital Products</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card glass-card">
+                    <div class="discount-badge">-34%</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="AI Trading Bot" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Quantum Trade AI</h3>
+                        <p>High-frequency neural trading suite with real-time analytics.</p>
+                        <div class="price-wrap">
+                            <span class="old-price">$299</span>
+                            <span class="new-price">$199</span>
+                        </div>
+                        <button class="buy-btn" data-product="Quantum Trade AI">Buy Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card glass-card">
+                    <div class="discount-badge">-25%</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&h=300&fit=crop" alt="Viral Marketing Kit" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Viral Marketing Kit</h3>
+                        <p>Influencer automation, content AI, and engagement tools.</p>
+                        <div class="price-wrap">
+                            <span class="old-price">$159</span>
+                            <span class="new-price">$119</span>
+                        </div>
+                        <button class="buy-btn" data-product="Viral Marketing Kit">Buy Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card glass-card">
+                    <div class="discount-badge">-28%</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1677442135136-760c813028c0?w=400&h=300&fit=crop" alt="Neural AI Suite" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Neural AI Suite</h3>
+                        <p>Generative AI for content, code & creative automation.</p>
+                        <div class="price-wrap">
+                            <span class="old-price">$249</span>
+                            <span class="new-price">$179</span>
+                        </div>
+                        <button class="buy-btn" data-product="Neural AI Suite">Buy Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card glass-card">
+                    <div class="discount-badge">-20%</div>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop" alt="Alpha Mindset Pro" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Alpha Mindset Pro</h3>
+                        <p>Elite mental models and peak performance system.</p>
+                        <div class="price-wrap">
+                            <span class="old-price">$99</span>
+                            <span class="new-price">$79</span>
+                        </div>
+                        <button class="buy-btn" data-product="Alpha Mindset Pro">Buy Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Insights</span>
+                <h2>Luxury Intelligence</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card glass-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=400&h=250&fit=crop" alt="AI in Forex" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span class="category">Trading</span> <span class="read-time"><i class="far fa-clock"></i> 5 min read</span></div>
+                        <h3>AI in Forex Trading: Future Trends</h3>
+                        <p>How predictive algorithms and deep learning are reshaping global currency markets.</p>
+                    </div>
+                </article>
+                <article class="blog-card glass-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c2236a4c?w=400&h=250&fit=crop" alt="Digital Products" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span class="category">Digital Products</span> <span class="read-time"><i class="far fa-clock"></i> 4 min read</span></div>
+                        <h3>Mastering Digital Products in 2025</h3>
+                        <p>Strategies to scale digital assets and recurring revenue in Web3 era.</p>
+                    </div>
+                </article>
+                <article class="blog-card glass-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&h=250&fit=crop" alt="Self Development" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><span class="category">Self Development</span> <span class="read-time"><i class="far fa-clock"></i> 6 min read</span></div>
+                        <h3>The Growth Mindset Revolution</h3>
+                        <p>Unlocking human potential through neuro-coaching and high-performance rituals.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item glass-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number" data-target="24891">0</div>
+                    <p>Active Clients</p>
+                </div>
+                <div class="stat-item glass-card">
+                    <i class="fas fa-box-open"></i>
+                    <div class="stat-number" data-target="14342">0</div>
+                    <p>Products Sold</p>
+                </div>
+                <div class="stat-item glass-card">
+                    <i class="fas fa-newspaper"></i>
+                    <div class="stat-number" data-target="128">0</div>
+                    <p>Expert Articles</p>
+                </div>
+                <div class="stat-item glass-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-number" data-target="4.92" data-isfloat="true">0</div>
+                    <p>Global Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container glass-panel newsletter-wrap">
+            <h3>Join the <span class="gold">Elite Circle</span></h3>
+            <p>Receive exclusive market insights, premium product drops & AI trading signals.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Your corporate email" required>
+                    <button type="submit" class="btn-subscribe">Subscribe <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer id="contact-footer" class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo"><i class="fas fa-chart-line"></i> AIVEX GLOBAL</div>
+                <p>Luxury trading & digital innovation. Transforming the future of wealth and self-mastery.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#">Trading Terminal</a></li>
+                    <li><a href="#">Digital Store</a></li>
+                    <li><a href="#">AI Research</a></li>
+                    <li><a href="#">Academy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About AIVEX</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> elite@aivexglobal.com</p>
+                <p><i class="fas fa-phone-alt"></i> +1 (888) 421-AIVEX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AIVEX GLOBAL — Futuristic Wealth Ecosystem. All rights reserved.</p>
+        </div>
+    </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
+```
