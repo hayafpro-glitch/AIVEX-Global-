@@ -1,1215 +1,321 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIVEX Global — أيفيكس العالمية</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>AIVEX Global</title>
+
+<meta name="description" content="AIVEX Global - التداول والمنتجات الرقمية وتطوير الذات">
+<meta name="theme-color" content="#0b0b0b">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --gold: #c8a032;
-  --gold-light: #ffd700;
-  --green: #00c832;
-  --green-dark: #006416;
-  --black: #050505;
-  --dark: #0a0a0a;
-  --dark2: #111111;
-  --dark3: #1a1a1a;
-  --white: #f5f5f0;
-  --gray: #888;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Tajawal', sans-serif;
-  overflow-x: hidden;
-}
-
-/* ===== SCROLLBAR ===== */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: var(--gold); }
-
-/* ===== NOISE OVERLAY ===== */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
-
-/* ===== NAVBAR ===== */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 40px;
-  background: rgba(5,5,5,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(200,160,50,0.15);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.nav-logo img {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.nav-logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-logo-en {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  color: var(--gold);
-  letter-spacing: 3px;
-  line-height: 1;
-}
-
-.nav-logo-ar {
-  font-size: 11px;
-  color: var(--green);
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: rgba(245,245,240,0.7);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: color 0.3s;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  right: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transition: width 0.3s;
-}
-
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-cta {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black) !important;
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-weight: 900 !important;
-  font-size: 12px !important;
-}
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  padding-top: 80px;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,100,22,0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(200,160,50,0.08) 0%, transparent 60%),
-    var(--black);
-}
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(200,160,50,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200,160,50,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 24px;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(200,160,50,0.1);
-  border: 1px solid rgba(200,160,50,0.3);
-  border-radius: 100px;
-  padding: 6px 16px;
-  margin-bottom: 32px;
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-.hero-title {
-  font-family: 'Tajawal', sans-serif;
-  font-weight: 900;
-  font-size: clamp(40px, 8vw, 90px);
-  line-height: 1;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--white) 0%, var(--gold) 50%, var(--white) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-title-en {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(20px, 4vw, 40px);
-  letter-spacing: 10px;
-  color: var(--green);
-  margin-bottom: 24px;
-  display: block;
-}
-
-.hero-desc {
-  font-size: 18px;
-  line-height: 1.8;
-  color: rgba(245,245,240,0.6);
-  max-width: 600px;
-  margin: 0 auto 40px;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black);
-  padding: 14px 32px;
-  border-radius: 4px;
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 30px rgba(200,160,50,0.3);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 50px rgba(200,160,50,0.5);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--white);
-  padding: 14px 32px;
-  border-radius: 4px;
-  border: 1px solid rgba(245,245,240,0.2);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-/* ===== TICKER ===== */
-.ticker {
-  background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-dark));
-  padding: 10px 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ticker-inner {
-  display: inline-flex;
-  gap: 60px;
-  animation: ticker 20s linear infinite;
-}
-
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.ticker-item {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--black);
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.ticker-sep { opacity: 0.5; }
-
-/* ===== CATEGORIES ===== */
-.section {
-  padding: 100px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  margin-bottom: 60px;
-}
-
-.section-label {
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.section-title {
-  font-family: 'Tajawal', sans-serif;
-  font-weight: 900;
-  font-size: clamp(28px, 5vw, 48px);
-  line-height: 1.1;
-  color: var(--white);
-}
-
-.section-title span {
-  color: var(--gold);
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.cat-card {
-  background: var(--dark2);
-  border: 1px solid rgba(200,160,50,0.1);
-  border-radius: 8px;
-  padding: 32px;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  display: block;
-}
-
-.cat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-.cat-card:hover {
-  border-color: rgba(200,160,50,0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-.cat-card:hover::before { transform: scaleX(1); }
-
-.cat-icon {
-  width: 52px;
-  height: 52px;
-  background: rgba(200,160,50,0.1);
-  border: 1px solid rgba(200,160,50,0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.cat-title {
-  font-weight: 900;
-  font-size: 20px;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.cat-desc {
-  font-size: 14px;
-  color: rgba(245,245,240,0.5);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-.cat-count {
-  font-size: 12px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* ===== POSTS GRID ===== */
-.posts-section {
-  background: var(--dark2);
-  padding: 100px 0;
-}
-
-.posts-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-}
-
-@media (max-width: 900px) {
-  .posts-grid { grid-template-columns: 1fr; }
-}
-
-/* Featured Post */
-.post-featured {
-  background: var(--dark3);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(200,160,50,0.1);
-  transition: all 0.3s;
-}
-
-.post-featured:hover {
-  border-color: rgba(200,160,50,0.3);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-}
-
-.post-featured-img {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(135deg, var(--dark3), var(--dark2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.post-featured-img-placeholder {
-  font-size: 80px;
-  opacity: 0.15;
-}
-
-.post-featured-img-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  background: linear-gradient(transparent, var(--dark3));
-}
-
-.post-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(200,160,50,0.15);
-  border: 1px solid rgba(200,160,50,0.3);
-  color: var(--gold);
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.post-featured-body {
-  padding: 28px;
-}
+:root{
+--bg:#070707;
+--card:#111111;
+--gold:#d4af37;
+--green:#00d26a;
+--text:#f5f5f5;
+--muted:#9b9b9b;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Tajawal',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 20px;
+background:rgba(0,0,0,.85);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.06);
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+letter-spacing:2px;
+color:var(--gold);
+}
+
+.menu{
+display:flex;
+gap:20px;
+}
+
+.menu a{
+text-decoration:none;
+color:#ddd;
+font-size:14px;
+transition:.3s;
+}
+
+.menu a:hover{
+color:var(--gold);
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 20px 60px;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--green),transparent);
+filter:blur(120px);
+opacity:.15;
+}
+
+.hero-content{
+position:relative;
+z-index:1;
+max-width:850px;
+}
 
-.post-featured-tag { margin-bottom: 16px; }
-
-.post-featured-title {
-  font-family: 'Tajawal', sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 1.3;
-  color: var(--white);
-  margin-bottom: 12px;
-  text-decoration: none;
-  display: block;
-  transition: color 0.2s;
-}
-
-.post-featured-title:hover { color: var(--gold); }
-
-.post-excerpt {
-  font-size: 15px;
-  color: rgba(245,245,240,0.5);
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.post-meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 13px;
-  color: rgba(245,245,240,0.4);
-}
-
-.post-meta-dot { color: var(--gold); }
-
-/* Side posts */
-.posts-side {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.post-card {
-  background: var(--dark3);
-  border: 1px solid rgba(200,160,50,0.08);
-  border-radius: 8px;
-  padding: 20px;
-  transition: all 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-}
-
-.post-card:hover {
-  border-color: rgba(200,160,50,0.3);
-  transform: translateX(-4px);
-}
-
-.post-card-tag { margin-bottom: 10px; }
-
-.post-card-title {
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--white);
-  line-height: 1.4;
-  margin-bottom: 8px;
-  display: block;
-}
+.badge{
+display:inline-block;
+padding:8px 16px;
+border:1px solid rgba(212,175,55,.3);
+background:rgba(212,175,55,.08);
+border-radius:999px;
+font-size:12px;
+margin-bottom:25px;
+color:var(--gold);
+}
+
+.hero h1{
+font-size:clamp(42px,8vw,88px);
+font-weight:900;
+line-height:1;
+margin-bottom:20px;
+background:linear-gradient(to right,#fff,var(--gold));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.8;
+color:var(--muted);
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
 
-.post-card-meta {
-  font-size: 12px;
-  color: rgba(245,245,240,0.35);
+.btn{
+padding:14px 28px;
+border-radius:10px;
+font-weight:700;
+text-decoration:none;
+transition:.3s;
 }
 
-/* ===== PRODUCTS SECTION ===== */
-.products-section {
-  padding: 100px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+.btn-primary{
+background:linear-gradient(135deg,var(--gold),#ffdd73);
+color:#000;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.product-card {
-  background: var(--dark2);
-  border: 1px solid rgba(200,160,50,0.1);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
+.btn-primary:hover{
+transform:translateY(-3px);
+}
+
+.btn-secondary{
+border:1px solid rgba(255,255,255,.12);
+color:#fff;
+}
 
-.product-card:hover {
-  border-color: rgba(200,160,50,0.4);
-  transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-}
-
-.product-img {
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, #0d1a0d, #0a0a0a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  position: relative;
-  overflow: hidden;
-}
+.btn-secondary:hover{
+border-color:var(--gold);
+color:var(--gold);
+}
 
-.product-img::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(200,160,50,0.05), rgba(0,200,50,0.05));
-}
-
-.product-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black);
-  font-size: 10px;
-  font-weight: 900;
-  padding: 4px 10px;
-  border-radius: 100px;
-  letter-spacing: 1px;
-  z-index: 1;
-}
-
-.product-body {
-  padding: 24px;
-}
-
-.product-title {
-  font-weight: 900;
-  font-size: 18px;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.product-desc {
-  font-size: 13px;
-  color: rgba(245,245,240,0.5);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.product-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.product-price {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-price-old {
-  font-size: 12px;
-  color: rgba(245,245,240,0.3);
-  text-decoration: line-through;
-}
-
-.product-price-new {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--green);
-}
-
-.product-btn {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: 900;
-  font-size: 13px;
-  cursor: pointer;
-  letter-spacing: 1px;
-  transition: all 0.2s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.product-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(200,160,50,0.4);
-}
-
-/* ===== STATS ===== */
-.stats-section {
-  background: linear-gradient(135deg, rgba(200,160,50,0.05), rgba(0,200,50,0.05));
-  border-top: 1px solid rgba(200,160,50,0.1);
-  border-bottom: 1px solid rgba(200,160,50,0.1);
-  padding: 60px 40px;
-}
-
-.stats-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  text-align: center;
+.section{
+padding:90px 20px;
+max-width:1200px;
+margin:auto;
 }
 
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 56px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 8px;
+.section-title{
+font-size:40px;
+margin-bottom:50px;
+font-weight:900;
 }
 
-.stat-label {
-  font-size: 13px;
-  color: rgba(245,245,240,0.5);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
 }
 
-/* ===== NEWSLETTER ===== */
-.newsletter {
-  padding: 100px 40px;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.newsletter-icon {
-  width: 64px;
-  height: 64px;
-  background: rgba(200,160,50,0.1);
-  border: 1px solid rgba(200,160,50,0.3);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin: 0 auto 24px;
-}
-
-.newsletter h2 {
-  font-weight: 900;
-  font-size: 36px;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-
-.newsletter p {
-  color: rgba(245,245,240,0.5);
-  margin-bottom: 32px;
-  line-height: 1.7;
+.card{
+background:var(--card);
+padding:28px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.05);
+transition:.3s;
 }
-
-.newsletter-form {
-  display: flex;
-  gap: 12px;
-  max-width: 500px;
-  margin: 0 auto;
+
+.card:hover{
+transform:translateY(-5px);
+border-color:rgba(212,175,55,.4);
 }
 
-.newsletter-input {
-  flex: 1;
-  background: var(--dark2);
-  border: 1px solid rgba(200,160,50,0.2);
-  border-radius: 4px;
-  padding: 14px 20px;
-  color: var(--white);
-  font-family: 'Tajawal', sans-serif;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
+.card-icon{
+font-size:38px;
+margin-bottom:18px;
 }
 
-.newsletter-input:focus { border-color: var(--gold); }
-.newsletter-input::placeholder { color: rgba(245,245,240,0.3); }
+.card h3{
+margin-bottom:10px;
+font-size:22px;
+}
 
-/* ===== FOOTER ===== */
-footer {
-  background: var(--dark2);
-  border-top: 1px solid rgba(200,160,50,0.1);
-  padding: 60px 40px 30px;
+.card p{
+color:var(--muted);
+line-height:1.7;
+font-size:14px;
 }
 
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+footer{
+padding:40px 20px;
+border-top:1px solid rgba(255,255,255,.06);
+text-align:center;
+color:#777;
+font-size:14px;
 }
+
+@media(max-width:700px){
 
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
+.menu{
+display:none;
 }
 
-@media (max-width: 800px) {
-  .footer-top { grid-template-columns: 1fr 1fr; }
+.hero p{
+font-size:16px;
 }
 
-.footer-brand-desc {
-  font-size: 14px;
-  color: rgba(245,245,240,0.4);
-  line-height: 1.7;
-  margin: 16px 0 24px;
-  max-width: 300px;
+.section-title{
+font-size:30px;
 }
 
-.footer-social {
-  display: flex;
-  gap: 12px;
-}
-
-.social-btn {
-  width: 36px;
-  height: 36px;
-  background: rgba(200,160,50,0.1);
-  border: 1px solid rgba(200,160,50,0.2);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.social-btn:hover {
-  background: rgba(200,160,50,0.2);
-  border-color: var(--gold);
-  transform: translateY(-2px);
-}
-
-.footer-col-title {
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
-
-.footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-links a {
-  color: rgba(245,245,240,0.45);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover { color: var(--white); }
-
-.footer-bottom {
-  border-top: 1px solid rgba(200,160,50,0.08);
-  padding-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.footer-copy {
-  font-size: 13px;
-  color: rgba(245,245,240,0.3);
-}
-
-.footer-tagline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: rgba(200,160,50,0.4);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-badge { animation: fadeInUp 0.6s ease both; }
-.hero-title { animation: fadeInUp 0.6s ease 0.1s both; }
-.hero-title-en { animation: fadeInUp 0.6s ease 0.2s both; }
-.hero-desc { animation: fadeInUp 0.6s ease 0.3s both; }
-.hero-btns { animation: fadeInUp 0.6s ease 0.4s both; }
-
-/* ===== GOLD LINE SEPARATOR ===== */
-.gold-sep {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  margin: 20px 0;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  .nav-links { display: none; }
-  .section, .products-section { padding: 60px 20px; }
-  .newsletter { padding: 60px 20px; }
-  footer { padding: 40px 20px 20px; }
-  .footer-top { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .newsletter-form { flex-direction: column; }
-  .posts-section { padding: 60px 0; }
-  .posts-inner { padding: 0 20px; }
-  .hero-content { padding: 0 16px; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-text">
-      <span class="nav-logo-en">AIVEX GLOBAL</span>
-      <span class="nav-logo-ar">أيفيكس العالمية</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
-    <li><a href="#">التداول</a></li>
-    <li><a href="#">الكتب</a></li>
-    <li><a href="#">تطوير الذات</a></li>
-    <li><a href="#" class="nav-cta">المتجر</a></li>
-  </ul>
+<div class="logo">AIVEX</div>
+
+<div class="menu">
+<a href="#">الرئيسية</a>
+<a href="#">التداول</a>
+<a href="#">المنتجات</a>
+<a href="#">المدونة</a>
+</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Learn · Trade · Grow
-    </div>
-    <h1 class="hero-title">أيفيكس العالمية</h1>
-    <span class="hero-title-en">AIVEX GLOBAL</span>
-    <p class="hero-desc">
-      منصتك الأولى للمنتجات الرقمية في التداول، تطوير الذات، والمحتوى التعليمي العالمي
-    </p>
-    <div class="hero-btns">
-      <a href="https://payhip.com/AIVEXGlobal" class="btn-primary">🛒 تسوق الآن</a>
-      <a href="#posts" class="btn-secondary">📚 اقرأ المدونة</a>
-    </div>
-  </div>
+
+<div class="hero-content">
+
+<div class="badge">
+AIVEX GLOBAL
+</div>
+
+<h1>
+اصنع دخلك الرقمي
+</h1>
+
+<p>
+منصة احترافية للتداول، المنتجات الرقمية، وتطوير المهارات المالية الحديثة.
+</p>
+
+<div class="buttons">
+<a href="https://payhip.com/" class="btn btn-primary">
+ابدأ الآن
+</a>
+
+<a href="#" class="btn btn-secondary">
+استكشف المحتوى
+</a>
+</div>
+
+</div>
+
 </section>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">📈 تداول الدعم والمقاومة <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">💰 الربح من الإنستقرام <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">🤖 بوتات التداول <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">📚 كتب PDF احترافية <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">🌍 AIVEX GLOBAL <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">📈 تداول الدعم والمقاومة <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">💰 الربح من الإنستقرام <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">🤖 بوتات التداول <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">📚 كتب PDF احترافية <span class="ticker-sep">◆</span></span>
-    <span class="ticker-item">🌍 AIVEX GLOBAL <span class="ticker-sep">◆</span></span>
-  </div>
+<section class="section">
+
+<h2 class="section-title">
+أقسام الموقع
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-icon">📈</div>
+<h3>التداول</h3>
+<p>
+تعلم استراتيجيات الدعم والمقاومة وإدارة رأس المال.
+</p>
 </div>
 
-<!-- CATEGORIES -->
-<div class="section">
-  <div class="section-header">
-    <span class="section-label">استكشف المحتوى</span>
-    <h2 class="section-title">أقسام <span>AIVEX</span></h2>
-    <div class="gold-sep"></div>
-  </div>
-  <div class="categories-grid">
-    <a href="#" class="cat-card">
-      <div class="cat-icon">📈</div>
-      <div class="cat-title">تعلم التداول</div>
-      <div class="cat-desc">استراتيجيات، دعم ومقاومة، إشارات احترافية</div>
-      <div class="cat-count">12 مقالة</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">📱</div>
-      <div class="cat-title">الربح الرقمي</div>
-      <div class="cat-desc">إنستقرام، العمل الحر، التسويق بالعمولة</div>
-      <div class="cat-count">8 مقالات</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🧠</div>
-      <div class="cat-title">تطوير الذات</div>
-      <div class="cat-desc">مهارات، إنتاجية، تفكير مالي احترافي</div>
-      <div class="cat-count">10 مقالات</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🛠️</div>
-      <div class="cat-title">أدوات وبوتات</div>
-      <div class="cat-desc">بوتات تداول، أدوات رقمية، تقنيات متقدمة</div>
-      <div class="cat-count">6 مقالات</div>
-    </a>
-  </div>
+<div class="card">
+<div class="card-icon">💰</div>
+<h3>الربح الرقمي</h3>
+<p>
+طرق بناء دخل من الإنترنت والعمل الحر والمنتجات الرقمية.
+</p>
 </div>
 
-<!-- POSTS -->
-<div class="posts-section" id="posts">
-  <div class="posts-inner">
-    <div class="section-header">
-      <span class="section-label">أحدث المقالات</span>
-      <h2 class="section-title">من <span>المدونة</span></h2>
-      <div class="gold-sep"></div>
-    </div>
-    <div class="posts-grid">
-      <div class="post-featured">
-        <div class="post-featured-img">
-          <span class="post-featured-img-placeholder">📈</span>
-          <div class="post-featured-img-overlay"></div>
-        </div>
-        <div class="post-featured-body">
-          <div class="post-featured-tag">
-            <a href="#" class="post-tag">📈 التداول</a>
-          </div>
-          <a href="#" class="post-featured-title">دليل الدعم والمقاومة — كيف تتداول كالمحترفين</a>
-          <p class="post-excerpt">تعلم كيف تقرأ السوق من جذوره باستخدام مستويات الدعم والمقاومة، وكيف تحول هذه المعرفة إلى صفقات رابحة بثقة واحترافية.</p>
-          <div class="post-meta">
-            <span>AIVEX Global</span>
-            <span class="post-meta-dot">◆</span>
-            <span>٨ مايو ٢٠٢٦</span>
-            <span class="post-meta-dot">◆</span>
-            <span>١٠ دقائق قراءة</span>
-          </div>
-        </div>
-      </div>
-      <div class="posts-side">
-        <a href="#" class="post-card">
-          <div class="post-card-tag"><span class="post-tag">📱 رقمي</span></div>
-          <span class="post-card-title">كيف تربح من الإنستقرام بدون رأس مال</span>
-          <div class="post-card-meta">٥ مايو ٢٠٢٦ · ٧ دقائق</div>
-        </a>
-        <a href="#" class="post-card">
-          <div class="post-card-tag"><span class="post-tag">🤖 بوتات</span></div>
-          <span class="post-card-title">أفضل بوتات التداول للمبتدئين ٢٠٢٦</span>
-          <div class="post-card-meta">٣ مايو ٢٠٢٦ · ٨ دقائق</div>
-        </a>
-        <a href="#" class="post-card">
-          <div class="post-card-tag"><span class="post-tag">🧠 تطوير</span></div>
-          <span class="post-card-title">التسويق بالعمولة — الدليل الشامل للمبتدئين</span>
-          <div class="post-card-meta">١ مايو ٢٠٢٦ · ١٢ دقيقة</div>
-        </a>
-        <a href="#" class="post-card">
-          <div class="post-card-tag"><span class="post-tag">💰 ربح</span></div>
-          <span class="post-card-title">كيف تبني دخل سلبي من المنتجات الرقمية</span>
-          <div class="post-card-meta">٢٨ أبريل ٢٠٢٦ · ٩ دقائق</div>
-        </a>
-      </div>
-    </div>
-  </div>
+<div class="card">
+<div class="card-icon">🧠</div>
+<h3>تطوير الذات</h3>
+<p>
+تحسين العقلية والانضباط والإنتاجية للوصول لمستوى أعلى.
+</p>
 </div>
 
-<!-- PRODUCTS -->
-<div class="products-section">
-  <div class="section-header">
-    <span class="section-label">منتجاتنا الرقمية</span>
-    <h2 class="section-title">متجر <span>AIVEX</span></h2>
-    <div class="gold-sep"></div>
-  </div>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-img">
-        <span>📈</span>
-        <div class="product-badge">الأكثر مبيعاً</div>
-      </div>
-      <div class="product-body">
-        <div class="product-title">تداول بذكاء: الدعم والمقاومة</div>
-        <div class="product-desc">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</div>
-        <div class="product-footer">
-          <div class="product-price">
-            <span class="product-price-old">40$</span>
-            <span class="product-price-new">19.99$</span>
-          </div>
-          <a href="https://payhip.com/AIVEXGlobal" class="product-btn">اشترِ الآن</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img">
-        <span>📱</span>
-        <div class="product-badge">جديد</div>
-      </div>
-      <div class="product-body">
-        <div class="product-title">الربح من الإنستقرام</div>
-        <div class="product-desc">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</div>
-        <div class="product-footer">
-          <div class="product-price">
-            <span class="product-price-old">30$</span>
-            <span class="product-price-new">12.99$</span>
-          </div>
-          <a href="https://payhip.com/AIVEXGlobal" class="product-btn">اشترِ الآن</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-img">
-        <span>💻</span>
-      </div>
-      <div class="product-body">
-        <div class="product-title">دليل العمل الحر</div>
-        <div class="product-desc">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</div>
-        <div class="product-footer">
-          <div class="product-price">
-            <span class="product-price-old">35$</span>
-            <span class="product-price-new">14.99$</span>
-          </div>
-          <a href="https://payhip.com/AIVEXGlobal" class="product-btn">اشترِ الآن</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-section">
-  <div class="stats-inner">
-    <div>
-      <div class="stat-num">500+</div>
-      <div class="stat-label">عميل راضٍ</div>
-    </div>
-    <div>
-      <div class="stat-num">12</div>
-      <div class="stat-label">منتج رقمي</div>
-    </div>
-    <div>
-      <div class="stat-num">30+</div>
-      <div class="stat-label">مقالة تعليمية</div>
-    </div>
-    <div>
-      <div class="stat-num">4.9</div>
-      <div class="stat-label">تقييم العملاء</div>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- NEWSLETTER -->
-<div class="newsletter">
-  <div class="newsletter-icon">📩</div>
-  <h2>اشترك في النشرة البريدية</h2>
-  <p>احصل على أحدث المقالات والعروض الحصرية مباشرة في بريدك الإلكتروني</p>
-  <div class="newsletter-form">
-    <input type="email" class="newsletter-input" placeholder="بريدك الإلكتروني">
-    <a href="#" class="btn-primary">اشترك</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="nav-logo-text">
-          <span class="nav-logo-en" style="font-size:24px">AIVEX GLOBAL</span>
-          <span class="nav-logo-ar" style="font-size:13px;margin-top:4px;display:block">أيفيكس العالمية</span>
-        </div>
-        <p class="footer-brand-desc">منصتك الأولى للمنتجات الرقمية والمحتوى التعليمي في التداول وتطوير الذات والربح الرقمي.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn">𝕏</a>
-          <a href="#" class="social-btn">📘</a>
-          <a href="#" class="social-btn">📸</a>
-          <a href="#" class="social-btn">▶️</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">الأقسام</div>
-        <ul class="footer-links">
-          <li><a href="#">التداول</a></li>
-          <li><a href="#">الكتب</a></li>
-          <li><a href="#">تطوير الذات</a></li>
-          <li><a href="#">الأدوات</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">المتجر</div>
-        <ul class="footer-links">
-          <li><a href="https://payhip.com/AIVEXGlobal">Payhip</a></li>
-          <li><a href="#">العروض</a></li>
-          <li><a href="#">الكتب الجديدة</a></li>
-          <li><a href="#">الباقات</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">تواصل</div>
-        <ul class="footer-links">
-          <li><a href="#">من نحن</a></li>
-          <li><a href="#">اتصل بنا</a></li>
-          <li><a href="#">سياسة الخصوصية</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 AIVEX Global — جميع الحقوق محفوظة</div>
-      <div class="footer-tagline">LEARN · TRADE · GROW</div>
-    </div>
-  </div>
+© 2026 AIVEX Global — جميع الحقوق محفوظة
 </footer>
 
 </body>
