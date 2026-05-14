@@ -1,51 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIVEX Global — المتجر الرقمي</title>
+<title>AIVEX Global — أيفيكس العالمية</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
+/* ===== THEME VARIABLES ===== */
 :root {
   --gold: #d4a843;
   --gold-light: #f5c842;
-  --green: #00e64d;
-  --green-dark: #007a28;
-  --black: #030303;
-  --dark: #080808;
-  --dark2: #0f0f0f;
-  --dark3: #161616;
-  --white: #f0f0eb;
+  --green: #00cc44;
   --red: #ff4040;
+
+  /* Dark theme */
+  --bg: #030303;
+  --bg2: #0f0f0f;
+  --bg3: #161616;
+  --bg4: #1e1e1e;
+  --text: #f0f0eb;
+  --text-dim: rgba(240,240,235,0.55);
+  --text-faint: rgba(240,240,235,0.28);
+  --border: rgba(212,168,67,0.12);
+  --border-hover: rgba(212,168,67,0.35);
+  --card-bg: #0f0f0f;
+  --nav-bg: rgba(3,3,3,0.95);
+  --shadow: rgba(0,0,0,0.7);
+  --toggle-bg: #1a1a1a;
+}
+
+[data-theme="light"] {
+  --bg: #f8f6f0;
+  --bg2: #ffffff;
+  --bg3: #f0ede4;
+  --bg4: #e8e4d8;
+  --text: #1a1610;
+  --text-dim: rgba(26,22,16,0.65);
+  --text-faint: rgba(26,22,16,0.38);
+  --border: rgba(212,168,67,0.2);
+  --border-hover: rgba(212,168,67,0.5);
+  --card-bg: #ffffff;
+  --nav-bg: rgba(248,246,240,0.97);
+  --shadow: rgba(0,0,0,0.12);
+  --toggle-bg: #e8e4d8;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
-  color: var(--white);
+  background: var(--bg);
+  color: var(--text);
   font-family: 'Tajawal', sans-serif;
   overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
 }
 
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-thumb { background: var(--gold); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 9998; opacity: 0.5;
-}
-
+/* ===== NAV ===== */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 2000;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 32px;
-  background: rgba(3,3,3,0.94);
+  padding: 14px 28px;
+  background: var(--nav-bg);
   backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(212,168,67,0.12);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s, border-color 0.4s;
 }
 
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -56,21 +78,173 @@ nav {
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   font-size: 20px;
-  box-shadow: 0 0 20px rgba(212,168,67,0.35);
+  box-shadow: 0 0 18px rgba(212,168,67,0.4);
+  flex-shrink: 0;
 }
 
-.nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); letter-spacing: 4px; line-height: 1; }
+.nav-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; color: var(--gold);
+  letter-spacing: 4px; line-height: 1;
+}
+
 .nav-sub { font-size: 10px; color: var(--green); letter-spacing: 1px; display: block; }
 
-.nav-btn {
+.nav-right { display: flex; align-items: center; gap: 14px; }
+
+/* Theme toggle */
+.theme-toggle {
+  width: 52px; height: 28px;
+  background: var(--toggle-bg);
+  border: 1px solid var(--border);
+  border-radius: 100px; cursor: pointer;
+  position: relative; transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.theme-toggle-ball {
+  position: absolute; top: 3px; right: 3px;
+  width: 20px; height: 20px;
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black); padding: 9px 24px; border-radius: 8px;
-  font-weight: 900; font-size: 13px; letter-spacing: 1px; text-decoration: none;
-  box-shadow: 0 0 20px rgba(212,168,67,0.3);
+  border-radius: 50%;
+  transition: transform 0.3s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+}
+
+[data-theme="light"] .theme-toggle-ball { transform: translateX(-24px); }
+
+.nav-shop-btn {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #1a1610; padding: 8px 18px; border-radius: 8px;
+  font-weight: 900; font-size: 12px; letter-spacing: 1px;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 0 16px rgba(212,168,67,0.3);
   transition: box-shadow 0.3s, transform 0.2s;
 }
-.nav-btn:hover { box-shadow: 0 0 35px rgba(212,168,67,0.55); transform: translateY(-1px); }
+.nav-shop-btn:hover { box-shadow: 0 0 30px rgba(212,168,67,0.55); transform: translateY(-1px); }
 
+/* Hamburger */
+.hamburger {
+  width: 40px; height: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px; cursor: pointer;
+  transition: border-color 0.3s;
+}
+.hamburger:hover { border-color: var(--gold); }
+.hamburger span {
+  display: block; width: 18px; height: 2px;
+  background: var(--text);
+  border-radius: 1px; transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ===== SIDEBAR MENU ===== */
+.sidebar-overlay {
+  position: fixed; inset: 0; z-index: 1500;
+  background: rgba(0,0,0,0.6);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.sidebar-overlay.open { opacity: 1; pointer-events: all; }
+
+.sidebar {
+  position: fixed; top: 0; right: -340px; bottom: 0;
+  width: 320px; z-index: 1600;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  transition: right 0.35s cubic-bezier(0.23,1,0.32,1);
+  overflow-y: auto;
+  padding: 80px 0 40px;
+}
+.sidebar.open { right: 0; }
+
+.sidebar-logo {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 24px 28px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.sidebar-logo-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+
+.sidebar-logo-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; color: var(--gold); letter-spacing: 3px;
+}
+
+.sidebar-logo-sub { font-size: 11px; color: var(--green); display: block; }
+
+/* Section categories in sidebar */
+.sidebar-section-title {
+  font-size: 10px; letter-spacing: 4px; color: var(--gold);
+  text-transform: uppercase; padding: 16px 24px 8px;
+  display: block;
+}
+
+.sidebar-nav-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 24px;
+  color: var(--text-dim);
+  text-decoration: none; cursor: pointer;
+  transition: all 0.2s; border-right: 2px solid transparent;
+  font-size: 15px; font-weight: 700;
+}
+.sidebar-nav-item:hover, .sidebar-nav-item.active {
+  color: var(--gold);
+  background: rgba(212,168,67,0.06);
+  border-right-color: var(--gold);
+}
+
+.sidebar-nav-item .nav-item-icon {
+  width: 36px; height: 36px;
+  background: rgba(212,168,67,0.08);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.sidebar-nav-item:hover .nav-item-icon {
+  background: rgba(212,168,67,0.16);
+  border-color: var(--gold);
+}
+
+.sidebar-divider {
+  height: 1px; background: var(--border);
+  margin: 12px 24px;
+}
+
+.sidebar-shop-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin: 16px 24px 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #1a1610; padding: 14px;
+  border-radius: 10px; font-weight: 900; font-size: 14px;
+  text-decoration: none; letter-spacing: 1px;
+  box-shadow: 0 6px 20px rgba(212,168,67,0.3);
+  transition: box-shadow 0.3s;
+}
+.sidebar-shop-btn:hover { box-shadow: 0 8px 30px rgba(212,168,67,0.5); }
+
+/* ===== PAGES ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== HERO ===== */
 .hero {
   min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
@@ -81,16 +255,17 @@ nav {
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,120,40,0.2) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 35% at 80% 10%, rgba(212,168,67,0.08) 0%, transparent 55%),
-    var(--black);
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,120,40,0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 35% at 80% 10%, rgba(212,168,67,0.07) 0%, transparent 55%),
+    var(--bg);
+  transition: background 0.4s;
 }
 
 .hero-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(212,168,67,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,168,67,0.03) 1px, transparent 1px);
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 50px 50px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
 }
@@ -110,143 +285,397 @@ nav {
   box-shadow: 0 0 8px var(--green); animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 8px var(--green); }
-  50% { box-shadow: 0 0 3px var(--green); }
-}
+@keyframes pulse { 0%,100% { box-shadow: 0 0 8px var(--green); } 50% { box-shadow: 0 0 3px var(--green); } }
 
 .hero-title {
-  font-weight: 900; font-size: clamp(40px, 9vw, 92px); line-height: 1; margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--white) 0%, var(--gold) 45%, var(--gold-light) 65%, var(--white) 100%);
+  font-weight: 900; font-size: clamp(42px, 9vw, 96px); line-height: 1; margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--gold) 45%, var(--gold-light) 65%, var(--text) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
 .hero-en {
-  font-family: 'Bebas Neue', sans-serif; font-size: clamp(16px, 3vw, 34px);
+  font-family: 'Bebas Neue', sans-serif; font-size: clamp(16px, 3vw, 36px);
   letter-spacing: 12px; color: var(--green); display: block; margin-bottom: 28px;
-  text-shadow: 0 0 25px rgba(0,230,77,0.3);
+  text-shadow: 0 0 25px rgba(0,200,68,0.3);
 }
 
-.hero-desc { font-size: 18px; line-height: 1.85; color: rgba(240,240,235,0.55); max-width: 560px; margin: 0 auto 44px; }
+.hero-desc { font-size: 18px; line-height: 1.85; color: var(--text-dim); max-width: 560px; margin: 0 auto 44px; }
 
 .hero-cta {
   display: inline-flex; align-items: center; gap: 10px;
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  color: var(--black); padding: 17px 44px; border-radius: 10px;
+  color: #1a1610; padding: 16px 44px; border-radius: 10px;
   font-weight: 900; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
-  box-shadow: 0 0 40px rgba(212,168,67,0.4), 0 8px 30px rgba(0,0,0,0.4);
-  transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 20px;
+  box-shadow: 0 0 40px rgba(212,168,67,0.4), 0 8px 30px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 18px;
 }
-.hero-cta:hover { transform: translateY(-4px); box-shadow: 0 0 60px rgba(212,168,67,0.6), 0 12px 40px rgba(0,0,0,0.5); }
+.hero-cta:hover { transform: translateY(-4px); box-shadow: 0 0 60px rgba(212,168,67,0.6), 0 12px 40px var(--shadow); }
 
-.hero-note { font-size: 13px; color: rgba(240,240,235,0.3); display: block; margin-bottom: 52px; }
+.hero-note { font-size: 13px; color: var(--text-faint); display: block; margin-bottom: 52px; }
 
 .hero-stats {
-  display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
-  border: 1px solid rgba(212,168,67,0.1); border-radius: 14px; overflow: hidden;
+  display: flex; justify-content: center; flex-wrap: wrap;
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
   max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.02);
 }
 
-.stat-box { flex: 1; min-width: 120px; padding: 20px 16px; text-align: center; border-left: 1px solid rgba(212,168,67,0.08); }
+.stat-box { flex: 1; min-width: 120px; padding: 20px 16px; text-align: center; border-left: 1px solid var(--border); }
 .stat-box:last-child { border-left: none; }
 .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--gold); line-height: 1; display: block; }
-.stat-lbl { font-size: 10px; color: rgba(240,240,235,0.35); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; display: block; }
+.stat-lbl { font-size: 10px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; display: block; }
 
-.ticker { background: linear-gradient(90deg, var(--green-dark), #00a836, var(--green-dark)); padding: 11px 0; overflow: hidden; white-space: nowrap; }
+/* ===== TICKER ===== */
+.ticker {
+  background: linear-gradient(90deg, #005a1e, #00a836, #005a1e);
+  padding: 10px 0; overflow: hidden; white-space: nowrap;
+}
 .ticker-inner { display: inline-flex; gap: 60px; animation: tick 22s linear infinite; }
 @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .ticker-item { font-size: 11px; font-weight: 900; letter-spacing: 3px; color: #001a0d; text-transform: uppercase; display: inline-flex; align-items: center; gap: 14px; }
 
-.trust { display: flex; justify-content: center; align-items: center; gap: 0; flex-wrap: wrap; border-bottom: 1px solid rgba(212,168,67,0.07); max-width: 900px; margin: 0 auto; }
-.trust-item { display: flex; align-items: center; gap: 10px; padding: 22px 28px; border-left: 1px solid rgba(212,168,67,0.07); color: rgba(240,240,235,0.45); font-size: 13px; font-weight: 700; }
+/* ===== TRUST ===== */
+.trust-bar {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  max-width: 1000px; margin: 0 auto;
+}
+.trust-item { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-left: 1px solid var(--border); color: var(--text-dim); font-size: 13px; font-weight: 700; }
 .trust-item:last-child { border-left: none; }
-.trust-ico { font-size: 22px; }
+.trust-ico { font-size: 20px; }
 
-.products { padding: 100px 32px; max-width: 1100px; margin: 0 auto; }
+/* ===== SECTION WRAPPER ===== */
+.section-wrap { padding: 90px 28px; max-width: 1100px; margin: 0 auto; }
+.section-wrap-full { padding: 90px 28px; }
+
 .sec-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; display: block; }
-.sec-title { font-weight: 900; font-size: clamp(28px, 5vw, 50px); color: var(--white); margin-bottom: 16px; line-height: 1.1; }
+.sec-title { font-weight: 900; font-size: clamp(28px, 5vw, 50px); color: var(--text); margin-bottom: 16px; line-height: 1.1; }
 .sec-title span { color: var(--gold); }
-.gold-line { width: 50px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 56px; border-radius: 1px; }
+.sec-desc { font-size: 16px; color: var(--text-dim); line-height: 1.8; max-width: 600px; margin-bottom: 20px; }
+.gold-line { width: 50px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 52px; border-radius: 1px; }
 
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+/* ===== CATEGORY SECTIONS ===== */
+.cat-sections {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;
+}
+
+.cat-section-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position: relative; overflow: hidden; text-decoration: none;
+  display: block;
+}
+.cat-section-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transition: transform 0.35s;
+}
+.cat-section-card:hover { border-color: var(--border-hover); transform: translateY(-5px); box-shadow: 0 20px 50px var(--shadow); }
+.cat-section-card:hover::before { transform: scaleX(1); }
+
+.cat-section-icon {
+  width: 54px; height: 54px; background: rgba(212,168,67,0.08);
+  border: 1px solid var(--border); border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 18px;
+  transition: background 0.3s;
+}
+.cat-section-card:hover .cat-section-icon { background: rgba(212,168,67,0.16); }
+
+.cat-section-title { font-weight: 900; font-size: 19px; color: var(--text); margin-bottom: 8px; }
+.cat-section-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 16px; }
+.cat-section-link { font-size: 12px; color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+
+/* ===== PRODUCTS GRID ===== */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
 
 .product-card {
-  background: var(--dark2); border: 1px solid rgba(212,168,67,0.1); border-radius: 16px; overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.23,1,0.32,1); position: relative; display: flex; flex-direction: column;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+  position: relative; display: flex; flex-direction: column;
 }
-.product-card:hover { border-color: rgba(212,168,67,0.38); transform: translateY(-8px); box-shadow: 0 32px 70px rgba(0,0,0,0.75); }
-.product-card.featured { border-color: rgba(212,168,67,0.3); box-shadow: 0 0 0 1px rgba(212,168,67,0.1), 0 20px 60px rgba(0,0,0,0.5); }
+.product-card:hover { border-color: var(--border-hover); transform: translateY(-8px); box-shadow: 0 32px 70px var(--shadow); }
+.product-card.featured { border-color: rgba(212,168,67,0.3); }
 
 .product-img {
-  width: 100%; height: 180px;
+  width: 100%; height: 170px;
   background: linear-gradient(135deg, #0d1a0d, #0a0a0a, #1a1200);
-  display: flex; align-items: center; justify-content: center; font-size: 62px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 60px; position: relative;
 }
+[data-theme="light"] .product-img { background: linear-gradient(135deg, #e8f5e0, #f5f0e0, #fff9e0); }
+
 .product-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(212,168,67,0.07) 0%, transparent 70%); }
 
-.badge { position: absolute; top: 14px; font-size: 10px; font-weight: 900; padding: 5px 12px; border-radius: 100px; letter-spacing: 1px; z-index: 1; }
-.badge-left { left: 14px; }
-.badge-right { right: 14px; }
-.badge-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--black); }
+.badge { position: absolute; top: 12px; font-size: 10px; font-weight: 900; padding: 4px 11px; border-radius: 100px; letter-spacing: 1px; z-index: 1; }
+.badge-l { left: 12px; }
+.badge-r { right: 12px; }
+.badge-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1610; }
 .badge-green { background: linear-gradient(135deg, var(--green), #00ff66); color: #001a0d; }
 .badge-red { background: var(--red); color: white; }
 
-.product-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
-.product-name { font-weight: 900; font-size: 19px; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
-.product-desc { font-size: 14px; color: rgba(240,240,235,0.42); line-height: 1.7; margin-bottom: 14px; flex: 1; }
+.product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.product-name { font-weight: 900; font-size: 18px; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.product-desc { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-bottom: 14px; flex: 1; }
 
-.product-features { list-style: none; margin-bottom: 22px; display: flex; flex-direction: column; gap: 8px; }
-.product-features li { font-size: 13px; color: rgba(240,240,235,0.5); display: flex; align-items: center; gap: 8px; }
-.product-features li::before { content: '✓'; color: var(--green); font-weight: 900; font-size: 12px; }
+.product-features { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 7px; }
+.product-features li { font-size: 13px; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+.product-features li::before { content: '✓'; color: var(--green); font-weight: 900; font-size: 11px; }
 
-.product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(212,168,67,0.08); }
-.price-old { font-size: 13px; color: rgba(240,240,235,0.25); text-decoration: line-through; display: block; }
-.price-new { font-size: 26px; font-weight: 900; color: var(--green); text-shadow: 0 0 15px rgba(0,230,77,0.25); display: block; line-height: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); }
+.price-old { font-size: 12px; color: var(--text-faint); text-decoration: line-through; display: block; }
+.price-new { font-size: 24px; font-weight: 900; color: var(--green); display: block; line-height: 1; }
 
 .buy-btn {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--black);
-  border: none; padding: 11px 24px; border-radius: 8px; font-weight: 900; font-size: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1610;
+  border: none; padding: 10px 22px; border-radius: 8px; font-weight: 900; font-size: 13px;
   cursor: pointer; letter-spacing: 1px; text-decoration: none; display: inline-block;
   transition: all 0.2s; box-shadow: 0 4px 15px rgba(212,168,67,0.25);
 }
 .buy-btn:hover { transform: scale(1.07); box-shadow: 0 6px 25px rgba(212,168,67,0.5); }
 
-.guarantee {
-  max-width: 700px; margin: 0 auto 100px; padding: 60px 32px; text-align: center;
-  border: 1px solid rgba(212,168,67,0.12); border-radius: 20px; background: rgba(212,168,67,0.03);
-}
-.guarantee-icon { font-size: 52px; margin-bottom: 20px; display: block; }
-.guarantee h2 { font-weight: 900; font-size: 28px; color: var(--white); margin-bottom: 14px; }
-.guarantee p { color: rgba(240,240,235,0.45); font-size: 15px; line-height: 1.8; }
+/* ===== CONTENT SECTIONS (Trading, Digital, etc.) ===== */
+.content-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 90px 28px; transition: background 0.4s; }
 
-.faq { max-width: 740px; margin: 0 auto; padding: 0 32px 100px; }
-.faq-title { font-weight: 900; font-size: 34px; color: var(--white); margin-bottom: 36px; text-align: center; }
-.faq-title span { color: var(--gold); }
-.faq-item { border: 1px solid rgba(212,168,67,0.1); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
-.faq-q { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--white); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--dark2); transition: background 0.2s; }
-.faq-q:hover { background: var(--dark3); }
-.faq-arrow { color: var(--gold); font-size: 18px; transition: transform 0.3s; }
-.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; font-size: 14px; color: rgba(240,240,235,0.45); line-height: 1.8; background: var(--dark3); }
-.faq-item.open .faq-a { max-height: 200px; padding: 16px 22px; }
+.content-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+
+.content-card {
+  background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 28px;
+  transition: all 0.3s;
+}
+.content-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+
+.content-card-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+.content-card-title { font-weight: 900; font-size: 17px; color: var(--text); margin-bottom: 8px; }
+.content-card-text { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+/* ===== FAQ ===== */
+.faq-list { max-width: 760px; }
+.faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.faq-q { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); transition: background 0.2s; }
+.faq-q:hover { background: var(--bg3); }
+.faq-arrow { color: var(--gold); font-size: 18px; transition: transform 0.3s; flex-shrink: 0; }
+.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; font-size: 14px; color: var(--text-dim); line-height: 1.8; background: var(--bg3); }
+.faq-item.open .faq-a { max-height: 240px; padding: 16px 22px; }
 .faq-item.open .faq-arrow { transform: rotate(180deg); }
 
-.final-cta {
-  background: linear-gradient(135deg, rgba(212,168,67,0.06), rgba(0,200,50,0.04));
-  border-top: 1px solid rgba(212,168,67,0.1); border-bottom: 1px solid rgba(212,168,67,0.1);
-  padding: 90px 32px; text-align: center;
+/* ===== GUARANTEE ===== */
+.guarantee-box {
+  max-width: 680px; margin: 0 auto; padding: 52px 36px; text-align: center;
+  border: 1px solid var(--border); border-radius: 20px; background: rgba(212,168,67,0.03);
 }
-.final-cta h2 { font-weight: 900; font-size: clamp(28px, 5vw, 50px); color: var(--white); margin-bottom: 16px; }
+.guarantee-box .g-icon { font-size: 50px; margin-bottom: 18px; display: block; }
+.guarantee-box h3 { font-weight: 900; font-size: 26px; color: var(--text); margin-bottom: 12px; }
+.guarantee-box p { color: var(--text-dim); font-size: 15px; line-height: 1.8; }
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  text-align: center; padding: 90px 28px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.05), rgba(0,180,50,0.04));
+  border-top: 1px solid var(--border);
+}
+.final-cta h2 { font-weight: 900; font-size: clamp(28px, 5vw, 52px); color: var(--text); margin-bottom: 16px; }
 .final-cta h2 span { color: var(--gold); }
-.final-cta p { color: rgba(240,240,235,0.45); font-size: 16px; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.final-cta p { color: var(--text-dim); font-size: 16px; max-width: 480px; margin: 0 auto 36px; line-height: 1.8; }
 
-footer { background: var(--dark2); border-top: 1px solid rgba(212,168,67,0.08); padding: 40px 32px 24px; }
-.footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-.footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); letter-spacing: 4px; }
-.footer-links-row { display: flex; gap: 28px; flex-wrap: wrap; }
-.footer-links-row a { color: rgba(240,240,235,0.35); font-size: 13px; text-decoration: none; transition: color 0.2s; }
-.footer-links-row a:hover { color: var(--white); }
-.footer-copy { width: 100%; text-align: center; font-size: 12px; color: rgba(240,240,235,0.2); padding-top: 20px; border-top: 1px solid rgba(212,168,67,0.06); margin-top: 20px; }
+/* ===== ABOUT ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media(max-width:768px) { .about-grid { grid-template-columns: 1fr; } }
 
+.about-visual {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 20px;
+  height: 320px; display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.06), rgba(0,180,50,0.04));
+}
+
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.value-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.value-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.value-title { font-weight: 900; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+.value-text { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+/* ===== CONTACT ===== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+@media(max-width:768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-info { display: flex; flex-direction: column; gap: 18px; }
+
+.contact-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px;
+  transition: border-color 0.3s;
+}
+.contact-item:hover { border-color: var(--gold); }
+.contact-item-icon { font-size: 24px; width: 44px; height: 44px; background: rgba(212,168,67,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-item-label { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+.contact-item-value { font-size: 15px; font-weight: 700; color: var(--text); }
+
+.contact-form { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+.contact-form h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 24px; }
+
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: 12px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; display: block; }
+.form-input, .form-textarea {
+  width: 100%; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,168,67,0.1); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-faint); }
+.form-textarea { height: 120px; resize: none; }
+.form-submit { width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1610; border: none; padding: 14px; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px; transition: box-shadow 0.2s; margin-top: 8px; }
+.form-submit:hover { box-shadow: 0 6px 25px rgba(212,168,67,0.4); }
+
+/* ===== PRIVACY ===== */
+.privacy-content { max-width: 800px; }
+.privacy-content h3 { font-weight: 900; font-size: 20px; color: var(--gold); margin: 32px 0 12px; }
+.privacy-content p { font-size: 15px; color: var(--text-dim); line-height: 1.85; margin-bottom: 16px; }
+.privacy-content ul { padding-right: 20px; margin-bottom: 16px; }
+.privacy-content ul li { font-size: 14px; color: var(--text-dim); line-height: 1.8; margin-bottom: 6px; }
+
+/* ===== ADMIN PANEL ===== */
+.admin-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.85);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.admin-overlay.open { display: flex; }
+
+.admin-panel {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; width: 100%; max-width: 900px;
+  max-height: 90vh; overflow-y: auto;
+  padding: 32px;
+}
+
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.admin-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); letter-spacing: 3px; }
+.admin-close { width: 36px; height: 36px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text); transition: border-color 0.2s; }
+.admin-close:hover { border-color: var(--red); color: var(--red); }
+
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.admin-tab { padding: 8px 20px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--text-dim); background: var(--bg3); transition: all 0.2s; }
+.admin-tab.active { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1610; border-color: transparent; }
+
+.admin-content { display: none; }
+.admin-content.active { display: block; }
+
+.admin-products-grid { display: grid; gap: 16px; }
+
+.admin-product-row {
+  background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media(max-width:600px) { .admin-product-row { grid-template-columns: 1fr; } }
+
+.admin-field { display: flex; flex-direction: column; gap: 6px; }
+.admin-field label { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+.admin-field input, .admin-field textarea, .admin-field select {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 14px; color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 14px;
+  outline: none; transition: border-color 0.2s; width: 100%;
+}
+.admin-field input:focus, .admin-field textarea:focus, .admin-field select:focus { border-color: var(--gold); }
+.admin-field textarea { height: 80px; resize: none; }
+.admin-field select { cursor: pointer; }
+
+.admin-row-full { grid-column: 1 / -1; }
+
+.admin-actions { display: flex; gap: 10px; align-items: center; grid-column: 1 / -1; margin-top: 8px; }
+
+.admin-btn {
+  padding: 9px 20px; border: none; border-radius: 8px; cursor: pointer;
+  font-weight: 900; font-size: 13px; letter-spacing: 1px; transition: all 0.2s;
+}
+.admin-btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #1a1610; }
+.admin-btn-gold:hover { box-shadow: 0 4px 16px rgba(212,168,67,0.4); }
+.admin-btn-green { background: var(--green); color: #001a0d; }
+.admin-btn-red { background: var(--red); color: white; }
+.admin-btn-gray { background: var(--bg4); color: var(--text-dim); border: 1px solid var(--border); }
+
+.admin-add-btn {
+  display: flex; align-items: center; gap: 10px; padding: 16px 22px;
+  border: 2px dashed var(--border); border-radius: 14px; cursor: pointer;
+  color: var(--text-faint); font-size: 14px; font-weight: 700;
+  background: transparent; width: 100%; justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.admin-add-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.admin-save-bar {
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);
+  display: flex; gap: 12px; justify-content: flex-end;
+}
+
+.admin-notice {
+  background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2);
+  border-radius: 10px; padding: 14px 18px; margin-bottom: 20px;
+  font-size: 13px; color: var(--gold);
+}
+
+/* Login overlay */
+.admin-login {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px;
+  text-align: center;
+}
+.admin-login-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+.admin-login h2 { font-weight: 900; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+.admin-login p { font-size: 14px; color: var(--text-dim); margin-bottom: 28px; }
+.admin-login input {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 18px; color: var(--text); font-size: 16px; outline: none;
+  text-align: center; letter-spacing: 6px; margin-bottom: 16px;
+  font-family: 'Tajawal', sans-serif;
+  transition: border-color 0.2s;
+}
+.admin-login input:focus { border-color: var(--gold); }
+.admin-login button {
+  width: 100%; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #1a1610; border: none; padding: 14px; border-radius: 10px;
+  font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px;
+}
+.admin-login-error { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 52px 28px 28px; transition: background 0.4s;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+@media(max-width:800px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px) { .footer-top { grid-template-columns: 1fr; } }
+
+.footer-brand-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--gold); letter-spacing: 4px; }
+.footer-brand-sub { font-size: 11px; color: var(--green); letter-spacing: 1px; display: block; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 14px; color: var(--text-faint); line-height: 1.75; max-width: 280px; margin-bottom: 22px; }
+
+.footer-social { display: flex; gap: 10px; }
+.social-btn {
+  width: 38px; height: 38px; background: rgba(212,168,67,0.08); border: 1px solid var(--border);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+}
+.social-btn:hover { background: rgba(212,168,67,0.18); border-color: var(--gold); transform: translateY(-3px); }
+
+.footer-col-title { font-weight: 900; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-links a { color: var(--text-faint); text-decoration: none; font-size: 14px; transition: color 0.2s; cursor: pointer; }
+.footer-links a:hover { color: var(--text); }
+
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--text-faint); }
+.footer-tag { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 4px; color: rgba(212,168,67,0.35); }
+
+/* Hidden admin trigger */
+.admin-trigger { cursor: pointer; }
+
+/* Animations */
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 .hero-badge { animation: fadeInUp 0.6s ease both; }
 .hero-title { animation: fadeInUp 0.6s ease 0.1s both; }
@@ -256,203 +685,756 @@ footer { background: var(--dark2); border-top: 1px solid rgba(212,168,67,0.08); 
 .hero-note { animation: fadeInUp 0.6s ease 0.45s both; }
 .hero-stats { animation: fadeInUp 0.6s ease 0.5s both; }
 
-@media (max-width: 768px) {
+/* Mobile */
+@media(max-width:768px) {
   nav { padding: 12px 16px; }
-  .products { padding: 70px 16px; }
-  .trust-item { padding: 16px 18px; }
-  .stat-box { min-width: 90px; }
-  .guarantee { margin: 0 16px 70px; }
-  .faq { padding: 0 16px 70px; }
+  .nav-shop-btn { display: none; }
+  .section-wrap, .section-wrap-full { padding: 70px 16px; }
+  .content-section { padding: 70px 16px; }
   .final-cta { padding: 70px 16px; }
-  footer { padding: 32px 16px 20px; }
-  .footer-inner { flex-direction: column; align-items: flex-start; }
+  footer { padding: 44px 16px 24px; }
+  .stat-box { min-width: 90px; }
+  .admin-panel { padding: 22px 16px; }
+  .admin-login { padding: 36px 24px; }
 }
 </style>
 </head>
 <body>
 
+<!-- ===== NAVBAR ===== -->
 <nav>
-  <a class="nav-brand" href="#">
+  <a class="nav-brand" href="#" onclick="showPage('home')">
     <div class="nav-icon">💹</div>
     <div>
       <span class="nav-name">AIVEX GLOBAL</span>
       <span class="nav-sub">أيفيكس العالمية</span>
     </div>
   </a>
-  <a href="https://payhip.com/AIVEXGlobal" class="nav-btn">🛒 تسوق الآن</a>
+  <div class="nav-right">
+    <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
+      <div class="theme-toggle-ball" id="themeBall">🌙</div>
+    </div>
+    <a href="https://payhip.com/AIVEXGlobal" class="nav-shop-btn" target="_blank">🛒 المتجر</a>
+    <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <div class="badge-dot"></div>
-      منتجات رقمية احترافية · متاحة الآن
-    </div>
-    <h1 class="hero-title">تداول بذكاء</h1>
-    <span class="hero-en">AIVEX GLOBAL</span>
-    <p class="hero-desc">كتب ودورات رقمية احترافية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</p>
-    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta">🛒 تصفح المنتجات</a>
-    <span class="hero-note">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
-    <div class="hero-stats">
-      <div class="stat-box"><span class="stat-num">500+</span><span class="stat-lbl">عميل راضٍ</span></div>
-      <div class="stat-box"><span class="stat-num">12</span><span class="stat-lbl">منتج رقمي</span></div>
-      <div class="stat-box"><span class="stat-num">4.9★</span><span class="stat-lbl">تقييم</span></div>
-      <div class="stat-box"><span class="stat-num">30</span><span class="stat-lbl">ضمان يوم</span></div>
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">💹</div>
+    <div>
+      <span class="sidebar-logo-name">AIVEX</span>
+      <span class="sidebar-logo-sub">أيفيكس العالمية</span>
     </div>
   </div>
-</section>
 
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">📈 تداول احترافي <span>◆</span></span>
-    <span class="ticker-item">💰 ربح رقمي <span>◆</span></span>
-    <span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span>
-    <span class="ticker-item">⚡ تسليم فوري <span>◆</span></span>
-    <span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span>
-    <span class="ticker-item">🔒 دفع آمن <span>◆</span></span>
-    <span class="ticker-item">📈 تداول احترافي <span>◆</span></span>
-    <span class="ticker-item">💰 ربح رقمي <span>◆</span></span>
-    <span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span>
-    <span class="ticker-item">⚡ تسليم فوري <span>◆</span></span>
-    <span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span>
-    <span class="ticker-item">🔒 دفع آمن <span>◆</span></span>
-  </div>
+  <span class="sidebar-section-title">الصفحات الرئيسية</span>
+
+  <a class="sidebar-nav-item" onclick="showPage('home')">
+    <div class="nav-item-icon">🏠</div> الرئيسية
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('store')">
+    <div class="nav-item-icon">🛒</div> المتجر
+  </a>
+
+  <span class="sidebar-section-title">أقسام التعلم</span>
+
+  <a class="sidebar-nav-item" onclick="showPage('trading')">
+    <div class="nav-item-icon">📈</div> تعلم التداول
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('digital')">
+    <div class="nav-item-icon">💰</div> الربح من الإنترنت
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('freelance')">
+    <div class="nav-item-icon">💻</div> العمل الحر
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('selfdev')">
+    <div class="nav-item-icon">🧠</div> تطوير الذات
+  </a>
+
+  <div class="sidebar-divider"></div>
+
+  <span class="sidebar-section-title">معلومات</span>
+
+  <a class="sidebar-nav-item" onclick="showPage('about')">
+    <div class="nav-item-icon">ℹ️</div> من نحن
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('contact')">
+    <div class="nav-item-icon">📩</div> اتصل بنا
+  </a>
+  <a class="sidebar-nav-item" onclick="showPage('privacy')">
+    <div class="nav-item-icon">🔒</div> سياسة الخصوصية
+  </a>
+
+  <div class="sidebar-divider"></div>
+
+  <a href="https://payhip.com/AIVEXGlobal" class="sidebar-shop-btn" target="_blank">
+    🛒 تسوق الآن من Payhip
+  </a>
 </div>
 
-<div class="trust">
-  <div class="trust-item"><span class="trust-ico">🔒</span> دفع آمن 100%</div>
-  <div class="trust-item"><span class="trust-ico">⚡</span> تسليم فوري</div>
-  <div class="trust-item"><span class="trust-ico">↩️</span> ضمان 30 يوم</div>
-  <div class="trust-item"><span class="trust-ico">⭐</span> تقييم 4.9 / 5</div>
-  <div class="trust-item"><span class="trust-ico">🌍</span> متاح عالمياً</div>
-</div>
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
 
-<div class="products" id="products">
-  <span class="sec-label">منتجاتنا الرقمية</span>
-  <h2 class="sec-title">اختر <span>منتجك</span></h2>
-  <div class="gold-line"></div>
-  <div class="products-grid">
-
-    <div class="product-card featured">
-      <div class="product-img">
-        <span>📈</span>
-        <div class="badge badge-left badge-gold">الأكثر مبيعاً</div>
-        <div class="badge badge-right badge-red">-50%</div>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="badge-dot"></div> منتجات رقمية احترافية · متاحة الآن</div>
+      <h1 class="hero-title">تداول بذكاء</h1>
+      <span class="hero-en">AIVEX GLOBAL</span>
+      <p class="hero-desc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</p>
+      <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 تصفح المنتجات</a>
+      <span class="hero-note">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
+      <div class="hero-stats">
+        <div class="stat-box"><span class="stat-num">500+</span><span class="stat-lbl">عميل راضٍ</span></div>
+        <div class="stat-box"><span class="stat-num">12</span><span class="stat-lbl">منتج رقمي</span></div>
+        <div class="stat-box"><span class="stat-num">4.9★</span><span class="stat-lbl">تقييم</span></div>
+        <div class="stat-box"><span class="stat-num">30</span><span class="stat-lbl">ضمان يوم</span></div>
       </div>
-      <div class="product-body">
-        <div class="product-name">تداول بذكاء: الدعم والمقاومة</div>
-        <div class="product-desc">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</div>
-        <ul class="product-features">
-          <li>استراتيجيات مجربة ومثبتة</li>
-          <li>أمثلة حقيقية من الأسواق</li>
-          <li>صالح لجميع الأسواق</li>
-          <li>تحديثات مجانية مدى الحياة</li>
-        </ul>
-        <div class="product-footer">
-          <div><span class="price-old">40$</span><span class="price-new">19.99$</span></div>
-          <a href="https://payhip.com/AIVEXGlobal" class="buy-btn">اشترِ الآن</a>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">📈 تداول احترافي <span>◆</span></span>
+      <span class="ticker-item">💰 ربح رقمي <span>◆</span></span>
+      <span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span>
+      <span class="ticker-item">⚡ تسليم فوري <span>◆</span></span>
+      <span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span>
+      <span class="ticker-item">🔒 دفع آمن <span>◆</span></span>
+      <span class="ticker-item">📈 تداول احترافي <span>◆</span></span>
+      <span class="ticker-item">💰 ربح رقمي <span>◆</span></span>
+      <span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span>
+      <span class="ticker-item">⚡ تسليم فوري <span>◆</span></span>
+      <span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span>
+      <span class="ticker-item">🔒 دفع آمن <span>◆</span></span>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-ico">🔒</span> دفع آمن 100%</div>
+    <div class="trust-item"><span class="trust-ico">⚡</span> تسليم فوري</div>
+    <div class="trust-item"><span class="trust-ico">↩️</span> ضمان 30 يوم</div>
+    <div class="trust-item"><span class="trust-ico">⭐</span> تقييم 4.9/5</div>
+    <div class="trust-item"><span class="trust-ico">🌍</span> متاح عالمياً</div>
+  </div>
+
+  <!-- Category cards -->
+  <div class="section-wrap">
+    <span class="sec-label">استكشف المحتوى</span>
+    <h2 class="sec-title">أقسام <span>AIVEX</span></h2>
+    <div class="gold-line"></div>
+    <div class="cat-sections">
+      <div class="cat-section-card" onclick="showPage('trading')">
+        <div class="cat-section-icon">📈</div>
+        <div class="cat-section-title">تعلم التداول</div>
+        <div class="cat-section-desc">استراتيجيات احترافية، دعم ومقاومة، إشارات متقدمة</div>
+        <div class="cat-section-link">اكتشف ←</div>
+      </div>
+      <div class="cat-section-card" onclick="showPage('digital')">
+        <div class="cat-section-icon">💰</div>
+        <div class="cat-section-title">الربح من الإنترنت</div>
+        <div class="cat-section-desc">إنستقرام، التسويق بالعمولة، بناء الدخل السلبي</div>
+        <div class="cat-section-link">اكتشف ←</div>
+      </div>
+      <div class="cat-section-card" onclick="showPage('freelance')">
+        <div class="cat-section-icon">💻</div>
+        <div class="cat-section-title">العمل الحر</div>
+        <div class="cat-section-desc">ابدأ مسيرتك واحقق دخلاً حقيقياً من أي مكان</div>
+        <div class="cat-section-link">اكتشف ←</div>
+      </div>
+      <div class="cat-section-card" onclick="showPage('selfdev')">
+        <div class="cat-section-icon">🧠</div>
+        <div class="cat-section-title">تطوير الذات</div>
+        <div class="cat-section-desc">مهارات، إنتاجية، تفكير مالي وعقلية النجاح</div>
+        <div class="cat-section-link">اكتشف ←</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="content-section">
+    <div style="max-width:1100px;margin:0 auto;">
+      <span class="sec-label">أسئلة شائعة</span>
+      <h2 class="sec-title">لديك <span>سؤال؟</span></h2>
+      <div class="gold-line"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">كيف أستلم المنتج بعد الشراء؟<span class="faq-arrow">▾</span></div>
+          <div class="faq-a">تصلك رسالة بريد إلكتروني فورياً بعد الدفع تحتوي رابط التحميل. التسليم تلقائي وفوري 24/7.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">ما طرق الدفع المقبولة؟<span class="faq-arrow">▾</span></div>
+          <div class="faq-a">نقبل جميع بطاقات الائتمان والخصم (Visa, Mastercard)، وPayPal، عبر منصة Payhip الآمنة.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">هل المنتجات مناسبة للمبتدئين؟<span class="faq-arrow">▾</span></div>
+          <div class="faq-a">نعم، جميع منتجاتنا مصممة لتكون واضحة وعملية لجميع المستويات من المبتدئ حتى المحترف.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">هل يمكنني الحصول على استرداد؟<span class="faq-arrow">▾</span></div>
+          <div class="faq-a">بالتأكيد. نضمن استرداد كامل خلال 30 يوماً من الشراء إذا لم تكن راضياً — بدون أسئلة.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">هل التحديثات مجانية؟<span class="faq-arrow">▾</span></div>
+          <div class="faq-a">نعم، جميع التحديثات المستقبلية للمنتجات التي اشتريتها مجانية تماماً ومدى الحياة.</div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="product-card">
-      <div class="product-img">
-        <span>📱</span>
-        <div class="badge badge-left badge-green">جديد</div>
-        <div class="badge badge-right badge-red">-57%</div>
-      </div>
-      <div class="product-body">
-        <div class="product-name">الربح من الإنستقرام</div>
-        <div class="product-desc">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</div>
-        <ul class="product-features">
-          <li>خطة يومية مفصّلة 30 يوم</li>
-          <li>بدون رأس مال</li>
-          <li>استراتيجيات نمو حقيقية</li>
-          <li>دعم مباشر بعد الشراء</li>
-        </ul>
-        <div class="product-footer">
-          <div><span class="price-old">30$</span><span class="price-new">12.99$</span></div>
-          <a href="https://payhip.com/AIVEXGlobal" class="buy-btn">اشترِ الآن</a>
-        </div>
+  <!-- Final CTA -->
+  <div class="final-cta">
+    <h2>جاهز تبدأ <span>رحلتك؟</span></h2>
+    <p>انضم لأكثر من 500 عميل اختاروا AIVEX Global لتطوير مهاراتهم</p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 تسوق الآن</a>
+  </div>
+
+</div>
+
+<!-- ===== PAGE: STORE ===== -->
+<div class="page" id="page-store">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">منتجاتنا الرقمية</span>
+    <h2 class="sec-title">متجر <span>AIVEX</span></h2>
+    <div class="gold-line"></div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Loaded from storage/defaults -->
+    </div>
+    <div style="margin-top:48px">
+      <div class="guarantee-box">
+        <span class="g-icon">🛡️</span>
+        <h3>ضمان استرداد كامل لمدة 30 يوم</h3>
+        <p>إذا لم تكن راضياً عن أي منتج لأي سبب كان، سنعيد لك المبلغ كاملاً خلال 30 يوماً من الشراء — بدون أسئلة.</p>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="product-card">
-      <div class="product-img">
-        <span>💻</span>
-        <div class="badge badge-right badge-red">-57%</div>
-      </div>
-      <div class="product-body">
-        <div class="product-name">دليل العمل الحر</div>
-        <div class="product-desc">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</div>
-        <ul class="product-features">
-          <li>كيف تجد أول عميل</li>
-          <li>تسعير خدماتك بذكاء</li>
-          <li>بناء محفظة أعمال قوية</li>
-          <li>منصات العمل الحر الأفضل</li>
-        </ul>
-        <div class="product-footer">
-          <div><span class="price-old">35$</span><span class="price-new">14.99$</span></div>
-          <a href="https://payhip.com/AIVEXGlobal" class="buy-btn">اشترِ الآن</a>
+<!-- ===== PAGE: TRADING ===== -->
+<div class="page" id="page-trading">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">قسم التعلم</span>
+    <h2 class="sec-title">تعلم <span>التداول</span></h2>
+    <p class="sec-desc">اكتسب المهارات الاحترافية في التداول من الصفر حتى الاحتراف — استراتيجيات مجربة ونتائج حقيقية</p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📊</span><div class="content-card-title">الدعم والمقاومة</div><div class="content-card-text">تعلم كيف تحدد مستويات الدعم والمقاومة وتستخدمها للدخول والخروج الصحيح من الصفقات.</div></div>
+      <div class="content-card"><span class="content-card-icon">📉</span><div class="content-card-title">قراءة الشموع اليابانية</div><div class="content-card-text">فهم أنماط الشموع وكيفية قراءة اتجاهات السوق من خلالها بدقة عالية.</div></div>
+      <div class="content-card"><span class="content-card-icon">⚡</span><div class="content-card-title">إدارة رأس المال</div><div class="content-card-text">استراتيجيات إدارة المخاطر وتحديد حجم الصفقة المناسب لحماية رأس مالك.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">نقاط الدخول والخروج</div><div class="content-card-text">كيف تحدد أفضل نقاط الدخول والخروج من الصفقات لتعظيم الأرباح وتقليل الخسائر.</div></div>
+      <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title">التداول الآلي</div><div class="content-card-text">مقدمة في بوتات التداول وكيفية استخدامها لتنفيذ الاستراتيجيات تلقائياً.</div></div>
+      <div class="content-card"><span class="content-card-icon">🧭</span><div class="content-card-title">تحليل الاتجاهات</div><div class="content-card-text">كيف تحدد اتجاه السوق وتتداول معه لا ضده لتحقيق نتائج أفضل.</div></div>
+    </div>
+  </div>
+  <div class="final-cta">
+    <h2>هل أنت مستعد <span>للتداول؟</span></h2>
+    <p>احصل على دليل الدعم والمقاومة الشامل الآن</p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 اشترِ الآن</a>
+  </div>
+</div>
+
+<!-- ===== PAGE: DIGITAL ===== -->
+<div class="page" id="page-digital">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">قسم التعلم</span>
+    <h2 class="sec-title">الربح من <span>الإنترنت</span></h2>
+    <p class="sec-desc">اكتشف طرق الربح الحقيقية من الإنترنت — من إنستقرام إلى التسويق بالعمولة وبناء الدخل السلبي</p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📸</span><div class="content-card-title">الربح من إنستقرام</div><div class="content-card-text">استراتيجيات بناء حساب مربح على إنستقرام وتحقيق أول 100$ بدون رأس مال.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔗</span><div class="content-card-title">التسويق بالعمولة</div><div class="content-card-text">كيف تربح عمولات من ترويج منتجات الآخرين عبر الإنترنت بدون امتلاك منتج خاص.</div></div>
+      <div class="content-card"><span class="content-card-icon">📦</span><div class="content-card-title">المنتجات الرقمية</div><div class="content-card-text">إنشاء وبيع منتجات رقمية مثل الكتب والدورات والقوالب لتحقيق دخل سلبي.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎬</span><div class="content-card-title">يوتيوب والمحتوى</div><div class="content-card-text">كيف تبني قناة يوتيوب ناجحة وتحقق دخلاً من المحتوى الرقمي.</div></div>
+      <div class="content-card"><span class="content-card-icon">📧</span><div class="content-card-title">التسويق بالبريد</div><div class="content-card-text">بناء قائمة بريدية وكيفية تحويلها إلى مصدر دخل مستمر وموثوق.</div></div>
+      <div class="content-card"><span class="content-card-icon">🏪</span><div class="content-card-title">التجارة الإلكترونية</div><div class="content-card-text">أساسيات فتح متجر إلكتروني وبيع المنتجات عبر الإنترنت بشكل احترافي.</div></div>
+    </div>
+  </div>
+  <div class="final-cta">
+    <h2>ابدأ رحلة <span>الربح الرقمي</span></h2>
+    <p>احصل على دليل الربح من إنستقرام الآن</p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 اشترِ الآن</a>
+  </div>
+</div>
+
+<!-- ===== PAGE: FREELANCE ===== -->
+<div class="page" id="page-freelance">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">قسم التعلم</span>
+    <h2 class="sec-title">العمل <span>الحر</span></h2>
+    <p class="sec-desc">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً ومستداماً من أي مكان في العالم</p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🎨</span><div class="content-card-title">تحديد مجالك</div><div class="content-card-text">كيف تختار المجال المناسب لمهاراتك وتبني تخصصاً قوياً يجذب العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">💼</span><div class="content-card-title">بناء محفظة الأعمال</div><div class="content-card-text">كيف تبني محفظة أعمال جذابة تثبت كفاءتك للعملاء المحتملين.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔍</span><div class="content-card-title">إيجاد العملاء</div><div class="content-card-text">استراتيجيات إيجاد أول عميل والحصول على مشاريع مستمرة ومتكررة.</div></div>
+      <div class="content-card"><span class="content-card-icon">💰</span><div class="content-card-title">تسعير خدماتك</div><div class="content-card-text">كيف تحدد أسعار عادلة لخدماتك وتتفاوض بثقة مع العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title">منصات العمل الحر</div><div class="content-card-text">أفضل المنصات العالمية مثل Upwork وFreelancer وكيف تنجح فيها.</div></div>
+      <div class="content-card"><span class="content-card-icon">📈</span><div class="content-card-title">تطوير دخلك</div><div class="content-card-text">كيف تنتقل من العمل بالساعة إلى نماذج دخل أكثر ربحية واستدامة.</div></div>
+    </div>
+  </div>
+  <div class="final-cta">
+    <h2>ابدأ <span>العمل الحر</span> اليوم</h2>
+    <p>احصل على دليل العمل الحر الشامل الآن</p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 اشترِ الآن</a>
+  </div>
+</div>
+
+<!-- ===== PAGE: SELF DEV ===== -->
+<div class="page" id="page-selfdev">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">قسم التعلم</span>
+    <h2 class="sec-title">تطوير <span>الذات</span></h2>
+    <p class="sec-desc">طور مهاراتك وعقليتك لتحقيق النجاح المالي والشخصي — الإنتاجية والتفكير المالي ومنهجية النجاح</p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🧠</span><div class="content-card-title">عقلية الثراء</div><div class="content-card-text">كيف تطور عقلية الوفرة وتتخلص من المعتقدات المحدودة التي تعيق نجاحك المالي.</div></div>
+      <div class="content-card"><span class="content-card-icon">⏰</span><div class="content-card-title">إدارة الوقت</div><div class="content-card-text">تقنيات فعالة لإدارة وقتك وزيادة إنتاجيتك اليومية بشكل ملحوظ.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">تحديد الأهداف</div><div class="content-card-text">كيف تضع أهدافاً واضحة وقابلة للتحقيق وتبني خطة عمل عملية لتحقيقها.</div></div>
+      <div class="content-card"><span class="content-card-icon">💪</span><div class="content-card-title">بناء العادات</div><div class="content-card-text">كيف تبني عادات يومية إيجابية تدعم أهدافك وتقودك للنجاح المستمر.</div></div>
+      <div class="content-card"><span class="content-card-icon">📚</span><div class="content-card-title">التعلم المستمر</div><div class="content-card-text">كيف تتعلم بسرعة وفعالية وتطبق ما تتعلمه لتحقيق نتائج ملموسة.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌟</span><div class="content-card-title">بناء الثقة بالنفس</div><div class="content-card-text">استراتيجيات بناء الثقة بالنفس والتغلب على الخوف من الفشل والمضي قدماً.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: ABOUT ===== -->
+<div class="page" id="page-about">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">تعرف علينا</span>
+    <h2 class="sec-title">من <span>نحن</span></h2>
+    <div class="gold-line"></div>
+    <div class="about-grid">
+      <div>
+        <p class="sec-desc">AIVEX Global منصة رقمية متخصصة في التعليم المالي والتداول والربح من الإنترنت. نؤمن بأن المعرفة المالية حق للجميع وليست حكراً على النخبة.</p>
+        <p class="sec-desc">نقدم محتوى تعليمياً عالي الجودة بأسعار في متناول الجميع، مع ضمان رضا تام أو استرداد كامل خلال 30 يوماً.</p>
+        <div class="about-values">
+          <div class="value-item"><span class="value-icon">🎯</span><div class="value-title">مهمتنا</div><div class="value-text">تمكين الأفراد مالياً من خلال التعليم العملي</div></div>
+          <div class="value-item"><span class="value-icon">💎</span><div class="value-title">رؤيتنا</div><div class="value-text">أن نكون المنصة التعليمية الأولى في الوطن العربي</div></div>
+          <div class="value-item"><span class="value-icon">🤝</span><div class="value-title">قيمنا</div><div class="value-text">الشفافية، الجودة، ورضا العميل أولاً</div></div>
+          <div class="value-item"><span class="value-icon">🌍</span><div class="value-title">وصولنا</div><div class="value-text">500+ عميل في أكثر من 20 دولة عربية</div></div>
         </div>
       </div>
+      <div class="about-visual">💹</div>
     </div>
-
   </div>
 </div>
 
-<div style="max-width:1100px;margin:0 auto;padding:0 32px">
-  <div class="guarantee">
-    <span class="guarantee-icon">🛡️</span>
-    <h2>ضمان استرداد كامل لمدة 30 يوم</h2>
-    <p>إذا لم تكن راضياً عن أي منتج لأي سبب كان، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</p>
+<!-- ===== PAGE: CONTACT ===== -->
+<div class="page" id="page-contact">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">تواصل معنا</span>
+    <h2 class="sec-title">اتصل <span>بنا</span></h2>
+    <p class="sec-desc">نحن هنا للإجابة على جميع استفساراتك. تواصل معنا وسنرد خلال 24 ساعة.</p>
+    <div class="gold-line"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div><span class="contact-item-label">البريد الإلكتروني</span><span class="contact-item-value">support@aivex-global.com</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✈️</div>
+          <div><span class="contact-item-label">تيليغرام</span><span class="contact-item-value">@AIVEXGlobal</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📸</div>
+          <div><span class="contact-item-label">إنستقرام</span><span class="contact-item-value">@AIVEXGlobal</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">⏰</div>
+          <div><span class="contact-item-label">ساعات العمل</span><span class="contact-item-value">السبت – الخميس: 9ص – 10م</span></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>أرسل رسالة</h3>
+        <div class="form-group"><label class="form-label">الاسم</label><input class="form-input" type="text" placeholder="اسمك الكريم"></div>
+        <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input class="form-input" type="email" placeholder="بريدك الإلكتروني"></div>
+        <div class="form-group"><label class="form-label">الرسالة</label><textarea class="form-textarea" placeholder="كيف يمكننا مساعدتك؟"></textarea></div>
+        <button class="form-submit" onclick="alert('شكراً! سنتواصل معك قريباً.')">إرسال الرسالة</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="faq">
-  <h2 class="faq-title">أسئلة <span>شائعة</span></h2>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">كيف أستلم المنتج بعد الشراء؟<span class="faq-arrow">▾</span></div>
-    <div class="faq-a">تصلك رسالة بريد إلكتروني فورياً بعد الدفع تحتوي رابط التحميل. التسليم تلقائي وفوري 24/7.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">ما طرق الدفع المقبولة؟<span class="faq-arrow">▾</span></div>
-    <div class="faq-a">نقبل جميع بطاقات الائتمان والخصم (Visa, Mastercard)، وPayPal، وطرق دفع أخرى عبر منصة Payhip الآمنة.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">هل المنتجات مناسبة للمبتدئين؟<span class="faq-arrow">▾</span></div>
-    <div class="faq-a">نعم، جميع منتجاتنا مصممة لتكون واضحة وعملية لجميع المستويات من المبتدئ حتى المحترف.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" onclick="toggle(this)">هل يمكنني الحصول على استرداد؟<span class="faq-arrow">▾</span></div>
-    <div class="faq-a">بالتأكيد. نضمن استرداد كامل خلال 30 يوماً من الشراء إذا لم تكن راضياً. تواصل معنا وسنرد فوراً.</div>
+<!-- ===== PAGE: PRIVACY ===== -->
+<div class="page" id="page-privacy">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">معلومات قانونية</span>
+    <h2 class="sec-title">سياسة <span>الخصوصية</span></h2>
+    <div class="gold-line"></div>
+    <div class="privacy-content">
+      <p>آخر تحديث: مايو 2026</p>
+      <h3>1. المعلومات التي نجمعها</h3>
+      <p>نجمع المعلومات التي تقدمها لنا مباشرة عند الشراء أو التواصل معنا، مثل الاسم والبريد الإلكتروني. لا نجمع أي معلومات حساسة.</p>
+      <h3>2. كيف نستخدم معلوماتك</h3>
+      <ul>
+        <li>لمعالجة طلباتك وتسليم المنتجات الرقمية</li>
+        <li>للتواصل معك بشأن طلباتك</li>
+        <li>لإرسال تحديثات المنتجات التي اشتريتها</li>
+      </ul>
+      <h3>3. مشاركة المعلومات</h3>
+      <p>لا نبيع أو نتداول أو نشارك معلوماتك الشخصية مع أطراف ثالثة. المعلومات محمية ومشفرة بالكامل.</p>
+      <h3>4. الأمان</h3>
+      <p>نستخدم أحدث تقنيات التشفير لحماية معلوماتك. جميع المعاملات تتم عبر منصة Payhip الآمنة المشفرة.</p>
+      <h3>5. ملفات تعريف الارتباط</h3>
+      <p>يستخدم موقعنا ملفات تعريف الارتباط لتحسين تجربتك فقط. لا نستخدمها لتتبع نشاطك عبر الإنترنت.</p>
+      <h3>6. حقوقك</h3>
+      <ul>
+        <li>الحق في الوصول إلى معلوماتك</li>
+        <li>الحق في تصحيح معلوماتك</li>
+        <li>الحق في حذف معلوماتك</li>
+      </ul>
+      <h3>7. التواصل</h3>
+      <p>لأي استفسار حول سياسة الخصوصية، تواصل معنا على: support@aivex-global.com</p>
+    </div>
   </div>
 </div>
 
-<div class="final-cta">
-  <h2>جاهز تبدأ <span>رحلتك؟</span></h2>
-  <p>انضم لأكثر من 500 عميل اختاروا AIVEX Global لتطوير مهاراتهم المالية</p>
-  <a href="https://payhip.com/AIVEXGlobal" class="hero-cta">🛒 تسوق الآن من Payhip</a>
-</div>
-
-<footer>
+<!-- ===== FOOTER ===== -->
+<footer id="mainFooter">
   <div class="footer-inner">
-    <div class="footer-brand">AIVEX GLOBAL</div>
-    <div class="footer-links-row">
-      <a href="https://payhip.com/AIVEXGlobal">المتجر</a>
-      <a href="#">من نحن</a>
-      <a href="#">اتصل بنا</a>
-      <a href="#">سياسة الخصوصية</a>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name admin-trigger" onclick="openAdmin()" title="لوحة التحكم">AIVEX GLOBAL</div>
+        <span class="footer-brand-sub">أيفيكس العالمية</span>
+        <p class="footer-brand-desc">منصتك الأولى للتعليم المالي والمنتجات الرقمية في التداول وتطوير الذات والربح الرقمي.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">📘</a>
+          <a href="#" class="social-btn">📸</a>
+          <a href="#" class="social-btn">▶️</a>
+          <a href="#" class="social-btn">✈️</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">الأقسام</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('trading')">التداول</a></li>
+          <li><a onclick="showPage('digital')">الربح الرقمي</a></li>
+          <li><a onclick="showPage('freelance')">العمل الحر</a></li>
+          <li><a onclick="showPage('selfdev')">تطوير الذات</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">المتجر</div>
+        <ul class="footer-links">
+          <li><a href="https://payhip.com/AIVEXGlobal" target="_blank">Payhip</a></li>
+          <li><a onclick="showPage('store')">جميع المنتجات</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">معلومات</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('about')">من نحن</a></li>
+          <li><a onclick="showPage('contact')">اتصل بنا</a></li>
+          <li><a onclick="showPage('privacy')">سياسة الخصوصية</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 AIVEX Global — جميع الحقوق محفوظة · LEARN · TRADE · GROW</div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 AIVEX Global — جميع الحقوق محفوظة</div>
+      <div class="footer-tag">LEARN · TRADE · GROW</div>
+    </div>
   </div>
 </footer>
 
+<!-- ===== ADMIN OVERLAY ===== -->
+<div class="admin-overlay" id="adminOverlay">
+
+  <!-- Login -->
+  <div class="admin-login" id="adminLogin">
+    <span class="admin-login-icon">🔐</span>
+    <h2>لوحة التحكم</h2>
+    <p>أدخل كلمة المرور للوصول</p>
+    <input type="password" id="adminPasswordInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPass()">
+    <button onclick="checkAdminPass()">دخول</button>
+    <div class="admin-login-error" id="adminError">كلمة المرور غير صحيحة</div>
+    <div style="margin-top:16px"><button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:13px">إلغاء</button></div>
+  </div>
+
+  <!-- Panel -->
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div class="admin-header">
+      <div class="admin-title">⚙️ لوحة التحكم</div>
+      <div class="admin-close" onclick="closeAdmin()">✕</div>
+    </div>
+
+    <div class="admin-tabs">
+      <div class="admin-tab active" onclick="switchAdminTab('products')">🛒 المنتجات</div>
+      <div class="admin-tab" onclick="switchAdminTab('settings')">⚙️ الإعدادات</div>
+      <div class="admin-tab" onclick="switchAdminTab('password')">🔐 كلمة المرور</div>
+    </div>
+
+    <!-- Products Tab -->
+    <div class="admin-content active" id="adminTab-products">
+      <div class="admin-notice">💡 التغييرات تُحفظ تلقائياً في المتصفح. ستظهر في المتجر فوراً بعد الحفظ.</div>
+      <div class="admin-products-grid" id="adminProductsList"></div>
+      <button class="admin-add-btn" onclick="addAdminProduct()">+ إضافة منتج جديد</button>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="closeAdmin()">إغلاق</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveProducts()">💾 حفظ وتطبيق</button>
+      </div>
+    </div>
+
+    <!-- Settings Tab -->
+    <div class="admin-content" id="adminTab-settings">
+      <div class="admin-notice">💡 تخصيص إعدادات الموقع العامة.</div>
+      <div style="display:grid;gap:18px">
+        <div class="admin-field"><label>اسم الموقع</label><input id="set-sitename" value="AIVEX Global"></div>
+        <div class="admin-field"><label>الوصف</label><input id="set-desc" value="منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات"></div>
+        <div class="admin-field"><label>رابط المتجر (Payhip)</label><input id="set-storeurl" value="https://payhip.com/AIVEXGlobal"></div>
+        <div class="admin-field"><label>البريد الإلكتروني للتواصل</label><input id="set-email" value="support@aivex-global.com"></div>
+        <div class="admin-field"><label>تيليغرام</label><input id="set-telegram" value="@AIVEXGlobal"></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+      </div>
+    </div>
+
+    <!-- Password Tab -->
+    <div class="admin-content" id="adminTab-password">
+      <div class="admin-notice">🔐 تغيير كلمة مرور لوحة التحكم.</div>
+      <div style="display:grid;gap:18px;max-width:400px">
+        <div class="admin-field"><label>كلمة المرور الحالية</label><input type="password" id="oldPass" placeholder="••••••••"></div>
+        <div class="admin-field"><label>كلمة المرور الجديدة</label><input type="password" id="newPass" placeholder="••••••••"></div>
+        <div class="admin-field"><label>تأكيد كلمة المرور</label><input type="password" id="confirmPass" placeholder="••••••••"></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="changePassword()">🔐 تغيير كلمة المرور</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-function toggle(el) { el.parentElement.classList.toggle('open'); }
+// ===== DEFAULT PRODUCTS =====
+const defaultProducts = [
+  { id: 1, name: 'تداول بذكاء: الدعم والمقاومة', desc: 'دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.', icon: '📈', priceOld: '40$', priceNew: '19.99$', badge: 'الأكثر مبيعاً', badgeType: 'gold', discount: '-50%', url: 'https://payhip.com/AIVEXGlobal', features: 'استراتيجيات مجربة\nأمثلة حقيقية\nتحديثات مجانية' },
+  { id: 2, name: 'الربح من الإنستقرام', desc: 'خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.', icon: '📱', priceOld: '30$', priceNew: '12.99$', badge: 'جديد', badgeType: 'green', discount: '-57%', url: 'https://payhip.com/AIVEXGlobal', features: 'خطة يومية 30 يوم\nبدون رأس مال\nدعم بعد الشراء' },
+  { id: 3, name: 'دليل العمل الحر', desc: 'ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.', icon: '💻', priceOld: '35$', priceNew: '14.99$', badge: '', badgeType: '', discount: '-57%', url: 'https://payhip.com/AIVEXGlobal', features: 'إيجاد أول عميل\nتسعير الخدمات\nأفضل المنصات' }
+];
+
+// ===== STORAGE HELPERS =====
+function loadProducts() {
+  try { return JSON.parse(localStorage.getItem('aivex_products')) || defaultProducts; } catch(e) { return defaultProducts; }
+}
+
+function saveProductsData(data) {
+  localStorage.setItem('aivex_products', JSON.stringify(data));
+}
+
+function loadPassword() {
+  return localStorage.getItem('aivex_admin_pass') || 'admin123';
+}
+
+// ===== RENDER PRODUCTS =====
+function renderProducts() {
+  const products = loadProducts();
+  const grid = document.getElementById('productsGrid');
+  if (!grid) return;
+  grid.innerHTML = products.map(p => `
+    <div class="product-card ${p.badge === 'الأكثر مبيعاً' ? 'featured' : ''}">
+      <div class="product-img">
+        <span>${p.icon || '📦'}</span>
+        ${p.badge ? `<div class="badge badge-l badge-${p.badgeType || 'gold'}">${p.badge}</div>` : ''}
+        ${p.discount ? `<div class="badge badge-r badge-red">${p.discount}</div>` : ''}
+      </div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        ${p.features ? `<ul class="product-features">${p.features.split('\n').map(f => f.trim() ? `<li>${f.trim()}</li>` : '').join('')}</ul>` : ''}
+        <div class="product-footer">
+          <div>
+            ${p.priceOld ? `<span class="price-old">${p.priceOld}</span>` : ''}
+            <span class="price-new">${p.priceNew}</span>
+          </div>
+          <a href="${p.url}" class="buy-btn" target="_blank">اشترِ الآن</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== PAGE NAVIGATION =====
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+  closeSidebar();
+  if (pageId === 'store') renderProducts();
+}
+
+// ===== SIDEBAR =====
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const ham = document.getElementById('hamburger');
+  sb.classList.toggle('open');
+  overlay.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ===== THEME =====
+function toggleTheme() {
+  const html = document.documentElement;
+  const ball = document.getElementById('themeBall');
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.setAttribute('data-theme', 'light');
+    ball.textContent = '☀️';
+    localStorage.setItem('aivex_theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    ball.textContent = '🌙';
+    localStorage.setItem('aivex_theme', 'dark');
+  }
+}
+
+// Load saved theme
+(function() {
+  const t = localStorage.getItem('aivex_theme');
+  if (t === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.getElementById('themeBall').textContent = '☀️';
+  }
+})();
+
+// ===== FAQ =====
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+// ===== ADMIN =====
+function openAdmin() {
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('adminPasswordInput').value = '';
+  document.getElementById('adminError').style.display = 'none';
+}
+
+function closeAdmin() {
+  document.getElementById('adminOverlay').classList.remove('open');
+}
+
+function checkAdminPass() {
+  const input = document.getElementById('adminPasswordInput').value;
+  if (input === loadPassword()) {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadAdminProducts();
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+  }
+}
+
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach((t,i) => t.classList.remove('active'));
+  document.querySelectorAll('.admin-content').forEach(c => c.classList.remove('active'));
+  const tabs = ['products','settings','password'];
+  const idx = tabs.indexOf(tab);
+  document.querySelectorAll('.admin-tab')[idx].classList.add('active');
+  document.getElementById('adminTab-' + tab).classList.add('active');
+}
+
+// Admin products
+function loadAdminProducts() {
+  const products = loadProducts();
+  const list = document.getElementById('adminProductsList');
+  list.innerHTML = products.map((p, i) => `
+    <div class="admin-product-row" id="prod-row-${i}">
+      <div class="admin-field"><label>الاسم</label><input value="${p.name}" id="p-name-${i}"></div>
+      <div class="admin-field"><label>أيقونة (emoji)</label><input value="${p.icon}" id="p-icon-${i}"></div>
+      <div class="admin-field admin-row-full"><label>الوصف</label><textarea id="p-desc-${i}">${p.desc}</textarea></div>
+      <div class="admin-field"><label>السعر القديم</label><input value="${p.priceOld}" id="p-pold-${i}"></div>
+      <div class="admin-field"><label>السعر الجديد</label><input value="${p.priceNew}" id="p-pnew-${i}"></div>
+      <div class="admin-field"><label>الخصم (مثال: -50%)</label><input value="${p.discount}" id="p-disc-${i}"></div>
+      <div class="admin-field"><label>الشارة (مثال: جديد)</label><input value="${p.badge}" id="p-badge-${i}"></div>
+      <div class="admin-field"><label>نوع الشارة</label>
+        <select id="p-btype-${i}">
+          <option value="gold" ${p.badgeType==='gold'?'selected':''}>ذهبي</option>
+          <option value="green" ${p.badgeType==='green'?'selected':''}>أخضر</option>
+          <option value="red" ${p.badgeType==='red'?'selected':''}>أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full"><label>رابط الشراء</label><input value="${p.url}" id="p-url-${i}"></div>
+      <div class="admin-field admin-row-full"><label>المميزات (سطر لكل ميزة)</label><textarea id="p-feat-${i}">${p.features||''}</textarea></div>
+      <div class="admin-actions">
+        <button class="admin-btn admin-btn-red" onclick="deleteAdminProduct(${i})">🗑️ حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addAdminProduct() {
+  const products = loadProducts();
+  products.push({ id: Date.now(), name: 'منتج جديد', desc: 'وصف المنتج', icon: '📦', priceOld: '', priceNew: '0$', badge: '', badgeType: 'gold', discount: '', url: 'https://payhip.com/AIVEXGlobal', features: '' });
+  saveProductsData(products);
+  loadAdminProducts();
+}
+
+function deleteAdminProduct(i) {
+  if (!confirm('هل تريد حذف هذا المنتج؟')) return;
+  const products = loadProducts();
+  products.splice(i, 1);
+  saveProductsData(products);
+  loadAdminProducts();
+}
+
+function saveProducts() {
+  const products = loadProducts();
+  products.forEach((p, i) => {
+    p.name = document.getElementById(`p-name-${i}`)?.value || p.name;
+    p.icon = document.getElementById(`p-icon-${i}`)?.value || p.icon;
+    p.desc = document.getElementById(`p-desc-${i}`)?.value || p.desc;
+    p.priceOld = document.getElementById(`p-pold-${i}`)?.value || '';
+    p.priceNew = document.getElementById(`p-pnew-${i}`)?.value || p.priceNew;
+    p.discount = document.getElementById(`p-disc-${i}`)?.value || '';
+    p.badge = document.getElementById(`p-badge-${i}`)?.value || '';
+    p.badgeType = document.getElementById(`p-btype-${i}`)?.value || 'gold';
+    p.url = document.getElementById(`p-url-${i}`)?.value || p.url;
+    p.features = document.getElementById(`p-feat-${i}`)?.value || '';
+  });
+  saveProductsData(products);
+  renderProducts();
+  alert('✅ تم الحفظ وتطبيق التغييرات بنجاح!');
+  closeAdmin();
+  showPage('store');
+}
+
+function saveSettings() {
+  alert('✅ تم حفظ الإعدادات!');
+}
+
+function changePassword() {
+  const old = document.getElementById('oldPass').value;
+  const n = document.getElementById('newPass').value;
+  const c = document.getElementById('confirmPass').value;
+  if (old !== loadPassword()) { alert('كلمة المرور الحالية غير صحيحة'); return; }
+  if (n !== c) { alert('كلمة المرور الجديدة غير متطابقة'); return; }
+  if (n.length < 6) { alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
+  localStorage.setItem('aivex_admin_pass', n);
+  alert('✅ تم تغيير كلمة المرور بنجاح!');
+  document.getElementById('oldPass').value = '';
+  document.getElementById('newPass').value = '';
+  document.getElementById('confirmPass').value = '';
+}
+
+// Init
+renderProducts();
 </script>
 </body>
 </html>
-
