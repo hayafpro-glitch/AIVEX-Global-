@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIVEX Global — أيفيكس العالمية</title>
+<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #d4a843; --gold-light: #f5c842; --green: #00cc44; --red: #ff4040;
+  --bg: #030303; --bg2: #0f0f0f; --bg3: #161616; --bg4: #1e1e1e;
+  --text: #f0f0eb; --text-dim: rgba(240,240,235,0.55); --text-faint: rgba(240,240,235,0.28);
+  --border: rgba(212,168,67,0.12); --border-hover: rgba(212,168,67,0.35);
+  --card-bg: #0f0f0f; --nav-bg: rgba(3,3,3,0.95); --shadow: rgba(0,0,0,0.7);
+  --toggle-bg: #1a1a1a; --primary-color: #d4a843; --primary-light: #f5c842;
+  --accent-color: #00cc44; --product-card-radius: 16px; --product-card-size: 290px;
+  --body-font: 'Tajawal', sans-serif; --display-font: 'Bebas Neue', sans-serif;
+}
+[data-theme="light"] {
+  --bg: #f8f6f0; --bg2: #ffffff; --bg3: #f0ede4; --bg4: #e8e4d8;
+  --text: #1a1610; --text-dim: rgba(26,22,16,0.65); --text-faint: rgba(26,22,16,0.38);
+  --border: rgba(212,168,67,0.2); --border-hover: rgba(212,168,67,0.5);
+  --card-bg: #ffffff; --nav-bg: rgba(248,246,240,0.97); --shadow: rgba(0,0,0,0.12);
+  --toggle-bg: #e8e4d8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--body-font); overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 2px; }
+
+/* LANG */
+.ar,.en { display: none; }
+[data-lang="ar"] .ar { display: inline; }
+[data-lang="en"] .en { display: inline; }
+[data-lang="ar"] .ar-block { display: block; }
+[data-lang="en"] .en-block { display: block; }
+.ar-block,.en-block { display: none; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: var(--nav-bg); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: background 0.4s, border-color 0.4s; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+.nav-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 18px rgba(212,168,67,0.4); flex-shrink: 0; overflow: hidden; }
+.nav-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.nav-name { font-family: var(--display-font); font-size: 20px; color: var(--primary-color); letter-spacing: 4px; line-height: 1; }
+.nav-sub { font-size: 10px; color: var(--accent-color); letter-spacing: 1px; display: block; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { display: flex; align-items: center; background: var(--toggle-bg); border: 1px solid var(--border); border-radius: 100px; overflow: hidden; cursor: pointer; }
+.lang-btn { padding: 6px 12px; font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-faint); transition: all 0.2s; cursor: pointer; user-select: none; }
+.lang-btn.active { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; }
+.theme-toggle { width: 52px; height: 28px; background: var(--toggle-bg); border: 1px solid var(--border); border-radius: 100px; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; }
+.theme-toggle-ball { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 50%; transition: transform 0.3s; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+[data-theme="light"] .theme-toggle-ball { transform: translateX(-24px); }
+.nav-shop-btn { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 8px 18px; border-radius: 8px; font-weight: 900; font-size: 12px; letter-spacing: 1px; text-decoration: none; white-space: nowrap; box-shadow: 0 0 16px rgba(212,168,67,0.3); transition: box-shadow 0.3s, transform 0.2s; }
+.nav-shop-btn:hover { box-shadow: 0 0 30px rgba(212,168,67,0.55); transform: translateY(-1px); }
+.hamburger { width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: border-color 0.3s; }
+.hamburger:hover { border-color: var(--primary-color); }
+.hamburger span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 1px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* SIDEBAR */
+.sidebar-overlay { position: fixed; inset: 0; z-index: 1500; background: rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.sidebar-overlay.open { opacity: 1; pointer-events: all; }
+.sidebar { position: fixed; top: 0; left: -340px; bottom: 0; width: 320px; z-index: 1600; background: var(--bg2); border-right: 1px solid var(--border); transition: left 0.35s cubic-bezier(0.23,1,0.32,1); overflow-y: auto; padding: 80px 0 40px; }
+.sidebar.open { left: 0; }
+.sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 0 24px 28px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.sidebar-logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; overflow: hidden; flex-shrink: 0; }
+.sidebar-logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.sidebar-logo-name { font-family: var(--display-font); font-size: 20px; color: var(--primary-color); letter-spacing: 3px; }
+.sidebar-logo-sub { font-size: 11px; color: var(--accent-color); display: block; }
+.sidebar-section-title { font-size: 10px; letter-spacing: 4px; color: var(--primary-color); text-transform: uppercase; padding: 16px 24px 8px; display: block; }
+.sidebar-nav-item { display: flex; align-items: center; gap: 14px; padding: 13px 24px; color: var(--text-dim); text-decoration: none; cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; font-size: 15px; font-weight: 700; }
+.sidebar-nav-item:hover,.sidebar-nav-item.active { color: var(--primary-color); background: rgba(212,168,67,0.06); border-left-color: var(--primary-color); }
+.sidebar-nav-item .nav-item-icon { width: 36px; height: 36px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; transition: background 0.2s; }
+.sidebar-nav-item:hover .nav-item-icon { background: rgba(212,168,67,0.16); border-color: var(--primary-color); }
+.sidebar-divider { height: 1px; background: var(--border); margin: 12px 24px; }
+.sidebar-shop-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 24px 0; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 14px; text-decoration: none; letter-spacing: 1px; box-shadow: 0 6px 20px rgba(212,168,67,0.3); transition: box-shadow 0.3s; }
+.sidebar-shop-btn:hover { box-shadow: 0 8px 30px rgba(212,168,67,0.5); }
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,120,40,0.15) 0%, transparent 65%), radial-gradient(ellipse 50% 35% at 80% 10%, rgba(212,168,67,0.07) 0%, transparent 55%), var(--bg); transition: background 0.4s; }
+.hero-bg.has-bg-img { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+.hero-bg.has-bg-img::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.55); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%); }
+.hero-content { position: relative; z-index: 10; text-align: center; max-width: 860px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.28); border-radius: 100px; padding: 7px 20px; margin-bottom: 32px; font-size: 11px; color: var(--primary-color); letter-spacing: 3px; text-transform: uppercase; }
+.badge-dot { width: 7px; height: 7px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 8px var(--accent-color); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 8px var(--accent-color); } 50% { box-shadow: 0 0 3px var(--accent-color); } }
+.hero-title { font-weight: 900; font-size: clamp(42px, 9vw, 96px); line-height: 1; margin-bottom: 18px; background: linear-gradient(135deg, var(--text) 0%, var(--primary-color) 45%, var(--primary-light) 65%, var(--text) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-en { font-family: var(--display-font); font-size: clamp(16px, 3vw, 36px); letter-spacing: 12px; color: var(--accent-color); display: block; margin-bottom: 28px; text-shadow: 0 0 25px rgba(0,200,68,0.3); }
+.hero-desc { font-size: 18px; line-height: 1.85; color: var(--text-dim); max-width: 560px; margin: 0 auto 44px; }
+.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 16px 44px; border-radius: 10px; font-weight: 900; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; box-shadow: 0 0 40px rgba(212,168,67,0.4), 0 8px 30px var(--shadow); transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 18px; }
+.hero-cta:hover { transform: translateY(-4px); box-shadow: 0 0 60px rgba(212,168,67,0.6), 0 12px 40px var(--shadow); }
+.hero-note { font-size: 13px; color: var(--text-faint); display: block; margin-bottom: 52px; }
+.hero-stats { display: flex; justify-content: center; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.02); }
+.stat-box { flex: 1; min-width: 120px; padding: 20px 16px; text-align: center; border-left: 1px solid var(--border); }
+.stat-box:last-child { border-left: none; }
+.stat-num { font-family: var(--display-font); font-size: 34px; color: var(--primary-color); line-height: 1; display: block; }
+.stat-lbl { font-size: 10px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; display: block; }
+
+/* DISCOUNT COUNTDOWN */
+.discount-banner { background: linear-gradient(90deg, rgba(255,64,64,0.1), rgba(212,168,67,0.1), rgba(255,64,64,0.1)); border: 1px solid rgba(255,64,64,0.3); border-radius: 12px; padding: 16px 24px; margin: 0 auto 32px; max-width: 580px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; animation: glow-red 2s ease-in-out infinite alternate; }
+@keyframes glow-red { from { box-shadow: 0 0 10px rgba(255,64,64,0.1); } to { box-shadow: 0 0 20px rgba(255,64,64,0.3); } }
+.discount-label { font-size: 13px; color: var(--text-dim); font-weight: 700; }
+.discount-countdown { display: flex; gap: 8px; align-items: center; }
+.countdown-unit { text-align: center; }
+.countdown-num { display: block; font-family: var(--display-font); font-size: 28px; color: var(--red); line-height: 1; min-width: 40px; }
+.countdown-text { display: block; font-size: 9px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; }
+.countdown-sep { font-size: 22px; color: var(--red); line-height: 1; align-self: flex-start; padding-top: 2px; }
+.discount-pct { background: var(--red); color: white; font-weight: 900; font-size: 18px; padding: 4px 12px; border-radius: 8px; }
+
+/* TICKER */
+.ticker { background: linear-gradient(90deg, #005a1e, #00a836, #005a1e); padding: 10px 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; gap: 60px; animation: tick 22s linear infinite; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item { font-size: 11px; font-weight: 900; letter-spacing: 3px; color: #001a0d; text-transform: uppercase; display: inline-flex; align-items: center; gap: 14px; }
+
+/* TRUST BAR */
+.trust-bar { display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+.trust-item { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-left: 1px solid var(--border); color: var(--text-dim); font-size: 13px; font-weight: 700; }
+.trust-item:last-child { border-left: none; }
+.trust-ico { font-size: 20px; }
+
+/* SECTIONS */
+.section-wrap { padding: 90px 28px; max-width: 1100px; margin: 0 auto; }
+.section-wrap-full { padding: 90px 28px; }
+.sec-label { font-size: 10px; letter-spacing: 5px; color: var(--primary-color); text-transform: uppercase; margin-bottom: 12px; display: block; }
+.sec-title { font-weight: 900; font-size: clamp(28px, 5vw, 50px); color: var(--text); margin-bottom: 16px; line-height: 1.1; }
+.sec-title span { color: var(--primary-color); }
+.sec-desc { font-size: 16px; color: var(--text-dim); line-height: 1.8; max-width: 600px; margin-bottom: 20px; }
+.gold-line { width: 50px; height: 2px; background: linear-gradient(90deg, var(--primary-color), transparent); margin-bottom: 52px; border-radius: 1px; }
+
+/* CATEGORY CARDS */
+.cat-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.cat-section-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; cursor: pointer; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); position: relative; overflow: hidden; text-decoration: none; display: block; }
+.cat-section-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--primary-color), transparent); transform: scaleX(0); transition: transform 0.35s; }
+.cat-section-card:hover { border-color: var(--border-hover); transform: translateY(-5px); box-shadow: 0 20px 50px var(--shadow); }
+.cat-section-card:hover::before { transform: scaleX(1); }
+.cat-section-icon { width: 54px; height: 54px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; transition: background 0.3s; }
+.cat-section-card:hover .cat-section-icon { background: rgba(212,168,67,0.16); }
+.cat-section-title { font-weight: 900; font-size: 19px; color: var(--text); margin-bottom: 8px; }
+.cat-section-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 16px; }
+.cat-section-link { font-size: 12px; color: var(--primary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+
+/* PRODUCTS GRID */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--product-card-size), 1fr)); gap: 20px; }
+.product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--product-card-radius); overflow: hidden; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); position: relative; }
+.product-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 24px 60px var(--shadow); }
+.product-card.featured { border-color: rgba(212,168,67,0.35); box-shadow: 0 0 25px rgba(212,168,67,0.1); }
+.product-img { width: 100%; background: linear-gradient(135deg, var(--bg3), var(--bg4)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; aspect-ratio: 3000 / 1994; }
+.product-img.ratio-square { aspect-ratio: 1 / 1; }
+.product-img.ratio-portrait { aspect-ratio: 3 / 4; }
+.product-img.ratio-wide { aspect-ratio: 3000 / 1994; }
+/* FIX #1 & #7: Images always show — object-fit cover, no disappearing */
+.product-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block !important; }
+.product-img-emoji { position: relative; z-index: 1; font-size: 64px; }
+.badge { position: absolute; top: 12px; font-size: 11px; font-weight: 900; letter-spacing: 1px; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; z-index: 2; }
+.badge-l { right: 12px; }
+.badge-r { left: 12px; }
+.badge-gold { background: var(--primary-color); color: #1a1610; }
+.badge-green { background: var(--accent-color); color: #001a0d; }
+.badge-red { background: var(--red); color: white; }
+.product-body { padding: 22px 20px; }
+.product-name { font-weight: 900; font-size: 17px; color: var(--text); margin-bottom: 8px; }
+.product-desc { font-size: 13px; color: var(--text-dim); line-height: 1.65; margin-bottom: 14px; }
+.product-features { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.product-features li { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 7px; }
+.product-features li::before { content: '✓'; color: var(--accent-color); font-size: 11px; font-weight: 900; flex-shrink: 0; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+.price-old { font-size: 13px; color: var(--text-faint); text-decoration: line-through; margin-left: 6px; }
+.price-new { font-family: var(--display-font); font-size: 26px; color: var(--primary-color); }
+.buy-btn { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 12px; letter-spacing: 1px; text-decoration: none; transition: box-shadow 0.2s, transform 0.15s; white-space: nowrap; }
+.buy-btn:hover { box-shadow: 0 0 20px rgba(212,168,67,0.4); transform: scale(1.04); }
+.product-countdown-bar { background: rgba(255,64,64,0.08); border-top: 1px solid rgba(255,64,64,0.15); padding: 8px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.pcd-label { font-size: 10px; color: var(--red); letter-spacing: 1px; font-weight: 700; }
+.pcd-nums { font-family: var(--display-font); font-size: 16px; color: var(--red); letter-spacing: 2px; }
+.cat-products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--product-card-size), 1fr)); gap: 20px; margin-top: 40px; }
+
+/* GUARANTEE */
+.guarantee-box { background: rgba(0,204,68,0.05); border: 1px solid rgba(0,204,68,0.2); border-radius: 14px; padding: 32px; text-align: center; }
+.g-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+.guarantee-box-img { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; display: block; margin: 0 auto 12px; }
+.guarantee-box h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 10px; }
+.guarantee-box p { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 500px; margin: 0 auto; }
+
+/* CONTENT CARDS */
+.content-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.content-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); }
+.content-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+.content-card-icon { font-size: 32px; display: block; margin-bottom: 14px; }
+.content-card-title { font-weight: 900; font-size: 17px; color: var(--text); margin-bottom: 10px; }
+.content-card-text { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+/* FINAL CTA */
+.final-cta { padding: 90px 28px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent, rgba(212,168,67,0.04), transparent); }
+.final-cta h2 { font-weight: 900; font-size: clamp(28px, 5vw, 52px); color: var(--text); margin-bottom: 16px; }
+.final-cta h2 span { color: var(--primary-color); }
+.final-cta p { font-size: 16px; color: var(--text-dim); margin-bottom: 32px; }
+
+/* STORE BANNER */
+.store-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 16px; margin-bottom: 36px; display: block; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item.open { border-color: var(--border-hover); }
+.faq-q { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.faq-q:hover { color: var(--primary-color); }
+.faq-arrow { color: var(--primary-color); font-size: 18px; transition: transform 0.3s; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; font-size: 14px; color: var(--text-dim); line-height: 1.75; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: center; }
+@media(max-width:768px) { .about-grid { grid-template-columns: 1fr; } }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.value-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.value-icon { font-size: 22px; display: block; margin-bottom: 8px; }
+.value-title { font-weight: 900; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+.value-text { font-size: 12px; color: var(--text-dim); line-height: 1.55; }
+.about-visual { display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 20px; min-height: 200px; background: var(--bg3); border: 1px solid var(--border); }
+.about-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; display: block; }
+.about-visual-emoji { font-size: 120px; opacity: 0.6; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; }
+@media(max-width:768px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; align-items: center; gap: 16px; padding: 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; }
+.contact-item-icon { font-size: 24px; flex-shrink: 0; }
+.contact-item-label { font-size: 11px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 3px; }
+.contact-item-value { font-size: 14px; color: var(--text); font-weight: 700; }
+.contact-form { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 32px; }
+.contact-form h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 24px; }
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: 11px; color: var(--primary-color); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.form-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--primary-color); }
+.form-textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; height: 120px; resize: vertical; }
+.form-textarea:focus { border-color: var(--primary-color); }
+.form-submit { width: 100%; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border: none; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px; font-family: var(--body-font); transition: box-shadow 0.2s; }
+.form-submit:hover { box-shadow: 0 0 24px rgba(212,168,67,0.4); }
+
+/* SOCIAL — FIX #5 & #6: Icons only, professional cards, no account names shown */
+.social-links-section { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+.social-link-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; padding: 28px 24px; text-decoration: none; color: var(--text); font-weight: 700; font-size: 14px; transition: all 0.25s cubic-bezier(0.23,1,0.32,1); width: 140px; min-height: 130px; position: relative; overflow: hidden; }
+.social-link-btn::before { content:''; position:absolute; inset:0; background:var(--btn-color,var(--primary-color)); opacity:0; transition:opacity 0.25s; border-radius:18px; }
+.social-link-btn:hover { border-color: var(--btn-color,var(--primary-color)); transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+.social-link-btn:hover::before { opacity: 0.07; }
+.social-link-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; z-index: 1; border: 2px solid transparent; transition: border-color 0.25s, transform 0.25s; overflow: hidden; }
+.social-link-btn:hover .social-link-icon { transform: scale(1.1); }
+.social-link-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.social-link-label { font-size: 13px; font-weight: 900; z-index: 1; text-align: center; }
+
+/* PRIVACY */
+.privacy-content { max-width: 800px; }
+.privacy-content h3 { font-weight: 900; font-size: 20px; color: var(--primary-color); margin: 32px 0 12px; }
+.privacy-content p { font-size: 15px; color: var(--text-dim); line-height: 1.85; margin-bottom: 16px; }
+.privacy-content ul { padding-right: 20px; margin-bottom: 16px; }
+.privacy-content ul li { font-size: 14px; color: var(--text-dim); line-height: 1.8; margin-bottom: 6px; }
+
+/* FOOTER */
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 52px 28px 28px; transition: background 0.4s; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+@media(max-width:800px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px) { .footer-top { grid-template-columns: 1fr; } }
+.footer-brand-name { font-family: var(--display-font); font-size: 26px; color: var(--primary-color); letter-spacing: 4px; }
+.footer-brand-sub { font-size: 11px; color: var(--accent-color); letter-spacing: 1px; display: block; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 14px; color: var(--text-faint); line-height: 1.75; max-width: 280px; margin-bottom: 22px; }
+.footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
+.social-btn { width: 38px; height: 38px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none; overflow: hidden; }
+.social-btn:hover { background: rgba(212,168,67,0.18); border-color: var(--primary-color); transform: translateY(-3px); }
+.social-btn img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.footer-col-title { font-weight: 900; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-links a { color: var(--text-faint); text-decoration: none; font-size: 14px; transition: color 0.2s; cursor: pointer; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--text-faint); }
+.footer-tag { font-family: var(--display-font); font-size: 14px; letter-spacing: 4px; color: rgba(212,168,67,0.35); }
+.admin-trigger { cursor: pointer; }
+
+/* TOAST */
+#toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 9999; background: #1e1e1e; border: 1px solid var(--primary-color); border-radius: 12px; padding: 14px 24px; font-size: 14px; color: var(--text); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s; opacity: 0; pointer-events: none; white-space: nowrap; }
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* NOTIFICATION */
+#notifBanner { display: none; position: relative; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 14px 24px; text-align: center; font-weight: 700; font-size: 14px; z-index: 1999; margin-top: 68px; }
+#notifBannerImg { height: 28px; vertical-align: middle; margin-left: 10px; border-radius: 4px; display: none; }
+
+/* ADMIN */
+.admin-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.85); display: none; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+.admin-overlay.open { display: flex; }
+.admin-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 980px; padding: 32px; margin: auto; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.admin-title { font-family: var(--display-font); font-size: 28px; color: var(--primary-color); letter-spacing: 3px; }
+.admin-close { width: 36px; height: 36px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text); transition: border-color 0.2s; }
+.admin-close:hover { border-color: var(--red); color: var(--red); }
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.admin-tab { padding: 8px 20px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--text-dim); background: var(--bg3); transition: all 0.2s; }
+.admin-tab.active { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border-color: transparent; }
+.admin-content { display: none; }
+.admin-content.active { display: block; }
+.admin-products-grid { display: grid; gap: 16px; }
+.admin-product-row { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:600px) { .admin-product-row { grid-template-columns: 1fr; } }
+.admin-field { display: flex; flex-direction: column; gap: 6px; }
+.admin-field label { font-size: 11px; color: var(--primary-color); letter-spacing: 2px; text-transform: uppercase; }
+.admin-field input,.admin-field textarea,.admin-field select { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; }
+.admin-field input:focus,.admin-field textarea:focus,.admin-field select:focus { border-color: var(--primary-color); }
+.admin-field textarea { height: 80px; resize: none; }
+.admin-field select { cursor: pointer; }
+.admin-row-full { grid-column: 1 / -1; }
+.admin-actions { display: flex; gap: 10px; align-items: center; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; }
+.admin-btn { padding: 9px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 900; font-size: 13px; letter-spacing: 1px; transition: all 0.2s; font-family: var(--body-font); }
+.admin-btn-gold { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; }
+.admin-btn-gold:hover { box-shadow: 0 4px 16px rgba(212,168,67,0.4); }
+.admin-btn-green { background: var(--accent-color); color: #001a0d; }
+.admin-btn-red { background: var(--red); color: white; }
+.admin-btn-gray { background: var(--bg4); color: var(--text-dim); border: 1px solid var(--border); }
+.admin-btn-blue { background: #2563eb; color: white; }
+.admin-add-btn { display: flex; align-items: center; gap: 10px; padding: 16px 22px; border: 2px dashed var(--border); border-radius: 14px; cursor: pointer; color: var(--text-faint); font-size: 14px; font-weight: 700; background: transparent; width: 100%; justify-content: center; transition: border-color 0.2s, color 0.2s; font-family: var(--body-font); }
+.admin-add-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.admin-save-bar { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+.admin-notice { background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: var(--primary-color); line-height: 1.7; }
+.admin-section-block { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+.admin-section-block h4 { font-weight: 900; font-size: 15px; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.admin-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:600px) { .admin-grid-2 { grid-template-columns: 1fr; } }
+.admin-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+@media(max-width:700px) { .admin-grid-4 { grid-template-columns: 1fr 1fr; } }
+.social-admin-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+.social-admin-row input { flex: 1; min-width: 80px; }
+.social-admin-icon-preview { width: 44px; height: 44px; background: rgba(212,168,67,0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+.social-admin-icon-preview:hover { border-color: var(--primary-color); }
+.social-admin-icon-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.toggle-switch { width: 36px; height: 20px; background: var(--bg4); border-radius: 100px; position: relative; transition: background 0.2s; cursor: pointer; }
+.toggle-switch.on { background: var(--accent-color); }
+.toggle-switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; }
+.toggle-switch.on::after { transform: translateX(-16px); }
+.product-drag-handle { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; cursor: grab; color: var(--text-faint); font-size: 14px; transition: border-color 0.2s; flex-shrink: 0; }
+.product-drag-handle:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.color-picker-row { display: flex; align-items: center; gap: 12px; }
+.color-picker-row input[type="color"] { width: 44px; height: 36px; background: none; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; padding: 2px; }
+.color-preview-swatch { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
+.upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 28px; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+.upload-area:hover { border-color: var(--primary-color); }
+.upload-area p { font-size: 13px; color: var(--text-faint); margin-top: 10px; }
+.upload-preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: 10px; margin-top: 10px; display: none; }
+.upload-preview.show { display: block; }
+.img-ratio-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.img-ratio-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 700; color: var(--text-dim); background: var(--bg3); transition: all 0.2s; font-family: var(--body-font); }
+.img-ratio-btn.active { background: var(--primary-color); color: #1a1610; border-color: var(--primary-color); }
+
+/* FIX #3: Image scale slider */
+.img-scale-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.img-scale-row label { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+.img-scale-row input[type=range] { flex: 1; accent-color: var(--primary-color); }
+.img-scale-row span { font-size: 12px; color: var(--primary-color); min-width: 36px; }
+
+/* LOGIN */
+.admin-login { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px; text-align: center; margin: auto; }
+.admin-login-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+.admin-login h2 { font-weight: 900; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+.admin-login p { font-size: 14px; color: var(--text-dim); margin-bottom: 28px; }
+.admin-login input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; color: var(--text); font-size: 16px; outline: none; text-align: center; letter-spacing: 6px; margin-bottom: 16px; font-family: var(--body-font); transition: border-color 0.2s; }
+.admin-login input:focus { border-color: var(--primary-color); }
+.admin-login button { width: 100%; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border: none; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px; font-family: var(--body-font); }
+.admin-login-error { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
+
+/* EXPORT BUTTON — FIX: Export entire site as self-contained HTML */
+.export-btn-wrap { background: linear-gradient(135deg, rgba(0,204,68,0.08), rgba(0,204,68,0.04)); border: 1px solid rgba(0,204,68,0.25); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.export-btn-wrap p { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.6; }
+.export-btn-wrap strong { display: block; font-size: 15px; color: var(--accent-color); margin-bottom: 4px; }
+
+/* Font selector */
+.font-select-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 10px; }
+.font-opt-btn { padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; background: var(--bg2); color: var(--text-dim); font-size: 14px; font-weight: 700; transition: all 0.2s; text-align: center; }
+.font-opt-btn.active { border-color: var(--primary-color); background: rgba(212,168,67,0.1); color: var(--primary-color); }
+.font-opt-btn:hover { border-color: var(--primary-color); }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-badge { animation: fadeInUp 0.6s ease both; }
+.hero-title { animation: fadeInUp 0.6s ease 0.1s both; }
+.hero-en { animation: fadeInUp 0.6s ease 0.2s both; }
+.hero-desc { animation: fadeInUp 0.6s ease 0.3s both; }
+.hero-cta { animation: fadeInUp 0.6s ease 0.4s both; }
+.hero-note { animation: fadeInUp 0.6s ease 0.45s both; }
+.hero-stats { animation: fadeInUp 0.6s ease 0.5s both; }
+input[type="range"] { width: 100%; accent-color: var(--primary-color); }
+
+/* PRODUCT GALLERY */
+.product-gallery { position: relative; }
+.gallery-slides { position: relative; overflow: hidden; }
+.gallery-slide { display: none; }
+.gallery-slide.active { display: block; }
+.gallery-dots { display: flex; justify-content: center; gap: 5px; padding: 8px 0 4px; }
+.gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; padding: 0; }
+.gallery-dot.active { background: var(--primary-color); transform: scale(1.3); }
+.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background 0.2s; }
+.gallery-arrow:hover { background: rgba(212,168,67,0.7); }
+.gallery-arrow-prev { right: 8px; }
+.gallery-arrow-next { left: 8px; }
+.gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; font-size: 10px; padding: 2px 7px; border-radius: 10px; z-index: 5; }
+
+/* MULTI IMG UPLOAD */
+.multi-img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr)); gap: 8px; margin-top: 10px; }
+.multi-img-thumb { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.multi-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.multi-img-thumb .del-img { position: absolute; top: 2px; left: 2px; background: rgba(255,64,64,0.85); color: white; border: none; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.multi-img-add { aspect-ratio: 1; border: 2px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; color: var(--text-faint); transition: border-color 0.2s; }
+.multi-img-add:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+/* PUBLISH BUTTON */
+.publish-btn-wrap { background: linear-gradient(135deg, rgba(0,100,255,0.1), rgba(0,60,200,0.06)); border: 1px solid rgba(0,120,255,0.3); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.publish-btn-wrap p { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.6; }
+.publish-btn-wrap strong { display: block; font-size: 15px; color: #60a5fa; margin-bottom: 4px; }
+.publish-status { font-size: 12px; margin-top: 6px; color: var(--text-faint); }
+.publish-status.ok { color: var(--accent-color); }
+.publish-status.err { color: var(--red); }
+
+/* MOBILE */
+@media(max-width:768px) {
+  nav { padding: 12px 16px; }
+  .nav-shop-btn { display: none; }
+  .section-wrap,.section-wrap-full,.content-section { padding: 70px 16px; }
+  .final-cta { padding: 70px 16px; }
+  footer { padding: 44px 16px 24px; }
+  .stat-box { min-width: 90px; }
+  .admin-panel { padding: 22px 16px; }
+  .admin-login { padding: 36px 24px; }
+  .about-values { grid-template-columns: 1fr; }
+  .lang-btn { padding: 5px 8px; font-size: 10px; }
+  .social-link-btn { width: 110px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION BANNER -->
+<div id="notifBanner">
+  <img id="notifBannerImg" src="" alt="">
+  <span id="notifBannerText">🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!</span>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-brand" onclick="showPage('home')">
+    <div class="nav-icon" id="navIcon">💹</div>
+    <div>
+      <span class="nav-name" id="navBrandName">AIVEX GLOBAL</span>
+      <span class="nav-sub" id="navBrandSub">أيفيكس العالمية</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <div class="lang-btn active" id="langAr" onclick="setLang('ar')">عربي</div>
+      <div class="lang-btn" id="langEn" onclick="setLang('en')">EN</div>
+    </div>
+    <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
+      <div class="theme-toggle-ball" id="themeBall">🌙</div>
+    </div>
+    <a id="navStoreBtn" href="https://payhip.com/AIVEXGlobal" class="nav-shop-btn" target="_blank">🛒 <span class="ar">المتجر</span><span class="en">Store</span></a>
+    <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon" id="sidebarIcon">💹</div>
+    <div>
+      <span class="sidebar-logo-name" id="sidebarBrandName">AIVEX</span>
+      <span class="sidebar-logo-sub" id="sidebarBrandSub">أيفيكس العالمية</span>
+    </div>
+  </div>
+  <span class="sidebar-section-title"><span class="ar">الصفحات الرئيسية</span><span class="en">Main Pages</span></span>
+  <a class="sidebar-nav-item" onclick="showPage('home')"><div class="nav-item-icon">🏠</div> <span class="ar">الرئيسية</span><span class="en">Home</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('store')"><div class="nav-item-icon">🛒</div> <span class="ar">المتجر</span><span class="en">Store</span></a>
+  <span class="sidebar-section-title"><span class="ar">أقسام التعلم</span><span class="en">Learning</span></span>
+  <a class="sidebar-nav-item" onclick="showPage('trading')"><div class="nav-item-icon">📈</div> <span class="ar">تعلم التداول</span><span class="en">Trading</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('digital')"><div class="nav-item-icon">💰</div> <span class="ar">الربح من الإنترنت</span><span class="en">Online Income</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('freelance')"><div class="nav-item-icon">💻</div> <span class="ar">العمل الحر</span><span class="en">Freelance</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('selfdev')"><div class="nav-item-icon">🧠</div> <span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a>
+  <div class="sidebar-divider"></div>
+  <span class="sidebar-section-title"><span class="ar">معلومات</span><span class="en">Info</span></span>
+  <a class="sidebar-nav-item" onclick="showPage('about')"><div class="nav-item-icon">ℹ️</div> <span class="ar">من نحن</span><span class="en">About</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('contact')"><div class="nav-item-icon">📩</div> <span class="ar">اتصل بنا</span><span class="en">Contact</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('social')"><div class="nav-item-icon">🌐</div> <span class="ar">تواصل اجتماعي</span><span class="en">Social Media</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('privacy')"><div class="nav-item-icon">🔒</div> <span class="ar">سياسة الخصوصية</span><span class="en">Privacy</span></a>
+  <div class="sidebar-divider"></div>
+  <a id="sidebarStoreBtn" href="https://payhip.com/AIVEXGlobal" class="sidebar-shop-btn" target="_blank">🛒 <span class="ar">تسوق الآن</span><span class="en">Shop Now</span></a>
+</div>
+
+<!-- PAGE: HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="badge-dot"></div> <span id="heroBadgeText">منتجات رقمية احترافية · متاحة الآن</span></div>
+      <h1 class="hero-title" id="heroTitle">تداول بذكاء</h1>
+      <span class="hero-en" id="heroSubtitle">AIVEX GLOBAL</span>
+      <p class="hero-desc" id="heroDesc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</p>
+      <div class="discount-banner" id="discountBannerEl" style="display:none">
+        <div><div class="discount-pct" id="discountPct">-50%</div></div>
+        <div>
+          <div class="discount-label" id="discountLabel">ينتهي العرض خلال:</div>
+          <div class="discount-countdown">
+            <div class="countdown-unit"><span class="countdown-num" id="cd-h">00</span><span class="countdown-text">ساعة</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-m">00</span><span class="countdown-text">دقيقة</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-text">ثانية</span></div>
+          </div>
+        </div>
+      </div>
+      <a id="heroCta" href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تصفح المنتجات</span><span class="en">Browse Products</span></a>
+      <span class="hero-note" id="heroNote">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
+      <div class="hero-stats">
+        <div class="stat-box"><span class="stat-num" id="stat1Num">500+</span><span class="stat-lbl" id="stat1Lbl">عميل راضٍ</span></div>
+        <div class="stat-box"><span class="stat-num" id="stat2Num">12</span><span class="stat-lbl" id="stat2Lbl">منتج رقمي</span></div>
+        <div class="stat-box"><span class="stat-num" id="stat3Num">4.9★</span><span class="stat-lbl" id="stat3Lbl">تقييم</span></div>
+        <div class="stat-box"><span class="stat-num" id="stat4Num">30</span><span class="stat-lbl" id="stat4Lbl">ضمان يوم</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="ticker"><div class="ticker-inner"><span class="ticker-item">📈 تداول احترافي <span>◆</span></span><span class="ticker-item">💰 ربح رقمي <span>◆</span></span><span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span><span class="ticker-item">⚡ تسليم فوري <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 دفع آمن <span>◆</span></span><span class="ticker-item">📈 تداول احترافي <span>◆</span></span><span class="ticker-item">💰 ربح رقمي <span>◆</span></span><span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span><span class="ticker-item">⚡ تسليم فوري <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 دفع آمن <span>◆</span></span></div></div>
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-ico">🔒</span> <span class="ar">دفع آمن 100%</span><span class="en">100% Secure</span></div>
+    <div class="trust-item"><span class="trust-ico">⚡</span> <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span></div>
+    <div class="trust-item"><span class="trust-ico">↩️</span> <span class="ar">ضمان 30 يوم</span><span class="en">30-Day Guarantee</span></div>
+    <div class="trust-item"><span class="trust-ico">⭐</span> <span class="ar">تقييم 4.9/5</span><span class="en">4.9/5 Rating</span></div>
+    <div class="trust-item"><span class="trust-ico">🌍</span> <span class="ar">متاح عالمياً</span><span class="en">Worldwide</span></div>
+  </div>
+  <div class="section-wrap">
+    <span class="sec-label"><span class="ar">استكشف المحتوى</span><span class="en">Explore</span></span>
+    <h2 class="sec-title"><span class="ar">أقسام <span>AIVEX</span></span><span class="en">AIVEX <span>Sections</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="cat-sections">
+      <div class="cat-section-card" onclick="showPage('trading')"><div class="cat-section-icon">📈</div><div class="cat-section-title"><span class="ar">تعلم التداول</span><span class="en">Trading</span></div><div class="cat-section-desc"><span class="ar">استراتيجيات احترافية، دعم ومقاومة، إشارات متقدمة</span><span class="en">Professional strategies, support and resistance</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
+      <div class="cat-section-card" onclick="showPage('digital')"><div class="cat-section-icon">💰</div><div class="cat-section-title"><span class="ar">الربح من الإنترنت</span><span class="en">Online Income</span></div><div class="cat-section-desc"><span class="ar">إنستقرام، التسويق بالعمولة، المنتجات الرقمية</span><span class="en">Instagram, affiliate marketing, digital products</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
+      <div class="cat-section-card" onclick="showPage('freelance')"><div class="cat-section-icon">💻</div><div class="cat-section-title"><span class="ar">العمل الحر</span><span class="en">Freelance</span></div><div class="cat-section-desc"><span class="ar">ابدأ من الصفر، إيجاد العملاء، تطوير دخلك</span><span class="en">Start from scratch, find clients, grow income</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
+      <div class="cat-section-card" onclick="showPage('selfdev')"><div class="cat-section-icon">🧠</div><div class="cat-section-title"><span class="ar">تطوير الذات</span><span class="en">Self Development</span></div><div class="cat-section-desc"><span class="ar">عقلية الثراء، إدارة الوقت، بناء العادات</span><span class="en">Wealth mindset, time management</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
+    </div>
+  </div>
+  <div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-wrap">
+      <span class="sec-label"><span class="ar">أسئلة شائعة</span><span class="en">FAQ</span></span>
+      <h2 class="sec-title"><span class="ar">لديك <span>سؤال؟</span></span><span class="en">Have a <span>Question?</span></span></h2>
+      <div class="gold-line"></div>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">كيف أستلم المنتج بعد الشراء؟</span><span class="en">How do I receive the product?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">تصلك رسالة بريد إلكتروني فورياً بعد الدفع تحتوي رابط التحميل. التسليم تلقائي وفوري 24/7.</span><span class="en">You'll receive an email immediately with the download link.</span></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">ما طرق الدفع المقبولة؟</span><span class="en">What payment methods?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نقبل جميع بطاقات الائتمان (Visa, Mastercard)، وPayPal، عبر منصة Payhip الآمنة.</span><span class="en">We accept all credit cards and PayPal through Payhip.</span></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل المنتجات مناسبة للمبتدئين؟</span><span class="en">Suitable for beginners?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نعم، جميع منتجاتنا مصممة لجميع المستويات من المبتدئ حتى المحترف.</span><span class="en">Yes, all products are designed for all levels.</span></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل يمكنني الحصول على استرداد؟</span><span class="en">Can I get a refund?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">بالتأكيد. نضمن استرداد كامل خلال 30 يوماً — بدون أسئلة.</span><span class="en">Absolutely, full refund within 30 days, no questions asked.</span></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل التحديثات مجانية؟</span><span class="en">Are updates free?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نعم، جميع التحديثات المستقبلية مجانية تماماً ومدى الحياة.</span><span class="en">Yes, all future updates are completely free for life.</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="final-cta">
+    <h2><span class="ar">جاهز تبدأ <span>رحلتك؟</span></span><span class="en">Ready to Start <span>Your Journey?</span></span></h2>
+    <p><span class="ar">انضم لأكثر من 500 عميل اختاروا AIVEX Global</span><span class="en">Join 500+ customers who chose AIVEX Global</span></p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تسوق الآن</span><span class="en">Shop Now</span></a>
+  </div>
+</div>
+
+<!-- PAGE: STORE -->
+<div class="page" id="page-store">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">منتجاتنا الرقمية</span><span class="en">Our Digital Products</span></span>
+    <h2 class="sec-title"><span class="ar">متجر <span>AIVEX</span></span><span class="en">AIVEX <span>Store</span></span></h2>
+    <div class="gold-line"></div>
+    <img id="storeBannerImg" class="store-banner" src="" alt="" style="display:none">
+    <div class="products-grid" id="productsGrid"></div>
+    <div style="margin-top:48px">
+      <div class="guarantee-box" id="guaranteeBox">
+        <span class="g-icon" id="guaranteeIcon">🛡️</span>
+        <img id="guaranteeImg" class="guarantee-box-img" src="" alt="" style="display:none">
+        <h3><span class="ar">ضمان استرداد كامل لمدة 30 يوم</span><span class="en">Full 30-Day Money Back Guarantee</span></h3>
+        <p><span class="ar">إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</span><span class="en">If you're not satisfied, we'll refund you in full within 30 days — no questions asked.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: TRADING -->
+<div class="page" id="page-trading">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning Section</span></span>
+    <h2 class="sec-title"><span class="ar">تعلم <span>التداول</span></span><span class="en">Learn <span>Trading</span></span></h2>
+    <p class="sec-desc"><span class="ar">اكتسب المهارات الاحترافية في التداول من الصفر حتى الاحتراف</span><span class="en">Acquire professional trading skills from scratch to mastery</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📊</span><div class="content-card-title">الدعم والمقاومة</div><div class="content-card-text">تعلم كيف تحدد مستويات الدعم والمقاومة وتستخدمها للدخول والخروج الصحيح من الصفقات.</div></div>
+      <div class="content-card"><span class="content-card-icon">📉</span><div class="content-card-title">قراءة الشموع اليابانية</div><div class="content-card-text">فهم أنماط الشموع وكيفية قراءة اتجاهات السوق من خلالها بدقة عالية.</div></div>
+      <div class="content-card"><span class="content-card-icon">⚡</span><div class="content-card-title">إدارة رأس المال</div><div class="content-card-text">استراتيجيات إدارة المخاطر وتحديد حجم الصفقة المناسب لحماية رأس مالك.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">نقاط الدخول والخروج</div><div class="content-card-text">كيف تحدد أفضل نقاط الدخول والخروج لتعظيم الأرباح وتقليل الخسائر.</div></div>
+      <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title">التداول الآلي</div><div class="content-card-text">مقدمة في بوتات التداول وكيفية استخدامها لتنفيذ الاستراتيجيات تلقائياً.</div></div>
+      <div class="content-card"><span class="content-card-icon">🧭</span><div class="content-card-title">تحليل الاتجاهات</div><div class="content-card-text">كيف تحدد اتجاه السوق وتتداول معه لا ضده لتحقيق نتائج أفضل.</div></div>
+    </div>
+    <div id="cat-products-trading" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">هل أنت مستعد <span>للتداول؟</span></span><span class="en">Ready to <span>Trade?</span></span></h2><p><span class="ar">احصل على دليل الدعم والمقاومة الشامل الآن</span><span class="en">Get the comprehensive guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
+
+<!-- PAGE: DIGITAL -->
+<div class="page" id="page-digital">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">الربح من <span>الإنترنت</span></span><span class="en">Online <span>Income</span></span></h2>
+    <p class="sec-desc"><span class="ar">اكتشف طرق الربح الحقيقية من الإنترنت — من إنستقرام إلى التسويق بالعمولة</span><span class="en">Discover real ways to make money online</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📸</span><div class="content-card-title">الربح من إنستقرام</div><div class="content-card-text">استراتيجيات بناء حساب مربح على إنستقرام وتحقيق أول 100$ بدون رأس مال.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔗</span><div class="content-card-title">التسويق بالعمولة</div><div class="content-card-text">كيف تربح عمولات من ترويج منتجات الآخرين عبر الإنترنت بدون امتلاك منتج خاص.</div></div>
+      <div class="content-card"><span class="content-card-icon">📦</span><div class="content-card-title">المنتجات الرقمية</div><div class="content-card-text">إنشاء وبيع منتجات رقمية مثل الكتب والدورات والقوالب لتحقيق دخل سلبي.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎬</span><div class="content-card-title">يوتيوب والمحتوى</div><div class="content-card-text">كيف تبني قناة يوتيوب ناجحة وتحقق دخلاً من المحتوى الرقمي.</div></div>
+      <div class="content-card"><span class="content-card-icon">📧</span><div class="content-card-title">التسويق بالبريد</div><div class="content-card-text">بناء قائمة بريدية وكيفية تحويلها إلى مصدر دخل مستمر وموثوق.</div></div>
+      <div class="content-card"><span class="content-card-icon">🏪</span><div class="content-card-title">التجارة الإلكترونية</div><div class="content-card-text">أساسيات فتح متجر إلكتروني وبيع المنتجات عبر الإنترنت بشكل احترافي.</div></div>
+    </div>
+    <div id="cat-products-digital" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">ابدأ رحلة <span>الربح الرقمي</span></span><span class="en">Start <span>Digital Earning</span></span></h2><p><span class="ar">احصل على دليل الربح من إنستقرام الآن</span><span class="en">Get the Instagram income guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
+
+<!-- PAGE: FREELANCE -->
+<div class="page" id="page-freelance">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">العمل <span>الحر</span></span><span class="en">Free<span>lance</span></span></h2>
+    <p class="sec-desc"><span class="ar">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً</span><span class="en">Start your freelance career from scratch</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🎨</span><div class="content-card-title">تحديد مجالك</div><div class="content-card-text">كيف تختار المجال المناسب لمهاراتك وتبني تخصصاً قوياً يجذب العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">💼</span><div class="content-card-title">بناء محفظة الأعمال</div><div class="content-card-text">كيف تبني محفظة أعمال جذابة تثبت كفاءتك للعملاء المحتملين.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔍</span><div class="content-card-title">إيجاد العملاء</div><div class="content-card-text">استراتيجيات إيجاد أول عميل والحصول على مشاريع مستمرة ومتكررة.</div></div>
+      <div class="content-card"><span class="content-card-icon">💰</span><div class="content-card-title">تسعير خدماتك</div><div class="content-card-text">كيف تحدد أسعار عادلة لخدماتك وتتفاوض بثقة مع العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title">منصات العمل الحر</div><div class="content-card-text">أفضل المنصات مثل Upwork وFreelancer وكيف تنجح فيها.</div></div>
+      <div class="content-card"><span class="content-card-icon">📈</span><div class="content-card-title">تطوير دخلك</div><div class="content-card-text">كيف تنتقل من العمل بالساعة إلى نماذج دخل أكثر ربحية واستدامة.</div></div>
+    </div>
+    <div id="cat-products-freelance" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">ابدأ <span>العمل الحر</span> اليوم</span><span class="en">Start <span>Freelancing</span> Today</span></h2><p><span class="ar">احصل على دليل العمل الحر الشامل الآن</span><span class="en">Get the comprehensive freelance guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
+
+<!-- PAGE: SELFDEV -->
+<div class="page" id="page-selfdev">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">تطوير <span>الذات</span></span><span class="en">Self <span>Development</span></span></h2>
+    <p class="sec-desc"><span class="ar">طور مهاراتك وعقليتك لتحقيق النجاح المالي والشخصي</span><span class="en">Develop your skills and mindset for success</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🧠</span><div class="content-card-title">عقلية الثراء</div><div class="content-card-text">كيف تطور عقلية الوفرة وتتخلص من المعتقدات المحدودة التي تعيق نجاحك المالي.</div></div>
+      <div class="content-card"><span class="content-card-icon">⏰</span><div class="content-card-title">إدارة الوقت</div><div class="content-card-text">تقنيات فعالة لإدارة وقتك وزيادة إنتاجيتك اليومية بشكل ملحوظ.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">تحديد الأهداف</div><div class="content-card-text">كيف تضع أهدافاً واضحة وقابلة للتحقيق وتبني خطة عمل عملية لتحقيقها.</div></div>
+      <div class="content-card"><span class="content-card-icon">💪</span><div class="content-card-title">بناء العادات</div><div class="content-card-text">كيف تبني عادات يومية إيجابية تدعم أهدافك وتقودك للنجاح المستمر.</div></div>
+      <div class="content-card"><span class="content-card-icon">📚</span><div class="content-card-title">التعلم المستمر</div><div class="content-card-text">كيف تتعلم بسرعة وفعالية وتطبق ما تتعلمه لتحقيق نتائج ملموسة.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌟</span><div class="content-card-title">بناء الثقة بالنفس</div><div class="content-card-text">استراتيجيات بناء الثقة بالنفس والتغلب على الخوف من الفشل.</div></div>
+    </div>
+    <div id="cat-products-selfdev" class="cat-products-grid"></div>
+  </div>
+</div>
+
+<!-- PAGE: SOCIAL — FIX #5 & #6 -->
+<div class="page" id="page-social">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">تواصل معنا</span><span class="en">Connect</span></span>
+    <h2 class="sec-title"><span class="ar">حساباتنا على <span>التواصل الاجتماعي</span></span><span class="en">Our <span>Social Media</span></span></h2>
+    <p class="sec-desc"><span class="ar">تابعنا للحصول على آخر الأخبار والعروض الحصرية</span><span class="en">Follow us for the latest news and exclusive offers</span></p>
+    <div class="gold-line"></div>
+    <div class="social-links-section" id="socialLinksDisplay"></div>
+  </div>
+</div>
+
+<!-- PAGE: ABOUT — FIX #9 -->
+<div class="page" id="page-about">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">تعرف علينا</span><span class="en">About Us</span></span>
+    <h2 class="sec-title"><span class="ar">من <span>نحن</span></span><span class="en">Who <span>We Are</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="about-grid">
+      <div>
+        <p class="sec-desc"><span class="ar">AIVEX Global منصة رقمية متخصصة في التعليم المالي والتداول والربح من الإنترنت. نؤمن بأن المعرفة المالية حق للجميع وليست حكراً على النخبة.</span><span class="en">AIVEX Global is a digital platform specializing in financial education, trading, and online income. We believe financial knowledge is a right for everyone.</span></p>
+        <p class="sec-desc"><span class="ar">نقدم محتوى تعليمياً عالي الجودة بأسعار في متناول الجميع، مع ضمان رضا تام أو استرداد كامل خلال 30 يوماً.</span><span class="en">We provide high-quality educational content at affordable prices, with a full satisfaction guarantee or complete refund within 30 days.</span></p>
+        <div class="about-values">
+          <div class="value-item"><span class="value-icon">🎯</span><div class="value-title"><span class="ar">مهمتنا</span><span class="en">Mission</span></div><div class="value-text"><span class="ar">تمكين الأفراد مالياً من خلال التعليم العملي</span><span class="en">Empowering individuals financially through practical education</span></div></div>
+          <div class="value-item"><span class="value-icon">💎</span><div class="value-title"><span class="ar">رؤيتنا</span><span class="en">Vision</span></div><div class="value-text"><span class="ar">أن نكون المنصة التعليمية الأولى في الوطن العربي</span><span class="en">To be the leading educational platform in the Arab world</span></div></div>
+          <div class="value-item"><span class="value-icon">🤝</span><div class="value-title"><span class="ar">قيمنا</span><span class="en">Values</span></div><div class="value-text"><span class="ar">الشفافية، الجودة، ورضا العميل أولاً</span><span class="en">Transparency, quality, customer satisfaction first</span></div></div>
+          <div class="value-item"><span class="value-icon">🌍</span><div class="value-title"><span class="ar">وصولنا</span><span class="en">Reach</span></div><div class="value-text"><span class="ar">500+ عميل في أكثر من 20 دولة عربية</span><span class="en">500+ clients in 20+ Arab countries</span></div></div>
+        </div>
+      </div>
+      <div class="about-visual" id="aboutVisual">
+        <span class="about-visual-emoji" id="aboutVisualEmoji">💹</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: CONTACT — FIX #6 -->
+<div class="page" id="page-contact">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">تواصل معنا</span><span class="en">Get In Touch</span></span>
+    <h2 class="sec-title"><span class="ar">اتصل <span>بنا</span></span><span class="en">Contact <span>Us</span></span></h2>
+    <p class="sec-desc"><span class="ar">نحن هنا للإجابة على جميع استفساراتك. تواصل معنا وسنرد خلال 24 ساعة.</span><span class="en">We're here to answer all your questions. Contact us and we'll respond within 24 hours.</span></p>
+    <div class="gold-line"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item"><div class="contact-item-icon">📧</div><div><span class="contact-item-label"><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></span><span class="contact-item-value" id="contactEmail">support@aivex-global.com</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">✈️</div><div><span class="contact-item-label"><span class="ar">تيليغرام</span><span class="en">Telegram</span></span><span class="contact-item-value" id="contactTelegram">@AIVEXGlobal</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📸</div><div><span class="contact-item-label"><span class="ar">إنستقرام</span><span class="en">Instagram</span></span><span class="contact-item-value" id="contactInsta">@AIVEXGlobal</span></div></div>
+        <div class="contact-item"><div class="contact-item-icon">⏰</div><div><span class="contact-item-label"><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></span><span class="contact-item-value" id="contactHours"><span class="ar">السبت – الخميس: 9ص – 10م</span><span class="en">Sat – Thu: 9AM – 10PM</span></span></div></div>
+        <div style="margin-top:8px">
+          <div style="font-size:11px;color:var(--primary-color);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><span class="ar">تواصل اجتماعي</span><span class="en">Social Media</span></div>
+          <div class="footer-social" id="contactSocialIcons"></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3><span class="ar">أرسل رسالة</span><span class="en">Send Message</span></h3>
+        <div class="form-group"><label class="form-label"><span class="ar">الاسم</span><span class="en">Name</span></label><input class="form-input" type="text" placeholder="اسمك الكريم"></div>
+        <div class="form-group"><label class="form-label"><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label><input class="form-input" type="email" placeholder="بريدك الإلكتروني"></div>
+        <div class="form-group"><label class="form-label"><span class="ar">الرسالة</span><span class="en">Message</span></label><textarea class="form-textarea" placeholder="كيف يمكننا مساعدتك؟"></textarea></div>
+        <button class="form-submit" onclick="showToast('✅ شكراً! سنتواصل معك قريباً.')"><span class="ar">إرسال الرسالة</span><span class="en">Send Message</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: PRIVACY -->
+<div class="page" id="page-privacy">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">معلومات قانونية</span><span class="en">Legal</span></span>
+    <h2 class="sec-title"><span class="ar">سياسة <span>الخصوصية</span></span><span class="en">Privacy <span>Policy</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="privacy-content">
+      <p>آخر تحديث: مايو 2026</p>
+      <h3>1. المعلومات التي نجمعها</h3><p>نجمع المعلومات التي تقدمها لنا مباشرة عند الشراء أو التواصل معنا. لا نجمع أي معلومات حساسة.</p>
+      <h3>2. كيف نستخدم معلوماتك</h3><ul><li>لمعالجة طلباتك وتسليم المنتجات الرقمية</li><li>للتواصل معك بشأن طلباتك</li><li>لإرسال تحديثات المنتجات التي اشتريتها</li></ul>
+      <h3>3. مشاركة المعلومات</h3><p>لا نبيع أو نشارك معلوماتك الشخصية مع أطراف ثالثة. المعلومات محمية ومشفرة بالكامل.</p>
+      <h3>4. الأمان</h3><p>نستخدم أحدث تقنيات التشفير لحماية معلوماتك. جميع المعاملات تتم عبر منصة Payhip الآمنة.</p>
+      <h3>5. حقوقك</h3><ul><li>الحق في الوصول إلى معلوماتك</li><li>الحق في تصحيح معلوماتك</li><li>الحق في حذف معلوماتك</li></ul>
+      <h3>6. التواصل</h3><p>لأي استفسار: support@aivex-global.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="mainFooter">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name admin-trigger" onclick="openAdmin()" title="لوحة التحكم" id="footerBrandName">AIVEX GLOBAL</div>
+        <span class="footer-brand-sub" id="footerBrandSub">أيفيكس العالمية</span>
+        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للتعليم المالي والمنتجات الرقمية.</p>
+        <div class="footer-social" id="footerSocialIcons"></div>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">الأقسام</span><span class="en">Sections</span></div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('trading')"><span class="ar">التداول</span><span class="en">Trading</span></a></li>
+          <li><a onclick="showPage('digital')"><span class="ar">الربح الرقمي</span><span class="en">Online Income</span></a></li>
+          <li><a onclick="showPage('freelance')"><span class="ar">العمل الحر</span><span class="en">Freelance</span></a></li>
+          <li><a onclick="showPage('selfdev')"><span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">المتجر</span><span class="en">Store</span></div>
+        <ul class="footer-links">
+          <li><a id="footerPayhipLink" href="https://payhip.com/AIVEXGlobal" target="_blank">Payhip</a></li>
+          <li><a onclick="showPage('store')"><span class="ar">جميع المنتجات</span><span class="en">All Products</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">معلومات</span><span class="en">Info</span></div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('about')"><span class="ar">من نحن</span><span class="en">About</span></a></li>
+          <li><a onclick="showPage('contact')"><span class="ar">اتصل بنا</span><span class="en">Contact</span></a></li>
+          <li><a onclick="showPage('social')"><span class="ar">تواصل اجتماعي</span><span class="en">Social</span></a></li>
+          <li><a onclick="showPage('privacy')"><span class="ar">سياسة الخصوصية</span><span class="en">Privacy</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopy">© 2026 AIVEX Global — جميع الحقوق محفوظة</div>
+      <div class="footer-tag">LEARN · TRADE · GROW</div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-login" id="adminLogin">
+    <span class="admin-login-icon">🔐</span>
+    <h2>لوحة التحكم</h2>
+    <p>أدخل كلمة المرور للوصول</p>
+    <input type="password" id="adminPasswordInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPass()">
+    <button onclick="checkAdminPass()">دخول</button>
+    <div class="admin-login-error" id="adminError">كلمة المرور غير صحيحة</div>
+    <div style="margin-top:16px"><button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;font-family:var(--body-font)">إلغاء</button></div>
+  </div>
+
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div class="admin-header">
+      <div class="admin-title">⚙️ لوحة التحكم — AIVEX</div>
+      <div class="admin-close" onclick="closeAdmin()">✕</div>
+    </div>
+
+    <!-- PUBLISH BUTTON — JSONBin live sync -->
+    <div class="publish-btn-wrap">
+      <div style="flex:1">
+        <strong>🌐 نشر للجميع — فوري</strong>
+        <p>بعد أي تعديل، اضغط هذا الزر. كل الزوار سيشوفون التحديث فوراً بدون رفع أي ملف.</p>
+        <div class="publish-status" id="publishStatus">● آخر نشر: لم يتم بعد</div>
+      </div>
+      <button class="admin-btn" id="publishBtn" onclick="publishToCloud()" style="white-space:nowrap;padding:14px 28px;font-size:14px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;">🚀 حفظ ونشر للكل</button>
+    </div>
+    <!-- EXPORT BUTTON -->
+    <div class="export-btn-wrap">
+      <div>
+        <strong>💾 تصدير الموقع (نسخة احتياطية)</strong>
+        <p>تحميل الملف كنسخة احتياطية فقط.</p>
+      </div>
+      <button class="admin-btn admin-btn-green" onclick="exportSite()" style="white-space:nowrap;padding:10px 20px;font-size:13px">⬇️ تصدير</button>
+    </div>
+
+    <div class="admin-tabs">
+      <div class="admin-tab active" onclick="switchAdminTab('products')">🛒 المنتجات</div>
+      <div class="admin-tab" onclick="switchAdminTab('hero')">🏠 الرئيسية</div>
+      <div class="admin-tab" onclick="switchAdminTab('colors')">🎨 الألوان</div>
+      <div class="admin-tab" onclick="switchAdminTab('fonts')">🔤 الخطوط</div>
+      <div class="admin-tab" onclick="switchAdminTab('social')">📱 التواصل</div>
+      <div class="admin-tab" onclick="switchAdminTab('notif')">🔔 الإشعار</div>
+      <div class="admin-tab" onclick="switchAdminTab('store')">🏪 إعدادات المتجر</div>
+      <div class="admin-tab" onclick="switchAdminTab('settings')">⚙️ الإعدادات</div>
+      <div class="admin-tab" onclick="switchAdminTab('password')">🔐 كلمة المرور</div>
+    </div>
+
+    <!-- TAB: PRODUCTS — FIX #1,2,3,7,8 -->
+    <div class="admin-content active" id="adminTab-products">
+      <div class="admin-notice">
+        💡 <strong>اسحب المنتج بزر ⠿ لترتيبه.</strong> ارفع صورة لكل منتج — الصور تُحفظ داخل الملف تماماً وتظهر للجميع. اختر القسم الذي يظهر فيه المنتج. اضغط <strong>حفظ وتطبيق</strong> بعد الانتهاء.
+      </div>
+      <div class="admin-products-grid" id="adminProductsList"></div>
+      <button class="admin-add-btn" onclick="addAdminProduct()">+ إضافة منتج جديد</button>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="closeAdmin()">إغلاق</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveProducts()">💾 حفظ وتطبيق</button>
+      </div>
+    </div>
+
+    <!-- TAB: HERO -->
+    <div class="admin-content" id="adminTab-hero">
+      <div class="admin-notice">💡 تحكم في نصوص وخلفية الصفحة الرئيسية وعداد الخصم.</div>
+      <div class="admin-section-block">
+        <h4>🖼️ خلفية الهيرو (اختياري)</h4>
+        <div class="upload-area" onclick="document.getElementById('heroBgInput').click()">
+          <div style="font-size:28px">🌅</div>
+          <p>انقر لرفع صورة خلفية للصفحة الرئيسية (PNG, JPG)</p>
+          <img class="upload-preview" id="heroBgPreview" src="">
+        </div>
+        <input type="file" id="heroBgInput" accept="image/*" style="display:none" onchange="previewHeroBg(this)">
+        <div style="margin-top:10px;display:flex;gap:10px">
+          <button class="admin-btn admin-btn-gray" onclick="clearHeroBg()">✕ إزالة الخلفية</button>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>📝 نصوص الهيرو</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>العنوان الرئيسي</label><input id="h-title" value="تداول بذكاء"></div>
+          <div class="admin-field"><label>العنوان الإنجليزي</label><input id="h-subtitle" value="AIVEX GLOBAL"></div>
+          <div class="admin-field admin-row-full"><label>النص التوضيحي</label><textarea id="h-desc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</textarea></div>
+          <div class="admin-field"><label>نص الشارة</label><input id="h-badge" value="منتجات رقمية احترافية · متاحة الآن"></div>
+          <div class="admin-field"><label>نص الملاحظة</label><input id="h-note" value="✓ تسليم فوري · ✓ دفع آمن · ✓ ضمان 30 يوم"></div>
+          <div class="admin-field"><label>رابط زر الرئيسية</label><input id="h-ctaurl" value="https://payhip.com/AIVEXGlobal"></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>📊 الإحصائيات الأربعة</h4>
+        <div class="admin-grid-4">
+          <div class="admin-field"><label>رقم 1</label><input id="s1n" value="500+"></div>
+          <div class="admin-field"><label>نص 1</label><input id="s1l" value="عميل راضٍ"></div>
+          <div class="admin-field"><label>رقم 2</label><input id="s2n" value="12"></div>
+          <div class="admin-field"><label>نص 2</label><input id="s2l" value="منتج رقمي"></div>
+          <div class="admin-field"><label>رقم 3</label><input id="s3n" value="4.9★"></div>
+          <div class="admin-field"><label>نص 3</label><input id="s3l" value="تقييم"></div>
+          <div class="admin-field"><label>رقم 4</label><input id="s4n" value="30"></div>
+          <div class="admin-field"><label>نص 4</label><input id="s4l" value="ضمان يوم"></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>⏳ عداد الخصم</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>تفعيل العداد</label><div style="display:flex;align-items:center;gap:10px;margin-top:4px"><div class="toggle-switch" id="discountToggle" onclick="toggleDiscount()"></div><span style="font-size:13px;color:var(--text-dim)" id="discountToggleLabel">معطّل</span></div></div>
+          <div class="admin-field"><label>نسبة الخصم (مثال: -50%)</label><input id="disc-pct" value="-50%"></div>
+          <div class="admin-field"><label>نص الوصف</label><input id="disc-label" value="ينتهي العرض خلال:"></div>
+          <div class="admin-field"><label>المدة (بالساعات)</label><input id="disc-hours" type="number" value="24" min="1" max="720"></div>
+        </div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveHero()">💾 حفظ الرئيسية</button>
+      </div>
+    </div>
+
+    <!-- TAB: COLORS -->
+    <div class="admin-content" id="adminTab-colors">
+      <div class="admin-notice">💡 تخصيص ألوان الموقع.</div>
+      <div class="admin-section-block">
+        <h4>🎨 الألوان الأساسية</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>لون ذهبي رئيسي</label><div class="color-picker-row"><input type="color" id="clr-gold" value="#d4a843" oninput="previewColor('clr-gold','swatch-gold')"><div class="color-preview-swatch" id="swatch-gold" style="background:#d4a843"></div><input type="text" id="clr-gold-txt" value="#d4a843" style="flex:1" oninput="syncColorText('clr-gold','clr-gold-txt','swatch-gold')"></div></div>
+          <div class="admin-field"><label>لون ذهبي فاتح</label><div class="color-picker-row"><input type="color" id="clr-glight" value="#f5c842" oninput="previewColor('clr-glight','swatch-glight')"><div class="color-preview-swatch" id="swatch-glight" style="background:#f5c842"></div><input type="text" id="clr-glight-txt" value="#f5c842" style="flex:1" oninput="syncColorText('clr-glight','clr-glight-txt','swatch-glight')"></div></div>
+          <div class="admin-field"><label>لون الأخضر / ثانوي</label><div class="color-picker-row"><input type="color" id="clr-green" value="#00cc44" oninput="previewColor('clr-green','swatch-green')"><div class="color-preview-swatch" id="swatch-green" style="background:#00cc44"></div><input type="text" id="clr-green-txt" value="#00cc44" style="flex:1" oninput="syncColorText('clr-green','clr-green-txt','swatch-green')"></div></div>
+          <div class="admin-field"><label>لون الأحمر / تنبيه</label><div class="color-picker-row"><input type="color" id="clr-red" value="#ff4040" oninput="previewColor('clr-red','swatch-red')"><div class="color-preview-swatch" id="swatch-red" style="background:#ff4040"></div><input type="text" id="clr-red-txt" value="#ff4040" style="flex:1" oninput="syncColorText('clr-red','clr-red-txt','swatch-red')"></div></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>📐 شكل وحجم بطاقات المنتجات</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>حجم البطاقة (عرض): <span id="cardSizeVal">290</span>px</label><input type="range" id="cardSizeRange" min="200" max="480" value="290" oninput="document.getElementById('cardSizeVal').textContent=this.value"></div>
+          <div class="admin-field"><label>تدوير الزوايا: <span id="cardRadiusVal">16</span>px</label><input type="range" id="cardRadiusRange" min="0" max="32" value="16" oninput="document.getElementById('cardRadiusVal').textContent=this.value"></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>🔤 حجم الخط الأساسي</h4>
+        <div class="admin-field"><label>حجم الخط: <span id="fontSizeVal">16</span>px</label><input type="range" id="fontSizeRange" min="13" max="22" value="16" oninput="document.getElementById('fontSizeVal').textContent=this.value"></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="resetColors()">↺ إعادة تعيين</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveColors()">💾 حفظ الألوان</button>
+      </div>
+    </div>
+
+    <!-- TAB: FONTS — NEW -->
+    <div class="admin-content" id="adminTab-fonts">
+      <div class="admin-notice">💡 اختر خط الموقع. سيتطبق فوراً على كل النصوص. بعد الاختيار اضغط "حفظ الخط".</div>
+      <div class="admin-section-block">
+        <h4>🔤 خط النصوص الأساسي (عربي)</h4>
+        <div class="font-select-grid" id="fontGrid"></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveFont()">💾 حفظ الخط</button>
+      </div>
+    </div>
+
+    <!-- TAB: SOCIAL — FIX #5 -->
+    <div class="admin-content" id="adminTab-social">
+      <div class="admin-notice">💡 أضف حساباتك. انقر على الأيقونة لرفع صورة مصغرة للمنصة. <strong>الرابط فقط يُفتح عند الضغط — لا يظهر للمستخدم أبداً، فقط الأيقونة والاسم.</strong></div>
+      <div id="socialAdminList"></div>
+      <button class="admin-add-btn" onclick="addSocialRow()">+ إضافة حساب جديد</button>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveSocial()">💾 حفظ روابط التواصل</button>
+      </div>
+    </div>
+
+    <!-- TAB: NOTIF -->
+    <div class="admin-content" id="adminTab-notif">
+      <div class="admin-notice">💡 الإشعار يظهر في أعلى الموقع. يمكنك إضافة نص أو صورة وتغيير لون الخلفية.</div>
+      <div class="admin-section-block">
+        <h4>🔔 إعدادات الشريط الإشعاري</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>تفعيل الإشعار</label><div style="display:flex;align-items:center;gap:10px;margin-top:4px"><div class="toggle-switch" id="notifToggle" onclick="toggleNotif()"></div><span style="font-size:13px;color:var(--text-dim)" id="notifToggleLabel">معطّل</span></div></div>
+          <div class="admin-field"><label>لون خلفية الإشعار</label><div class="color-picker-row"><input type="color" id="notif-color" value="#d4a843" oninput="previewColor('notif-color','swatch-notif')"><div class="color-preview-swatch" id="swatch-notif" style="background:#d4a843"></div></div></div>
+          <div class="admin-field admin-row-full"><label>نص الإشعار</label><input id="notif-text" value="🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!"></div>
+        </div>
+        <div style="margin-top:16px">
+          <label style="font-size:11px;color:var(--primary-color);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px">صورة الإشعار (اختياري)</label>
+          <div class="upload-area" onclick="document.getElementById('notifImgInput').click()">
+            <div style="font-size:28px">🖼️</div><p>انقر لرفع صورة (PNG, JPG, GIF)</p>
+            <img class="upload-preview" id="notifImgPreview" src="">
+          </div>
+          <input type="file" id="notifImgInput" accept="image/*" style="display:none" onchange="previewNotifImg(this)">
+        </div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveNotif()">💾 حفظ الإشعار</button>
+      </div>
+    </div>
+
+    <!-- TAB: STORE SETTINGS — FIX #4 & #9 -->
+    <div class="admin-content" id="adminTab-store">
+      <div class="admin-notice">💡 إعدادات المتجر: شعار الموقع، بانر المتجر، صورة الضمان، وصورة "من نحن".</div>
+      <div class="admin-section-block">
+        <h4>🔰 شعار / أيقونة الموقع</h4>
+        <div class="upload-area" onclick="document.getElementById('logoImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع شعار مربع (PNG, JPG) — يظهر في الناف والسايدبار</p><img class="upload-preview" id="logoImgPreview" src=""></div>
+        <input type="file" id="logoImgInput" accept="image/*" style="display:none" onchange="previewLogoImg(this)">
+        <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearLogoImg()">✕ إزالة الشعار</button></div>
+      </div>
+      <div class="admin-section-block">
+        <h4>🏪 بانر المتجر (يظهر فوق المنتجات)</h4>
+        <div class="upload-area" onclick="document.getElementById('storeBannerInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة بانر للمتجر</p><img class="upload-preview" id="storeBannerPreview" src=""></div>
+        <input type="file" id="storeBannerInput" accept="image/*" style="display:none" onchange="previewStoreBanner(this)">
+        <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearStoreBanner()">✕ إزالة البانر</button></div>
+      </div>
+      <div class="admin-section-block">
+        <h4>🛡️ صورة الضمان (في صفحة المتجر)</h4>
+        <div class="upload-area" onclick="document.getElementById('guaranteeImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة الضمان (بديل للإيموجي 🛡️)</p><img class="upload-preview" id="guaranteeImgPreview" src=""></div>
+        <input type="file" id="guaranteeImgInput" accept="image/*" style="display:none" onchange="previewGuaranteeImg(this)">
+        <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearGuaranteeImg()">✕ إزالة الصورة</button></div>
+      </div>
+      <div class="admin-section-block">
+        <h4>ℹ️ صورة "من نحن"</h4>
+        <div class="upload-area" onclick="document.getElementById('aboutImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة تظهر في قسم "من نحن"</p><img class="upload-preview" id="aboutImgPreview" src=""></div>
+        <input type="file" id="aboutImgInput" accept="image/*" style="display:none" onchange="previewAboutImg(this)">
+        <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearAboutImg()">✕ إزالة الصورة</button></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveStoreSettings()">💾 حفظ إعدادات المتجر</button>
+      </div>
+    </div>
+
+    <!-- TAB: SETTINGS -->
+    <div class="admin-content" id="adminTab-settings">
+      <div class="admin-notice">💡 الإعدادات العامة للموقع.</div>
+      <div class="admin-section-block">
+        <h4>🌐 معلومات الموقع</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>اسم الموقع</label><input id="set-sitename" value="AIVEX Global"></div>
+          <div class="admin-field"><label>الشعار (emoji إذا لم ترفع صورة)</label><input id="set-icon" value="💹"></div>
+          <div class="admin-field admin-row-full"><label>وصف الموقع</label><input id="set-desc" value="منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات"></div>
+          <div class="admin-field"><label>رابط المتجر (Payhip)</label><input id="set-storeurl" value="https://payhip.com/AIVEXGlobal"></div>
+          <div class="admin-field"><label>نص حقوق النشر</label><input id="set-copy" value="© 2026 AIVEX Global — جميع الحقوق محفوظة"></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>📞 معلومات التواصل</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>البريد الإلكتروني</label><input id="set-email" value="support@aivex-global.com"></div>
+          <div class="admin-field"><label>تيليغرام</label><input id="set-telegram" value="@AIVEXGlobal"></div>
+          <div class="admin-field"><label>إنستقرام</label><input id="set-insta" value="@AIVEXGlobal"></div>
+          <div class="admin-field"><label>ساعات العمل</label><input id="set-hours" value="السبت – الخميس: 9ص – 10م"></div>
+        </div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveSettings()">💾 حفظ الإعدادات</button>
+      </div>
+    </div>
+
+    <!-- TAB: PASSWORD -->
+    <div class="admin-content" id="adminTab-password">
+      <div class="admin-notice">🔐 تغيير كلمة مرور لوحة التحكم. كلمة المرور الافتراضية: admin123</div>
+      <div style="display:grid;gap:18px;max-width:400px">
+        <div class="admin-field"><label>كلمة المرور الحالية</label><input type="password" id="oldPass" placeholder="••••••••"></div>
+        <div class="admin-field"><label>كلمة المرور الجديدة</label><input type="password" id="newPass" placeholder="••••••••"></div>
+        <div class="admin-field"><label>تأكيد كلمة المرور</label><input type="password" id="confirmPass" placeholder="••••••••"></div>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="changePassword()">🔐 تغيير كلمة المرور</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  AIVEX GLOBAL — v4.0 FINAL
+//  ALL FIXES: 1-10 + Font Selector + Export Site
+// ============================================================
+
+// ===== STORAGE =====
+const S = {
+  get: (k, d=null) => { try { const v=localStorage.getItem(k); return v!==null?JSON.parse(v):d; } catch(e){ return d; } },
+  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } },
+  del: (k) => { try { localStorage.removeItem(k); } catch(e){} }
+};
+
+// ===== FONTS CONFIG =====
+const FONTS = [
+  { id:'tajawal',    name:'Tajawal',       label:'تجوال (افتراضي)',  url:'https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap', body:"'Tajawal', sans-serif" },
+  { id:'cairo',      name:'Cairo',         label:'القاهرة',          url:'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Bebas+Neue&display=swap', body:"'Cairo', sans-serif" },
+  { id:'almarai',    name:'Almarai',       label:'المراعي',          url:'https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Bebas+Neue&display=swap', body:"'Almarai', sans-serif" },
+  { id:'readex',     name:'Readex Pro',    label:'ريدكس برو',        url:'https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;600;700&family=Bebas+Neue&display=swap', body:"'Readex Pro', sans-serif" },
+  { id:'ibm',        name:'IBM Plex Arabic',label:'IBM بلكس',        url:'https://fonts.googleapis.com/css2?family=IBM+Plex+Arabic:wght@300;400;600;700&family=Bebas+Neue&display=swap', body:"'IBM Plex Arabic', sans-serif" },
+  { id:'noto',       name:'Noto Kufi Arabic',label:'نوتو كوفي',      url:'https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;700;900&family=Bebas+Neue&display=swap', body:"'Noto Kufi Arabic', sans-serif" },
+  { id:'amiri',      name:'Amiri',         label:'أميري (كلاسيك)',   url:'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bebas+Neue&display=swap', body:"'Amiri', serif" },
+  { id:'lateef',     name:'Lateef',        label:'لطيف (أنيق)',       url:'https://fonts.googleapis.com/css2?family=Lateef&family=Bebas+Neue&display=swap', body:"'Lateef', serif" },
+];
+
+// ===== DEFAULT DATA =====
+const DEFAULT_PRODUCTS = [
+  { id:1, name:'تداول بذكاء: الدعم والمقاومة', desc:'دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.', icon:'📈', img:'', imgRatio:'wide', imgScale:100, priceOld:'40$', priceNew:'19.99$', badge:'الأكثر مبيعاً', badgeType:'gold', discount:'-50%', url:'https://payhip.com/AIVEXGlobal', features:'استراتيجيات مجربة\nأمثلة حقيقية\nتحديثات مجانية', hasCountdown:false, countdownHours:48, category:'store' },
+  { id:2, name:'الربح من الإنستقرام', desc:'خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.', icon:'📱', img:'', imgRatio:'wide', imgScale:100, priceOld:'30$', priceNew:'12.99$', badge:'جديد', badgeType:'green', discount:'-57%', url:'https://payhip.com/AIVEXGlobal', features:'خطة يومية 30 يوم\nبدون رأس مال\nدعم بعد الشراء', hasCountdown:false, countdownHours:24, category:'store' },
+  { id:3, name:'دليل العمل الحر', desc:'ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.', icon:'💻', img:'', imgRatio:'wide', imgScale:100, priceOld:'35$', priceNew:'14.99$', badge:'', badgeType:'', discount:'-57%', url:'https://payhip.com/AIVEXGlobal', features:'إيجاد أول عميل\nتسعير الخدمات\nأفضل المنصات', hasCountdown:false, countdownHours:24, category:'store' }
+];
+const DEFAULT_SOCIAL = [
+  { icon:'𝕏', label:'تويتر / X', url:'#', color:'#000000', img:'' },
+  { icon:'📘', label:'فيسبوك', url:'#', color:'#1877f2', img:'' },
+  { icon:'📸', label:'إنستقرام', url:'#', color:'#e1306c', img:'' },
+  { icon:'▶️', label:'يوتيوب', url:'#', color:'#ff0000', img:'' },
+  { icon:'✈️', label:'تيليغرام', url:'#', color:'#229ed9', img:'' }
+];
+const DEFAULT_SETTINGS = { siteName:'AIVEX Global', icon:'💹', desc:'منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات', storeUrl:'https://payhip.com/AIVEXGlobal', copy:'© 2026 AIVEX Global — جميع الحقوق محفوظة', email:'support@aivex-global.com', telegram:'@AIVEXGlobal', insta:'@AIVEXGlobal', hours:'السبت – الخميس: 9ص – 10م' };
+const DEFAULT_HERO = { title:'تداول بذكاء', subtitle:'AIVEX GLOBAL', desc:'كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك', badge:'منتجات رقمية احترافية · متاحة الآن', note:'✓ تسليم فوري · ✓ دفع آمن · ✓ ضمان 30 يوم', ctaUrl:'https://payhip.com/AIVEXGlobal', s1n:'500+', s1l:'عميل راضٍ', s2n:'12', s2l:'منتج رقمي', s3n:'4.9★', s3l:'تقييم', s4n:'30', s4l:'ضمان يوم', discountOn:false, discountPct:'-50%', discountLabel:'ينتهي العرض خلال:', discountHours:24, discountEnd:null, bgImg:'' };
+const DEFAULT_COLORS = { gold:'#d4a843', glight:'#f5c842', green:'#00cc44', red:'#ff4040', cardSize:290, cardRadius:16, fontSize:16 };
+const DEFAULT_NOTIF = { on:false, text:'🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!', color:'#d4a843', img:'' };
+const DEFAULT_STORE = { bannerImg:'', guaranteeImg:'', logoImg:'', aboutImg:'' };
+const DEFAULT_FONT = 'tajawal';
+
+// ===== LOAD HELPERS =====
+function loadProducts() { return S.get('aivex_products', DEFAULT_PRODUCTS); }
+function saveProductsData(d) { S.set('aivex_products', d); }
+function loadPassword() { return S.get('aivex_admin_pass', 'admin123'); }
+function loadSettings() { return {...DEFAULT_SETTINGS, ...S.get('aivex_settings', {})}; }
+function loadHero() { return {...DEFAULT_HERO, ...S.get('aivex_hero', {})}; }
+function loadColors() { return {...DEFAULT_COLORS, ...S.get('aivex_colors', {})}; }
+function loadSocial() { return S.get('aivex_social', DEFAULT_SOCIAL); }
+function loadNotif() { return {...DEFAULT_NOTIF, ...S.get('aivex_notif', {})}; }
+function loadStoreSettings() { return {...DEFAULT_STORE, ...S.get('aivex_store', {})}; }
+function loadFontId() { return S.get('aivex_font', DEFAULT_FONT); }
+
+// ===== TOAST =====
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ===== LANG =====
+function setLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('langAr').classList.toggle('active', lang==='ar');
+  document.getElementById('langEn').classList.toggle('active', lang==='en');
+  S.set('aivex_lang', lang);
+}
+(function() { setLang(S.get('aivex_lang', 'ar')); })();
+
+// ===== THEME =====
+function toggleTheme() {
+  const html = document.documentElement;
+  const ball = document.getElementById('themeBall');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  ball.textContent = isDark ? '☀️' : '🌙';
+  S.set('aivex_theme', isDark ? 'light' : 'dark');
+}
+(function() {
+  const t = S.get('aivex_theme', 'dark');
+  if (t === 'light') { document.documentElement.setAttribute('data-theme','light'); document.getElementById('themeBall').textContent='☀️'; }
+})();
+
+// ===== FONT SYSTEM =====
+function applyFont(fontId) {
+  const f = FONTS.find(x => x.id === fontId) || FONTS[0];
+  const link = document.getElementById('googleFontsLink');
+  if(link) link.href = f.url;
+  document.documentElement.style.setProperty('--body-font', f.body);
+}
+function buildFontGrid() {
+  const grid = document.getElementById('fontGrid');
+  if(!grid) return;
+  const current = loadFontId();
+  grid.innerHTML = FONTS.map(f => `
+    <button class="font-opt-btn ${f.id===current?'active':''}" onclick="previewFontTemp('${f.id}')" style="font-family:${f.body}" id="fontbtn-${f.id}">
+      ${f.label}
+    </button>
+  `).join('');
+}
+let _tempFont = null;
+function previewFontTemp(fontId) {
+  _tempFont = fontId;
+  applyFont(fontId);
+  document.querySelectorAll('.font-opt-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('fontbtn-'+fontId);
+  if(btn) btn.classList.add('active');
+}
+function saveFont() {
+  if(!_tempFont) { showToast('اختر خطاً أولاً'); return; }
+  S.set('aivex_font', _tempFont);
+  applyFont(_tempFont);
+  showToast('✅ تم حفظ الخط!');
+}
+
+// ===== COLORS =====
+function applyColors() {
+  const c = loadColors();
+  const r = document.documentElement.style;
+  r.setProperty('--primary-color', c.gold);
+  r.setProperty('--primary-light', c.glight);
+  r.setProperty('--gold', c.gold);
+  r.setProperty('--gold-light', c.glight);
+  r.setProperty('--accent-color', c.green);
+  r.setProperty('--green', c.green);
+  r.setProperty('--red', c.red);
+  r.setProperty('--product-card-size', c.cardSize + 'px');
+  r.setProperty('--product-card-radius', c.cardRadius + 'px');
+  document.body.style.fontSize = c.fontSize + 'px';
+}
+
+// ===== APPLY SETTINGS =====
+function applySettings() {
+  const set = loadSettings();
+  const ss = loadStoreSettings();
+  const logoImg = ss.logoImg || '';
+  const ni = document.getElementById('navIcon');
+  if(ni) { if(logoImg) { ni.innerHTML = `<img src="${logoImg}" alt="logo">`; } else { ni.textContent = set.icon; } }
+  const nb = document.getElementById('navBrandName');
+  if(nb) nb.textContent = set.siteName.toUpperCase();
+  const si = document.getElementById('sidebarIcon');
+  if(si) { if(logoImg) { si.innerHTML = `<img src="${logoImg}" alt="logo">`; } else { si.textContent = set.icon; } }
+  const sn = document.getElementById('sidebarBrandName');
+  if(sn) sn.textContent = set.siteName.split(' ')[0].toUpperCase();
+  const fbn = document.getElementById('footerBrandName');
+  const fd = document.getElementById('footerDesc');
+  const fc = document.getElementById('footerCopy');
+  if(fbn) fbn.textContent = set.siteName.toUpperCase();
+  if(fd) fd.textContent = set.desc;
+  if(fc) fc.textContent = set.copy;
+  const nsb = document.getElementById('navStoreBtn');
+  const ssb = document.getElementById('sidebarStoreBtn');
+  const fpl = document.getElementById('footerPayhipLink');
+  if(nsb) nsb.href = set.storeUrl;
+  if(ssb) ssb.href = set.storeUrl;
+  if(fpl) fpl.href = set.storeUrl;
+  const ce = document.getElementById('contactEmail');
+  const ct = document.getElementById('contactTelegram');
+  const ci = document.getElementById('contactInsta');
+  if(ce) ce.textContent = set.email;
+  if(ct) ct.textContent = set.telegram;
+  if(ci) ci.textContent = set.insta;
+  document.title = set.siteName + ' — أيفيكس العالمية';
+  // FIX #4: Store images
+  const storeBanner = document.getElementById('storeBannerImg');
+  if(storeBanner) { if(ss.bannerImg) { storeBanner.src = ss.bannerImg; storeBanner.style.display = 'block'; } else storeBanner.style.display = 'none'; }
+  const gImg = document.getElementById('guaranteeImg');
+  const gIcon = document.getElementById('guaranteeIcon');
+  if(gImg && gIcon) { if(ss.guaranteeImg) { gImg.src = ss.guaranteeImg; gImg.style.display = 'block'; gIcon.style.display = 'none'; } else { gImg.style.display = 'none'; gIcon.style.display = 'block'; } }
+  // FIX #9: About image
+  const aboutVisual = document.getElementById('aboutVisual');
+  const aboutEmojiEl = document.getElementById('aboutVisualEmoji');
+  if(aboutVisual && aboutEmojiEl) {
+    if(ss.aboutImg) {
+      aboutEmojiEl.style.display = 'none';
+      let img = aboutVisual.querySelector('img.about-real-img');
+      if(!img) { img = document.createElement('img'); img.className='about-real-img'; aboutVisual.appendChild(img); }
+      img.src = ss.aboutImg; img.style.display = 'block';
+    } else {
+      aboutEmojiEl.style.display = '';
+      const img = aboutVisual.querySelector('img.about-real-img');
+      if(img) img.style.display = 'none';
+    }
+  }
+}
+
+// ===== APPLY HERO =====
+function applyHero() {
+  const h = loadHero();
+  const set = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
+  set('heroTitle', h.title); set('heroSubtitle', h.subtitle); set('heroDesc', h.desc);
+  set('heroBadgeText', h.badge); set('heroNote', h.note);
+  set('stat1Num', h.s1n); set('stat1Lbl', h.s1l);
+  set('stat2Num', h.s2n); set('stat2Lbl', h.s2l);
+  set('stat3Num', h.s3n); set('stat3Lbl', h.s3l);
+  set('stat4Num', h.s4n); set('stat4Lbl', h.s4l);
+  const ctaEl = document.getElementById('heroCta');
+  if(ctaEl) ctaEl.href = h.ctaUrl || '#';
+  // Hero background
+  const heroBg = document.getElementById('heroBg');
+  if(heroBg) {
+    if(h.bgImg) {
+      heroBg.style.backgroundImage = `url('${h.bgImg}')`;
+      heroBg.classList.add('has-bg-img');
+    } else {
+      heroBg.style.backgroundImage = '';
+      heroBg.classList.remove('has-bg-img');
+    }
+  }
+  // Discount
+  const discEl = document.getElementById('discountBannerEl');
+  if(discEl) {
+    if(h.discountOn && h.discountEnd) {
+      discEl.style.display = 'flex';
+      document.getElementById('discountPct').textContent = h.discountPct || '-50%';
+      document.getElementById('discountLabel').textContent = h.discountLabel || 'ينتهي العرض خلال:';
+      startCountdown(new Date(h.discountEnd));
+    } else {
+      discEl.style.display = 'none';
+    }
+  }
+}
+
+// ===== COUNTDOWN =====
+let cdTimer = null;
+function startCountdown(endDate) {
+  if(cdTimer) clearInterval(cdTimer);
+  function tick() {
+    const now = new Date();
+    const diff = Math.max(0, endDate - now);
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    const pad = n => String(n).padStart(2,'0');
+    const hEl=document.getElementById('cd-h'), mEl=document.getElementById('cd-m'), sEl=document.getElementById('cd-s');
+    if(hEl) hEl.textContent=pad(h);
+    if(mEl) mEl.textContent=pad(m);
+    if(sEl) sEl.textContent=pad(s);
+    if(diff<=0) clearInterval(cdTimer);
+  }
+  tick();
+  cdTimer = setInterval(tick, 1000);
+}
+
+// ===== NOTIFICATION =====
+function applyNotif() {
+  const n = loadNotif();
+  const banner = document.getElementById('notifBanner');
+  const bannerImg = document.getElementById('notifBannerImg');
+  const bannerText = document.getElementById('notifBannerText');
+  if(!banner) return;
+  if(n.on) {
+    banner.style.display = 'block';
+    banner.style.background = n.color || '#d4a843';
+    banner.style.color = '#1a1610';
+    if(bannerText) bannerText.textContent = n.text;
+    if(bannerImg) { if(n.img) { bannerImg.src=n.img; bannerImg.style.display='inline-block'; } else bannerImg.style.display='none'; }
+    document.getElementById('mainFooter').style.marginTop='0';
+  } else {
+    banner.style.display = 'none';
+  }
+}
+
+// ===== SOCIAL =====
+function applySocial() {
+  const list = loadSocial();
+  // FIX #6: Contact page — icon + label only, clicking opens link
+  const contactIcons = document.getElementById('contactSocialIcons');
+  const footerIcons = document.getElementById('footerSocialIcons');
+  const socialDisplay = document.getElementById('socialLinksDisplay');
+  const makeFooterBtn = (item) => {
+    const btn = document.createElement('a');
+    btn.href = item.url && item.url !== '#' ? item.url : 'javascript:void(0)';
+    btn.target = '_blank'; btn.rel = 'noopener';
+    btn.className = 'social-btn';
+    btn.title = item.label;
+    if(item.img) { btn.innerHTML = `<img src="${item.img}" alt="${item.label}">`; }
+    else { btn.textContent = item.icon; }
+    return btn;
+  };
+  if(footerIcons) { footerIcons.innerHTML=''; list.forEach(item => footerIcons.appendChild(makeFooterBtn(item))); }
+  if(contactIcons) { contactIcons.innerHTML=''; list.forEach(item => contactIcons.appendChild(makeFooterBtn(item))); }
+  // FIX #5 & #6: Social page — big cards, icon+name only, no account shown
+  if(socialDisplay) {
+    socialDisplay.innerHTML = '';
+    list.forEach(item => {
+      if(!item.url || item.url==='#') return;
+      const a = document.createElement('a');
+      a.href = item.url; a.target='_blank'; a.rel='noopener';
+      a.className = 'social-link-btn';
+      a.style.setProperty('--btn-color', item.color||'var(--primary-color)');
+      const iconDiv = document.createElement('div');
+      iconDiv.className = 'social-link-icon';
+      iconDiv.style.background = (item.color||'#333') + '22';
+      iconDiv.style.borderColor = item.color||'var(--border)';
+      if(item.img) { iconDiv.innerHTML=`<img src="${item.img}" alt="${item.label}">`; }
+      else { iconDiv.textContent = item.icon; }
+      const lbl = document.createElement('span');
+      lbl.className='social-link-label';
+      lbl.textContent = item.label;
+      a.appendChild(iconDiv); a.appendChild(lbl);
+      socialDisplay.appendChild(a);
+    });
+  }
+}
+
+// ===== PRODUCTS RENDER — FIX #1,2,7,8 =====
+function renderProducts() {
+  const products = loadProducts();
+  // Store page
+  const grid = document.getElementById('productsGrid');
+  if(grid) {
+    grid.innerHTML = '';
+    const storeProds = products.filter(p => p.category==='store' || !p.category);
+    storeProds.forEach(p => grid.appendChild(buildProductCard(p)));
+  }
+  // Category pages — FIX #8: products show in correct category page
+  ['trading','digital','freelance','selfdev'].forEach(cat => {
+    const catGrid = document.getElementById('cat-products-'+cat);
+    if(!catGrid) return;
+    const catProds = products.filter(p => p.category===cat);
+    catGrid.innerHTML = '';
+    catProds.forEach(p => catGrid.appendChild(buildProductCard(p)));
+    catGrid.style.display = catProds.length ? 'grid' : 'none';
+  });
+}
+
+function buildProductCard(p) {
+  const card = document.createElement('div');
+  card.className = 'product-card' + (p.badge==='مميز'||p.badge==='featured'?' featured':'');
+  const ratio = p.imgRatio || 'wide';
+  const scale = p.imgScale || 100;
+  const imgs = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
+  const uid = 'g' + (p.id||Math.random().toString(36).slice(2));
+
+  let imgHtml = '';
+  if(imgs.length > 1) {
+    // Gallery mode
+    const slides = imgs.map((src,i) => `
+      <div class="gallery-slide ${i===0?'active':''}">
+        <img src="${src}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block">
+      </div>`).join('');
+    const dots = imgs.map((_,i) => `<button class="gallery-dot ${i===0?'active':''}" onclick="gotoSlide('${uid}',${i})"></button>`).join('');
+    imgHtml = `
+      <div class="gallery-slides" id="gs-${uid}">
+        ${slides}
+        <button class="gallery-arrow gallery-arrow-prev" onclick="slideGallery('${uid}',-1)">&#10094;</button>
+        <button class="gallery-arrow gallery-arrow-next" onclick="slideGallery('${uid}',1)">&#10095;</button>
+        <span class="gallery-counter" id="gc-${uid}">1/${imgs.length}</span>
+      </div>
+      <div class="gallery-dots">${dots}</div>`;
+  } else if(imgs.length === 1) {
+    imgHtml = `<img src="${imgs[0]}" alt="${p.name}" style="transform:scale(${scale/100});transform-origin:center;transition:transform 0.3s;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block">`;
+  } else {
+    imgHtml = `<span class="product-img-emoji">${p.icon||'📦'}</span>`;
+  }
+
+  const badgeHtml = p.badge ? `<div class="badge badge-l badge-${p.badgeType||'gold'}">${p.badge}</div>` : '';
+  const discHtml = p.discount ? `<div class="badge badge-r badge-red">${p.discount}</div>` : '';
+  const featArr = (p.features||'').split('\n').filter(Boolean);
+  const featHtml = featArr.length ? `<ul class="product-features">${featArr.map(f=>`<li>${f}</li>`).join('')}</ul>` : '';
+  const oldPHtml = p.priceOld ? `<span class="price-old">${p.priceOld}</span>` : '';
+  const cdHtml = p.hasCountdown ? `<div class="product-countdown-bar"><span class="pcd-label">⏳ ينتهي خلال</span><span class="pcd-nums" id="pcd-${p.id}">00:00:00</span></div>` : '';
+
+  card.innerHTML = `
+    <div class="product-img ratio-${ratio} product-gallery">${imgHtml}${imgs.length<=1?badgeHtml+discHtml:''}</div>
+    ${imgs.length>1?`<div style="position:relative">${badgeHtml}${discHtml}</div>`:''}
+    <div class="product-body">
+      <div class="product-name">${p.name}</div>
+      <div class="product-desc">${p.desc}</div>
+      ${featHtml}
+      <div class="product-footer">
+        <div>${oldPHtml}<span class="price-new">${p.priceNew||'مجاني'}</span></div>
+        <a href="${p.url||'#'}" class="buy-btn" target="_blank">🛒 اشترِ</a>
+      </div>
+    </div>
+    ${cdHtml}
+  `;
+  if(p.hasCountdown && p.countdownEnd) {
+    const span = card.querySelector('#pcd-'+p.id);
+    if(span) {
+      setInterval(() => {
+        const diff = Math.max(0, new Date(p.countdownEnd)-new Date());
+        const h=Math.floor(diff/3600000), m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+        span.textContent = [h,m,s].map(n=>String(n).padStart(2,'0')).join(':');
+      }, 1000);
+    }
+  }
+  return card;
+}
+
+// ===== GALLERY CONTROLS =====
+const _galState = {};
+function slideGallery(uid, dir) {
+  const gs = document.getElementById('gs-'+uid);
+  if(!gs) return;
+  const slides = gs.querySelectorAll('.gallery-slide');
+  if(!slides.length) return;
+  if(!_galState[uid]) _galState[uid] = 0;
+  _galState[uid] = (_galState[uid] + dir + slides.length) % slides.length;
+  _updateGallery(uid, slides);
+}
+function gotoSlide(uid, idx) {
+  const gs = document.getElementById('gs-'+uid);
+  if(!gs) return;
+  const slides = gs.querySelectorAll('.gallery-slide');
+  _galState[uid] = idx;
+  _updateGallery(uid, slides);
+}
+function _updateGallery(uid, slides) {
+  const idx = _galState[uid];
+  slides.forEach((s,i) => s.classList.toggle('active', i===idx));
+  const counter = document.getElementById('gc-'+uid);
+  if(counter) counter.textContent = (idx+1)+'/'+slides.length;
+  // Update dots
+  const card = slides[0]?.closest('.product-card');
+  if(card) card.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+
+// ===== PAGES =====
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById('page-'+name);
+  if(pg) { pg.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+  closeSidebar();
+}
+
+// ===== SIDEBAR =====
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  const hb = document.getElementById('hamburger');
+  sb.classList.toggle('open'); ov.classList.toggle('open'); hb.classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ===== FAQ =====
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+// ===== ADMIN =====
+function openAdmin() {
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminLogin').style.display = 'block';
+  document.getElementById('adminPanel').style.display = 'none';
+}
+function closeAdmin() {
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.getElementById('adminPasswordInput').value = '';
+  document.getElementById('adminError').style.display = 'none';
+}
+function checkAdminPass() {
+  const input = document.getElementById('adminPasswordInput').value;
+  if(input === loadPassword()) {
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadAdminForms();
+  } else {
+    document.getElementById('adminError').style.display = 'block';
+  }
+}
+function changePassword() {
+  const old = document.getElementById('oldPass').value;
+  const n = document.getElementById('newPass').value;
+  const c = document.getElementById('confirmPass').value;
+  if(old !== loadPassword()) { showToast('❌ كلمة المرور الحالية خاطئة'); return; }
+  if(n.length < 6) { showToast('❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
+  if(n !== c) { showToast('❌ كلمتا المرور غير متطابقتين'); return; }
+  S.set('aivex_admin_pass', n);
+  showToast('✅ تم تغيير كلمة المرور!');
+  ['oldPass','newPass','confirmPass'].forEach(id => document.getElementById(id).value='');
+}
+function switchAdminTab(name) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-content').forEach(c => c.classList.remove('active'));
+  const tabs = document.querySelectorAll('.admin-tab');
+  const tabNames = ['products','hero','colors','fonts','social','notif','store','settings','password'];
+  const idx = tabNames.indexOf(name);
+  if(tabs[idx]) tabs[idx].classList.add('active');
+  const content = document.getElementById('adminTab-'+name);
+  if(content) content.classList.add('active');
+  if(name==='fonts') buildFontGrid();
+}
+
+// ===== LOAD ADMIN FORMS =====
+function loadAdminForms() {
+  // Hero
+  const h = loadHero();
+  const sf = (id,v)=>{ const el=document.getElementById(id); if(el) el.value=v||''; };
+  sf('h-title',h.title); sf('h-subtitle',h.subtitle); sf('h-desc',h.desc);
+  sf('h-badge',h.badge); sf('h-note',h.note); sf('h-ctaurl',h.ctaUrl);
+  sf('s1n',h.s1n); sf('s1l',h.s1l); sf('s2n',h.s2n); sf('s2l',h.s2l);
+  sf('s3n',h.s3n); sf('s3l',h.s3l); sf('s4n',h.s4n); sf('s4l',h.s4l);
+  sf('disc-pct',h.discountPct); sf('disc-label',h.discountLabel); sf('disc-hours',h.discountHours||24);
+  const dToggle = document.getElementById('discountToggle');
+  const dLabel = document.getElementById('discountToggleLabel');
+  if(dToggle) { dToggle.classList.toggle('on', h.discountOn); if(dLabel) dLabel.textContent=h.discountOn?'مفعّل':'معطّل'; }
+  // Hero bg preview
+  if(h.bgImg) { const p=document.getElementById('heroBgPreview'); if(p){p.src=h.bgImg;p.classList.add('show');} }
+  // Colors
+  const c = loadColors();
+  const sc = (id,v)=>{ const el=document.getElementById(id); if(el) el.value=v; };
+  sc('clr-gold',c.gold); sc('clr-glight',c.glight); sc('clr-green',c.green); sc('clr-red',c.red);
+  sc('clr-gold-txt',c.gold); sc('clr-glight-txt',c.glight); sc('clr-green-txt',c.green); sc('clr-red-txt',c.red);
+  ['gold','glight','green','red'].forEach(k=>{ const sw=document.getElementById('swatch-'+k); if(sw) sw.style.background=c[k]; });
+  const csr = document.getElementById('cardSizeRange'); if(csr){ csr.value=c.cardSize; document.getElementById('cardSizeVal').textContent=c.cardSize; }
+  const crr = document.getElementById('cardRadiusRange'); if(crr){ crr.value=c.cardRadius; document.getElementById('cardRadiusVal').textContent=c.cardRadius; }
+  const fsr = document.getElementById('fontSizeRange'); if(fsr){ fsr.value=c.fontSize; document.getElementById('fontSizeVal').textContent=c.fontSize; }
+  // Settings
+  const set = loadSettings();
+  sf('set-sitename',set.siteName); sf('set-icon',set.icon); sf('set-desc',set.desc);
+  sf('set-storeurl',set.storeUrl); sf('set-copy',set.copy);
+  sf('set-email',set.email); sf('set-telegram',set.telegram); sf('set-insta',set.insta); sf('set-hours',set.hours);
+  // Notif
+  const n = loadNotif();
+  sf('notif-text',n.text); sc('notif-color',n.color||'#d4a843');
+  const nToggle=document.getElementById('notifToggle'); const nLabel=document.getElementById('notifToggleLabel');
+  if(nToggle){ nToggle.classList.toggle('on',n.on); if(nLabel) nLabel.textContent=n.on?'مفعّل':'معطّل'; }
+  if(n.img){ const p=document.getElementById('notifImgPreview'); if(p){p.src=n.img;p.classList.add('show');} }
+  // Store settings previews
+  const ss = loadStoreSettings();
+  if(ss.bannerImg){ const p=document.getElementById('storeBannerPreview'); if(p){p.src=ss.bannerImg;p.classList.add('show');} }
+  if(ss.guaranteeImg){ const p=document.getElementById('guaranteeImgPreview'); if(p){p.src=ss.guaranteeImg;p.classList.add('show');} }
+  if(ss.logoImg){ const p=document.getElementById('logoImgPreview'); if(p){p.src=ss.logoImg;p.classList.add('show');} }
+  if(ss.aboutImg){ const p=document.getElementById('aboutImgPreview'); if(p){p.src=ss.aboutImg;p.classList.add('show');} }
+  // Products
+  renderAdminProducts();
+  // Social
+  renderSocialAdmin();
+  // Fonts
+  buildFontGrid();
+}
+
+// ===== ADMIN PRODUCTS — FIX #1,2,3 =====
+let adminDragSrc = null;
+function renderAdminProducts() {
+  const list = document.getElementById('adminProductsList');
+  if(!list) return;
+  list.innerHTML = '';
+  const products = loadProducts();
+  products.forEach((p,i) => {
+    const row = document.createElement('div');
+    row.className = 'admin-product-row';
+    row.draggable = true;
+    row.dataset.idx = i;
+    row.innerHTML = `
+      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
+        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
+        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">${p.icon||'📦'} ${p.name}</span>
+        <button class="admin-btn admin-btn-red" onclick="deleteProduct(${i})">🗑️ حذف</button>
+      </div>
+      <div class="admin-field">
+        <label>اسم المنتج</label>
+        <input value="${escHtml(p.name||'')}" onchange="updateProd(${i},'name',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>الإيموجي (بديل الصورة)</label>
+        <input value="${escHtml(p.icon||'📦')}" onchange="updateProd(${i},'icon',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>الوصف</label>
+        <textarea onchange="updateProd(${i},'desc',this.value)">${escHtml(p.desc||'')}</textarea>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>المميزات (سطر لكل ميزة)</label>
+        <textarea onchange="updateProd(${i},'features',this.value)">${escHtml(p.features||'')}</textarea>
+      </div>
+      <div class="admin-field">
+        <label>السعر القديم</label>
+        <input value="${escHtml(p.priceOld||'')}" onchange="updateProd(${i},'priceOld',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>السعر الجديد</label>
+        <input value="${escHtml(p.priceNew||'')}" onchange="updateProd(${i},'priceNew',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>نص الشارة (مثال: جديد)</label>
+        <input value="${escHtml(p.badge||'')}" onchange="updateProd(${i},'badge',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>لون الشارة</label>
+        <select onchange="updateProd(${i},'badgeType',this.value)">
+          <option value="gold" ${(p.badgeType||'gold')==='gold'?'selected':''}>ذهبي</option>
+          <option value="green" ${p.badgeType==='green'?'selected':''}>أخضر</option>
+          <option value="red" ${p.badgeType==='red'?'selected':''}>أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>نسبة الخصم (مثال: -50%)</label>
+        <input value="${escHtml(p.discount||'')}" onchange="updateProd(${i},'discount',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>رابط الشراء</label>
+        <input value="${escHtml(p.url||'')}" onchange="updateProd(${i},'url',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>القسم الذي يظهر فيه المنتج</label>
+        <select onchange="updateProd(${i},'category',this.value)">
+          <option value="store" ${(p.category||'store')==='store'?'selected':''}>المتجر (الكل)</option>
+          <option value="trading" ${p.category==='trading'?'selected':''}>تعلم التداول</option>
+          <option value="digital" ${p.category==='digital'?'selected':''}>الربح من الإنترنت</option>
+          <option value="freelance" ${p.category==='freelance'?'selected':''}>العمل الحر</option>
+          <option value="selfdev" ${p.category==='selfdev'?'selected':''}>تطوير الذات</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <div class="multi-img-grid" id="prodImgGrid-${i}">
+          ${(p.imgs&&p.imgs.length?p.imgs:[p.img].filter(Boolean)).map((src,si)=>`
+            <div class="multi-img-thumb">
+              <img src="${src}" alt="">
+              <button class="del-img" onclick="deleteProdImg(${i},${si})">✕</button>
+            </div>
+          `).join('')}
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-${i}').click()">+</div>
+        </div>
+        <input type="file" id="prodImgMulti-${i}" accept="image/*" multiple style="display:none" onchange="handleProdImgMulti(${i},this)">
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
+          <div class="img-ratio-btns">
+            <button class="img-ratio-btn ${(p.imgRatio||'wide')==='wide'?'active':''}" onclick="setImgRatio(${i},'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn ${p.imgRatio==='square'?'active':''}" onclick="setImgRatio(${i},'square',this)">مربع 1:1</button>
+            <button class="img-ratio-btn ${p.imgRatio==='portrait'?'active':''}" onclick="setImgRatio(${i},'portrait',this)">عمودي 3:4</button>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-${i}">${p.imgScale||100}</span>%</label>
+          <input type="range" min="50" max="150" value="${p.imgScale||100}" oninput="setImgScale(${i},this.value)">
+        </div>
+      </div>
+    `;
+    // Drag events — FIX #2: sorting works
+    row.addEventListener('dragstart', e => { adminDragSrc=i; e.dataTransfer.effectAllowed='move'; row.style.opacity='0.4'; });
+    row.addEventListener('dragend', () => { row.style.opacity='1'; });
+    row.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect='move'; });
+    row.addEventListener('drop', e => { e.preventDefault(); if(adminDragSrc!==null && adminDragSrc!==i) { reorderProducts(adminDragSrc,i); adminDragSrc=null; } });
+    list.appendChild(row);
+  });
+}
+
+function reorderProducts(from, to) {
+  const products = loadProducts();
+  const moved = products.splice(from, 1)[0];
+  products.splice(to, 0, moved);
+  saveProductsData(products);
+  renderAdminProducts();
+  showToast('✅ تم تغيير الترتيب');
+}
+
+function escHtml(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function updateProd(idx, key, val) {
+  const products = loadProducts();
+  if(products[idx]) products[idx][key] = val;
+  saveProductsData(products);
+}
+
+// FIX #3: Image scale slider
+function setImgScale(idx, val) {
+  const products = loadProducts();
+  if(products[idx]) products[idx].imgScale = parseInt(val);
+  saveProductsData(products);
+  const sp = document.getElementById('scaleVal-'+idx);
+  if(sp) sp.textContent = val;
+}
+
+function setImgRatio(idx, ratio, btn) {
+  const products = loadProducts();
+  if(products[idx]) products[idx].imgRatio = ratio;
+  saveProductsData(products);
+  const container = btn.closest('.admin-field');
+  container.querySelectorAll('.img-ratio-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ===== MULTI IMAGE UPLOAD =====
+function compressImg(dataUrl, maxW, quality, cb) {
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    let w = img.width, h = img.height;
+    if(w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    cb(canvas.toDataURL('image/jpeg', quality));
+  };
+  img.src = dataUrl;
+}
+
+function handleProdImgMulti(idx, input) {
+  const files = Array.from(input.files);
+  if(!files.length) return;
+  const products = loadProducts();
+  const p = products[idx];
+  if(!p.imgs) p.imgs = p.img ? [p.img] : [];
+  const remaining = 5 - p.imgs.length;
+  if(remaining <= 0) { showToast('❌ الحد الأقصى 5 صور'); return; }
+  const toProcess = files.slice(0, remaining);
+  let done = 0;
+  toProcess.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      compressImg(e.target.result, 800, 0.75, compressed => {
+        p.imgs.push(compressed);
+        p.img = p.imgs[0];
+        done++;
+        if(done === toProcess.length) {
+          saveProductsData(products);
+          renderAdminProducts();
+          showToast('✅ تم رفع ' + done + ' صورة');
+        }
+      });
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+function deleteProdImg(idx, imgIdx) {
+  const products = loadProducts();
+  const p = products[idx];
+  if(!p.imgs) p.imgs = p.img ? [p.img] : [];
+  p.imgs.splice(imgIdx, 1);
+  p.img = p.imgs[0] || '';
+  saveProductsData(products);
+  renderAdminProducts();
+  showToast('✅ تم حذف الصورة');
+}
+
+// Keep old single handler for backward compat
+function handleProdImg(idx, input) { handleProdImgMulti(idx, input); }
+function clearProdImg(idx) {
+  const products = loadProducts();
+  if(products[idx]) { products[idx].img = ''; products[idx].imgs = []; }
+  saveProductsData(products);
+  renderAdminProducts();
+  showToast('✅ تم إزالة الصور');
+}
+
+// ===== JSONBIN CLOUD SYNC =====
+const JSONBIN_MASTER = '$2a$10$z02fKFKrC0fwYXwqqJinI.7LtxfA0e4XPA55Y3chfwgp77Zy.X1qi';
+const JSONBIN_API = 'https://api.jsonbin.io/v3';
+const BIN_ID_KEY = 'aivex_bin_id';
+// AIVEX_BIN_ID_PLACEHOLDER
+const EMBEDDED_BIN_ID = '';
+
+function getBinId() { return localStorage.getItem(BIN_ID_KEY) || EMBEDDED_BIN_ID || null; }
+function setBinId(id) {
+  localStorage.setItem(BIN_ID_KEY, id);
+}
+
+function collectAllData() {
+  return {
+    products: loadProducts(),
+    hero: loadHero(),
+    colors: loadColors(),
+    social: loadSocial(),
+    notif: loadNotif(),
+    store: loadStoreSettings(),
+    settings: loadSettings(),
+    font: loadFontId(),
+    pass: loadPassword(),
+    theme: S.get('aivex_theme','dark'),
+    lang: S.get('aivex_lang','ar'),
+    ts: Date.now()
+  };
+}
+
+async function publishToCloud() {
+  const btn = document.getElementById('publishBtn');
+  const status = document.getElementById('publishStatus');
+  btn.disabled = true;
+  btn.textContent = '⏳ جاري النشر...';
+  status.className = 'publish-status';
+  status.textContent = '● جاري الاتصال...';
+
+  // نرسل البيانات بدون الصور — الصور تبقى في localStorage فقط
+  function stripImages(products) {
+    return products.map(p => {
+      const c = {...p};
+      // نحتفظ بالصورة الأولى مضغوطة جداً فقط
+      if(c.img && c.img.startsWith('data:')) c.img = '';
+      if(c.imgs) c.imgs = [];
+      return c;
+    });
+  }
+
+  const allData = {
+    products: stripImages(loadProducts()),
+    hero: (function(){ const h={...loadHero()}; if(h.bgImg&&h.bgImg.startsWith('data:')) h.bgImg=''; return h; })(),
+    colors: loadColors(),
+    social: (function(){ return loadSocial().map(s=>{ const c={...s}; if(c.img&&c.img.startsWith('data:')) c.img=''; return c; }); })(),
+    notif: (function(){ const n={...loadNotif()}; if(n.img&&n.img.startsWith('data:')) n.img=''; return n; })(),
+    store: (function(){ const s={...loadStoreSettings()}; ['bannerImg','guaranteeImg','logoImg','aboutImg'].forEach(k=>{ if(s[k]&&s[k].startsWith('data:')) s[k]=''; }); return s; })(),
+    settings: loadSettings(),
+    font: loadFontId(),
+    pass: loadPassword(),
+    theme: S.get('aivex_theme','dark'),
+    lang: S.get('aivex_lang','ar'),
+    ts: Date.now()
+  };
+
+  // تحقق من الحجم
+  const jsonStr = JSON.stringify(allData);
+  const sizeKB = Math.round(new Blob([jsonStr]).size / 1024);
+  if(sizeKB > 95) {
+    status.className = 'publish-status err';
+    status.textContent = '❌ البيانات كبيرة جداً (' + sizeKB + 'KB) — قلل عدد المنتجات';
+    btn.disabled = false;
+    btn.textContent = '🚀 حفظ ونشر للكل';
+    return;
+  }
+
+  try {
+    const binId = getBinId();
+    let res, data;
+
+    if (!binId) {
+      res = await fetch(JSONBIN_API + '/b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': JSONBIN_MASTER,
+          'X-Bin-Name': 'aivex-site-data',
+          'X-Bin-Private': 'false'
+        },
+        body: jsonStr
+      });
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error('HTTP ' + res.status + ': ' + txt.slice(0,120));
+      }
+      data = await res.json();
+      const newId = data?.metadata?.id;
+      if (!newId) throw new Error('لم يُرجع الـ API معرف');
+      setBinId(newId);
+      // أظهر زر تحميل الملف المحدث
+      status.className = 'publish-status ok';
+      status.innerHTML = '✅ تم إنشاء الـ Bin! الآن: <button onclick="downloadUpdatedHTML(\'' + newId + '\')" style="background:var(--accent-color);color:#001;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-weight:900;font-family:var(--body-font);font-size:12px;margin-top:4px">⬇️ حمّل الملف المحدث وارفعه</button>';
+      showToast('✅ اضغط على زر التحميل!');
+    } else {
+      res = await fetch(JSONBIN_API + '/b/' + binId, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': JSONBIN_MASTER
+        },
+        body: jsonStr
+      });
+      if (!res.ok) {
+        const txt = await res.text();
+        if (res.status === 404) {
+          localStorage.removeItem(BIN_ID_KEY);
+          showToast('⚠️ أعد الضغط على النشر');
+          status.textContent = '⚠️ أعد الضغط';
+          btn.disabled = false;
+          btn.textContent = '🚀 حفظ ونشر للكل';
+          return;
+        }
+        throw new Error('HTTP ' + res.status + ': ' + txt.slice(0,120));
+      }
+      data = await res.json();
+      if (data?.record) {
+        const now = new Date().toLocaleTimeString('ar');
+        status.className = 'publish-status ok';
+        status.textContent = '✅ آخر نشر: ' + now + ' (' + sizeKB + 'KB)';
+        showToast('🚀 تم النشر للجميع!');
+      } else {
+        throw new Error('رد غير متوقع');
+      }
+    }
+  } catch(err) {
+    status.className = 'publish-status err';
+    status.textContent = '❌ ' + err.message;
+    showToast('❌ ' + err.message.slice(0,50));
+  }
+
+  btn.disabled = false;
+  btn.textContent = '🚀 حفظ ونشر للكل';
+}
+
+// ===== تحديث الملف بالـ Bin ID وتحميله =====
+function downloadUpdatedHTML(binId) {
+  const src = document.documentElement.outerHTML;
+  const updated = src.replace(
+    "const EMBEDDED_BIN_ID = '';",
+    "const EMBEDDED_BIN_ID = '" + binId + "';"
+  );
+  const blob = new Blob([updated], {type: 'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'index.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('✅ حمّل الملف وارفعه على Cloudflare Pages');
+}
+
+async function loadFromCloud() {
+  const binId = getBinId();
+  if (!binId) return false;
+  try {
+    // Public bin — لا يحتاج key للقراءة
+    const res = await fetch(JSONBIN_API + '/b/' + binId + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_MASTER }
+    });
+    if (!res.ok) return false;
+    const data = await res.json();
+    if (!data?.record) return false;
+    const d = data.record;
+    const keys = ['products','hero','colors','social','notif','store','settings','font','theme','lang'];
+    keys.forEach(k => { if (d[k] !== undefined) S.set('aivex_' + k, d[k]); });
+    if (d.pass) S.set('aivex_admin_pass', d.pass);
+    return true;
+  } catch(e) {
+    console.warn('loadFromCloud failed:', e);
+    return false;
+  }
+}
+
+function addAdminProduct() {
+  const products = loadProducts();
+  products.push({ id: Date.now(), name:'منتج جديد', desc:'وصف المنتج', icon:'📦', img:'', imgRatio:'wide', imgScale:100, priceOld:'', priceNew:'9.99$', badge:'', badgeType:'gold', discount:'', url:'https://payhip.com/AIVEXGlobal', features:'', hasCountdown:false, countdownHours:24, category:'store' });
+  saveProductsData(products);
+  renderAdminProducts();
+  showToast('✅ تمت إضافة منتج جديد');
+}
+
+function deleteProduct(idx) {
+  if(!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+  const products = loadProducts();
+  products.splice(idx, 1);
+  saveProductsData(products);
+  renderAdminProducts();
+  renderProducts();
+  showToast('🗑️ تم الحذف');
+}
+
+function saveProducts() {
+  renderProducts();
+  showToast('✅ تم حفظ وتطبيق المنتجات!');
+}
+
+// ===== SAVE HERO =====
+function saveHero() {
+  const h = loadHero();
+  const gv = id => { const el=document.getElementById(id); return el?el.value.trim():''; };
+  h.title = gv('h-title'); h.subtitle = gv('h-subtitle'); h.desc = gv('h-desc');
+  h.badge = gv('h-badge'); h.note = gv('h-note'); h.ctaUrl = gv('h-ctaurl');
+  h.s1n=gv('s1n'); h.s1l=gv('s1l'); h.s2n=gv('s2n'); h.s2l=gv('s2l');
+  h.s3n=gv('s3n'); h.s3l=gv('s3l'); h.s4n=gv('s4n'); h.s4l=gv('s4l');
+  h.discountPct = gv('disc-pct'); h.discountLabel = gv('disc-label');
+  h.discountHours = parseInt(gv('disc-hours'))||24;
+  if(h.discountOn && !h.discountEnd) { const end=new Date(); end.setHours(end.getHours()+h.discountHours); h.discountEnd=end.toISOString(); }
+  S.set('aivex_hero', h);
+  applyHero();
+  showToast('✅ تم حفظ الرئيسية!');
+}
+
+// ===== SAVE COLORS =====
+function saveColors() {
+  const c = {
+    gold: document.getElementById('clr-gold').value,
+    glight: document.getElementById('clr-glight').value,
+    green: document.getElementById('clr-green').value,
+    red: document.getElementById('clr-red').value,
+    cardSize: parseInt(document.getElementById('cardSizeRange').value),
+    cardRadius: parseInt(document.getElementById('cardRadiusRange').value),
+    fontSize: parseInt(document.getElementById('fontSizeRange').value)
+  };
+  S.set('aivex_colors', c);
+  applyColors();
+  showToast('✅ تم حفظ الألوان!');
+}
+function resetColors() { S.del('aivex_colors'); applyColors(); loadAdminForms(); showToast('↺ تم إعادة الألوان للافتراضي'); }
+function previewColor(inputId, swatchId) {
+  const val = document.getElementById(inputId).value;
+  const sw = document.getElementById(swatchId);
+  const txt = document.getElementById(inputId+'-txt');
+  if(sw) sw.style.background = val;
+  if(txt) txt.value = val;
+}
+function syncColorText(colorId, txtId, swatchId) {
+  const val = document.getElementById(txtId).value;
+  const c = document.getElementById(colorId);
+  const sw = document.getElementById(swatchId);
+  if(/^#[0-9A-Fa-f]{6}$/.test(val)) { if(c) c.value=val; if(sw) sw.style.background=val; }
+}
+
+// ===== TOGGLE DISCOUNT =====
+function toggleDiscount() {
+  const toggle = document.getElementById('discountToggle');
+  const label = document.getElementById('discountToggleLabel');
+  const h = loadHero();
+  h.discountOn = !h.discountOn;
+  if(h.discountOn) { const end=new Date(); end.setHours(end.getHours()+(parseInt(document.getElementById('disc-hours').value)||24)); h.discountEnd=end.toISOString(); }
+  toggle.classList.toggle('on', h.discountOn);
+  if(label) label.textContent = h.discountOn?'مفعّل':'معطّل';
+  S.set('aivex_hero', h);
+}
+
+// ===== TOGGLE NOTIF =====
+function toggleNotif() {
+  const toggle = document.getElementById('notifToggle');
+  const label = document.getElementById('notifToggleLabel');
+  const n = loadNotif();
+  n.on = !n.on;
+  toggle.classList.toggle('on', n.on);
+  if(label) label.textContent = n.on?'مفعّل':'معطّل';
+  S.set('aivex_notif', n);
+}
+
+// ===== SAVE NOTIF =====
+function saveNotif() {
+  const n = loadNotif();
+  n.text = document.getElementById('notif-text').value;
+  n.color = document.getElementById('notif-color').value;
+  S.set('aivex_notif', n);
+  applyNotif();
+  showToast('✅ تم حفظ الإشعار!');
+}
+
+// ===== SAVE SETTINGS =====
+function saveSettings() {
+  const set = {
+    siteName: document.getElementById('set-sitename').value,
+    icon: document.getElementById('set-icon').value,
+    desc: document.getElementById('set-desc').value,
+    storeUrl: document.getElementById('set-storeurl').value,
+    copy: document.getElementById('set-copy').value,
+    email: document.getElementById('set-email').value,
+    telegram: document.getElementById('set-telegram').value,
+    insta: document.getElementById('set-insta').value,
+    hours: document.getElementById('set-hours').value
+  };
+  S.set('aivex_settings', set);
+  applySettings();
+  showToast('✅ تم حفظ الإعدادات!');
+}
+
+// ===== SAVE STORE SETTINGS — FIX #4 =====
+function saveStoreSettings() {
+  S.set('aivex_store', {
+    bannerImg: _bannerImg || loadStoreSettings().bannerImg || '',
+    guaranteeImg: _guaranteeImg || loadStoreSettings().guaranteeImg || '',
+    logoImg: _logoImg || loadStoreSettings().logoImg || '',
+    aboutImg: _aboutImg || loadStoreSettings().aboutImg || ''
+  });
+  applySettings();
+  showToast('✅ تم حفظ إعدادات المتجر!');
+}
+let _bannerImg=null, _guaranteeImg=null, _logoImg=null, _aboutImg=null;
+
+function previewStoreBanner(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{ _bannerImg=e.target.result; const p=document.getElementById('storeBannerPreview'); if(p){p.src=e.target.result;p.classList.add('show');} showToast('✅ تم رفع البانر'); };
+  r.readAsDataURL(file);
+}
+function clearStoreBanner() {
+  _bannerImg=''; const ss=loadStoreSettings(); ss.bannerImg=''; S.set('aivex_store',ss); applySettings();
+  const p=document.getElementById('storeBannerPreview'); if(p){p.src='';p.classList.remove('show');}
+  showToast('✅ تم إزالة البانر');
+}
+function previewGuaranteeImg(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{ _guaranteeImg=e.target.result; const p=document.getElementById('guaranteeImgPreview'); if(p){p.src=e.target.result;p.classList.add('show');} showToast('✅ تم رفع صورة الضمان'); };
+  r.readAsDataURL(file);
+}
+function clearGuaranteeImg() {
+  _guaranteeImg=''; const ss=loadStoreSettings(); ss.guaranteeImg=''; S.set('aivex_store',ss); applySettings();
+  const p=document.getElementById('guaranteeImgPreview'); if(p){p.src='';p.classList.remove('show');}
+}
+function previewLogoImg(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{ _logoImg=e.target.result; const p=document.getElementById('logoImgPreview'); if(p){p.src=e.target.result;p.classList.add('show');} showToast('✅ تم رفع الشعار'); };
+  r.readAsDataURL(file);
+}
+function clearLogoImg() {
+  _logoImg=''; const ss=loadStoreSettings(); ss.logoImg=''; S.set('aivex_store',ss); applySettings();
+  const p=document.getElementById('logoImgPreview'); if(p){p.src='';p.classList.remove('show');}
+}
+function previewAboutImg(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{ _aboutImg=e.target.result; const p=document.getElementById('aboutImgPreview'); if(p){p.src=e.target.result;p.classList.add('show');} showToast('✅ تم رفع صورة من نحن'); };
+  r.readAsDataURL(file);
+}
+function clearAboutImg() {
+  _aboutImg=''; const ss=loadStoreSettings(); ss.aboutImg=''; S.set('aivex_store',ss); applySettings();
+  const p=document.getElementById('aboutImgPreview'); if(p){p.src='';p.classList.remove('show');}
+}
+
+// ===== HERO BG UPLOAD =====
+function previewHeroBg(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const h=loadHero(); h.bgImg=e.target.result; S.set('aivex_hero',h);
+    const p=document.getElementById('heroBgPreview'); if(p){p.src=e.target.result;p.classList.add('show');}
+    applyHero(); showToast('✅ تم رفع خلفية الهيرو');
+  };
+  r.readAsDataURL(file);
+}
+function clearHeroBg() {
+  const h=loadHero(); h.bgImg=''; S.set('aivex_hero',h);
+  const p=document.getElementById('heroBgPreview'); if(p){p.src='';p.classList.remove('show');}
+  applyHero(); showToast('✅ تم إزالة الخلفية');
+}
+
+// ===== NOTIF IMG =====
+function previewNotifImg(input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const n=loadNotif(); n.img=e.target.result; S.set('aivex_notif',n);
+    const p=document.getElementById('notifImgPreview'); if(p){p.src=e.target.result;p.classList.add('show');}
+    showToast('✅ تم رفع صورة الإشعار');
+  };
+  r.readAsDataURL(file);
+}
+
+// ===== SOCIAL ADMIN — FIX #5 =====
+function renderSocialAdmin() {
+  const list = document.getElementById('socialAdminList');
+  if(!list) return;
+  list.innerHTML = '';
+  const social = loadSocial();
+  social.forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'admin-section-block';
+    row.style.marginBottom = '12px';
+    row.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">${item.label}</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(${i})">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="${escHtml(item.label||'')}" onchange="updateSocial(${i},'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="${escHtml(item.icon||'')}" onchange="updateSocial(${i},'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="${escHtml(item.url||'')}" onchange="updateSocial(${i},'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="${item.color||'#d4a843'}" onchange="updateSocial(${i},'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">${item.color||'#d4a843'}</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-${i}').click()">
+            ${item.img ? `<img src="${item.img}" alt="">` : (item.icon||'+')}
+          </div>
+          <input type="file" id="socImg-${i}" accept="image/*" style="display:none" onchange="handleSocialImg(${i},this)">
+          ${item.img ? `<button class="admin-btn admin-btn-gray" style="margin-top:6px;padding:4px 10px;font-size:11px" onclick="clearSocialImg(${i})">✕ إزالة</button>` : ''}
+        </div>
+      </div>
+    `;
+    list.appendChild(row);
+  });
+}
+
+function updateSocial(idx, key, val) {
+  const social = loadSocial();
+  if(social[idx]) social[idx][key]=val;
+  S.set('aivex_social', social);
+}
+function handleSocialImg(idx, input) {
+  const file=input.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const social=loadSocial();
+    if(social[idx]) social[idx].img=e.target.result;
+    S.set('aivex_social',social);
+    renderSocialAdmin();
+    showToast('✅ تم رفع الأيقونة!');
+  };
+  r.readAsDataURL(file);
+}
+function clearSocialImg(idx) {
+  const social=loadSocial(); if(social[idx]) social[idx].img='';
+  S.set('aivex_social',social); renderSocialAdmin();
+}
+function addSocialRow() {
+  const social=loadSocial();
+  social.push({ icon:'🌐', label:'منصة جديدة', url:'#', color:'#d4a843', img:'' });
+  S.set('aivex_social',social); renderSocialAdmin();
+}
+function deleteSocialRow(idx) {
+  const social=loadSocial(); social.splice(idx,1);
+  S.set('aivex_social',social); renderSocialAdmin();
+}
+function saveSocial() {
+  applySocial();
+  showToast('✅ تم حفظ روابط التواصل!');
+}
+
+// ===== EXPORT SITE — FIXED v3: no script tags inside JS strings =====
+function exportSite() {
+  showToast('⏳ جاري تجهيز الملف...');
+  const allData = {
+    products: loadProducts(),
+    hero: loadHero(),
+    colors: loadColors(),
+    social: loadSocial(),
+    notif: loadNotif(),
+    store: loadStoreSettings(),
+    settings: loadSettings(),
+    font: loadFontId(),
+    pass: loadPassword(),
+    theme: S.get('aivex_theme','dark'),
+    lang: S.get('aivex_lang','ar')
+  };
+
+  // Build script tag safely using char codes — avoids HTML parser confusion
+  const SO = '\x3C' + 'script\x3E';    // open-script-tag
+  const SC = '\x3C' + '/script\x3E';   // close-script-tag
+  const dataJson = JSON.stringify(allData);
+
+  const dataBlock = SO + '(function(){' +
+    'var d=' + dataJson + ';' +
+    'var k=["products","hero","colors","social","notif","store","settings","font","theme","lang"];' +
+    'k.forEach(function(n){try{localStorage.setItem("aivex_"+n,JSON.stringify(d[n]));}catch(e){}});' +
+    'try{localStorage.setItem("aivex_admin_pass",JSON.stringify(d.pass));}catch(e){}' +
+    '})();' + SC;
+
+  fetch(location.href)
+    .then(function(r){ return r.text(); })
+    .then(function(src){
+      // Remove old embedded data block if present
+      var clean = src.split('AIVEX_EXPORT_DATA_START')[0];
+      if(clean === src) clean = src; // no marker found, use full src
+      // Insert before </body>
+      var final = clean.replace('</body>', '<!-- AIVEX_EXPORT_DATA_START -->' + dataBlock + '\n</body>');
+      doDownload(final);
+    })
+    .catch(function(){
+      // Fallback for file:// — close admin panel then capture DOM
+      var ov = document.getElementById('adminOverlay');
+      if(ov) ov.classList.remove('open');
+      setTimeout(function(){
+        var src = document.documentElement.outerHTML;
+        var final = src.replace('</body>', '<!-- AIVEX_EXPORT_DATA_START -->' + dataBlock + '\n</body>');
+        doDownload(final);
+      }, 300);
+    });
+}
+
+function doDownload(html) {
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'index.html';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('✅ تم تحميل index.html — ارفعه على Netlify!');
+}
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', async () => {
+  // Try load from cloud first
+  const loaded = await loadFromCloud();
+  // Apply font first
+  applyFont(loadFontId());
+  // Apply colors
+  applyColors();
+  // Apply settings
+  applySettings();
+  // Apply hero
+  applyHero();
+  // Render products
+  renderProducts();
+  // Apply social
+  applySocial();
+  // Apply notif
+  applyNotif();
+  // Theme
+  const t=S.get('aivex_theme','dark');
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('themeBall').textContent = t==='light'?'☀️':'🌙';
+  // Admin keyboard shortcut: Ctrl+Shift+A
+  document.addEventListener('keydown', e => {
+    if(e.ctrlKey && e.shiftKey && e.key==='A') openAdmin();
+  });
+  // Update publish status if bin exists
+  const binId = getBinId();
+  if(binId) {
+    const s = document.getElementById('publishStatus');
+    if(s) { s.className='publish-status ok'; s.textContent = '✅ Bin متصل: ' + binId.slice(0,8) + '...'; }
+  }
+});
+</script>
+</body>
+</html>
+
