@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
-<head>
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar" style="--body-font: 'Tajawal', sans-serif; --primary-color: #d4a843; --primary-light: #f5c842; --gold: #d4a843; --gold-light: #f5c842; --accent-color: #00cc44; --green: #00cc44; --red: #ff4040; --product-card-size: 290px; --product-card-radius: 16px;"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIVEX Global — أيفيكس العالمية</title>
-<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #d4a843; --gold-light: #f5c842; --green: #00cc44; --red: #ff4040;
@@ -445,10 +443,10 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 }
 </style>
 </head>
-<body>
+<body style="font-size: 16px;">
 
 <!-- NOTIFICATION BANNER -->
-<div id="notifBanner">
+<div id="notifBanner" style="display: none;">
   <img id="notifBannerImg" src="" alt="">
   <span id="notifBannerText">🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!</span>
 </div>
@@ -468,7 +466,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="lang-btn" id="langEn" onclick="setLang('en')">EN</div>
     </div>
     <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
-      <div class="theme-toggle-ball" id="themeBall">🌙</div>
+      <div class="theme-toggle-ball" id="themeBall">☀️</div>
     </div>
     <a id="navStoreBtn" href="https://payhip.com/AIVEXGlobal" class="nav-shop-btn" target="_blank">🛒 <span class="ar">المتجر</span><span class="en">Store</span></a>
     <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
@@ -529,7 +527,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
         </div>
       </div>
       <a id="heroCta" href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تصفح المنتجات</span><span class="en">Browse Products</span></a>
-      <span class="hero-note" id="heroNote">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
+      <span class="hero-note" id="heroNote">✓ تسليم فوري · ✓ دفع آمن · ✓ ضمان 30 يوم</span>
       <div class="hero-stats">
         <div class="stat-box"><span class="stat-num" id="stat1Num">500+</span><span class="stat-lbl" id="stat1Lbl">عميل راضٍ</span></div>
         <div class="stat-box"><span class="stat-num" id="stat2Num">12</span><span class="stat-lbl" id="stat2Lbl">منتج رقمي</span></div>
@@ -585,10 +583,62 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <h2 class="sec-title"><span class="ar">متجر <span>AIVEX</span></span><span class="en">AIVEX <span>Store</span></span></h2>
     <div class="gold-line"></div>
     <img id="storeBannerImg" class="store-banner" src="" alt="" style="display:none">
-    <div class="products-grid" id="productsGrid"></div>
+    <div class="products-grid" id="productsGrid"><div class="product-card">
+    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">📈</span><div class="badge badge-l badge-gold">الأكثر مبيعاً</div><div class="badge badge-r badge-red">-50%</div></div>
+    
+    <div class="product-body">
+      <div class="product-name">تداول بذكاء: الدعم والمقاومة</div>
+      <div class="product-desc">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</div>
+      <ul class="product-features"><li>استراتيجيات مجربة</li><li>أمثلة حقيقية</li><li>تحديثات مجانية</li></ul>
+      <div class="product-footer">
+        <div><span class="price-old">40$</span><span class="price-new">20$</span></div>
+        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
+      </div>
+    </div>
+    
+  </div><div class="product-card">
+    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">📱</span><div class="badge badge-l badge-green">جديد</div><div class="badge badge-r badge-red">-57%</div></div>
+    
+    <div class="product-body">
+      <div class="product-name">الربح من الإنستقرام</div>
+      <div class="product-desc">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</div>
+      <ul class="product-features"><li>خطة يومية 30 يوم</li><li>بدون رأس مال</li><li>دعم بعد الشراء</li></ul>
+      <div class="product-footer">
+        <div><span class="price-old">30$</span><span class="price-new">12.99$</span></div>
+        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
+      </div>
+    </div>
+    
+  </div><div class="product-card">
+    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">💻</span><div class="badge badge-l badge-gold">ممتار </div><div class="badge badge-r badge-red">-57%</div></div>
+    
+    <div class="product-body">
+      <div class="product-name">دليل العمل الحر</div>
+      <div class="product-desc">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</div>
+      <ul class="product-features"><li>إيجاد أول عميل</li><li>تسعير الخدمات</li><li>أفضل المنصات</li></ul>
+      <div class="product-footer">
+        <div><span class="price-old">35$</span><span class="price-new">14.99$</span></div>
+        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
+      </div>
+    </div>
+    
+  </div><div class="product-card">
+    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">🤑</span><div class="badge badge-l badge-green">اكثر مبيعاً</div><div class="badge badge-r badge-red">-50%</div></div>
+    
+    <div class="product-body">
+      <div class="product-name">اربح من Google AdSense </div>
+      <div class="product-desc">اربح من مدونات قوقل ادسنس ومجان وطريقه تحقيق اول 100$ في 20 يوم</div>
+      <ul class="product-features"><li>Manifesting millions isn’t luck, it’s mindset 💸✨</li></ul>
+      <div class="product-footer">
+        <div><span class="price-old">19.99$</span><span class="price-new">9.99$</span></div>
+        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
+      </div>
+    </div>
+    
+  </div></div>
     <div style="margin-top:48px">
       <div class="guarantee-box" id="guaranteeBox">
-        <span class="g-icon" id="guaranteeIcon">🛡️</span>
+        <span class="g-icon" id="guaranteeIcon" style="display: block;">🛡️</span>
         <img id="guaranteeImg" class="guarantee-box-img" src="" alt="" style="display:none">
         <h3><span class="ar">ضمان استرداد كامل لمدة 30 يوم</span><span class="en">Full 30-Day Money Back Guarantee</span></h3>
         <p><span class="ar">إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</span><span class="en">If you're not satisfied, we'll refund you in full within 30 days — no questions asked.</span></p>
@@ -612,7 +662,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title">التداول الآلي</div><div class="content-card-text">مقدمة في بوتات التداول وكيفية استخدامها لتنفيذ الاستراتيجيات تلقائياً.</div></div>
       <div class="content-card"><span class="content-card-icon">🧭</span><div class="content-card-title">تحليل الاتجاهات</div><div class="content-card-text">كيف تحدد اتجاه السوق وتتداول معه لا ضده لتحقيق نتائج أفضل.</div></div>
     </div>
-    <div id="cat-products-trading" class="cat-products-grid"></div>
+    <div id="cat-products-trading" class="cat-products-grid" style="display: none;"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">هل أنت مستعد <span>للتداول؟</span></span><span class="en">Ready to <span>Trade?</span></span></h2><p><span class="ar">احصل على دليل الدعم والمقاومة الشامل الآن</span><span class="en">Get the comprehensive guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -632,7 +682,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">📧</span><div class="content-card-title">التسويق بالبريد</div><div class="content-card-text">بناء قائمة بريدية وكيفية تحويلها إلى مصدر دخل مستمر وموثوق.</div></div>
       <div class="content-card"><span class="content-card-icon">🏪</span><div class="content-card-title">التجارة الإلكترونية</div><div class="content-card-text">أساسيات فتح متجر إلكتروني وبيع المنتجات عبر الإنترنت بشكل احترافي.</div></div>
     </div>
-    <div id="cat-products-digital" class="cat-products-grid"></div>
+    <div id="cat-products-digital" class="cat-products-grid" style="display: none;"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">ابدأ رحلة <span>الربح الرقمي</span></span><span class="en">Start <span>Digital Earning</span></span></h2><p><span class="ar">احصل على دليل الربح من إنستقرام الآن</span><span class="en">Get the Instagram income guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -652,7 +702,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title">منصات العمل الحر</div><div class="content-card-text">أفضل المنصات مثل Upwork وFreelancer وكيف تنجح فيها.</div></div>
       <div class="content-card"><span class="content-card-icon">📈</span><div class="content-card-title">تطوير دخلك</div><div class="content-card-text">كيف تنتقل من العمل بالساعة إلى نماذج دخل أكثر ربحية واستدامة.</div></div>
     </div>
-    <div id="cat-products-freelance" class="cat-products-grid"></div>
+    <div id="cat-products-freelance" class="cat-products-grid" style="display: none;"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">ابدأ <span>العمل الحر</span> اليوم</span><span class="en">Start <span>Freelancing</span> Today</span></h2><p><span class="ar">احصل على دليل العمل الحر الشامل الآن</span><span class="en">Get the comprehensive freelance guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -672,7 +722,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">📚</span><div class="content-card-title">التعلم المستمر</div><div class="content-card-text">كيف تتعلم بسرعة وفعالية وتطبق ما تتعلمه لتحقيق نتائج ملموسة.</div></div>
       <div class="content-card"><span class="content-card-icon">🌟</span><div class="content-card-title">بناء الثقة بالنفس</div><div class="content-card-text">استراتيجيات بناء الثقة بالنفس والتغلب على الخوف من الفشل.</div></div>
     </div>
-    <div id="cat-products-selfdev" class="cat-products-grid"></div>
+    <div id="cat-products-selfdev" class="cat-products-grid" style="display: none;"></div>
   </div>
 </div>
 
@@ -726,7 +776,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
         <div class="contact-item"><div class="contact-item-icon">⏰</div><div><span class="contact-item-label"><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></span><span class="contact-item-value" id="contactHours"><span class="ar">السبت – الخميس: 9ص – 10م</span><span class="en">Sat – Thu: 9AM – 10PM</span></span></div></div>
         <div style="margin-top:8px">
           <div style="font-size:11px;color:var(--primary-color);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><span class="ar">تواصل اجتماعي</span><span class="en">Social Media</span></div>
-          <div class="footer-social" id="contactSocialIcons"></div>
+          <div class="footer-social" id="contactSocialIcons"><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تويتر / X">𝕏</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="فيسبوك">📘</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="إنستقرام">📸</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="يوتيوب">▶️</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تيليغرام">✈️</a></div>
         </div>
       </div>
       <div class="contact-form">
@@ -765,8 +815,8 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div>
         <div class="footer-brand-name admin-trigger" onclick="openAdmin()" title="لوحة التحكم" id="footerBrandName">AIVEX GLOBAL</div>
         <span class="footer-brand-sub" id="footerBrandSub">أيفيكس العالمية</span>
-        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للتعليم المالي والمنتجات الرقمية.</p>
-        <div class="footer-social" id="footerSocialIcons"></div>
+        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات</p>
+        <div class="footer-social" id="footerSocialIcons"><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تويتر / X">𝕏</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="فيسبوك">📘</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="إنستقرام">📸</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="يوتيوب">▶️</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تيليغرام">✈️</a></div>
       </div>
       <div>
         <div class="footer-col-title"><span class="ar">الأقسام</span><span class="en">Sections</span></div>
@@ -801,11 +851,11 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
   </div>
 </footer>
 
-<div id="toast"></div>
+<div id="toast" class="">✅ اضغط على زر التحميل!</div>
 
 <!-- ADMIN OVERLAY -->
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-login" id="adminLogin">
+<div class="admin-overlay open" id="adminOverlay">
+  <div class="admin-login" id="adminLogin" style="display: none;">
     <span class="admin-login-icon">🔐</span>
     <h2>لوحة التحكم</h2>
     <p>أدخل كلمة المرور للوصول</p>
@@ -815,7 +865,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <div style="margin-top:16px"><button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;font-family:var(--body-font)">إلغاء</button></div>
   </div>
 
-  <div class="admin-panel" id="adminPanel" style="display:none">
+  <div class="admin-panel" id="adminPanel" style="display: block;">
     <div class="admin-header">
       <div class="admin-title">⚙️ لوحة التحكم — AIVEX</div>
       <div class="admin-close" onclick="closeAdmin()">✕</div>
@@ -826,7 +876,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div style="flex:1">
         <strong>🌐 نشر للجميع — فوري</strong>
         <p>بعد أي تعديل، اضغط هذا الزر. كل الزوار سيشوفون التحديث فوراً بدون رفع أي ملف.</p>
-        <div class="publish-status" id="publishStatus">● آخر نشر: لم يتم بعد</div>
+        <div class="publish-status ok" id="publishStatus">✅ تم إنشاء الـ Bin! الآن: <button onclick="downloadUpdatedHTML('6a06b32fadc21f119aa20208')" style="background:var(--accent-color);color:#001;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-weight:900;font-family:var(--body-font);font-size:12px;margin-top:4px">⬇️ حمّل الملف المحدث وارفعه</button></div>
       </div>
       <button class="admin-btn" id="publishBtn" onclick="publishToCloud()" style="white-space:nowrap;padding:14px 28px;font-size:14px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;">🚀 حفظ ونشر للكل</button>
     </div>
@@ -856,7 +906,333 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="admin-notice">
         💡 <strong>اسحب المنتج بزر ⠿ لترتيبه.</strong> ارفع صورة لكل منتج — الصور تُحفظ داخل الملف تماماً وتظهر للجميع. اختر القسم الذي يظهر فيه المنتج. اضغط <strong>حفظ وتطبيق</strong> بعد الانتهاء.
       </div>
-      <div class="admin-products-grid" id="adminProductsList"></div>
+      <div class="admin-products-grid" id="adminProductsList"><div class="admin-product-row" draggable="true" data-idx="0">
+      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
+        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
+        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">📈 تداول بذكاء: الدعم والمقاومة</span>
+        <button class="admin-btn admin-btn-red" onclick="deleteProduct(0)">🗑️ حذف</button>
+      </div>
+      <div class="admin-field">
+        <label>اسم المنتج</label>
+        <input value="تداول بذكاء: الدعم والمقاومة" onchange="updateProd(0,'name',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>الإيموجي (بديل الصورة)</label>
+        <input value="📈" onchange="updateProd(0,'icon',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>الوصف</label>
+        <textarea onchange="updateProd(0,'desc',this.value)">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</textarea>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>المميزات (سطر لكل ميزة)</label>
+        <textarea onchange="updateProd(0,'features',this.value)">استراتيجيات مجربة
+أمثلة حقيقية
+تحديثات مجانية</textarea>
+      </div>
+      <div class="admin-field">
+        <label>السعر القديم</label>
+        <input value="39.99$" onchange="updateProd(0,'priceOld',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>السعر الجديد</label>
+        <input value="19.99$" onchange="updateProd(0,'priceNew',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>نص الشارة (مثال: جديد)</label>
+        <input value="الأكثر مبيعاً" onchange="updateProd(0,'badge',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>لون الشارة</label>
+        <select onchange="updateProd(0,'badgeType',this.value)">
+          <option value="gold" selected="">ذهبي</option>
+          <option value="green">أخضر</option>
+          <option value="red">أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>نسبة الخصم (مثال: -50%)</label>
+        <input value="-50%" onchange="updateProd(0,'discount',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>رابط الشراء</label>
+        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(0,'url',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>القسم الذي يظهر فيه المنتج</label>
+        <select onchange="updateProd(0,'category',this.value)">
+          <option value="store" selected="">المتجر (الكل)</option>
+          <option value="trading">تعلم التداول</option>
+          <option value="digital">الربح من الإنترنت</option>
+          <option value="freelance">العمل الحر</option>
+          <option value="selfdev">تطوير الذات</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <div class="multi-img-grid" id="prodImgGrid-0">
+          
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-0').click()">+</div>
+        </div>
+        <input type="file" id="prodImgMulti-0" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(0,this)">
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
+          <div class="img-ratio-btns">
+            <button class="img-ratio-btn active" onclick="setImgRatio(0,'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(0,'square',this)">مربع 1:1</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(0,'portrait',this)">عمودي 3:4</button>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-0">100</span>%</label>
+          <input type="range" min="50" max="150" value="100" oninput="setImgScale(0,this.value)">
+        </div>
+      </div>
+    </div><div class="admin-product-row" draggable="true" data-idx="1">
+      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
+        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
+        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">📱 الربح من الإنستقرام</span>
+        <button class="admin-btn admin-btn-red" onclick="deleteProduct(1)">🗑️ حذف</button>
+      </div>
+      <div class="admin-field">
+        <label>اسم المنتج</label>
+        <input value="الربح من الإنستقرام" onchange="updateProd(1,'name',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>الإيموجي (بديل الصورة)</label>
+        <input value="📱" onchange="updateProd(1,'icon',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>الوصف</label>
+        <textarea onchange="updateProd(1,'desc',this.value)">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</textarea>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>المميزات (سطر لكل ميزة)</label>
+        <textarea onchange="updateProd(1,'features',this.value)">خطة يومية 30 يوم
+بدون رأس مال
+دعم بعد الشراء</textarea>
+      </div>
+      <div class="admin-field">
+        <label>السعر القديم</label>
+        <input value="30$" onchange="updateProd(1,'priceOld',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>السعر الجديد</label>
+        <input value="12.99$" onchange="updateProd(1,'priceNew',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>نص الشارة (مثال: جديد)</label>
+        <input value="جديد" onchange="updateProd(1,'badge',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>لون الشارة</label>
+        <select onchange="updateProd(1,'badgeType',this.value)">
+          <option value="gold">ذهبي</option>
+          <option value="green" selected="">أخضر</option>
+          <option value="red">أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>نسبة الخصم (مثال: -50%)</label>
+        <input value="-57%" onchange="updateProd(1,'discount',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>رابط الشراء</label>
+        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(1,'url',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>القسم الذي يظهر فيه المنتج</label>
+        <select onchange="updateProd(1,'category',this.value)">
+          <option value="store" selected="">المتجر (الكل)</option>
+          <option value="trading">تعلم التداول</option>
+          <option value="digital">الربح من الإنترنت</option>
+          <option value="freelance">العمل الحر</option>
+          <option value="selfdev">تطوير الذات</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <div class="multi-img-grid" id="prodImgGrid-1">
+          
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-1').click()">+</div>
+        </div>
+        <input type="file" id="prodImgMulti-1" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(1,this)">
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
+          <div class="img-ratio-btns">
+            <button class="img-ratio-btn active" onclick="setImgRatio(1,'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(1,'square',this)">مربع 1:1</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(1,'portrait',this)">عمودي 3:4</button>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-1">100</span>%</label>
+          <input type="range" min="50" max="150" value="100" oninput="setImgScale(1,this.value)">
+        </div>
+      </div>
+    </div><div class="admin-product-row" draggable="true" data-idx="2">
+      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
+        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
+        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">💻 دليل العمل الحر</span>
+        <button class="admin-btn admin-btn-red" onclick="deleteProduct(2)">🗑️ حذف</button>
+      </div>
+      <div class="admin-field">
+        <label>اسم المنتج</label>
+        <input value="دليل العمل الحر" onchange="updateProd(2,'name',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>الإيموجي (بديل الصورة)</label>
+        <input value="💻" onchange="updateProd(2,'icon',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>الوصف</label>
+        <textarea onchange="updateProd(2,'desc',this.value)">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</textarea>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>المميزات (سطر لكل ميزة)</label>
+        <textarea onchange="updateProd(2,'features',this.value)">إيجاد أول عميل
+تسعير الخدمات
+أفضل المنصات</textarea>
+      </div>
+      <div class="admin-field">
+        <label>السعر القديم</label>
+        <input value="35$" onchange="updateProd(2,'priceOld',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>السعر الجديد</label>
+        <input value="14.99$" onchange="updateProd(2,'priceNew',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>نص الشارة (مثال: جديد)</label>
+        <input value="ممتار " onchange="updateProd(2,'badge',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>لون الشارة</label>
+        <select onchange="updateProd(2,'badgeType',this.value)">
+          <option value="gold" selected="">ذهبي</option>
+          <option value="green">أخضر</option>
+          <option value="red">أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>نسبة الخصم (مثال: -50%)</label>
+        <input value="-57%" onchange="updateProd(2,'discount',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>رابط الشراء</label>
+        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(2,'url',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>القسم الذي يظهر فيه المنتج</label>
+        <select onchange="updateProd(2,'category',this.value)">
+          <option value="store" selected="">المتجر (الكل)</option>
+          <option value="trading">تعلم التداول</option>
+          <option value="digital">الربح من الإنترنت</option>
+          <option value="freelance">العمل الحر</option>
+          <option value="selfdev">تطوير الذات</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <div class="multi-img-grid" id="prodImgGrid-2">
+          
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-2').click()">+</div>
+        </div>
+        <input type="file" id="prodImgMulti-2" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(2,this)">
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
+          <div class="img-ratio-btns">
+            <button class="img-ratio-btn active" onclick="setImgRatio(2,'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(2,'square',this)">مربع 1:1</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(2,'portrait',this)">عمودي 3:4</button>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-2">100</span>%</label>
+          <input type="range" min="50" max="150" value="100" oninput="setImgScale(2,this.value)">
+        </div>
+      </div>
+    </div><div class="admin-product-row" draggable="true" data-idx="3">
+      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
+        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
+        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">🤑 اربح من Google AdSense </span>
+        <button class="admin-btn admin-btn-red" onclick="deleteProduct(3)">🗑️ حذف</button>
+      </div>
+      <div class="admin-field">
+        <label>اسم المنتج</label>
+        <input value="اربح من Google AdSense " onchange="updateProd(3,'name',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>الإيموجي (بديل الصورة)</label>
+        <input value="🤑" onchange="updateProd(3,'icon',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>الوصف</label>
+        <textarea onchange="updateProd(3,'desc',this.value)">اربح من مدونات قوقل ادسنس ومجان وطريقه تحقيق اول 100$ في 20 يوم</textarea>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>المميزات (سطر لكل ميزة)</label>
+        <textarea onchange="updateProd(3,'features',this.value)">Manifesting millions isn’t luck, it’s mindset 💸✨</textarea>
+      </div>
+      <div class="admin-field">
+        <label>السعر القديم</label>
+        <input value="19.99$" onchange="updateProd(3,'priceOld',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>السعر الجديد</label>
+        <input value="9.99$" onchange="updateProd(3,'priceNew',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>نص الشارة (مثال: جديد)</label>
+        <input value="اكثر مبيعاً" onchange="updateProd(3,'badge',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>لون الشارة</label>
+        <select onchange="updateProd(3,'badgeType',this.value)">
+          <option value="gold">ذهبي</option>
+          <option value="green" selected="">أخضر</option>
+          <option value="red">أحمر</option>
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>نسبة الخصم (مثال: -50%)</label>
+        <input value="-50%" onchange="updateProd(3,'discount',this.value)">
+      </div>
+      <div class="admin-field">
+        <label>رابط الشراء</label>
+        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(3,'url',this.value)">
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>القسم الذي يظهر فيه المنتج</label>
+        <select onchange="updateProd(3,'category',this.value)">
+          <option value="store" selected="">المتجر (الكل)</option>
+          <option value="trading">تعلم التداول</option>
+          <option value="digital">الربح من الإنترنت</option>
+          <option value="freelance">العمل الحر</option>
+          <option value="selfdev">تطوير الذات</option>
+        </select>
+      </div>
+      <div class="admin-field admin-row-full">
+        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <div class="multi-img-grid" id="prodImgGrid-3">
+          
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-3').click()">+</div>
+        </div>
+        <input type="file" id="prodImgMulti-3" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(3,this)">
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
+          <div class="img-ratio-btns">
+            <button class="img-ratio-btn active" onclick="setImgRatio(3,'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(3,'square',this)">مربع 1:1</button>
+            <button class="img-ratio-btn " onclick="setImgRatio(3,'portrait',this)">عمودي 3:4</button>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-3">100</span>%</label>
+          <input type="range" min="50" max="150" value="100" oninput="setImgScale(3,this.value)">
+        </div>
+      </div>
+    </div></div>
       <button class="admin-add-btn" onclick="addAdminProduct()">+ إضافة منتج جديد</button>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gray" onclick="closeAdmin()">إغلاق</button>
@@ -951,7 +1327,39 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="admin-notice">💡 اختر خط الموقع. سيتطبق فوراً على كل النصوص. بعد الاختيار اضغط "حفظ الخط".</div>
       <div class="admin-section-block">
         <h4>🔤 خط النصوص الأساسي (عربي)</h4>
-        <div class="font-select-grid" id="fontGrid"></div>
+        <div class="font-select-grid" id="fontGrid">
+    <button class="font-opt-btn active" onclick="previewFontTemp('tajawal')" style="font-family:'Tajawal', sans-serif" id="fontbtn-tajawal">
+      تجوال (افتراضي)
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('cairo')" style="font-family:'Cairo', sans-serif" id="fontbtn-cairo">
+      القاهرة
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('almarai')" style="font-family:'Almarai', sans-serif" id="fontbtn-almarai">
+      المراعي
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('readex')" style="font-family:'Readex Pro', sans-serif" id="fontbtn-readex">
+      ريدكس برو
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('ibm')" style="font-family:'IBM Plex Arabic', sans-serif" id="fontbtn-ibm">
+      IBM بلكس
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('noto')" style="font-family:'Noto Kufi Arabic', sans-serif" id="fontbtn-noto">
+      نوتو كوفي
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('amiri')" style="font-family:'Amiri', serif" id="fontbtn-amiri">
+      أميري (كلاسيك)
+    </button>
+  
+    <button class="font-opt-btn " onclick="previewFontTemp('lateef')" style="font-family:'Lateef', serif" id="fontbtn-lateef">
+      لطيف (أنيق)
+    </button>
+  </div>
       </div>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gold" onclick="saveFont()">💾 حفظ الخط</button>
@@ -961,7 +1369,177 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <!-- TAB: SOCIAL — FIX #5 -->
     <div class="admin-content" id="adminTab-social">
       <div class="admin-notice">💡 أضف حساباتك. انقر على الأيقونة لرفع صورة مصغرة للمنصة. <strong>الرابط فقط يُفتح عند الضغط — لا يظهر للمستخدم أبداً، فقط الأيقونة والاسم.</strong></div>
-      <div id="socialAdminList"></div>
+      <div id="socialAdminList"><div class="admin-section-block" style="margin-bottom: 12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">تويتر / X</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(0)">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="تويتر / X" onchange="updateSocial(0,'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="𝕏" onchange="updateSocial(0,'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="#" onchange="updateSocial(0,'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="#000000" onchange="updateSocial(0,'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">#000000</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-0').click()">
+            𝕏
+          </div>
+          <input type="file" id="socImg-0" accept="image/*" style="display:none" onchange="handleSocialImg(0,this)">
+          
+        </div>
+      </div>
+    </div><div class="admin-section-block" style="margin-bottom: 12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">فيسبوك</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(1)">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="فيسبوك" onchange="updateSocial(1,'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="📘" onchange="updateSocial(1,'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="#" onchange="updateSocial(1,'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="#1877f2" onchange="updateSocial(1,'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">#1877f2</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-1').click()">
+            📘
+          </div>
+          <input type="file" id="socImg-1" accept="image/*" style="display:none" onchange="handleSocialImg(1,this)">
+          
+        </div>
+      </div>
+    </div><div class="admin-section-block" style="margin-bottom: 12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">إنستقرام</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(2)">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="إنستقرام" onchange="updateSocial(2,'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="📸" onchange="updateSocial(2,'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="#" onchange="updateSocial(2,'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="#e1306c" onchange="updateSocial(2,'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">#e1306c</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-2').click()">
+            📸
+          </div>
+          <input type="file" id="socImg-2" accept="image/*" style="display:none" onchange="handleSocialImg(2,this)">
+          
+        </div>
+      </div>
+    </div><div class="admin-section-block" style="margin-bottom: 12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">يوتيوب</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(3)">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="يوتيوب" onchange="updateSocial(3,'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="▶️" onchange="updateSocial(3,'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="#" onchange="updateSocial(3,'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="#ff0000" onchange="updateSocial(3,'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">#ff0000</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-3').click()">
+            ▶️
+          </div>
+          <input type="file" id="socImg-3" accept="image/*" style="display:none" onchange="handleSocialImg(3,this)">
+          
+        </div>
+      </div>
+    </div><div class="admin-section-block" style="margin-bottom: 12px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <strong style="color:var(--primary-color)">تيليغرام</strong>
+        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(4)">🗑️</button>
+      </div>
+      <div class="admin-grid-2">
+        <div class="admin-field">
+          <label>اسم المنصة</label>
+          <input value="تيليغرام" onchange="updateSocial(4,'label',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>الإيموجي / رمز</label>
+          <input value="✈️" onchange="updateSocial(4,'icon',this.value)">
+        </div>
+        <div class="admin-field admin-row-full">
+          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
+          <input value="#" onchange="updateSocial(4,'url',this.value)">
+        </div>
+        <div class="admin-field">
+          <label>لون المنصة</label>
+          <div class="color-picker-row">
+            <input type="color" value="#229ed9" onchange="updateSocial(4,'color',this.value)">
+            <span style="font-size:12px;color:var(--text-dim)">#229ed9</span>
+          </div>
+        </div>
+        <div class="admin-field">
+          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-4').click()">
+            ✈️
+          </div>
+          <input type="file" id="socImg-4" accept="image/*" style="display:none" onchange="handleSocialImg(4,this)">
+          
+        </div>
+      </div>
+    </div></div>
       <button class="admin-add-btn" onclick="addSocialRow()">+ إضافة حساب جديد</button>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gold" onclick="saveSocial()">💾 حفظ روابط التواصل</button>
@@ -1827,7 +2405,7 @@ const JSONBIN_MASTER = '$2a$10$z02fKFKrC0fwYXwqqJinI.7LtxfA0e4XPA55Y3chfwgp77Zy.
 const JSONBIN_API = 'https://api.jsonbin.io/v3';
 const BIN_ID_KEY = 'aivex_bin_id';
 // AIVEX_BIN_ID_PLACEHOLDER
-const EMBEDDED_BIN_ID = '';
+const EMBEDDED_BIN_ID = '6a06b32fadc21f119aa20208';
 
 function getBinId() { return localStorage.getItem(BIN_ID_KEY) || EMBEDDED_BIN_ID || null; }
 function setBinId(id) {
@@ -2387,6 +2965,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 });
 </script>
-</body>
-</html>
 
+
+
+</body></html>
