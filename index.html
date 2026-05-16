@@ -1,8 +1,19 @@
-<html lang="ar" dir="rtl" data-theme="light" data-lang="ar" style="--body-font: 'Tajawal', sans-serif; --primary-color: #d4a843; --primary-light: #f5c842; --gold: #d4a843; --gold-light: #f5c842; --accent-color: #00cc44; --green: #00cc44; --red: #ff4040; --product-card-size: 290px; --product-card-radius: 16px;"><head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIVEX Global — أيفيكس العالمية</title>
-<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-REQ2HM7HMZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-REQ2HM7HMZ');
+</script>
+<!-- End Google Analytics -->
+<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #d4a843; --gold-light: #f5c842; --green: #00cc44; --red: #ff4040;
@@ -38,8 +49,11 @@ body { background: var(--bg); color: var(--text); font-family: var(--body-font);
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: var(--nav-bg); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: background 0.4s, border-color 0.4s; }
 .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
-.nav-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 18px rgba(212,168,67,0.4); flex-shrink: 0; overflow: hidden; }
-.nav-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+.nav-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 18px rgba(212,168,67,0.4); flex-shrink: 0; overflow: visible; position: relative; }
+.nav-icon::before { content:''; position:absolute; inset:-3px; border-radius:50%; border:2px solid transparent; border-top-color: var(--primary-color); border-right-color: var(--primary-light); animation: spin-ring 2s linear infinite; }
+.nav-icon::after { content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid transparent; border-bottom-color: rgba(212,168,67,0.3); animation: spin-ring 3s linear infinite reverse; }
+@keyframes spin-ring { to { transform: rotate(360deg); } }
+.nav-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position:relative; z-index:1; }
 .nav-name { font-family: var(--display-font); font-size: 20px; color: var(--primary-color); letter-spacing: 4px; line-height: 1; }
 .nav-sub { font-size: 10px; color: var(--accent-color); letter-spacing: 1px; display: block; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
@@ -82,7 +96,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .page.active { display: block; }
 
 /* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 100px 24px 60px; }
+.hero { min-height: 92vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 24px 40px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,120,40,0.15) 0%, transparent 65%), radial-gradient(ellipse 50% 35% at 80% 10%, rgba(212,168,67,0.07) 0%, transparent 55%), var(--bg); transition: background 0.4s; }
 .hero-bg.has-bg-img { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
 .hero-bg.has-bg-img::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.55); }
@@ -114,11 +128,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .countdown-sep { font-size: 22px; color: var(--red); line-height: 1; align-self: flex-start; padding-top: 2px; }
 .discount-pct { background: var(--red); color: white; font-weight: 900; font-size: 18px; padding: 4px 12px; border-radius: 8px; }
 
-/* TICKER */
-.ticker { background: linear-gradient(90deg, #005a1e, #00a836, #005a1e); padding: 10px 0; overflow: hidden; white-space: nowrap; }
-.ticker-inner { display: inline-flex; gap: 60px; animation: tick 22s linear infinite; }
-@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.ticker-item { font-size: 11px; font-weight: 900; letter-spacing: 3px; color: #001a0d; text-transform: uppercase; display: inline-flex; align-items: center; gap: 14px; }
+/* TICKER - FIXED */
+.ticker { background: var(--ticker-bg, #00a836); padding: 11px 0; overflow: hidden; white-space: nowrap; position: relative; }
+.ticker-track { display: inline-flex; animation: ticker-scroll 35s linear infinite; will-change: transform; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker-item { font-size: 11px; font-weight: 900; letter-spacing: 3px; color: var(--ticker-color, #001a0d); text-transform: uppercase; display: inline-flex; align-items: center; gap: 14px; padding: 0 30px; flex-shrink: 0; white-space: nowrap; }
+
+/* WELCOME MARQUEE */
+.welcome-marquee { background: linear-gradient(135deg, rgba(212,168,67,0.08), rgba(212,168,67,0.03)); border-top: 1px solid var(--border); border-bottom: 1px solid rgba(212,168,67,0.2); overflow: hidden; padding: 14px 0; }
+.welcome-track { display: inline-flex; animation: ticker-scroll 60s linear infinite; }
+.welcome-track:hover { animation-play-state: paused; }
+.welcome-item { font-size: 13px; color: var(--primary-color); font-weight: 700; padding: 0 40px; flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
 
 /* TRUST BAR */
 .trust-bar { display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
@@ -127,13 +148,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .trust-ico { font-size: 20px; }
 
 /* SECTIONS */
-.section-wrap { padding: 90px 28px; max-width: 1100px; margin: 0 auto; }
-.section-wrap-full { padding: 90px 28px; }
-.sec-label { font-size: 10px; letter-spacing: 5px; color: var(--primary-color); text-transform: uppercase; margin-bottom: 12px; display: block; }
-.sec-title { font-weight: 900; font-size: clamp(28px, 5vw, 50px); color: var(--text); margin-bottom: 16px; line-height: 1.1; }
+.section-wrap { padding: 40px 28px; max-width: 1100px; margin: 0 auto; }
+.section-wrap-full { padding: 40px 28px; }
+.sec-label { font-size: 10px; letter-spacing: 5px; color: var(--primary-color); text-transform: uppercase; margin-bottom: 10px; display: block; }
+.sec-title { font-weight: 900; font-size: clamp(24px, 5vw, 44px); color: var(--text); margin-bottom: 12px; line-height: 1.1; }
 .sec-title span { color: var(--primary-color); }
-.sec-desc { font-size: 16px; color: var(--text-dim); line-height: 1.8; max-width: 600px; margin-bottom: 20px; }
-.gold-line { width: 50px; height: 2px; background: linear-gradient(90deg, var(--primary-color), transparent); margin-bottom: 52px; border-radius: 1px; }
+.sec-desc { font-size: 15px; color: var(--text-dim); line-height: 1.8; max-width: 600px; margin-bottom: 16px; }
+.gold-line { width: 50px; height: 2px; background: linear-gradient(90deg, var(--primary-color), transparent); margin-bottom: 32px; border-radius: 1px; }
 
 /* CATEGORY CARDS */
 .cat-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
@@ -148,15 +169,34 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .cat-section-link { font-size: 12px; color: var(--primary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
 
 /* PRODUCTS GRID */
-.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--product-card-size), 1fr)); gap: 20px; }
-.product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--product-card-radius); overflow: hidden; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); position: relative; }
-.product-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 24px 60px var(--shadow); }
-.product-card.featured { border-color: rgba(212,168,67,0.35); box-shadow: 0 0 25px rgba(212,168,67,0.1); }
-.product-img { width: 100%; background: linear-gradient(135deg, var(--bg3), var(--bg4)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; aspect-ratio: 3000 / 1994; }
+.products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media(max-width:480px){ .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@media(min-width:900px){ .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media(min-width:1200px){ .products-grid { grid-template-columns: repeat(4, 1fr); } }
+/* LUXURY PRODUCT CARDS */
+.product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--product-card-radius); overflow: hidden; transition: all 0.4s cubic-bezier(0.23,1,0.32,1); position: relative; }
+.product-card::before { content:''; position:absolute; inset:0; border-radius: var(--product-card-radius); background: linear-gradient(135deg, rgba(212,168,67,0.12), rgba(245,200,66,0.05), transparent 60%); opacity:0; transition: opacity 0.4s; z-index:0; pointer-events:none; }
+.product-card::after { content:''; position:absolute; inset:-1px; border-radius: var(--product-card-radius); background: linear-gradient(135deg, var(--primary-color), var(--primary-light), transparent 70%); opacity:0; transition: opacity 0.4s; z-index:-1; }
+.product-card:hover { border-color: rgba(212,168,67,0.5); transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 60px rgba(212,168,67,0.18), 0 0 0 1px rgba(212,168,67,0.15), 0 4px 20px var(--shadow); }
+.product-card:hover::before { opacity:1; }
+.product-card:hover::after { opacity:0.6; }
+.product-card.featured { border-color: rgba(212,168,67,0.4); box-shadow: 0 0 30px rgba(212,168,67,0.12), 0 0 0 1px rgba(212,168,67,0.1); }
+.product-card.featured::after { opacity:0.3; }
+
+/* LUXURY STORE BANNER */
+.store-banner-wrap { position:relative; width:100%; border-radius:20px; overflow:hidden; margin-bottom:36px; background: linear-gradient(135deg, #0d0d0d, #1a1200, #0d0d0d); border:1px solid rgba(212,168,67,0.2); box-shadow: 0 0 60px rgba(212,168,67,0.08); }
+.store-banner-default { width:100%; padding: 48px 28px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.store-banner-default .banner-crown { font-size:52px; filter: drop-shadow(0 0 20px rgba(212,168,67,0.6)); animation: float-crown 3s ease-in-out infinite; }
+@keyframes float-crown { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.store-banner-default h2 { font-family: var(--display-font); font-size: clamp(28px,6vw,52px); letter-spacing:5px; background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color)); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation: shine-text 3s linear infinite; }
+@keyframes shine-text { 0%{background-position:0%} 100%{background-position:200%} }
+.store-banner-default p { font-size:15px; color: var(--text-dim); max-width:400px; line-height:1.7; }
+.store-banner-default .banner-badges { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:6px; }
+.store-banner-default .banner-badge { background: rgba(212,168,67,0.1); border:1px solid rgba(212,168,67,0.3); border-radius:100px; padding:6px 16px; font-size:12px; font-weight:900; color:var(--primary-color); letter-spacing:1px; }
+.product-img { width: 100%; background: linear-gradient(135deg, var(--bg3), var(--bg4)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; aspect-ratio: 1 / 1; }
 .product-img.ratio-square { aspect-ratio: 1 / 1; }
 .product-img.ratio-portrait { aspect-ratio: 3 / 4; }
-.product-img.ratio-wide { aspect-ratio: 3000 / 1994; }
-/* FIX #1 & #7: Images always show — object-fit cover, no disappearing */
+.product-img.ratio-wide { aspect-ratio: 1 / 1; }
 .product-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block !important; }
 .product-img-emoji { position: relative; z-index: 1; font-size: 64px; }
 .badge { position: absolute; top: 12px; font-size: 11px; font-weight: 900; letter-spacing: 1px; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; z-index: 2; }
@@ -165,26 +205,27 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .badge-gold { background: var(--primary-color); color: #1a1610; }
 .badge-green { background: var(--accent-color); color: #001a0d; }
 .badge-red { background: var(--red); color: white; }
-.product-body { padding: 22px 20px; }
-.product-name { font-weight: 900; font-size: 17px; color: var(--text); margin-bottom: 8px; }
-.product-desc { font-size: 13px; color: var(--text-dim); line-height: 1.65; margin-bottom: 14px; }
-.product-features { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.product-body { padding: 18px 16px; }
+.product-name { font-weight: 900; font-size: 16px; color: var(--text); margin-bottom: 6px; }
+.product-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; margin-bottom: 12px; }
+.product-features { list-style: none; margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
 .product-features li { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 7px; }
 .product-features li::before { content: '✓'; color: var(--accent-color); font-size: 11px; font-weight: 900; flex-shrink: 0; }
-.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
-.price-old { font-size: 13px; color: var(--text-faint); text-decoration: line-through; margin-left: 6px; }
-.price-new { font-family: var(--display-font); font-size: 26px; color: var(--primary-color); }
+.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; gap: 6px; flex-wrap: wrap; }
+.price-old { font-size: 12px; color: var(--red); text-decoration: line-through; font-weight: 700; margin-left: 4px; }
+.price-new { font-size: 16px; font-weight: 900; color: var(--accent-color); }
 .buy-btn { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 12px; letter-spacing: 1px; text-decoration: none; transition: box-shadow 0.2s, transform 0.15s; white-space: nowrap; }
 .buy-btn:hover { box-shadow: 0 0 20px rgba(212,168,67,0.4); transform: scale(1.04); }
 .product-countdown-bar { background: rgba(255,64,64,0.08); border-top: 1px solid rgba(255,64,64,0.15); padding: 8px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .pcd-label { font-size: 10px; color: var(--red); letter-spacing: 1px; font-weight: 700; }
 .pcd-nums { font-family: var(--display-font); font-size: 16px; color: var(--red); letter-spacing: 2px; }
-.cat-products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--product-card-size), 1fr)); gap: 20px; margin-top: 40px; }
+.cat-products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+@media(min-width:900px){ .cat-products-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* GUARANTEE */
 .guarantee-box { background: rgba(0,204,68,0.05); border: 1px solid rgba(0,204,68,0.2); border-radius: 14px; padding: 32px; text-align: center; }
 .g-icon { font-size: 40px; display: block; margin-bottom: 12px; }
-.guarantee-box-img { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; display: block; margin: 0 auto 12px; }
+.guarantee-box-img { width: 180px; height: 180px; object-fit: contain; border-radius: 18px; display: block; margin: 0 auto 16px; }
 .guarantee-box h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 10px; }
 .guarantee-box p { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 500px; margin: 0 auto; }
 
@@ -197,13 +238,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; 
 .content-card-text { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
 
 /* FINAL CTA */
-.final-cta { padding: 90px 28px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent, rgba(212,168,67,0.04), transparent); }
+.final-cta { padding: 56px 28px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent, rgba(212,168,67,0.04), transparent); }
 .final-cta h2 { font-weight: 900; font-size: clamp(28px, 5vw, 52px); color: var(--text); margin-bottom: 16px; }
 .final-cta h2 span { color: var(--primary-color); }
 .final-cta p { font-size: 16px; color: var(--text-dim); margin-bottom: 32px; }
 
 /* STORE BANNER */
-.store-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 16px; margin-bottom: 36px; display: block; }
+.store-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 16px; display: block; }
+.store-banner-wrap.has-img .store-banner-default { display: none; }
+.store-banner-wrap.has-img .store-banner { display: block !important; }
 
 /* FAQ */
 .faq-list { display: flex; flex-direction: column; gap: 10px; }
@@ -395,7 +438,102 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 5
 .hero-cta { animation: fadeInUp 0.6s ease 0.4s both; }
 .hero-note { animation: fadeInUp 0.6s ease 0.45s both; }
 .hero-stats { animation: fadeInUp 0.6s ease 0.5s both; }
+
+/* WORD-BY-WORD HERO TYPEWRITER */
+.hero-words-wrap { min-height: 44px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.hero-word { font-size: clamp(18px,4vw,32px); font-weight: 900; color: var(--primary-color); letter-spacing: 2px; opacity: 0; transform: scale(0.7); transition: opacity 0.5s, transform 0.5s; display: none; }
+.hero-word.visible { opacity: 1; transform: scale(1); display: inline-block; animation: word-pulse 3s ease-in-out; }
+@keyframes word-pulse {
+  0% { opacity: 0; transform: scale(0.6) rotateX(30deg); }
+  20% { opacity: 1; transform: scale(1.08) rotateX(0deg); }
+  80% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+.hero-word-ring { display: inline-block; width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color); animation: ring-spin 2s linear infinite; margin-left: 10px; vertical-align: middle; border-top-color: transparent; }
+
+/* LUXURY PRODUCT WALL SHIMMER */
+.products-section-wrap { position: relative; }
+.products-section-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--primary-color), rgba(245,200,66,0.3), var(--primary-color), rgba(0,200,68,0.2), var(--primary-color));
+  background-size: 400% 400%;
+  animation: wall-shimmer 5s ease infinite;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.5;
+}
+@keyframes wall-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.luxury-wall { position: relative; border: 1px solid rgba(212,168,67,0.3); border-radius: 20px; overflow: hidden; padding: 4px; background: var(--bg); }
+.luxury-wall::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,168,67,0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: wall-scan 3s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 20px;
+}
+@keyframes wall-scan {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+.luxury-wall .products-grid { position: relative; z-index: 1; }
+
+/* STORE BANNER LUXURY */
+.store-banner-wrap {
+  position: relative; width: 100%; border-radius: 20px; overflow: hidden; margin-bottom: 36px;
+  background: linear-gradient(135deg, #0d0d0d, #1a1200, #0d0800, #1a1200, #0d0d0d);
+  border: 1px solid rgba(212,168,67,0.35);
+  box-shadow: 0 0 60px rgba(212,168,67,0.15), 0 0 120px rgba(212,168,67,0.06), inset 0 1px 0 rgba(212,168,67,0.2);
+  animation: banner-glow 4s ease-in-out infinite alternate;
+}
+@keyframes banner-glow {
+  from { box-shadow: 0 0 40px rgba(212,168,67,0.1), inset 0 1px 0 rgba(212,168,67,0.15); }
+  to { box-shadow: 0 0 80px rgba(212,168,67,0.25), 0 0 160px rgba(212,168,67,0.1), inset 0 1px 0 rgba(212,168,67,0.3); }
+}
+.store-banner-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), var(--primary-light), var(--primary-color), transparent);
+  animation: banner-line 3s linear infinite;
+  z-index: 5;
+}
+@keyframes banner-line {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+.store-banner-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(0,200,68,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* REVIEWS AT BOTTOM */
+.reviews-bottom-section { padding: 40px 28px; max-width: 1100px; margin: 0 auto; }
+
+/* REDUCE GAPS */
+.section-wrap { padding: 32px 24px; max-width: 1100px; margin: 0 auto; }
+.section-wrap-full { padding: 32px 24px; }
+.final-cta { padding: 40px 28px; }
+.hero { min-height: 85vh; padding: 70px 24px 32px; }
+.trust-bar { padding: 4px 0; }
+.trust-item { padding: 14px 18px; }
+.gold-line { margin-bottom: 24px; }
 input[type="range"] { width: 100%; accent-color: var(--primary-color); }
+@keyframes ring-spin { to { transform: rotate(360deg); } }
 
 /* PRODUCT GALLERY */
 .product-gallery { position: relative; }
@@ -405,8 +543,8 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 .gallery-dots { display: flex; justify-content: center; gap: 5px; padding: 8px 0 4px; }
 .gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; padding: 0; }
 .gallery-dot.active { background: var(--primary-color); transform: scale(1.3); }
-.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background 0.2s; }
-.gallery-arrow:hover { background: rgba(212,168,67,0.7); }
+.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.2); color: white; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background 0.2s; line-height: 1; }
+.gallery-arrow:hover { background: rgba(212,168,67,0.8); }
 .gallery-arrow-prev { right: 8px; }
 .gallery-arrow-next { left: 8px; }
 .gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; font-size: 10px; padding: 2px 7px; border-radius: 10px; z-index: 5; }
@@ -431,9 +569,9 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 @media(max-width:768px) {
   nav { padding: 12px 16px; }
   .nav-shop-btn { display: none; }
-  .section-wrap,.section-wrap-full,.content-section { padding: 70px 16px; }
-  .final-cta { padding: 70px 16px; }
-  footer { padding: 44px 16px 24px; }
+  .section-wrap,.section-wrap-full,.content-section { padding: 50px 16px; }
+  .final-cta { padding: 44px 16px; }
+  footer { padding: 36px 16px 24px; }
   .stat-box { min-width: 90px; }
   .admin-panel { padding: 22px 16px; }
   .admin-login { padding: 36px 24px; }
@@ -443,10 +581,10 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 }
 </style>
 </head>
-<body style="font-size: 16px;">
+<body>
 
 <!-- NOTIFICATION BANNER -->
-<div id="notifBanner" style="display: none;">
+<div id="notifBanner">
   <img id="notifBannerImg" src="" alt="">
   <span id="notifBannerText">🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!</span>
 </div>
@@ -466,7 +604,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="lang-btn" id="langEn" onclick="setLang('en')">EN</div>
     </div>
     <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
-      <div class="theme-toggle-ball" id="themeBall">☀️</div>
+      <div class="theme-toggle-ball" id="themeBall">🌙</div>
     </div>
     <a id="navStoreBtn" href="https://payhip.com/AIVEXGlobal" class="nav-shop-btn" target="_blank">🛒 <span class="ar">المتجر</span><span class="en">Store</span></a>
     <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
@@ -491,6 +629,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
   <span class="sidebar-section-title"><span class="ar">أقسام التعلم</span><span class="en">Learning</span></span>
   <a class="sidebar-nav-item" onclick="showPage('trading')"><div class="nav-item-icon">📈</div> <span class="ar">تعلم التداول</span><span class="en">Trading</span></a>
   <a class="sidebar-nav-item" onclick="showPage('digital')"><div class="nav-item-icon">💰</div> <span class="ar">الربح من الإنترنت</span><span class="en">Online Income</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('telegram')"><div class="nav-item-icon">✈️</div> <span class="ar">الربح من تيليجرام</span><span class="en">Telegram Income</span></a>
   <a class="sidebar-nav-item" onclick="showPage('freelance')"><div class="nav-item-icon">💻</div> <span class="ar">العمل الحر</span><span class="en">Freelance</span></a>
   <a class="sidebar-nav-item" onclick="showPage('selfdev')"><div class="nav-item-icon">🧠</div> <span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a>
   <div class="sidebar-divider"></div>
@@ -511,6 +650,9 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <div class="hero-content">
       <div class="hero-badge"><div class="badge-dot"></div> <span id="heroBadgeText">منتجات رقمية احترافية · متاحة الآن</span></div>
       <h1 class="hero-title" id="heroTitle">تداول بذكاء</h1>
+      <div class="hero-words-wrap" id="heroWordsWrap">
+        <span class="hero-word" id="heroWordEl"></span>
+      </div>
       <span class="hero-en" id="heroSubtitle">AIVEX GLOBAL</span>
       <p class="hero-desc" id="heroDesc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</p>
       <div class="discount-banner" id="discountBannerEl" style="display:none">
@@ -527,7 +669,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
         </div>
       </div>
       <a id="heroCta" href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تصفح المنتجات</span><span class="en">Browse Products</span></a>
-      <span class="hero-note" id="heroNote">✓ تسليم فوري · ✓ دفع آمن · ✓ ضمان 30 يوم</span>
+      <span class="hero-note" id="heroNote">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
       <div class="hero-stats">
         <div class="stat-box"><span class="stat-num" id="stat1Num">500+</span><span class="stat-lbl" id="stat1Lbl">عميل راضٍ</span></div>
         <div class="stat-box"><span class="stat-num" id="stat2Num">12</span><span class="stat-lbl" id="stat2Lbl">منتج رقمي</span></div>
@@ -536,7 +678,19 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       </div>
     </div>
   </section>
-  <div class="ticker"><div class="ticker-inner"><span class="ticker-item">📈 تداول احترافي <span>◆</span></span><span class="ticker-item">💰 ربح رقمي <span>◆</span></span><span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span><span class="ticker-item">⚡ تسليم فوري <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 دفع آمن <span>◆</span></span><span class="ticker-item">📈 تداول احترافي <span>◆</span></span><span class="ticker-item">💰 ربح رقمي <span>◆</span></span><span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span><span class="ticker-item">⚡ تسليم فوري <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 دفع آمن <span>◆</span></span></div></div>
+  <div class="ticker"><div class="ticker-track" id="tickerTrack"><span class="ticker-item">📈 <span class="ar">تداول احترافي</span><span class="en">Professional Trading</span> <span>◆</span></span><span class="ticker-item">💰 <span class="ar">ربح رقمي</span><span class="en">Digital Income</span> <span>◆</span></span><span class="ticker-item">✅ <span class="ar">ضمان 30 يوم</span><span class="en">30-Day Guarantee</span> <span>◆</span></span><span class="ticker-item">⚡ <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span> <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 <span class="ar">دفع آمن</span><span class="en">Secure Payment</span> <span>◆</span></span><span class="ticker-item">🐺 <span class="ar">أيفيكس العالمية</span><span class="en">AIVEX Global</span> <span>◆</span></span><span class="ticker-item">💎 <span class="ar">جودة عالية</span><span class="en">Premium Quality</span> <span>◆</span></span><span class="ticker-item">📈 <span class="ar">تداول احترافي</span><span class="en">Professional Trading</span> <span>◆</span></span><span class="ticker-item">💰 <span class="ar">ربح رقمي</span><span class="en">Digital Income</span> <span>◆</span></span><span class="ticker-item">✅ <span class="ar">ضمان 30 يوم</span><span class="en">30-Day Guarantee</span> <span>◆</span></span><span class="ticker-item">⚡ <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span> <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 <span class="ar">دفع آمن</span><span class="en">Secure Payment</span> <span>◆</span></span><span class="ticker-item">🐺 <span class="ar">أيفيكس العالمية</span><span class="en">AIVEX Global</span> <span>◆</span></span><span class="ticker-item">💎 <span class="ar">جودة عالية</span><span class="en">Premium Quality</span> <span>◆</span></span></div></div>
+  <div class="welcome-marquee">
+    <div class="welcome-track">
+      <span class="welcome-item">🔥 <span class="ar">مرحبًا بك في أيفيكس العالمية</span><span class="en">Welcome to AIVEX Global</span> — AIVEX Global 🐺</span>
+      <span class="welcome-item">⚜ <span class="ar">جودة عالية</span><span class="en">High Quality</span> &nbsp;·&nbsp; 🛡 <span class="ar">ضمان ذهبي</span><span class="en">Golden Guarantee</span> &nbsp;·&nbsp; 📈 <span class="ar">خبرات عملية</span><span class="en">Real Experience</span> &nbsp;·&nbsp; 💎 <span class="ar">محتوى حصري</span><span class="en">Exclusive Content</span></span>
+      <span class="welcome-item">🔥 <span class="ar">بوابتك نحو الاحتراف والربح الرقمي — ابدأ رحلتك الآن واصنع نسختك الأقوى</span><span class="en">Your gateway to mastery and digital income — Start your journey now</span></span>
+      <span class="welcome-item">⚜ <span class="ar">جودة عالية</span><span class="en">High Quality</span> &nbsp;·&nbsp; 🛡 <span class="ar">ضمان ذهبي</span><span class="en">Golden Guarantee</span> &nbsp;·&nbsp; 📈 <span class="ar">خبرات عملية</span><span class="en">Real Experience</span> &nbsp;·&nbsp; 💎 <span class="ar">محتوى حصري</span><span class="en">Exclusive Content</span></span>
+      <span class="welcome-item">🔥 <span class="ar">مرحبًا بك في أيفيكس العالمية</span><span class="en">Welcome to AIVEX Global</span> — AIVEX Global 🐺</span>
+      <span class="welcome-item">⚜ <span class="ar">جودة عالية</span><span class="en">High Quality</span> &nbsp;·&nbsp; 🛡 <span class="ar">ضمان ذهبي</span><span class="en">Golden Guarantee</span> &nbsp;·&nbsp; 📈 <span class="ar">خبرات عملية</span><span class="en">Real Experience</span> &nbsp;·&nbsp; 💎 <span class="ar">محتوى حصري</span><span class="en">Exclusive Content</span></span>
+      <span class="welcome-item">🔥 <span class="ar">بوابتك نحو الاحتراف والربح الرقمي — ابدأ رحلتك الآن واصنع نسختك الأقوى</span><span class="en">Your gateway to mastery and digital income — Start your journey now</span></span>
+      <span class="welcome-item">⚜ <span class="ar">جودة عالية</span><span class="en">High Quality</span> &nbsp;·&nbsp; 🛡 <span class="ar">ضمان ذهبي</span><span class="en">Golden Guarantee</span> &nbsp;·&nbsp; 📈 <span class="ar">خبرات عملية</span><span class="en">Real Experience</span> &nbsp;·&nbsp; 💎 <span class="ar">محتوى حصري</span><span class="en">Exclusive Content</span></span>
+    </div>
+  </div>
   <div class="trust-bar">
     <div class="trust-item"><span class="trust-ico">🔒</span> <span class="ar">دفع آمن 100%</span><span class="en">100% Secure</span></div>
     <div class="trust-item"><span class="trust-ico">⚡</span> <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span></div>
@@ -551,28 +705,33 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <div class="cat-sections">
       <div class="cat-section-card" onclick="showPage('trading')"><div class="cat-section-icon">📈</div><div class="cat-section-title"><span class="ar">تعلم التداول</span><span class="en">Trading</span></div><div class="cat-section-desc"><span class="ar">استراتيجيات احترافية، دعم ومقاومة، إشارات متقدمة</span><span class="en">Professional strategies, support and resistance</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
       <div class="cat-section-card" onclick="showPage('digital')"><div class="cat-section-icon">💰</div><div class="cat-section-title"><span class="ar">الربح من الإنترنت</span><span class="en">Online Income</span></div><div class="cat-section-desc"><span class="ar">إنستقرام، التسويق بالعمولة، المنتجات الرقمية</span><span class="en">Instagram, affiliate marketing, digital products</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
+      <div class="cat-section-card" onclick="showPage('telegram')"><div class="cat-section-icon">✈️</div><div class="cat-section-title"><span class="ar">الربح من تيليجرام</span><span class="en">Telegram Income</span></div><div class="cat-section-desc"><span class="ar">قنوات، بوتات، مجتمعات VIP، ومصادر دخل من تيليجرام</span><span class="en">Channels, bots, VIP communities & Telegram income</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
       <div class="cat-section-card" onclick="showPage('freelance')"><div class="cat-section-icon">💻</div><div class="cat-section-title"><span class="ar">العمل الحر</span><span class="en">Freelance</span></div><div class="cat-section-desc"><span class="ar">ابدأ من الصفر، إيجاد العملاء، تطوير دخلك</span><span class="en">Start from scratch, find clients, grow income</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
       <div class="cat-section-card" onclick="showPage('selfdev')"><div class="cat-section-icon">🧠</div><div class="cat-section-title"><span class="ar">تطوير الذات</span><span class="en">Self Development</span></div><div class="cat-section-desc"><span class="ar">عقلية الثراء، إدارة الوقت، بناء العادات</span><span class="en">Wealth mindset, time management</span></div><div class="cat-section-link"><span class="ar">اكتشف ←</span><span class="en">Explore →</span></div></div>
-    </div>
-  </div>
-  <div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-    <div class="section-wrap">
-      <span class="sec-label"><span class="ar">أسئلة شائعة</span><span class="en">FAQ</span></span>
-      <h2 class="sec-title"><span class="ar">لديك <span>سؤال؟</span></span><span class="en">Have a <span>Question?</span></span></h2>
-      <div class="gold-line"></div>
-      <div class="faq-list">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">كيف أستلم المنتج بعد الشراء؟</span><span class="en">How do I receive the product?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">تصلك رسالة بريد إلكتروني فورياً بعد الدفع تحتوي رابط التحميل. التسليم تلقائي وفوري 24/7.</span><span class="en">You'll receive an email immediately with the download link.</span></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">ما طرق الدفع المقبولة؟</span><span class="en">What payment methods?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نقبل جميع بطاقات الائتمان (Visa, Mastercard)، وPayPal، عبر منصة Payhip الآمنة.</span><span class="en">We accept all credit cards and PayPal through Payhip.</span></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل المنتجات مناسبة للمبتدئين؟</span><span class="en">Suitable for beginners?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نعم، جميع منتجاتنا مصممة لجميع المستويات من المبتدئ حتى المحترف.</span><span class="en">Yes, all products are designed for all levels.</span></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل يمكنني الحصول على استرداد؟</span><span class="en">Can I get a refund?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">بالتأكيد. نضمن استرداد كامل خلال 30 يوماً — بدون أسئلة.</span><span class="en">Absolutely, full refund within 30 days, no questions asked.</span></div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="ar">هل التحديثات مجانية؟</span><span class="en">Are updates free?</span><span class="faq-arrow">▾</span></div><div class="faq-a"><span class="ar">نعم، جميع التحديثات المستقبلية مجانية تماماً ومدى الحياة.</span><span class="en">Yes, all future updates are completely free for life.</span></div></div>
-      </div>
     </div>
   </div>
   <div class="final-cta">
     <h2><span class="ar">جاهز تبدأ <span>رحلتك؟</span></span><span class="en">Ready to Start <span>Your Journey?</span></span></h2>
     <p><span class="ar">انضم لأكثر من 500 عميل اختاروا AIVEX Global</span><span class="en">Join 500+ customers who chose AIVEX Global</span></p>
     <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تسوق الآن</span><span class="en">Shop Now</span></a>
+  </div>
+
+  <!-- REVIEWS at bottom - above social/footer -->
+  <div id="reviewsSectionHome" style="padding:32px 24px 16px;max-width:1100px;margin:0 auto;display:none">
+    <span class="sec-label"><span class="ar">آراء العملاء</span><span class="en">Customer Reviews</span></span>
+    <h2 class="sec-title"><span class="ar">ماذا قالوا <span>عنا؟</span></span><span class="en">What They <span>Say?</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+
+  <!-- FAQ at very bottom -->
+  <div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-wrap">
+      <span class="sec-label"><span class="ar">أسئلة شائعة</span><span class="en">FAQ</span></span>
+      <h2 class="sec-title"><span class="ar">لديك <span>سؤال؟</span></span><span class="en">Have a <span>Question?</span></span></h2>
+      <div class="gold-line"></div>
+      <div class="faq-list" id="faqListHome"></div>
+    </div>
   </div>
 </div>
 
@@ -582,63 +741,29 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <span class="sec-label"><span class="ar">منتجاتنا الرقمية</span><span class="en">Our Digital Products</span></span>
     <h2 class="sec-title"><span class="ar">متجر <span>AIVEX</span></span><span class="en">AIVEX <span>Store</span></span></h2>
     <div class="gold-line"></div>
-    <img id="storeBannerImg" class="store-banner" src="" alt="" style="display:none">
-    <div class="products-grid" id="productsGrid"><div class="product-card">
-    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">📈</span><div class="badge badge-l badge-gold">الأكثر مبيعاً</div><div class="badge badge-r badge-red">-50%</div></div>
-    
-    <div class="product-body">
-      <div class="product-name">تداول بذكاء: الدعم والمقاومة</div>
-      <div class="product-desc">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</div>
-      <ul class="product-features"><li>استراتيجيات مجربة</li><li>أمثلة حقيقية</li><li>تحديثات مجانية</li></ul>
-      <div class="product-footer">
-        <div><span class="price-old">40$</span><span class="price-new">20$</span></div>
-        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
+    <div class="store-banner-wrap" id="storeBannerWrap">
+      <img id="storeBannerImg" class="store-banner" src="" alt="" style="display:none">
+      <div class="store-banner-default" id="storeBannerDefault">
+        <span class="banner-crown" style="position:relative">
+          👑
+          <span style="position:absolute;top:-5px;right:-5px;width:14px;height:14px;background:var(--accent-color);border-radius:50%;animation:pulse 1.5s infinite;display:inline-block;"></span>
+        </span>
+        <h2><span class="ar">متجر أيفيكس العالمية</span><span class="en">AIVEX Global Store</span></h2>
+        <p><span class="ar">منتجات رقمية احترافية — اختر ما يناسبك وابدأ رحلة النجاح</span><span class="en">Premium digital products — choose what suits you and start your success journey</span></p>
+        <div class="banner-badges">
+          <span class="banner-badge">⚡ <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span></span>
+          <span class="banner-badge">🛡 <span class="ar">ضمان 30 يوم</span><span class="en">30-Day Guarantee</span></span>
+          <span class="banner-badge">💎 <span class="ar">جودة عالية</span><span class="en">Premium Quality</span></span>
+          <span class="banner-badge">🌍 <span class="ar">متاح عالمياً</span><span class="en">Worldwide</span></span>
+        </div>
       </div>
     </div>
-    
-  </div><div class="product-card">
-    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">📱</span><div class="badge badge-l badge-green">جديد</div><div class="badge badge-r badge-red">-57%</div></div>
-    
-    <div class="product-body">
-      <div class="product-name">الربح من الإنستقرام</div>
-      <div class="product-desc">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</div>
-      <ul class="product-features"><li>خطة يومية 30 يوم</li><li>بدون رأس مال</li><li>دعم بعد الشراء</li></ul>
-      <div class="product-footer">
-        <div><span class="price-old">30$</span><span class="price-new">12.99$</span></div>
-        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
-      </div>
+    <div class="luxury-wall">
+    <div class="products-grid" id="productsGrid"></div>
     </div>
-    
-  </div><div class="product-card">
-    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">💻</span><div class="badge badge-l badge-gold">ممتار </div><div class="badge badge-r badge-red">-57%</div></div>
-    
-    <div class="product-body">
-      <div class="product-name">دليل العمل الحر</div>
-      <div class="product-desc">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</div>
-      <ul class="product-features"><li>إيجاد أول عميل</li><li>تسعير الخدمات</li><li>أفضل المنصات</li></ul>
-      <div class="product-footer">
-        <div><span class="price-old">35$</span><span class="price-new">14.99$</span></div>
-        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
-      </div>
-    </div>
-    
-  </div><div class="product-card">
-    <div class="product-img ratio-wide product-gallery"><span class="product-img-emoji">🤑</span><div class="badge badge-l badge-green">اكثر مبيعاً</div><div class="badge badge-r badge-red">-50%</div></div>
-    
-    <div class="product-body">
-      <div class="product-name">اربح من Google AdSense </div>
-      <div class="product-desc">اربح من مدونات قوقل ادسنس ومجان وطريقه تحقيق اول 100$ في 20 يوم</div>
-      <ul class="product-features"><li>Manifesting millions isn’t luck, it’s mindset 💸✨</li></ul>
-      <div class="product-footer">
-        <div><span class="price-old">19.99$</span><span class="price-new">9.99$</span></div>
-        <a href="https://payhip.com/AIVEXGlobal" class="buy-btn" target="_blank">🛒 اشترِ</a>
-      </div>
-    </div>
-    
-  </div></div>
     <div style="margin-top:48px">
       <div class="guarantee-box" id="guaranteeBox">
-        <span class="g-icon" id="guaranteeIcon" style="display: block;">🛡️</span>
+        <span class="g-icon" id="guaranteeIcon">🛡️</span>
         <img id="guaranteeImg" class="guarantee-box-img" src="" alt="" style="display:none">
         <h3><span class="ar">ضمان استرداد كامل لمدة 30 يوم</span><span class="en">Full 30-Day Money Back Guarantee</span></h3>
         <p><span class="ar">إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</span><span class="en">If you're not satisfied, we'll refund you in full within 30 days — no questions asked.</span></p>
@@ -662,7 +787,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title">التداول الآلي</div><div class="content-card-text">مقدمة في بوتات التداول وكيفية استخدامها لتنفيذ الاستراتيجيات تلقائياً.</div></div>
       <div class="content-card"><span class="content-card-icon">🧭</span><div class="content-card-title">تحليل الاتجاهات</div><div class="content-card-text">كيف تحدد اتجاه السوق وتتداول معه لا ضده لتحقيق نتائج أفضل.</div></div>
     </div>
-    <div id="cat-products-trading" class="cat-products-grid" style="display: none;"></div>
+    <div id="cat-products-trading" class="cat-products-grid"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">هل أنت مستعد <span>للتداول؟</span></span><span class="en">Ready to <span>Trade?</span></span></h2><p><span class="ar">احصل على دليل الدعم والمقاومة الشامل الآن</span><span class="en">Get the comprehensive guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -682,7 +807,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">📧</span><div class="content-card-title">التسويق بالبريد</div><div class="content-card-text">بناء قائمة بريدية وكيفية تحويلها إلى مصدر دخل مستمر وموثوق.</div></div>
       <div class="content-card"><span class="content-card-icon">🏪</span><div class="content-card-title">التجارة الإلكترونية</div><div class="content-card-text">أساسيات فتح متجر إلكتروني وبيع المنتجات عبر الإنترنت بشكل احترافي.</div></div>
     </div>
-    <div id="cat-products-digital" class="cat-products-grid" style="display: none;"></div>
+    <div id="cat-products-digital" class="cat-products-grid"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">ابدأ رحلة <span>الربح الرقمي</span></span><span class="en">Start <span>Digital Earning</span></span></h2><p><span class="ar">احصل على دليل الربح من إنستقرام الآن</span><span class="en">Get the Instagram income guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -702,7 +827,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title">منصات العمل الحر</div><div class="content-card-text">أفضل المنصات مثل Upwork وFreelancer وكيف تنجح فيها.</div></div>
       <div class="content-card"><span class="content-card-icon">📈</span><div class="content-card-title">تطوير دخلك</div><div class="content-card-text">كيف تنتقل من العمل بالساعة إلى نماذج دخل أكثر ربحية واستدامة.</div></div>
     </div>
-    <div id="cat-products-freelance" class="cat-products-grid" style="display: none;"></div>
+    <div id="cat-products-freelance" class="cat-products-grid"></div>
   </div>
   <div class="final-cta"><h2><span class="ar">ابدأ <span>العمل الحر</span> اليوم</span><span class="en">Start <span>Freelancing</span> Today</span></h2><p><span class="ar">احصل على دليل العمل الحر الشامل الآن</span><span class="en">Get the comprehensive freelance guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
@@ -722,8 +847,28 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="content-card"><span class="content-card-icon">📚</span><div class="content-card-title">التعلم المستمر</div><div class="content-card-text">كيف تتعلم بسرعة وفعالية وتطبق ما تتعلمه لتحقيق نتائج ملموسة.</div></div>
       <div class="content-card"><span class="content-card-icon">🌟</span><div class="content-card-title">بناء الثقة بالنفس</div><div class="content-card-text">استراتيجيات بناء الثقة بالنفس والتغلب على الخوف من الفشل.</div></div>
     </div>
-    <div id="cat-products-selfdev" class="cat-products-grid" style="display: none;"></div>
+    <div id="cat-products-selfdev" class="cat-products-grid"></div>
   </div>
+</div>
+
+<!-- PAGE: TELEGRAM -->
+<div class="page" id="page-telegram">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning Section</span></span>
+    <h2 class="sec-title"><span class="ar">الربح من <span>تيليجرام</span></span><span class="en">Telegram <span>Income</span></span></h2>
+    <p class="sec-desc"><span class="ar">اكتشف كيف تحوّل تيليجرام إلى مصدر دخل حقيقي ومستمر من القنوات والمجتمعات والبوتات</span><span class="en">Discover how to turn Telegram into a real, recurring income source through channels, communities, and bots</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📢</span><div class="content-card-title"><span class="ar">بناء قناة ناجحة</span><span class="en">Build a Successful Channel</span></div><div class="content-card-text"><span class="ar">كيف تنشئ قناة تيليجرام تجذب آلاف المتابعين وتحافظ عليهم بمحتوى قيّم ومستمر.</span><span class="en">How to create a Telegram channel that attracts thousands of subscribers with valuable content.</span></div></div>
+      <div class="content-card"><span class="content-card-icon">💎</span><div class="content-card-title"><span class="ar">اشتراكات VIP</span><span class="en">VIP Subscriptions</span></div><div class="content-card-text"><span class="ar">نموذج الاشتراكات المدفوعة — كيف تحوّل متابعيك المجانيين إلى مشتركين VIP يدفعون شهرياً.</span><span class="en">The paid subscription model — how to convert free followers into paying VIP members.</span></div></div>
+      <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title"><span class="ar">بوتات تيليجرام</span><span class="en">Telegram Bots</span></div><div class="content-card-text"><span class="ar">استخدام البوتات لأتمتة قناتك وإدارة المشتركين وتقديم خدمات مدفوعة تلقائياً.</span><span class="en">Using bots to automate your channel, manage subscribers, and deliver paid services automatically.</span></div></div>
+      <div class="content-card"><span class="content-card-icon">📣</span><div class="content-card-title"><span class="ar">التسويق عبر تيليجرام</span><span class="en">Telegram Marketing</span></div><div class="content-card-text"><span class="ar">كيف تروّج لمنتجاتك وخدماتك عبر تيليجرام وتحقق مبيعات حقيقية من قاعدة متابعيك.</span><span class="en">How to promote your products and services on Telegram and generate real sales from your audience.</span></div></div>
+      <div class="content-card"><span class="content-card-icon">🔗</span><div class="content-card-title"><span class="ar">الإعلانات والرعاية</span><span class="en">Ads & Sponsorships</span></div><div class="content-card-text"><span class="ar">كيف تحصل على إعلانات ورعايات مدفوعة لقناتك بعد وصولها لعدد متابعين كافٍ.</span><span class="en">How to get paid ads and sponsorships for your channel once it reaches enough subscribers.</span></div></div>
+      <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title"><span class="ar">شبكة قنوات متعددة</span><span class="en">Multi-Channel Network</span></div><div class="content-card-text"><span class="ar">بناء شبكة من قنوات تيليجرام في نفس المجال لمضاعفة دخلك وتنويع مصادره.</span><span class="en">Building a network of Telegram channels in the same niche to multiply and diversify your income.</span></div></div>
+    </div>
+    <div id="cat-products-telegram" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">ابدأ ربحك من <span>تيليجرام</span> اليوم</span><span class="en">Start Earning from <span>Telegram</span> Today</span></h2><p><span class="ar">احصل على دليل تيليجرام الشامل الآن</span><span class="en">Get the comprehensive Telegram income guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
 </div>
 
 <!-- PAGE: SOCIAL — FIX #5 & #6 -->
@@ -761,32 +906,21 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
   </div>
 </div>
 
-<!-- PAGE: CONTACT — FIX #6 -->
+<!-- PAGE: CONTACT — redirects to social -->
 <div class="page" id="page-contact">
-  <div class="section-wrap" style="padding-top:110px">
+  <div class="section-wrap" style="padding-top:110px;text-align:center">
     <span class="sec-label"><span class="ar">تواصل معنا</span><span class="en">Get In Touch</span></span>
     <h2 class="sec-title"><span class="ar">اتصل <span>بنا</span></span><span class="en">Contact <span>Us</span></span></h2>
-    <p class="sec-desc"><span class="ar">نحن هنا للإجابة على جميع استفساراتك. تواصل معنا وسنرد خلال 24 ساعة.</span><span class="en">We're here to answer all your questions. Contact us and we'll respond within 24 hours.</span></p>
     <div class="gold-line"></div>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="contact-item"><div class="contact-item-icon">📧</div><div><span class="contact-item-label"><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></span><span class="contact-item-value" id="contactEmail">support@aivex-global.com</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">✈️</div><div><span class="contact-item-label"><span class="ar">تيليغرام</span><span class="en">Telegram</span></span><span class="contact-item-value" id="contactTelegram">@AIVEXGlobal</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">📸</div><div><span class="contact-item-label"><span class="ar">إنستقرام</span><span class="en">Instagram</span></span><span class="contact-item-value" id="contactInsta">@AIVEXGlobal</span></div></div>
-        <div class="contact-item"><div class="contact-item-icon">⏰</div><div><span class="contact-item-label"><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></span><span class="contact-item-value" id="contactHours"><span class="ar">السبت – الخميس: 9ص – 10م</span><span class="en">Sat – Thu: 9AM – 10PM</span></span></div></div>
-        <div style="margin-top:8px">
-          <div style="font-size:11px;color:var(--primary-color);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><span class="ar">تواصل اجتماعي</span><span class="en">Social Media</span></div>
-          <div class="footer-social" id="contactSocialIcons"><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تويتر / X">𝕏</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="فيسبوك">📘</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="إنستقرام">📸</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="يوتيوب">▶️</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تيليغرام">✈️</a></div>
-        </div>
-      </div>
-      <div class="contact-form">
-        <h3><span class="ar">أرسل رسالة</span><span class="en">Send Message</span></h3>
-        <div class="form-group"><label class="form-label"><span class="ar">الاسم</span><span class="en">Name</span></label><input class="form-input" type="text" placeholder="اسمك الكريم"></div>
-        <div class="form-group"><label class="form-label"><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label><input class="form-input" type="email" placeholder="بريدك الإلكتروني"></div>
-        <div class="form-group"><label class="form-label"><span class="ar">الرسالة</span><span class="en">Message</span></label><textarea class="form-textarea" placeholder="كيف يمكننا مساعدتك؟"></textarea></div>
-        <button class="form-submit" onclick="showToast('✅ شكراً! سنتواصل معك قريباً.')"><span class="ar">إرسال الرسالة</span><span class="en">Send Message</span></button>
-      </div>
+    <div class="contact-info" style="max-width:500px;margin:0 auto 32px">
+      <div class="contact-item"><div class="contact-item-icon">📧</div><div><span class="contact-item-label"><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></span><span class="contact-item-value" id="contactEmail">support@aivex-global.com</span></div></div>
+      <div class="contact-item"><div class="contact-item-icon">✈️</div><div><span class="contact-item-label"><span class="ar">تيليغرام</span><span class="en">Telegram</span></span><span class="contact-item-value" id="contactTelegram">@AIVEXGlobal</span></div></div>
+      <div class="contact-item"><div class="contact-item-icon">📸</div><div><span class="contact-item-label"><span class="ar">إنستقرام</span><span class="en">Instagram</span></span><span class="contact-item-value" id="contactInsta">@AIVEXGlobal</span></div></div>
+      <div class="contact-item"><div class="contact-item-icon">⏰</div><div><span class="contact-item-label"><span class="ar">ساعات العمل</span><span class="en">Working Hours</span></span><span class="contact-item-value" id="contactHours"><span class="ar">السبت – الخميس: 9ص – 10م</span><span class="en">Sat – Thu: 9AM – 10PM</span></span></div></div>
     </div>
+    <button class="hero-cta" onclick="showPage('social')" style="font-size:14px;padding:14px 36px">
+      <span class="ar">📱 تواصل اجتماعي</span><span class="en">📱 Social Media</span>
+    </button>
   </div>
 </div>
 
@@ -815,14 +949,15 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div>
         <div class="footer-brand-name admin-trigger" onclick="openAdmin()" title="لوحة التحكم" id="footerBrandName">AIVEX GLOBAL</div>
         <span class="footer-brand-sub" id="footerBrandSub">أيفيكس العالمية</span>
-        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات</p>
-        <div class="footer-social" id="footerSocialIcons"><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تويتر / X">𝕏</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="فيسبوك">📘</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="إنستقرام">📸</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="يوتيوب">▶️</a><a href="javascript:void(0)" target="_blank" rel="noopener" class="social-btn" title="تيليغرام">✈️</a></div>
+        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للتعليم المالي والمنتجات الرقمية.</p>
+        <div class="footer-social" id="footerSocialIcons"></div>
       </div>
       <div>
         <div class="footer-col-title"><span class="ar">الأقسام</span><span class="en">Sections</span></div>
         <ul class="footer-links">
           <li><a onclick="showPage('trading')"><span class="ar">التداول</span><span class="en">Trading</span></a></li>
           <li><a onclick="showPage('digital')"><span class="ar">الربح الرقمي</span><span class="en">Online Income</span></a></li>
+          <li><a onclick="showPage('telegram')"><span class="ar">الربح من تيليجرام</span><span class="en">Telegram Income</span></a></li>
           <li><a onclick="showPage('freelance')"><span class="ar">العمل الحر</span><span class="en">Freelance</span></a></li>
           <li><a onclick="showPage('selfdev')"><span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a></li>
         </ul>
@@ -851,11 +986,11 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
   </div>
 </footer>
 
-<div id="toast" class="">✅ اضغط على زر التحميل!</div>
+<div id="toast"></div>
 
 <!-- ADMIN OVERLAY -->
-<div class="admin-overlay open" id="adminOverlay">
-  <div class="admin-login" id="adminLogin" style="display: none;">
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-login" id="adminLogin">
     <span class="admin-login-icon">🔐</span>
     <h2>لوحة التحكم</h2>
     <p>أدخل كلمة المرور للوصول</p>
@@ -865,7 +1000,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <div style="margin-top:16px"><button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;font-family:var(--body-font)">إلغاء</button></div>
   </div>
 
-  <div class="admin-panel" id="adminPanel" style="display: block;">
+  <div class="admin-panel" id="adminPanel" style="display:none">
     <div class="admin-header">
       <div class="admin-title">⚙️ لوحة التحكم — AIVEX</div>
       <div class="admin-close" onclick="closeAdmin()">✕</div>
@@ -876,7 +1011,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div style="flex:1">
         <strong>🌐 نشر للجميع — فوري</strong>
         <p>بعد أي تعديل، اضغط هذا الزر. كل الزوار سيشوفون التحديث فوراً بدون رفع أي ملف.</p>
-        <div class="publish-status ok" id="publishStatus">✅ تم إنشاء الـ Bin! الآن: <button onclick="downloadUpdatedHTML('6a06b32fadc21f119aa20208')" style="background:var(--accent-color);color:#001;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-weight:900;font-family:var(--body-font);font-size:12px;margin-top:4px">⬇️ حمّل الملف المحدث وارفعه</button></div>
+        <div class="publish-status" id="publishStatus">● آخر نشر: لم يتم بعد</div>
       </div>
       <button class="admin-btn" id="publishBtn" onclick="publishToCloud()" style="white-space:nowrap;padding:14px 28px;font-size:14px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;">🚀 حفظ ونشر للكل</button>
     </div>
@@ -891,14 +1026,27 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 
     <div class="admin-tabs">
       <div class="admin-tab active" onclick="switchAdminTab('products')">🛒 المنتجات</div>
+      <div class="admin-tab" onclick="switchAdminTab('sections')">📚 الأقسام</div>
       <div class="admin-tab" onclick="switchAdminTab('hero')">🏠 الرئيسية</div>
       <div class="admin-tab" onclick="switchAdminTab('colors')">🎨 الألوان</div>
       <div class="admin-tab" onclick="switchAdminTab('fonts')">🔤 الخطوط</div>
       <div class="admin-tab" onclick="switchAdminTab('social')">📱 التواصل</div>
       <div class="admin-tab" onclick="switchAdminTab('notif')">🔔 الإشعار</div>
       <div class="admin-tab" onclick="switchAdminTab('store')">🏪 إعدادات المتجر</div>
+      <div class="admin-tab" onclick="switchAdminTab('ticker')">📢 الشريط</div>
+      <div class="admin-tab" onclick="switchAdminTab('guarantee')">🛡️ الضمان والأسئلة</div>
       <div class="admin-tab" onclick="switchAdminTab('settings')">⚙️ الإعدادات</div>
       <div class="admin-tab" onclick="switchAdminTab('password')">🔐 كلمة المرور</div>
+    </div>
+
+    <!-- TAB: SECTIONS -->
+    <div class="admin-content" id="adminTab-sections">
+      <div class="admin-notice">💡 أضف وعدّل بطاقات الأقسام التعليمية (التداول، الربح، العمل الحر، تطوير الذات).</div>
+      <div id="sectionsAdminList"></div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="addSectionCard()">+ إضافة بطاقة</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveSections()">💾 حفظ الأقسام</button>
+      </div>
     </div>
 
     <!-- TAB: PRODUCTS — FIX #1,2,3,7,8 -->
@@ -906,333 +1054,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="admin-notice">
         💡 <strong>اسحب المنتج بزر ⠿ لترتيبه.</strong> ارفع صورة لكل منتج — الصور تُحفظ داخل الملف تماماً وتظهر للجميع. اختر القسم الذي يظهر فيه المنتج. اضغط <strong>حفظ وتطبيق</strong> بعد الانتهاء.
       </div>
-      <div class="admin-products-grid" id="adminProductsList"><div class="admin-product-row" draggable="true" data-idx="0">
-      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
-        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
-        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">📈 تداول بذكاء: الدعم والمقاومة</span>
-        <button class="admin-btn admin-btn-red" onclick="deleteProduct(0)">🗑️ حذف</button>
-      </div>
-      <div class="admin-field">
-        <label>اسم المنتج</label>
-        <input value="تداول بذكاء: الدعم والمقاومة" onchange="updateProd(0,'name',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>الإيموجي (بديل الصورة)</label>
-        <input value="📈" onchange="updateProd(0,'icon',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>الوصف</label>
-        <textarea onchange="updateProd(0,'desc',this.value)">دليل شامل لإتقان مستويات الدعم والمقاومة وتحويلها إلى صفقات رابحة.</textarea>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>المميزات (سطر لكل ميزة)</label>
-        <textarea onchange="updateProd(0,'features',this.value)">استراتيجيات مجربة
-أمثلة حقيقية
-تحديثات مجانية</textarea>
-      </div>
-      <div class="admin-field">
-        <label>السعر القديم</label>
-        <input value="39.99$" onchange="updateProd(0,'priceOld',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>السعر الجديد</label>
-        <input value="19.99$" onchange="updateProd(0,'priceNew',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>نص الشارة (مثال: جديد)</label>
-        <input value="الأكثر مبيعاً" onchange="updateProd(0,'badge',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>لون الشارة</label>
-        <select onchange="updateProd(0,'badgeType',this.value)">
-          <option value="gold" selected="">ذهبي</option>
-          <option value="green">أخضر</option>
-          <option value="red">أحمر</option>
-        </select>
-      </div>
-      <div class="admin-field">
-        <label>نسبة الخصم (مثال: -50%)</label>
-        <input value="-50%" onchange="updateProd(0,'discount',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>رابط الشراء</label>
-        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(0,'url',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>القسم الذي يظهر فيه المنتج</label>
-        <select onchange="updateProd(0,'category',this.value)">
-          <option value="store" selected="">المتجر (الكل)</option>
-          <option value="trading">تعلم التداول</option>
-          <option value="digital">الربح من الإنترنت</option>
-          <option value="freelance">العمل الحر</option>
-          <option value="selfdev">تطوير الذات</option>
-        </select>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
-        <div class="multi-img-grid" id="prodImgGrid-0">
-          
-          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-0').click()">+</div>
-        </div>
-        <input type="file" id="prodImgMulti-0" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(0,this)">
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
-          <div class="img-ratio-btns">
-            <button class="img-ratio-btn active" onclick="setImgRatio(0,'wide',this)">أفقي 3000×1994</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(0,'square',this)">مربع 1:1</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(0,'portrait',this)">عمودي 3:4</button>
-          </div>
-        </div>
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-0">100</span>%</label>
-          <input type="range" min="50" max="150" value="100" oninput="setImgScale(0,this.value)">
-        </div>
-      </div>
-    </div><div class="admin-product-row" draggable="true" data-idx="1">
-      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
-        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
-        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">📱 الربح من الإنستقرام</span>
-        <button class="admin-btn admin-btn-red" onclick="deleteProduct(1)">🗑️ حذف</button>
-      </div>
-      <div class="admin-field">
-        <label>اسم المنتج</label>
-        <input value="الربح من الإنستقرام" onchange="updateProd(1,'name',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>الإيموجي (بديل الصورة)</label>
-        <input value="📱" onchange="updateProd(1,'icon',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>الوصف</label>
-        <textarea onchange="updateProd(1,'desc',this.value)">خطة 30 يوم لتحقيق أول 100$ من إنستقرام بدون رأس مال.</textarea>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>المميزات (سطر لكل ميزة)</label>
-        <textarea onchange="updateProd(1,'features',this.value)">خطة يومية 30 يوم
-بدون رأس مال
-دعم بعد الشراء</textarea>
-      </div>
-      <div class="admin-field">
-        <label>السعر القديم</label>
-        <input value="30$" onchange="updateProd(1,'priceOld',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>السعر الجديد</label>
-        <input value="12.99$" onchange="updateProd(1,'priceNew',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>نص الشارة (مثال: جديد)</label>
-        <input value="جديد" onchange="updateProd(1,'badge',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>لون الشارة</label>
-        <select onchange="updateProd(1,'badgeType',this.value)">
-          <option value="gold">ذهبي</option>
-          <option value="green" selected="">أخضر</option>
-          <option value="red">أحمر</option>
-        </select>
-      </div>
-      <div class="admin-field">
-        <label>نسبة الخصم (مثال: -50%)</label>
-        <input value="-57%" onchange="updateProd(1,'discount',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>رابط الشراء</label>
-        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(1,'url',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>القسم الذي يظهر فيه المنتج</label>
-        <select onchange="updateProd(1,'category',this.value)">
-          <option value="store" selected="">المتجر (الكل)</option>
-          <option value="trading">تعلم التداول</option>
-          <option value="digital">الربح من الإنترنت</option>
-          <option value="freelance">العمل الحر</option>
-          <option value="selfdev">تطوير الذات</option>
-        </select>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
-        <div class="multi-img-grid" id="prodImgGrid-1">
-          
-          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-1').click()">+</div>
-        </div>
-        <input type="file" id="prodImgMulti-1" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(1,this)">
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
-          <div class="img-ratio-btns">
-            <button class="img-ratio-btn active" onclick="setImgRatio(1,'wide',this)">أفقي 3000×1994</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(1,'square',this)">مربع 1:1</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(1,'portrait',this)">عمودي 3:4</button>
-          </div>
-        </div>
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-1">100</span>%</label>
-          <input type="range" min="50" max="150" value="100" oninput="setImgScale(1,this.value)">
-        </div>
-      </div>
-    </div><div class="admin-product-row" draggable="true" data-idx="2">
-      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
-        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
-        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">💻 دليل العمل الحر</span>
-        <button class="admin-btn admin-btn-red" onclick="deleteProduct(2)">🗑️ حذف</button>
-      </div>
-      <div class="admin-field">
-        <label>اسم المنتج</label>
-        <input value="دليل العمل الحر" onchange="updateProd(2,'name',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>الإيموجي (بديل الصورة)</label>
-        <input value="💻" onchange="updateProd(2,'icon',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>الوصف</label>
-        <textarea onchange="updateProd(2,'desc',this.value)">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً.</textarea>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>المميزات (سطر لكل ميزة)</label>
-        <textarea onchange="updateProd(2,'features',this.value)">إيجاد أول عميل
-تسعير الخدمات
-أفضل المنصات</textarea>
-      </div>
-      <div class="admin-field">
-        <label>السعر القديم</label>
-        <input value="35$" onchange="updateProd(2,'priceOld',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>السعر الجديد</label>
-        <input value="14.99$" onchange="updateProd(2,'priceNew',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>نص الشارة (مثال: جديد)</label>
-        <input value="ممتار " onchange="updateProd(2,'badge',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>لون الشارة</label>
-        <select onchange="updateProd(2,'badgeType',this.value)">
-          <option value="gold" selected="">ذهبي</option>
-          <option value="green">أخضر</option>
-          <option value="red">أحمر</option>
-        </select>
-      </div>
-      <div class="admin-field">
-        <label>نسبة الخصم (مثال: -50%)</label>
-        <input value="-57%" onchange="updateProd(2,'discount',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>رابط الشراء</label>
-        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(2,'url',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>القسم الذي يظهر فيه المنتج</label>
-        <select onchange="updateProd(2,'category',this.value)">
-          <option value="store" selected="">المتجر (الكل)</option>
-          <option value="trading">تعلم التداول</option>
-          <option value="digital">الربح من الإنترنت</option>
-          <option value="freelance">العمل الحر</option>
-          <option value="selfdev">تطوير الذات</option>
-        </select>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
-        <div class="multi-img-grid" id="prodImgGrid-2">
-          
-          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-2').click()">+</div>
-        </div>
-        <input type="file" id="prodImgMulti-2" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(2,this)">
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
-          <div class="img-ratio-btns">
-            <button class="img-ratio-btn active" onclick="setImgRatio(2,'wide',this)">أفقي 3000×1994</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(2,'square',this)">مربع 1:1</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(2,'portrait',this)">عمودي 3:4</button>
-          </div>
-        </div>
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-2">100</span>%</label>
-          <input type="range" min="50" max="150" value="100" oninput="setImgScale(2,this.value)">
-        </div>
-      </div>
-    </div><div class="admin-product-row" draggable="true" data-idx="3">
-      <div class="admin-actions" style="grid-column:1/-1;margin-top:0;margin-bottom:8px;background:var(--bg2);padding:8px 12px;border-radius:8px">
-        <div class="product-drag-handle" title="اسحب لترتيب">⠿</div>
-        <span style="font-weight:900;font-size:14px;color:var(--primary-color);flex:1">🤑 اربح من Google AdSense </span>
-        <button class="admin-btn admin-btn-red" onclick="deleteProduct(3)">🗑️ حذف</button>
-      </div>
-      <div class="admin-field">
-        <label>اسم المنتج</label>
-        <input value="اربح من Google AdSense " onchange="updateProd(3,'name',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>الإيموجي (بديل الصورة)</label>
-        <input value="🤑" onchange="updateProd(3,'icon',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>الوصف</label>
-        <textarea onchange="updateProd(3,'desc',this.value)">اربح من مدونات قوقل ادسنس ومجان وطريقه تحقيق اول 100$ في 20 يوم</textarea>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>المميزات (سطر لكل ميزة)</label>
-        <textarea onchange="updateProd(3,'features',this.value)">Manifesting millions isn’t luck, it’s mindset 💸✨</textarea>
-      </div>
-      <div class="admin-field">
-        <label>السعر القديم</label>
-        <input value="19.99$" onchange="updateProd(3,'priceOld',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>السعر الجديد</label>
-        <input value="9.99$" onchange="updateProd(3,'priceNew',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>نص الشارة (مثال: جديد)</label>
-        <input value="اكثر مبيعاً" onchange="updateProd(3,'badge',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>لون الشارة</label>
-        <select onchange="updateProd(3,'badgeType',this.value)">
-          <option value="gold">ذهبي</option>
-          <option value="green" selected="">أخضر</option>
-          <option value="red">أحمر</option>
-        </select>
-      </div>
-      <div class="admin-field">
-        <label>نسبة الخصم (مثال: -50%)</label>
-        <input value="-50%" onchange="updateProd(3,'discount',this.value)">
-      </div>
-      <div class="admin-field">
-        <label>رابط الشراء</label>
-        <input value="https://payhip.com/AIVEXGlobal" onchange="updateProd(3,'url',this.value)">
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>القسم الذي يظهر فيه المنتج</label>
-        <select onchange="updateProd(3,'category',this.value)">
-          <option value="store" selected="">المتجر (الكل)</option>
-          <option value="trading">تعلم التداول</option>
-          <option value="digital">الربح من الإنترنت</option>
-          <option value="freelance">العمل الحر</option>
-          <option value="selfdev">تطوير الذات</option>
-        </select>
-      </div>
-      <div class="admin-field admin-row-full">
-        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
-        <div class="multi-img-grid" id="prodImgGrid-3">
-          
-          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-3').click()">+</div>
-        </div>
-        <input type="file" id="prodImgMulti-3" accept="image/*" multiple="" style="display:none" onchange="handleProdImgMulti(3,this)">
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
-          <div class="img-ratio-btns">
-            <button class="img-ratio-btn active" onclick="setImgRatio(3,'wide',this)">أفقي 3000×1994</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(3,'square',this)">مربع 1:1</button>
-            <button class="img-ratio-btn " onclick="setImgRatio(3,'portrait',this)">عمودي 3:4</button>
-          </div>
-        </div>
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-3">100</span>%</label>
-          <input type="range" min="50" max="150" value="100" oninput="setImgScale(3,this.value)">
-        </div>
-      </div>
-    </div></div>
+      <div class="admin-products-grid" id="adminProductsList"></div>
       <button class="admin-add-btn" onclick="addAdminProduct()">+ إضافة منتج جديد</button>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gray" onclick="closeAdmin()">إغلاق</button>
@@ -1245,9 +1067,16 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="admin-notice">💡 تحكم في نصوص وخلفية الصفحة الرئيسية وعداد الخصم.</div>
       <div class="admin-section-block">
         <h4>🖼️ خلفية الهيرو (اختياري)</h4>
+        <div class="admin-field" style="margin-bottom:10px">
+          <label>🔗 رابط الصورة (الأفضل — يظهر للجميع)</label>
+          <div style="display:flex;gap:8px">
+            <input type="text" id="heroBgUrl" placeholder="https://i.postimg.cc/..." style="flex:1">
+            <button class="admin-btn admin-btn-blue" onclick="setHeroBgUrl()" style="white-space:nowrap">✓ تطبيق</button>
+          </div>
+        </div>
         <div class="upload-area" onclick="document.getElementById('heroBgInput').click()">
           <div style="font-size:28px">🌅</div>
-          <p>انقر لرفع صورة خلفية للصفحة الرئيسية (PNG, JPG)</p>
+          <p>أو انقر لرفع صورة من جهازك (لك أنت فقط)</p>
           <img class="upload-preview" id="heroBgPreview" src="">
         </div>
         <input type="file" id="heroBgInput" accept="image/*" style="display:none" onchange="previewHeroBg(this)">
@@ -1327,39 +1156,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
       <div class="admin-notice">💡 اختر خط الموقع. سيتطبق فوراً على كل النصوص. بعد الاختيار اضغط "حفظ الخط".</div>
       <div class="admin-section-block">
         <h4>🔤 خط النصوص الأساسي (عربي)</h4>
-        <div class="font-select-grid" id="fontGrid">
-    <button class="font-opt-btn active" onclick="previewFontTemp('tajawal')" style="font-family:'Tajawal', sans-serif" id="fontbtn-tajawal">
-      تجوال (افتراضي)
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('cairo')" style="font-family:'Cairo', sans-serif" id="fontbtn-cairo">
-      القاهرة
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('almarai')" style="font-family:'Almarai', sans-serif" id="fontbtn-almarai">
-      المراعي
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('readex')" style="font-family:'Readex Pro', sans-serif" id="fontbtn-readex">
-      ريدكس برو
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('ibm')" style="font-family:'IBM Plex Arabic', sans-serif" id="fontbtn-ibm">
-      IBM بلكس
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('noto')" style="font-family:'Noto Kufi Arabic', sans-serif" id="fontbtn-noto">
-      نوتو كوفي
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('amiri')" style="font-family:'Amiri', serif" id="fontbtn-amiri">
-      أميري (كلاسيك)
-    </button>
-  
-    <button class="font-opt-btn " onclick="previewFontTemp('lateef')" style="font-family:'Lateef', serif" id="fontbtn-lateef">
-      لطيف (أنيق)
-    </button>
-  </div>
+        <div class="font-select-grid" id="fontGrid"></div>
       </div>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gold" onclick="saveFont()">💾 حفظ الخط</button>
@@ -1369,177 +1166,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
     <!-- TAB: SOCIAL — FIX #5 -->
     <div class="admin-content" id="adminTab-social">
       <div class="admin-notice">💡 أضف حساباتك. انقر على الأيقونة لرفع صورة مصغرة للمنصة. <strong>الرابط فقط يُفتح عند الضغط — لا يظهر للمستخدم أبداً، فقط الأيقونة والاسم.</strong></div>
-      <div id="socialAdminList"><div class="admin-section-block" style="margin-bottom: 12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <strong style="color:var(--primary-color)">تويتر / X</strong>
-        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(0)">🗑️</button>
-      </div>
-      <div class="admin-grid-2">
-        <div class="admin-field">
-          <label>اسم المنصة</label>
-          <input value="تويتر / X" onchange="updateSocial(0,'label',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>الإيموجي / رمز</label>
-          <input value="𝕏" onchange="updateSocial(0,'icon',this.value)">
-        </div>
-        <div class="admin-field admin-row-full">
-          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
-          <input value="#" onchange="updateSocial(0,'url',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>لون المنصة</label>
-          <div class="color-picker-row">
-            <input type="color" value="#000000" onchange="updateSocial(0,'color',this.value)">
-            <span style="font-size:12px;color:var(--text-dim)">#000000</span>
-          </div>
-        </div>
-        <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
-          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-0').click()">
-            𝕏
-          </div>
-          <input type="file" id="socImg-0" accept="image/*" style="display:none" onchange="handleSocialImg(0,this)">
-          
-        </div>
-      </div>
-    </div><div class="admin-section-block" style="margin-bottom: 12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <strong style="color:var(--primary-color)">فيسبوك</strong>
-        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(1)">🗑️</button>
-      </div>
-      <div class="admin-grid-2">
-        <div class="admin-field">
-          <label>اسم المنصة</label>
-          <input value="فيسبوك" onchange="updateSocial(1,'label',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>الإيموجي / رمز</label>
-          <input value="📘" onchange="updateSocial(1,'icon',this.value)">
-        </div>
-        <div class="admin-field admin-row-full">
-          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
-          <input value="#" onchange="updateSocial(1,'url',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>لون المنصة</label>
-          <div class="color-picker-row">
-            <input type="color" value="#1877f2" onchange="updateSocial(1,'color',this.value)">
-            <span style="font-size:12px;color:var(--text-dim)">#1877f2</span>
-          </div>
-        </div>
-        <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
-          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-1').click()">
-            📘
-          </div>
-          <input type="file" id="socImg-1" accept="image/*" style="display:none" onchange="handleSocialImg(1,this)">
-          
-        </div>
-      </div>
-    </div><div class="admin-section-block" style="margin-bottom: 12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <strong style="color:var(--primary-color)">إنستقرام</strong>
-        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(2)">🗑️</button>
-      </div>
-      <div class="admin-grid-2">
-        <div class="admin-field">
-          <label>اسم المنصة</label>
-          <input value="إنستقرام" onchange="updateSocial(2,'label',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>الإيموجي / رمز</label>
-          <input value="📸" onchange="updateSocial(2,'icon',this.value)">
-        </div>
-        <div class="admin-field admin-row-full">
-          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
-          <input value="#" onchange="updateSocial(2,'url',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>لون المنصة</label>
-          <div class="color-picker-row">
-            <input type="color" value="#e1306c" onchange="updateSocial(2,'color',this.value)">
-            <span style="font-size:12px;color:var(--text-dim)">#e1306c</span>
-          </div>
-        </div>
-        <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
-          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-2').click()">
-            📸
-          </div>
-          <input type="file" id="socImg-2" accept="image/*" style="display:none" onchange="handleSocialImg(2,this)">
-          
-        </div>
-      </div>
-    </div><div class="admin-section-block" style="margin-bottom: 12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <strong style="color:var(--primary-color)">يوتيوب</strong>
-        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(3)">🗑️</button>
-      </div>
-      <div class="admin-grid-2">
-        <div class="admin-field">
-          <label>اسم المنصة</label>
-          <input value="يوتيوب" onchange="updateSocial(3,'label',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>الإيموجي / رمز</label>
-          <input value="▶️" onchange="updateSocial(3,'icon',this.value)">
-        </div>
-        <div class="admin-field admin-row-full">
-          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
-          <input value="#" onchange="updateSocial(3,'url',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>لون المنصة</label>
-          <div class="color-picker-row">
-            <input type="color" value="#ff0000" onchange="updateSocial(3,'color',this.value)">
-            <span style="font-size:12px;color:var(--text-dim)">#ff0000</span>
-          </div>
-        </div>
-        <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
-          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-3').click()">
-            ▶️
-          </div>
-          <input type="file" id="socImg-3" accept="image/*" style="display:none" onchange="handleSocialImg(3,this)">
-          
-        </div>
-      </div>
-    </div><div class="admin-section-block" style="margin-bottom: 12px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-        <strong style="color:var(--primary-color)">تيليغرام</strong>
-        <button class="admin-btn admin-btn-red" onclick="deleteSocialRow(4)">🗑️</button>
-      </div>
-      <div class="admin-grid-2">
-        <div class="admin-field">
-          <label>اسم المنصة</label>
-          <input value="تيليغرام" onchange="updateSocial(4,'label',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>الإيموجي / رمز</label>
-          <input value="✈️" onchange="updateSocial(4,'icon',this.value)">
-        </div>
-        <div class="admin-field admin-row-full">
-          <label>الرابط (لا يظهر للمستخدم — فقط عند الضغط)</label>
-          <input value="#" onchange="updateSocial(4,'url',this.value)">
-        </div>
-        <div class="admin-field">
-          <label>لون المنصة</label>
-          <div class="color-picker-row">
-            <input type="color" value="#229ed9" onchange="updateSocial(4,'color',this.value)">
-            <span style="font-size:12px;color:var(--text-dim)">#229ed9</span>
-          </div>
-        </div>
-        <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
-          <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-4').click()">
-            ✈️
-          </div>
-          <input type="file" id="socImg-4" accept="image/*" style="display:none" onchange="handleSocialImg(4,this)">
-          
-        </div>
-      </div>
-    </div></div>
+      <div id="socialAdminList"></div>
       <button class="admin-add-btn" onclick="addSocialRow()">+ إضافة حساب جديد</button>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gold" onclick="saveSocial()">💾 حفظ روابط التواصل</button>
@@ -1572,33 +1199,90 @@ input[type="range"] { width: 100%; accent-color: var(--primary-color); }
 
     <!-- TAB: STORE SETTINGS — FIX #4 & #9 -->
     <div class="admin-content" id="adminTab-store">
-      <div class="admin-notice">💡 إعدادات المتجر: شعار الموقع، بانر المتجر، صورة الضمان، وصورة "من نحن".</div>
+      <div class="admin-notice">💡 إعدادات المتجر: شعار الموقع، بانر المتجر، صورة الضمان، وصورة "من نحن". استخدم رابط URL دائماً عشان تظهر للجميع ✅</div>
       <div class="admin-section-block">
         <h4>🔰 شعار / أيقونة الموقع</h4>
-        <div class="upload-area" onclick="document.getElementById('logoImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع شعار مربع (PNG, JPG) — يظهر في الناف والسايدبار</p><img class="upload-preview" id="logoImgPreview" src=""></div>
+        <div class="admin-field" style="margin-bottom:8px">
+          <label>🔗 رابط الشعار (يظهر للجميع)</label>
+          <div style="display:flex;gap:8px"><input type="text" id="logoImgUrl" placeholder="https://i.postimg.cc/..." style="flex:1"><button class="admin-btn admin-btn-blue" onclick="setStoreImgUrl('logo')" style="white-space:nowrap">✓ تطبيق</button></div>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('logoImgInput').click()"><div style="font-size:28px">🖼️</div><p>أو رفع من جهازك</p><img class="upload-preview" id="logoImgPreview" src=""></div>
         <input type="file" id="logoImgInput" accept="image/*" style="display:none" onchange="previewLogoImg(this)">
         <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearLogoImg()">✕ إزالة الشعار</button></div>
       </div>
       <div class="admin-section-block">
         <h4>🏪 بانر المتجر (يظهر فوق المنتجات)</h4>
-        <div class="upload-area" onclick="document.getElementById('storeBannerInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة بانر للمتجر</p><img class="upload-preview" id="storeBannerPreview" src=""></div>
+        <div class="admin-field" style="margin-bottom:8px">
+          <label>🔗 رابط البانر (يظهر للجميع)</label>
+          <div style="display:flex;gap:8px"><input type="text" id="bannerImgUrl" placeholder="https://i.postimg.cc/..." style="flex:1"><button class="admin-btn admin-btn-blue" onclick="setStoreImgUrl('banner')" style="white-space:nowrap">✓ تطبيق</button></div>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('storeBannerInput').click()"><div style="font-size:28px">🖼️</div><p>أو رفع من جهازك</p><img class="upload-preview" id="storeBannerPreview" src=""></div>
         <input type="file" id="storeBannerInput" accept="image/*" style="display:none" onchange="previewStoreBanner(this)">
         <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearStoreBanner()">✕ إزالة البانر</button></div>
       </div>
       <div class="admin-section-block">
         <h4>🛡️ صورة الضمان (في صفحة المتجر)</h4>
-        <div class="upload-area" onclick="document.getElementById('guaranteeImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة الضمان (بديل للإيموجي 🛡️)</p><img class="upload-preview" id="guaranteeImgPreview" src=""></div>
+        <div class="admin-field" style="margin-bottom:8px">
+          <label>🔗 رابط صورة الضمان (يظهر للجميع)</label>
+          <div style="display:flex;gap:8px"><input type="text" id="guaranteeImgUrl" placeholder="https://i.postimg.cc/..." style="flex:1"><button class="admin-btn admin-btn-blue" onclick="setStoreImgUrl('guarantee')" style="white-space:nowrap">✓ تطبيق</button></div>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('guaranteeImgInput').click()"><div style="font-size:28px">🖼️</div><p>أو رفع من جهازك</p><img class="upload-preview" id="guaranteeImgPreview" src=""></div>
         <input type="file" id="guaranteeImgInput" accept="image/*" style="display:none" onchange="previewGuaranteeImg(this)">
         <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearGuaranteeImg()">✕ إزالة الصورة</button></div>
       </div>
       <div class="admin-section-block">
         <h4>ℹ️ صورة "من نحن"</h4>
-        <div class="upload-area" onclick="document.getElementById('aboutImgInput').click()"><div style="font-size:28px">🖼️</div><p>انقر لرفع صورة تظهر في قسم "من نحن"</p><img class="upload-preview" id="aboutImgPreview" src=""></div>
+        <div class="admin-field" style="margin-bottom:8px">
+          <label>🔗 رابط الصورة (يظهر للجميع)</label>
+          <div style="display:flex;gap:8px"><input type="text" id="aboutImgUrl" placeholder="https://i.postimg.cc/..." style="flex:1"><button class="admin-btn admin-btn-blue" onclick="setStoreImgUrl('about')" style="white-space:nowrap">✓ تطبيق</button></div>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('aboutImgInput').click()"><div style="font-size:28px">🖼️</div><p>أو رفع من جهازك</p><img class="upload-preview" id="aboutImgPreview" src=""></div>
         <input type="file" id="aboutImgInput" accept="image/*" style="display:none" onchange="previewAboutImg(this)">
         <div style="margin-top:8px"><button class="admin-btn admin-btn-gray" onclick="clearAboutImg()">✕ إزالة الصورة</button></div>
       </div>
       <div class="admin-save-bar">
         <button class="admin-btn admin-btn-gold" onclick="saveStoreSettings()">💾 حفظ إعدادات المتجر</button>
+      </div>
+    </div>
+
+    <!-- TAB: TICKER -->
+    <div class="admin-content" id="adminTab-ticker">
+      <div class="admin-notice">💡 تحكم في الشريط المتحرك — لونه ونصوصه.</div>
+      <div class="admin-section-block">
+        <h4>🎨 لون الشريط والنص</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>لون خلفية الشريط</label><input type="color" id="tickerBgColor" value="#00a836" oninput="previewTickerColors()"></div>
+          <div class="admin-field"><label>لون النص</label><input type="color" id="tickerTextColor" value="#001a0d" oninput="previewTickerColors()"></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>✏️ نصوص الشريط</h4>
+        <div id="tickerItemsList"></div>
+        <button class="admin-btn admin-btn-gray" style="margin-top:10px" onclick="addTickerItem()">+ إضافة نص</button>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveTicker()">💾 حفظ الشريط</button>
+      </div>
+    </div>
+
+    <!-- TAB: GUARANTEE + FAQ -->
+    <div class="admin-content" id="adminTab-guarantee">
+      <div class="admin-notice">🛡️ تحكم في نص الضمان وعدد الأيام، وأضف أو عدّل الأسئلة الشائعة.</div>
+      <div class="admin-section-block">
+        <h4>🛡️ بطاقة الضمان</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>عدد أيام الضمان</label><input id="guar-days" type="number" min="1" max="365" value="30" placeholder="30"></div>
+          <div class="admin-field"><label>عنوان الضمان</label><input id="guaranteeTitle" value="ضمان استرداد كامل لمدة 30 يوم"></div>
+          <div class="admin-field admin-row-full"><label>نص الضمان</label><textarea id="guaranteeText" style="height:80px">إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</textarea></div>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>❓ الأسئلة الشائعة</h4>
+        <div id="faqAdminList"></div>
+        <button class="admin-add-btn" style="margin-top:10px" onclick="addFaqItem()">+ إضافة سؤال جديد</button>
+      </div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gold" onclick="saveGuaranteeFaq()">💾 حفظ الضمان والأسئلة</button>
       </div>
     </div>
 
@@ -1717,6 +1401,10 @@ function setLang(lang) {
   document.getElementById('langAr').classList.toggle('active', lang==='ar');
   document.getElementById('langEn').classList.toggle('active', lang==='en');
   S.set('aivex_lang', lang);
+  // Restart hero words in new language
+  stopHeroWords();
+  _heroWordIdx = 0;
+  startHeroWords();
 }
 (function() { setLang(S.get('aivex_lang', 'ar')); })();
 
@@ -1816,7 +1504,19 @@ function applySettings() {
   document.title = set.siteName + ' — أيفيكس العالمية';
   // FIX #4: Store images
   const storeBanner = document.getElementById('storeBannerImg');
-  if(storeBanner) { if(ss.bannerImg) { storeBanner.src = ss.bannerImg; storeBanner.style.display = 'block'; } else storeBanner.style.display = 'none'; }
+  const storeBannerWrap = document.getElementById('storeBannerWrap');
+  const storeBannerDefault = document.getElementById('storeBannerDefault');
+  if(storeBanner) {
+    if(ss.bannerImg) {
+      storeBanner.src = ss.bannerImg; storeBanner.style.display = 'block';
+      if(storeBannerWrap) storeBannerWrap.classList.add('has-img');
+      if(storeBannerDefault) storeBannerDefault.style.display = 'none';
+    } else {
+      storeBanner.style.display = 'none';
+      if(storeBannerWrap) storeBannerWrap.classList.remove('has-img');
+      if(storeBannerDefault) storeBannerDefault.style.display = 'flex';
+    }
+  }
   const gImg = document.getElementById('guaranteeImg');
   const gIcon = document.getElementById('guaranteeIcon');
   if(gImg && gIcon) { if(ss.guaranteeImg) { gImg.src = ss.guaranteeImg; gImg.style.display = 'block'; gIcon.style.display = 'none'; } else { gImg.style.display = 'none'; gIcon.style.display = 'block'; } }
@@ -1968,7 +1668,7 @@ function renderProducts() {
     storeProds.forEach(p => grid.appendChild(buildProductCard(p)));
   }
   // Category pages — FIX #8: products show in correct category page
-  ['trading','digital','freelance','selfdev'].forEach(cat => {
+  ['trading','digital','freelance','selfdev','telegram'].forEach(cat => {
     const catGrid = document.getElementById('cat-products-'+cat);
     if(!catGrid) return;
     const catProds = products.filter(p => p.category===cat);
@@ -1988,7 +1688,7 @@ function buildProductCard(p) {
 
   let imgHtml = '';
   if(imgs.length > 1) {
-    // Gallery mode
+    // Gallery mode — arrows + dots
     const slides = imgs.map((src,i) => `
       <div class="gallery-slide ${i===0?'active':''}">
         <img src="${src}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block">
@@ -1997,13 +1697,13 @@ function buildProductCard(p) {
     imgHtml = `
       <div class="gallery-slides" id="gs-${uid}">
         ${slides}
-        <button class="gallery-arrow gallery-arrow-prev" onclick="slideGallery('${uid}',-1)">&#10094;</button>
-        <button class="gallery-arrow gallery-arrow-next" onclick="slideGallery('${uid}',1)">&#10095;</button>
+        <button class="gallery-arrow gallery-arrow-prev" onclick="slideGallery('${uid}',-1)">&#8249;</button>
+        <button class="gallery-arrow gallery-arrow-next" onclick="slideGallery('${uid}',1)">&#8250;</button>
         <span class="gallery-counter" id="gc-${uid}">1/${imgs.length}</span>
       </div>
       <div class="gallery-dots">${dots}</div>`;
   } else if(imgs.length === 1) {
-    imgHtml = `<img src="${imgs[0]}" alt="${p.name}" style="transform:scale(${scale/100});transform-origin:center;transition:transform 0.3s;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block">`;
+    imgHtml = `<img src="${imgs[0]}" alt="${p.name}" style="transform:scale(${scale/100});transform-origin:center;width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block">`;
   } else {
     imgHtml = `<span class="product-img-emoji">${p.icon||'📦'}</span>`;
   }
@@ -2134,12 +1834,15 @@ function switchAdminTab(name) {
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.admin-content').forEach(c => c.classList.remove('active'));
   const tabs = document.querySelectorAll('.admin-tab');
-  const tabNames = ['products','hero','colors','fonts','social','notif','store','settings','password'];
+  const tabNames = ['products','sections','hero','colors','fonts','social','notif','store','ticker','guarantee','settings','password'];
   const idx = tabNames.indexOf(name);
   if(tabs[idx]) tabs[idx].classList.add('active');
   const content = document.getElementById('adminTab-'+name);
   if(content) content.classList.add('active');
   if(name==='fonts') buildFontGrid();
+  if(name==='sections') renderSectionsAdmin();
+  if(name==='ticker') renderTickerAdmin();
+  if(name==='guarantee') renderGuaranteeFaqAdmin();
 }
 
 // ===== LOAD ADMIN FORMS =====
@@ -2259,12 +1962,17 @@ function renderAdminProducts() {
           <option value="store" ${(p.category||'store')==='store'?'selected':''}>المتجر (الكل)</option>
           <option value="trading" ${p.category==='trading'?'selected':''}>تعلم التداول</option>
           <option value="digital" ${p.category==='digital'?'selected':''}>الربح من الإنترنت</option>
+          <option value="telegram" ${p.category==='telegram'?'selected':''}>الربح من تيليجرام</option>
           <option value="freelance" ${p.category==='freelance'?'selected':''}>العمل الحر</option>
           <option value="selfdev" ${p.category==='selfdev'?'selected':''}>تطوير الذات</option>
         </select>
       </div>
       <div class="admin-field admin-row-full">
-        <label>📷 صور المنتج (حتى 5 صور) — اضغط + لإضافة صورة</label>
+        <label>📷 صور المنتج — الصق رابط أو ارفع من جهازك</label>
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <input type="text" id="prodImgUrlInput-${i}" placeholder="🔗 https://i.postimg.cc/..." style="flex:1;font-size:12px" onkeydown="if(event.key==='Enter'){addProdImgFromUrl(${i});event.preventDefault();}">
+          <button class="admin-btn admin-btn-blue" style="white-space:nowrap;padding:8px 14px;font-size:12px" onclick="addProdImgFromUrl(${i})">+ إضافة رابط</button>
+        </div>
         <div class="multi-img-grid" id="prodImgGrid-${i}">
           ${(p.imgs&&p.imgs.length?p.imgs:[p.img].filter(Boolean)).map((src,si)=>`
             <div class="multi-img-thumb">
@@ -2272,20 +1980,16 @@ function renderAdminProducts() {
               <button class="del-img" onclick="deleteProdImg(${i},${si})">✕</button>
             </div>
           `).join('')}
-          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-${i}').click()">+</div>
+          <div class="multi-img-add" onclick="document.getElementById('prodImgMulti-${i}').click()">📁</div>
         </div>
         <input type="file" id="prodImgMulti-${i}" accept="image/*" multiple style="display:none" onchange="handleProdImgMulti(${i},this)">
         <div style="margin-top:10px">
           <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:6px">نسبة الصورة:</label>
           <div class="img-ratio-btns">
-            <button class="img-ratio-btn ${(p.imgRatio||'wide')==='wide'?'active':''}" onclick="setImgRatio(${i},'wide',this)">أفقي 3000×1994</button>
+            <button class="img-ratio-btn ${(p.imgRatio||'wide')==='wide'?'active':''}" onclick="setImgRatio(${i},'wide',this)">أفقي</button>
             <button class="img-ratio-btn ${p.imgRatio==='square'?'active':''}" onclick="setImgRatio(${i},'square',this)">مربع 1:1</button>
             <button class="img-ratio-btn ${p.imgRatio==='portrait'?'active':''}" onclick="setImgRatio(${i},'portrait',this)">عمودي 3:4</button>
           </div>
-        </div>
-        <div style="margin-top:10px">
-          <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">حجم الصورة: <span id="scaleVal-${i}">${p.imgScale||100}</span>%</label>
-          <input type="range" min="50" max="150" value="${p.imgScale||100}" oninput="setImgScale(${i},this.value)">
         </div>
       </div>
     `;
@@ -2392,6 +2096,26 @@ function deleteProdImg(idx, imgIdx) {
 
 // Keep old single handler for backward compat
 function handleProdImg(idx, input) { handleProdImgMulti(idx, input); }
+
+function addProdImgFromUrl(idx) {
+  const input = document.getElementById('prodImgUrlInput-' + idx);
+  if(!input) return;
+  const url = input.value.trim();
+  if(!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
+    showToast('❌ أدخل رابط صحيح يبدأ بـ https://'); return;
+  }
+  const products = loadProducts();
+  const p = products[idx];
+  if(!p.imgs) p.imgs = p.img ? [p.img] : [];
+  if(p.imgs.length >= 5) { showToast('❌ الحد الأقصى 5 صور'); return; }
+  p.imgs.push(url);
+  p.img = p.imgs[0];
+  saveProductsData(products);
+  input.value = '';
+  renderAdminProducts();
+  renderProducts();
+  showToast('✅ تمت إضافة الصورة!');
+}
 function clearProdImg(idx) {
   const products = loadProducts();
   if(products[idx]) { products[idx].img = ''; products[idx].imgs = []; }
@@ -2437,13 +2161,12 @@ async function publishToCloud() {
   status.className = 'publish-status';
   status.textContent = '● جاري الاتصال...';
 
-  // نرسل البيانات بدون الصور — الصور تبقى في localStorage فقط
+  // نرسل البيانات — نحذف base64 فقط، روابط URL تبقى
   function stripImages(products) {
     return products.map(p => {
       const c = {...p};
-      // نحتفظ بالصورة الأولى مضغوطة جداً فقط
       if(c.img && c.img.startsWith('data:')) c.img = '';
-      if(c.imgs) c.imgs = [];
+      if(c.imgs) c.imgs = c.imgs.map(s => s.startsWith('data:') ? '' : s).filter(Boolean);
       return c;
     });
   }
@@ -2458,6 +2181,10 @@ async function publishToCloud() {
     settings: loadSettings(),
     font: loadFontId(),
     pass: loadPassword(),
+    sections: loadSections ? loadSections() : {},
+    guarantee: loadGuarantee ? loadGuarantee() : {},
+    faq: loadFaq ? loadFaq() : [],
+    ticker: loadTicker ? loadTicker() : {},
     theme: S.get('aivex_theme','dark'),
     lang: S.get('aivex_lang','ar'),
     ts: Date.now()
@@ -2545,8 +2272,9 @@ async function publishToCloud() {
 // ===== تحديث الملف بالـ Bin ID وتحميله =====
 function downloadUpdatedHTML(binId) {
   const src = document.documentElement.outerHTML;
+  // استخدم regex بدل string ثابت حتى يعمل حتى لو BIN_ID موجود مسبقاً
   const updated = src.replace(
-    "const EMBEDDED_BIN_ID = '';",
+    /const EMBEDDED_BIN_ID = '[^']*';/,
     "const EMBEDDED_BIN_ID = '" + binId + "';"
   );
   const blob = new Blob([updated], {type: 'text/html;charset=utf-8'});
@@ -2571,7 +2299,7 @@ async function loadFromCloud() {
     const data = await res.json();
     if (!data?.record) return false;
     const d = data.record;
-    const keys = ['products','hero','colors','social','notif','store','settings','font','theme','lang'];
+    const keys = ['products','hero','colors','social','notif','store','settings','font','theme','lang','sections','guarantee','faq','ticker'];
     keys.forEach(k => { if (d[k] !== undefined) S.set('aivex_' + k, d[k]); });
     if (d.pass) S.set('aivex_admin_pass', d.pass);
     return true;
@@ -2756,23 +2484,6 @@ function clearAboutImg() {
   const p=document.getElementById('aboutImgPreview'); if(p){p.src='';p.classList.remove('show');}
 }
 
-// ===== HERO BG UPLOAD =====
-function previewHeroBg(input) {
-  const file=input.files[0]; if(!file) return;
-  const r=new FileReader();
-  r.onload=e=>{
-    const h=loadHero(); h.bgImg=e.target.result; S.set('aivex_hero',h);
-    const p=document.getElementById('heroBgPreview'); if(p){p.src=e.target.result;p.classList.add('show');}
-    applyHero(); showToast('✅ تم رفع خلفية الهيرو');
-  };
-  r.readAsDataURL(file);
-}
-function clearHeroBg() {
-  const h=loadHero(); h.bgImg=''; S.set('aivex_hero',h);
-  const p=document.getElementById('heroBgPreview'); if(p){p.src='';p.classList.remove('show');}
-  applyHero(); showToast('✅ تم إزالة الخلفية');
-}
-
 // ===== NOTIF IMG =====
 function previewNotifImg(input) {
   const file=input.files[0]; if(!file) return;
@@ -2821,7 +2532,10 @@ function renderSocialAdmin() {
           </div>
         </div>
         <div class="admin-field">
-          <label>أيقونة مخصصة (اضغط للرفع)</label>
+          <label>أيقونة مخصصة — رابط أو رفع</label>
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <input type="text" placeholder="🔗 رابط صورة الأيقونة" value="${escHtml(item.img&&!item.img.startsWith('data:')?item.img:'')}" onchange="setSocialImgUrl(${i},this.value)" style="flex:1;font-size:11px">
+          </div>
           <div class="social-admin-icon-preview" onclick="document.getElementById('socImg-${i}').click()">
             ${item.img ? `<img src="${item.img}" alt="">` : (item.icon||'+')}
           </div>
@@ -2855,6 +2569,13 @@ function clearSocialImg(idx) {
   const social=loadSocial(); if(social[idx]) social[idx].img='';
   S.set('aivex_social',social); renderSocialAdmin();
 }
+function setSocialImgUrl(idx, url) {
+  if(!url) return;
+  const social=loadSocial();
+  if(social[idx]) social[idx].img = url;
+  S.set('aivex_social',social);
+  applySocial();
+}
 function addSocialRow() {
   const social=loadSocial();
   social.push({ icon:'🌐', label:'منصة جديدة', url:'#', color:'#d4a843', img:'' });
@@ -2882,6 +2603,9 @@ function exportSite() {
     settings: loadSettings(),
     font: loadFontId(),
     pass: loadPassword(),
+    guarantee: loadGuarantee(),
+    faq: loadFaq(),
+    ticker: loadTicker(),
     theme: S.get('aivex_theme','dark'),
     lang: S.get('aivex_lang','ar')
   };
@@ -2893,7 +2617,7 @@ function exportSite() {
 
   const dataBlock = SO + '(function(){' +
     'var d=' + dataJson + ';' +
-    'var k=["products","hero","colors","social","notif","store","settings","font","theme","lang"];' +
+    'var k=["products","hero","colors","social","notif","store","settings","font","theme","lang","guarantee","faq","ticker"];' +
     'k.forEach(function(n){try{localStorage.setItem("aivex_"+n,JSON.stringify(d[n]));}catch(e){}});' +
     'try{localStorage.setItem("aivex_admin_pass",JSON.stringify(d.pass));}catch(e){}' +
     '})();' + SC;
@@ -2931,41 +2655,308 @@ function doDownload(html) {
   showToast('✅ تم تحميل index.html — ارفعه على Netlify!');
 }
 
+// ===== SECTIONS SYSTEM =====
+const DEFAULT_SECTIONS = {
+  trading: [
+    { icon:'📊', title:'الدعم والمقاومة', text:'تعلم كيف تحدد مستويات الدعم والمقاومة وتستخدمها للدخول والخروج الصحيح من الصفقات.' },
+    { icon:'📉', title:'قراءة الشموع اليابانية', text:'فهم أنماط الشموع وكيفية قراءة اتجاهات السوق من خلالها بدقة عالية.' },
+    { icon:'⚡', title:'إدارة رأس المال', text:'استراتيجيات إدارة المخاطر وتحديد حجم الصفقة المناسب لحماية رأس مالك.' },
+    { icon:'🎯', title:'نقاط الدخول والخروج', text:'كيف تحدد أفضل نقاط الدخول والخروج لتعظيم الأرباح وتقليل الخسائر.' }
+  ],
+  digital: [
+    { icon:'📸', title:'الربح من إنستقرام', text:'استراتيجيات بناء حساب مربح على إنستقرام وتحقيق أول 100$ بدون رأس مال.' },
+    { icon:'🔗', title:'التسويق بالعمولة', text:'كيف تربح عمولات من ترويج منتجات الآخرين عبر الإنترنت بدون امتلاك منتج خاص.' },
+    { icon:'📦', title:'المنتجات الرقمية', text:'إنشاء وبيع منتجات رقمية مثل الكتب والدورات والقوالب لتحقيق دخل سلبي.' },
+    { icon:'🎬', title:'يوتيوب والمحتوى', text:'كيف تبني قناة يوتيوب ناجحة وتحقق دخلاً من المحتوى الرقمي.' }
+  ],
+  freelance: [
+    { icon:'🎨', title:'تحديد مجالك', text:'كيف تختار المجال المناسب لمهاراتك وتبني تخصصاً قوياً يجذب العملاء.' },
+    { icon:'💼', title:'بناء محفظة الأعمال', text:'كيف تبني محفظة أعمال جذابة تثبت كفاءتك للعملاء المحتملين.' },
+    { icon:'🔍', title:'إيجاد العملاء', text:'استراتيجيات إيجاد أول عميل والحصول على مشاريع مستمرة ومتكررة.' }
+  ],
+  selfdev: [
+    { icon:'🧠', title:'تطوير العقلية', text:'كيف تبني عقلية النمو وتتخلص من المعتقدات المحدودة.' },
+    { icon:'⏰', title:'إدارة الوقت', text:'تقنيات إدارة الوقت الفعّالة لتحقيق أهدافك بكفاءة أعلى يومياً.' },
+    { icon:'🎯', title:'وضع الأهداف', text:'كيف تضع أهدافاً قابلة للتحقيق وتبني خطة عمل واضحة للوصول إليها.' }
+  ]
+};
+const SECTION_LABELS = { trading:'تعلم التداول', digital:'الربح من الإنترنت', telegram:'الربح من تيليجرام', freelance:'العمل الحر', selfdev:'تطوير الذات' };
+function loadSections() { return S.get('aivex_sections', DEFAULT_SECTIONS); }
+function saveSectionsData(d) { S.set('aivex_sections', d); }
+let _currentSectionTab = 'trading';
+
+function applySections() {
+  const sections = loadSections();
+  ['trading','digital','freelance','selfdev','telegram'].forEach(cat => {
+    const grid = document.querySelector('#page-' + cat + ' .content-cards');
+    if(!grid) return;
+    const cards = sections[cat] || [];
+    if(!cards.length) return; // keep static HTML if no saved sections
+    grid.innerHTML = cards.map(c => `
+      <div class="content-card">
+        <span class="content-card-icon">${c.icon||'📌'}</span>
+        <div class="content-card-title">${c.title||''}</div>
+        <div class="content-card-text">${c.text||''}</div>
+      </div>`).join('');
+  });
+}
+
+function renderSectionsAdmin() {
+  const container = document.getElementById('sectionsAdminList');
+  if(!container) return;
+  const sections = loadSections();
+  const tabHtml = Object.keys(SECTION_LABELS).map(k => `
+    <button onclick="switchSectionTab('${k}')" class="admin-btn ${k===_currentSectionTab?'admin-btn-gold':'admin-btn-gray'}" style="margin:2px">${SECTION_LABELS[k]}</button>`).join('');
+  const cards = (sections[_currentSectionTab] || []);
+  const cardsHtml = cards.map((c, i) => `
+    <div class="admin-section-block" style="margin-bottom:12px">
+      <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap">
+        <div class="admin-field" style="width:80px;flex-shrink:0">
+          <label>أيقونة</label>
+          <input value="${escHtml(c.icon||'📌')}" oninput="updateSectionCard('${_currentSectionTab}',${i},'icon',this.value)" style="font-size:20px;text-align:center">
+        </div>
+        <div class="admin-field" style="flex:1;min-width:140px">
+          <label>العنوان</label>
+          <input value="${escHtml(c.title||'')}" oninput="updateSectionCard('${_currentSectionTab}',${i},'title',this.value)">
+        </div>
+        <button class="admin-btn admin-btn-red" style="margin-top:20px;padding:8px 12px" onclick="deleteSectionCard('${_currentSectionTab}',${i})">🗑️</button>
+      </div>
+      <div class="admin-field">
+        <label>النص</label>
+        <textarea oninput="updateSectionCard('${_currentSectionTab}',${i},'text',this.value)">${escHtml(c.text||'')}</textarea>
+      </div>
+    </div>`).join('');
+  container.innerHTML = `<div style="margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px">${tabHtml}</div><div>${cardsHtml}</div>`;
+}
+function switchSectionTab(tab) { _currentSectionTab = tab; renderSectionsAdmin(); }
+function updateSectionCard(sectionKey, idx, field, val) {
+  const sections = loadSections();
+  if(!sections[sectionKey]) sections[sectionKey] = [];
+  if(sections[sectionKey][idx]) sections[sectionKey][idx][field] = val;
+  saveSectionsData(sections);
+}
+function deleteSectionCard(sectionKey, idx) {
+  if(!confirm('حذف؟')) return;
+  const sections = loadSections();
+  sections[sectionKey].splice(idx, 1);
+  saveSectionsData(sections); renderSectionsAdmin();
+}
+function addSectionCard() {
+  const sections = loadSections();
+  if(!sections[_currentSectionTab]) sections[_currentSectionTab] = [];
+  sections[_currentSectionTab].push({ icon:'✨', title:'عنوان جديد', text:'أدخل وصف البطاقة هنا.' });
+  saveSectionsData(sections); renderSectionsAdmin();
+  showToast('✅ تمت إضافة بطاقة');
+}
+function saveSections() { applySections(); showToast('✅ تم حفظ الأقسام!'); }
+
+// ===== HERO BG URL =====
+function setHeroBgUrl() {
+  const url = document.getElementById('heroBgUrl').value.trim();
+  if(!url) { showToast('❌ أدخل رابط أولاً'); return; }
+  const h = loadHero(); h.bgImg = url; S.set('aivex_hero', h);
+  const p = document.getElementById('heroBgPreview'); if(p){p.src=url;p.classList.add('show');}
+  applyHero(); showToast('✅ تم تطبيق خلفية الهيرو!');
+}
+
+// ===== STORE IMG URL =====
+function setStoreImgUrl(type) {
+  const map = { logo:'logoImgUrl', banner:'bannerImgUrl', guarantee:'guaranteeImgUrl', about:'aboutImgUrl' };
+  const previewMap = { logo:'logoImgPreview', banner:'storeBannerPreview', guarantee:'guaranteeImgPreview', about:'aboutImgPreview' };
+  const storeKey = { logo:'logoImg', banner:'bannerImg', guarantee:'guaranteeImg', about:'aboutImg' };
+  const el = document.getElementById(map[type]);
+  if(!el) return;
+  const url = el.value.trim();
+  if(!url) { showToast('❌ أدخل رابط أولاً'); return; }
+  const ss = loadStoreSettings();
+  ss[storeKey[type]] = url;
+  S.set('aivex_store', ss);
+  const p = document.getElementById(previewMap[type]);
+  if(p) { p.src=url; p.classList.add('show'); }
+  applySettings();
+  showToast('✅ تم تطبيق الصورة!');
+}
+
+// ===== TICKER ADMIN =====
+const DEFAULT_TICKER_ITEMS = ['📈 تداول احترافي','💰 ربح رقمي','✅ ضمان 30 يوم','⚡ تسليم فوري','🌍 AIVEX GLOBAL','🔒 دفع آمن'];
+function loadTicker() { return S.get('aivex_ticker', { items: DEFAULT_TICKER_ITEMS, bg: '#00a836', color: '#001a0d' }); }
+function saveTicker() {
+  const items = [];
+  document.querySelectorAll('.ticker-admin-input').forEach(i => { if(i.value.trim()) items.push(i.value.trim()); });
+  const bg = document.getElementById('tickerBgColor').value;
+  const color = document.getElementById('tickerTextColor').value;
+  S.set('aivex_ticker', { items, bg, color });
+  applyTicker();
+  showToast('✅ تم حفظ الشريط!');
+}
+function applyTicker() {
+  const t = loadTicker();
+  const ticker = document.querySelector('.ticker');
+  if(ticker) { ticker.style.background = t.bg || '#00a836'; ticker.style.setProperty('--ticker-color', t.color || '#001a0d'); }
+  const inner = document.querySelector('.ticker-track');
+  if(!inner) return;
+  // Duplicate items enough for seamless loop
+  const all = [...t.items, ...t.items, ...t.items, ...t.items];
+  inner.innerHTML = all.map(item => `<span class="ticker-item" style="color:${t.color||'#001a0d'}">${item} <span>◆</span></span>`).join('');
+  // Reset animation
+  inner.style.animation = 'none';
+  void inner.offsetWidth;
+  inner.style.animation = '';
+}
+
+// ===== HERO WORD-BY-WORD ANIMATION =====
+const HERO_WORDS_AR = ['تداول','احترافي','ربح','استراتيجية','حرية','نجاح','تعلّم','نمو','استثمار','قوة'];
+const HERO_WORDS_EN = ['Trade','Profit','Freedom','Strategy','Invest','Grow','Learn','Win','Success','Power'];
+let _heroWordIdx = 0;
+let _heroWordTimer = null;
+function startHeroWords() {
+  const el = document.getElementById('heroWordEl');
+  if(!el) return;
+  const isAr = document.documentElement.getAttribute('data-lang') !== 'en';
+  const words = isAr ? HERO_WORDS_AR : HERO_WORDS_EN;
+  function showNext() {
+    el.classList.remove('visible');
+    setTimeout(() => {
+      el.textContent = words[_heroWordIdx % words.length];
+      _heroWordIdx++;
+      el.classList.add('visible');
+    }, 200);
+  }
+  showNext();
+  _heroWordTimer = setInterval(showNext, 3000);
+}
+function stopHeroWords() { if(_heroWordTimer) clearInterval(_heroWordTimer); }
+function renderTickerAdmin() {
+  const t = loadTicker();
+  const el = document.getElementById('tickerBgColor'); if(el) el.value = t.bg||'#00a836';
+  const el2 = document.getElementById('tickerTextColor'); if(el2) el2.value = t.color||'#001a0d';
+  const list = document.getElementById('tickerItemsList');
+  if(!list) return;
+  list.innerHTML = (t.items||[]).map((item,i) => `
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <input class="ticker-admin-input" value="${escHtml(item)}" style="flex:1">
+      <button class="admin-btn admin-btn-red" style="padding:6px 12px" onclick="this.parentElement.remove()">🗑️</button>
+    </div>`).join('');
+}
+function addTickerItem() {
+  const list = document.getElementById('tickerItemsList');
+  if(!list) return;
+  const div = document.createElement('div');
+  div.style.cssText = 'display:flex;gap:8px;margin-bottom:8px';
+  div.innerHTML = `<input class="ticker-admin-input" placeholder="نص جديد..." style="flex:1"><button class="admin-btn admin-btn-red" style="padding:6px 12px" onclick="this.parentElement.remove()">🗑️</button>`;
+  list.appendChild(div);
+}
+function previewTickerColors() {
+  const bg = document.getElementById('tickerBgColor').value;
+  const color = document.getElementById('tickerTextColor').value;
+  const ticker = document.querySelector('.ticker');
+  if(ticker) ticker.style.background = bg;
+  document.querySelectorAll('.ticker-track .ticker-item').forEach(el => el.style.color = color);
+}
+
+// ===== GUARANTEE + FAQ ADMIN =====
+const DEFAULT_FAQ = [
+  { q:'كيف أستلم المنتج بعد الشراء؟', a:'تصلك رسالة بريد إلكتروني فورياً بعد الدفع تحتوي رابط التحميل. التسليم تلقائي وفوري 24/7.' },
+  { q:'ما طرق الدفع المقبولة؟', a:'نقبل جميع بطاقات الائتمان (Visa, Mastercard)، وPayPal، عبر منصة Payhip الآمنة.' },
+  { q:'هل المنتجات مناسبة للمبتدئين؟', a:'نعم، جميع منتجاتنا مصممة لجميع المستويات من المبتدئ حتى المحترف.' },
+  { q:'هل يمكنني الحصول على استرداد؟', a:'بالتأكيد. نضمن استرداد كامل خلال 30 يوماً — بدون أسئلة.' },
+  { q:'هل التحديثات مجانية؟', a:'نعم، جميع التحديثات المستقبلية مجانية تماماً ومدى الحياة.' }
+];
+function loadFaq() { return S.get('aivex_faq', DEFAULT_FAQ); }
+function loadGuarantee() { return S.get('aivex_guarantee', { title:'ضمان استرداد كامل لمدة 30 يوم', text:'إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.' }); }
+
+function renderGuaranteeFaqAdmin() {
+  const g = loadGuarantee();
+  const gt = document.getElementById('guaranteeTitle'); if(gt) gt.value = g.title||'';
+  const gx = document.getElementById('guaranteeText'); if(gx) gx.value = g.text||'';
+  const faqs = loadFaq();
+  const list = document.getElementById('faqAdminList');
+  if(!list) return;
+  list.innerHTML = faqs.map((f,i) => `
+    <div class="admin-section-block" style="margin-bottom:10px;padding:14px">
+      <div style="display:flex;gap:8px;margin-bottom:8px">
+        <div class="admin-field" style="flex:1;margin:0"><input value="${escHtml(f.q)}" placeholder="السؤال" id="faqQ-${i}"></div>
+        <button class="admin-btn admin-btn-red" style="padding:6px 12px;margin-top:0" onclick="deleteFaqItem(${i})">🗑️</button>
+      </div>
+      <div class="admin-field" style="margin:0"><textarea id="faqA-${i}" style="height:60px">${escHtml(f.a)}</textarea></div>
+    </div>`).join('');
+}
+
+function saveGuaranteeFaq() {
+  const title = document.getElementById('guaranteeTitle').value.trim();
+  const text = document.getElementById('guaranteeText').value.trim();
+  S.set('aivex_guarantee', { title, text });
+  applyGuarantee();
+  const faqs = [];
+  loadFaq().forEach((_,i) => {
+    const q = document.getElementById('faqQ-'+i); const a = document.getElementById('faqA-'+i);
+    if(q&&a&&q.value.trim()) faqs.push({ q: q.value.trim(), a: a.value.trim() });
+  });
+  S.set('aivex_faq', faqs);
+  applyFaq();
+  showToast('✅ تم الحفظ!');
+}
+
+function addFaqItem() {
+  const faqs = loadFaq();
+  faqs.push({ q:'سؤال جديد', a:'الجواب هنا' });
+  S.set('aivex_faq', faqs);
+  renderGuaranteeFaqAdmin();
+}
+
+function deleteFaqItem(idx) {
+  const faqs = loadFaq(); faqs.splice(idx,1);
+  S.set('aivex_faq', faqs); renderGuaranteeFaqAdmin();
+}
+
+function applyGuarantee() {
+  const g = loadGuarantee();
+  const h3 = document.querySelector('#guaranteeBox h3');
+  const p = document.querySelector('#guaranteeBox p');
+  if(h3) h3.innerHTML = `<span class="ar">${g.title}</span>`;
+  if(p) p.innerHTML = `<span class="ar">${g.text}</span>`;
+}
+
+function applyFaq() {
+  const faqs = loadFaq();
+  const list = document.getElementById('faqListHome');
+  if(!list) return;
+  list.innerHTML = faqs.map(f => `
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>${f.q}</span><span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a">${f.a}</div>
+    </div>`).join('');
+}
+
 // ===== INIT =====
 window.addEventListener('DOMContentLoaded', async () => {
-  // Try load from cloud first
-  const loaded = await loadFromCloud();
-  // Apply font first
+  await loadFromCloud();
   applyFont(loadFontId());
-  // Apply colors
   applyColors();
-  // Apply settings
   applySettings();
-  // Apply hero
   applyHero();
-  // Render products
   renderProducts();
-  // Apply social
   applySocial();
-  // Apply notif
+  applySections();
+  applyTicker();
+  applyGuarantee();
+  applyFaq();
   applyNotif();
-  // Theme
+  startHeroWords();
   const t=S.get('aivex_theme','dark');
   document.documentElement.setAttribute('data-theme',t);
   document.getElementById('themeBall').textContent = t==='light'?'☀️':'🌙';
-  // Admin keyboard shortcut: Ctrl+Shift+A
   document.addEventListener('keydown', e => {
     if(e.ctrlKey && e.shiftKey && e.key==='A') openAdmin();
   });
-  // Update publish status if bin exists
   const binId = getBinId();
   if(binId) {
-    const s = document.getElementById('publishStatus');
+    const s = document.getEle8mentById('publishStatus');
     if(s) { s.className='publish-status ok'; s.textContent = '✅ Bin متصل: ' + binId.slice(0,8) + '...'; }
   }
 });
 </script>
-
-
-
-</body></html>
+</body>
+</html>
