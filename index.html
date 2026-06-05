@@ -1,803 +1,1383 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aivex VIP | Trade AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<title>AIVEX Global — أيفيكس العالمية</title>
+
+<!-- ===== FAVICON ===== -->
+<link rel="icon" type="image/png" href="https://i.postimg.cc/52kQQX2c/20260516-072311.png">
+<link rel="apple-touch-icon" href="https://i.postimg.cc/52kQQX2c/20260516-072311.png">
+<link rel="shortcut icon" href="https://i.postimg.cc/52kQQX2c/20260516-072311.png">
+
+<!-- ===== SEO META TAGS ===== -->
+<meta name="description" content="أيفيكس العالمية — منصة رقمية احترافية في تعلم التداول، الربح من الإنترنت، العمل الحر، وتطوير الذات. منتجات رقمية عالية الجودة بأسعار في متناول الجميع مع ضمان استرداد 30 يوم.">
+<meta name="keywords" content="تعلم التداول, الربح من الإنترنت, العمل الحر, تطوير الذات, AIVEX, أيفيكس, منتجات رقمية, تداول احترافي, ربح رقمي, كتب تداول, دورات تداول, إشارات تداول, تداول الفوركس, تداول العملات">
+<meta name="author" content="AIVEX Global — أيفيكس العالمية">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Arabic">
+<link rel="canonical" href="https://aivex-global.vercel.app/">
+
+<!-- ===== OPEN GRAPH (Facebook, WhatsApp, Telegram) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aivex-global.vercel.app/">
+<meta property="og:title" content="AIVEX Global — أيفيكس العالمية">
+<meta property="og:description" content="منصة رقمية احترافية في تعلم التداول والربح من الإنترنت. منتجات رقمية عالية الجودة مع ضمان استرداد 30 يوم.">
+<meta property="og:image" content="https://i.postimg.cc/52kQQX2c/20260516-072311.png">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="AIVEX Global — أيفيكس العالمية">
+
+<!-- ===== TWITTER CARD ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIVEX Global — أيفيكس العالمية">
+<meta name="twitter:description" content="منصة رقمية احترافية في تعلم التداول والربح من الإنترنت.">
+<meta name="twitter:image" content="https://i.postimg.cc/52kQQX2c/20260516-072311.png">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7W0P85CXHY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7W0P85CXHY');
+</script>
+<!-- End Google Analytics -->
+<link id="googleFontsLink" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{
-  --gold:#C9A84C;--gold-light:#F0C040;--gold-dim:#7a6020;
-  --green:#00FF9D;--red:#FF3D5A;--blue:#00D4FF;
-  --bg:#07070F;--bg2:#0D0C1A;--bg3:#0a0d18;
-  --border:rgba(201,168,76,0.18);--text:#EDE5CC;--text2:rgba(237,229,204,0.48);
+:root {
+  --gold: #d4a843; --gold-light: #f5c842; --green: #00cc44; --red: #ff4040;
+  --bg: #030303; --bg2: #0f0f0f; --bg3: #161616; --bg4: #1e1e1e;
+  --text: #f0f0eb; --text-dim: rgba(240,240,235,0.55); --text-faint: rgba(240,240,235,0.28);
+  --border: rgba(212,168,67,0.12); --border-hover: rgba(212,168,67,0.35);
+  --card-bg: #0f0f0f; --nav-bg: rgba(3,3,3,0.95); --shadow: rgba(0,0,0,0.7);
+  --toggle-bg: #1a1a1a; --primary-color: #d4a843; --primary-light: #f5c842;
+  --accent-color: #00cc44; --product-card-radius: 16px; --product-card-size: 290px;
+  --primary-rgb: 212,168,67;
+  --body-font: 'Tajawal', sans-serif; --display-font: 'Bebas Neue', sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);font-family:'Cairo',sans-serif;color:var(--text);min-height:100vh;position:relative;}
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(0,80,160,0.09) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,80,160,0.09) 1px,transparent 1px),
-    radial-gradient(ellipse 80% 55% at 80% 0%,rgba(0,80,180,0.13) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 60% at 5% 95%,rgba(0,212,255,0.05) 0%,transparent 55%);
-  background-size:44px 44px,44px 44px,100% 100%,100% 100%;
+[data-theme="light"] {
+  --bg: #f8f6f0; --bg2: #ffffff; --bg3: #f0ede4; --bg4: #e8e4d8;
+  --text: #1a1610; --text-dim: rgba(26,22,16,0.65); --text-faint: rgba(26,22,16,0.38);
+  --border: rgba(212,168,67,0.2); --border-hover: rgba(212,168,67,0.5);
+  --card-bg: #ffffff; --nav-bg: rgba(248,246,240,0.97); --shadow: rgba(0,0,0,0.12);
+  --toggle-bg: #e8e4d8;
 }
-body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,7,15,0.0) 0%,rgba(7,7,15,0.55) 100%);}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--body-font); overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 2px; }
 
-.page{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:0 15px 60px;}
+/* LANG */
+.ar,.en { display: none; }
+[data-lang="ar"] .ar { display: inline; }
+[data-lang="en"] .en { display: inline; }
+[data-lang="ar"] .ar-block { display: block; }
+[data-lang="en"] .en-block { display: block; }
+.ar-block,.en-block { display: none; }
 
-/* ── Header ── */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:26px 0 22px;border-bottom:1px solid var(--border);margin-bottom:26px;}
-.logo{display:flex;align-items:center;gap:13px;}
-.logo-box{width:68px;height:68px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;cursor:pointer;box-shadow:0 0 0 2px rgba(201,168,76,0.45),0 0 32px rgba(201,168,76,0.28);transition:box-shadow .4s;}
-.logo-box img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;transition:transform .4s;filter:brightness(1.15) contrast(1.08) saturate(1.1);}
-.logo-box::after{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 60%,rgba(201,168,76,0.55) 75%,rgba(255,210,80,0.8) 80%,transparent 95%);animation:logoSpin 3.2s linear infinite;z-index:2;pointer-events:none;}
-@keyframes logoSpin{to{transform:rotate(360deg)}}
-.logo-box::before{content:'';position:absolute;inset:3px;border-radius:50%;background:rgba(7,7,15,0.25);z-index:1;pointer-events:none;}
-.logo-burst{animation:logoBurst 1.1s cubic-bezier(.22,1,.36,1) both;}
-@keyframes logoBurst{0%{transform:scale(0) rotate(-180deg);opacity:0;}60%{transform:scale(1.18) rotate(8deg);opacity:1;box-shadow:0 0 45px 12px rgba(201,168,76,0.5);}100%{transform:scale(1) rotate(0deg);}}
-.logo-box:hover{box-shadow:0 0 0 2.5px var(--gold),0 0 40px rgba(201,168,76,0.5);}
-.logo-box:hover img{transform:scale(1.08);}
-@keyframes clickPulse{0%{box-shadow:0 0 0 0 rgba(0,212,255,0.6);}50%{box-shadow:0 0 0 14px rgba(0,212,255,0.15);}100%{box-shadow:0 0 0 0 rgba(0,212,255,0);}}
-.logo-box.pulse-click{animation:clickPulse .55s ease;}
-.logo-txts{display:flex;flex-direction:column;gap:2px;}
-.logo-name{font-family:'Orbitron',sans-serif;font-weight:900;font-size:19px;letter-spacing:3px;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.logo-vip{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;background:linear-gradient(90deg,#00D4FF,#7B5FFF,#C9A84C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;}
-.logo-sub{font-size:10px;color:var(--text2);letter-spacing:1.5px;}
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: var(--nav-bg); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); transition: background 0.4s, border-color 0.4s; }
+.nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+.nav-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 18px rgba(212,168,67,0.4); flex-shrink: 0; overflow: visible; position: relative; }
+.nav-icon::before { content:''; position:absolute; inset:-3px; border-radius:50%; border:2px solid transparent; border-top-color: var(--primary-color); border-right-color: var(--primary-light); animation: spin-ring 2s linear infinite; }
+.nav-icon::after { content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid transparent; border-bottom-color: rgba(212,168,67,0.3); animation: spin-ring 3s linear infinite reverse; }
+@keyframes spin-ring { to { transform: rotate(360deg); } }
+.nav-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position:relative; z-index:1; }
+.nav-name { font-family: var(--display-font); font-size: 20px; color: var(--primary-color); letter-spacing: 4px; line-height: 1; }
+.nav-sub { font-size: 10px; color: var(--accent-color); letter-spacing: 1px; display: block; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.lang-toggle { display: flex; align-items: center; background: var(--toggle-bg); border: 1px solid var(--border); border-radius: 100px; overflow: hidden; cursor: pointer; }
+.lang-btn { padding: 6px 12px; font-size: 11px; font-weight: 900; letter-spacing: 1px; color: var(--text-faint); transition: all 0.2s; cursor: pointer; user-select: none; }
+.lang-btn.active { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; }
+.theme-toggle { width: 52px; height: 28px; background: var(--toggle-bg); border: 1px solid var(--border); border-radius: 100px; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; }
+.theme-toggle-ball { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 50%; transition: transform 0.3s; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+[data-theme="light"] .theme-toggle-ball { transform: translateX(-24px); }
+.nav-shop-btn { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 8px 18px; border-radius: 8px; font-weight: 900; font-size: 12px; letter-spacing: 1px; text-decoration: none; white-space: nowrap; box-shadow: 0 0 16px rgba(212,168,67,0.3); transition: box-shadow 0.3s, transform 0.2s; }
+.nav-shop-btn:hover { box-shadow: 0 0 30px rgba(212,168,67,0.55); transform: translateY(-1px); }
 
-/* ── Lang toggle ── */
-.lang-tog{display:flex;gap:5px;}
-.lopt{font-size:11px;font-weight:700;letter-spacing:1px;width:36px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;color:var(--text2);border:1px solid rgba(201,168,76,0.18);background:var(--bg3);transition:all .2s;user-select:none;}
-.lopt.active{background:linear-gradient(135deg,var(--gold-dim),var(--gold));color:#07070F;border-color:var(--gold);}
+/* ===== COLOR SWITCHER ===== */
+.bg-switcher { display:flex; align-items:center; gap:7px; padding:4px 8px; background:rgba(128,128,128,0.08); border:1px solid rgba(128,128,128,0.15); border-radius:100px; }
+.bg-dot { width:11px; height:11px; border-radius:50%; cursor:pointer; border:2px solid transparent; opacity:0.5; transition:all 0.25s ease; flex-shrink:0; position:relative; }
+.bg-dot:hover { opacity:0.85; transform:scale(1.2); }
+.bg-dot.active { opacity:1; transform:scale(1.25); box-shadow:0 0 0 2px rgba(255,255,255,0.25), 0 0 8px var(--dot-glow,rgba(200,200,200,0.4)); border-color:rgba(255,255,255,0.6); }
+.hamburger { width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: border-color 0.3s; }
+.hamburger:hover { border-color: var(--primary-color); }
+.hamburger span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 1px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* ── Selects ── */
-.flabel{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:2px;text-transform:uppercase;margin-bottom:9px;display:block;}
-.swrap{position:relative;margin-bottom:20px;}
-.swrap::after{content:'\25be';position:absolute;top:50%;transform:translateY(-50%);color:var(--gold);font-size:14px;pointer-events:none;}
-[dir=rtl] .swrap::after{left:15px;}
-[dir=ltr] .swrap::after{right:15px;}
-select{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:'Cairo',sans-serif;font-size:14px;font-weight:500;padding:14px 17px;appearance:none;cursor:pointer;outline:none;transition:border-color .2s,box-shadow .2s;}
-select:focus,select:hover{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.07);}
-option{background:#0D0C1A;}
+/* SIDEBAR */
+.sidebar-overlay { position: fixed; inset: 0; z-index: 1500; background: rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.sidebar-overlay.open { opacity: 1; pointer-events: all; }
+.sidebar { position: fixed; top: 0; left: -340px; bottom: 0; width: 320px; z-index: 1600; background: var(--bg2); border-right: 1px solid var(--border); transition: left 0.35s cubic-bezier(0.23,1,0.32,1); overflow-y: auto; padding: 80px 0 40px; }
+.sidebar.open { left: 0; }
+.sidebar-logo { display: flex; align-items: center; gap: 12px; padding: 0 24px 28px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.sidebar-logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; overflow: hidden; flex-shrink: 0; }
+.sidebar-logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.sidebar-logo-name { font-family: var(--display-font); font-size: 20px; color: var(--primary-color); letter-spacing: 3px; }
+.sidebar-logo-sub { font-size: 11px; color: var(--accent-color); display: block; }
+.sidebar-section-title { font-size: 10px; letter-spacing: 4px; color: var(--primary-color); text-transform: uppercase; padding: 16px 24px 8px; display: block; }
+.sidebar-nav-item { display: flex; align-items: center; gap: 14px; padding: 13px 24px; color: var(--text-dim); text-decoration: none; cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; font-size: 15px; font-weight: 700; }
+.sidebar-nav-item:hover,.sidebar-nav-item.active { color: var(--primary-color); background: rgba(212,168,67,0.06); border-left-color: var(--primary-color); }
+.sidebar-nav-item .nav-item-icon { width: 36px; height: 36px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; transition: background 0.2s; }
+.sidebar-nav-item:hover .nav-item-icon { background: rgba(212,168,67,0.16); border-color: var(--primary-color); }
+.sidebar-divider { height: 1px; background: var(--border); margin: 12px 24px; }
+.sidebar-shop-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 24px 0; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 14px; text-decoration: none; letter-spacing: 1px; box-shadow: 0 6px 20px rgba(212,168,67,0.3); transition: box-shadow 0.3s; }
+.sidebar-shop-btn:hover { box-shadow: 0 8px 30px rgba(212,168,67,0.5); }
 
-/* ── Signal button ── */
-.sig-btn{
-  width:100%;padding:12px 16px;border:none;border-radius:11px;
-  font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;
-  margin-bottom:20px;transition:all .35s;position:relative;overflow:hidden;
-  background:linear-gradient(135deg,#1a1208,#2e2010,#1a1208);
-  color:var(--gold);
-  border:1px solid rgba(201,168,76,0.35);
-  box-shadow:0 2px 12px rgba(201,168,76,0.10);
-  letter-spacing:1px;
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* HERO */
+.hero { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 76px 20px 28px; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,120,40,0.15) 0%, transparent 65%), radial-gradient(ellipse 50% 35% at 80% 10%, rgba(212,168,67,0.07) 0%, transparent 55%), var(--bg); transition: background 0.4s; }
+.hero-bg.has-bg-img { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+.hero-bg.has-bg-img::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.55); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%); }
+.hero-content { position: relative; z-index: 10; text-align: center; max-width: 860px; width: 100%; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.28); border-radius: 100px; padding: 6px 16px; margin-bottom: 16px; font-size: 11px; color: var(--primary-color); letter-spacing: 2px; text-transform: uppercase; }
+.badge-dot { width: 7px; height: 7px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 8px var(--accent-color); animation: pulse 2s infinite; flex-shrink:0; }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 8px var(--accent-color); } 50% { box-shadow: 0 0 3px var(--accent-color); } }
+.hero-title { font-weight: 900; font-size: clamp(34px, 8vw, 80px); line-height: 1.05; margin-bottom: 10px; background: linear-gradient(135deg, var(--text) 0%, var(--primary-color) 45%, var(--primary-light) 65%, var(--text) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-en { font-family: var(--display-font); font-size: clamp(13px, 2.5vw, 28px); letter-spacing: clamp(4px,2vw,12px); color: var(--accent-color); display: block; margin-bottom: 14px; text-shadow: 0 0 25px rgba(0,200,68,0.3); }
+.hero-desc { font-size: clamp(14px,2.5vw,17px); line-height: 1.65; color: var(--text-dim); max-width: 520px; margin: 0 auto 20px; text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.5); background: rgba(0,0,0,0.28); padding: 10px 18px; border-radius: 10px; backdrop-filter: blur(2px); }
+.has-bg-img ~ * .hero-desc, .hero-bg.has-bg-img + * .hero-desc { color: #f0f0eb; }
+.hero-cta { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 14px 36px; border-radius: 10px; font-weight: 900; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; box-shadow: 0 0 30px rgba(212,168,67,0.35), 0 6px 20px var(--shadow); transition: transform 0.2s, box-shadow 0.2s; margin-bottom: 12px; }
+.hero-cta:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(212,168,67,0.6), 0 10px 30px var(--shadow); }
+.hero-note { font-size: 13px; color: var(--text-dim); display: block; width: 100%; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.25); padding: 9px 20px; border-radius: 100px; font-weight: 700; letter-spacing: 0.5px; max-width: 360px; margin: 0 auto; }
+[data-theme="light"] .hero-note { background: rgba(212,168,67,0.12); border-color: rgba(212,168,67,0.4); color: var(--text-dim); }
+
+/* PAGE TRANSITION OVERLAY */
+#page-transition-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: radial-gradient(circle at var(--rx,50%) var(--ry,50%), var(--gold-light) 0%, var(--gold) 30%, #1a1610 100%);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1);
 }
-.sig-btn:hover{
-  background:linear-gradient(135deg,#221808,#3a2a12,#221808);
-  box-shadow:0 4px 18px rgba(201,168,76,0.22);
-  border-color:rgba(201,168,76,0.55);
-  transform:translateY(-1px);
-}
-.sig-btn:active{transform:translateY(0px);}
-.sig-btn.waiting{
-  background:linear-gradient(135deg,#060e1e,#0b1628,#060e1e);
-  color:var(--blue);
-  border:1px solid rgba(0,212,255,0.22);
-  box-shadow:0 0 16px rgba(0,212,255,0.08);
-  animation:wp 1.4s ease-in-out infinite;
-}
-@keyframes wp{0%,100%{box-shadow:0 0 12px rgba(0,212,255,0.06)}50%{box-shadow:0 0 22px rgba(0,212,255,0.18)}}
+#page-transition-overlay.fade-in  { opacity: 1; pointer-events: all; }
+#page-transition-overlay.fade-out { opacity: 0; pointer-events: none; }
 
-/* wait-locked button */
-.sig-btn.locked{
-  background:linear-gradient(135deg,#0e0a04,#1a1106,#0e0a04);
-  color:rgba(201,168,76,0.45);
-  border:1px solid rgba(201,168,76,0.12);
-  box-shadow:none;
-  cursor:not-allowed;
-  transform:none!important;
+/* RIPPLE ON HERO CTA */
+.hero-cta { position: relative; overflow: hidden; }
+.hero-cta .ripple-wave {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  transform: scale(0); animation: ripple-expand 0.55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripple-expand {
+  to { transform: scale(4); opacity: 0; }
 }
 
-.spn{display:inline-block;width:12px;height:12px;border:2px solid rgba(0,212,255,0.2);border-top-color:var(--blue);border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-inline-end:7px;}
-@keyframes sp{to{transform:rotate(360deg)}}
-
-/* ── Signal card ── */
-.sig-card{
-  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
-  margin-bottom:20px;overflow:hidden;transition:border-color .4s,box-shadow .4s;
+/* PAGE ENTER ANIMATION */
+.page.active { animation: pageEnter 0.4s cubic-bezier(0.23,1,0.32,1) both; }
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.sig-card.buy{border-color:rgba(0,255,157,0.32);box-shadow:0 0 22px rgba(0,255,157,0.06);}
-.sig-card.sell{border-color:rgba(255,61,90,0.32);box-shadow:0 0 22px rgba(255,61,90,0.06);}
-.sc-head{display:flex;align-items:center;justify-content:space-between;padding:10px 17px;border-bottom:1px solid var(--border);}
-.sc-title{font-family:'Orbitron',sans-serif;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:2px;}
-
-/* ── Time badge ── */
-.sc-time-wrap{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(0,20,55,0.7);
-  border:1px solid rgba(0,100,200,0.35);
-  border-radius:7px;
-  padding:3px 10px;
-  box-shadow:0 0 10px rgba(0,100,200,0.18),inset 0 0 6px rgba(0,140,255,0.06);
+.hero-stats { display: flex; justify-content: center; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.02); }
+.stat-box { flex: 1; min-width: 120px; padding: 20px 16px; text-align: center; border-left: 1px solid var(--border); position: relative; transition: background 0.3s; }
+.stat-box:last-child { border-left: none; }
+.stat-box:hover { background: rgba(212,168,67,0.05); }
+.stat-num {
+  font-family: var(--display-font); font-size: 34px; color: var(--primary-color); line-height: 1; display: block;
+  animation: stat-pop 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  text-shadow: 0 0 20px rgba(212,168,67,0.3);
 }
-.sc-time-dot{width:5px;height:5px;border-radius:50%;background:rgba(0,180,255,0.7);box-shadow:0 0 6px rgba(0,180,255,0.8);animation:tdot 1.4s ease-in-out infinite;}
-@keyframes tdot{0%,100%{opacity:0.5;transform:scale(0.8);}50%{opacity:1;transform:scale(1.2);}}
-.sc-time{font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(0,200,255,0.85);letter-spacing:1.5px;font-weight:700;}
-
-/* ── Signal body ── */
-.sc-body{padding:14px 17px;text-align:center;min-height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;}
-.idle-txt{font-size:13px;color:var(--text2);}
-.res{display:none;flex-direction:column;align-items:center;gap:8px;width:100%;}
-.res-pair{font-size:14px;font-weight:700;letter-spacing:1px;color:var(--text2);}
-
-/* ── Direction pill ── */
-.res-dir-wrap{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:9px 28px;border-radius:12px;
-  transition:all .35s;
+@keyframes stat-pop {
+  from { opacity: 0; transform: scale(0.7) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-.res-dir-wrap.buy{
-  background:rgba(0,255,157,0.07);
-  border:1px solid rgba(0,255,157,0.25);
-  box-shadow:0 0 20px rgba(0,255,157,0.08),inset 0 0 12px rgba(0,255,157,0.04);
+.stat-num.counting { animation: count-pulse 0.3s ease; }
+@keyframes count-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); color: var(--gold-light); } }
+.stat-lbl { font-size: 10px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; display: block; }
+
+/* DISCOUNT COUNTDOWN */
+.discount-banner { background: linear-gradient(90deg, rgba(255,64,64,0.1), rgba(212,168,67,0.1), rgba(255,64,64,0.1)); border: 1px solid rgba(255,64,64,0.3); border-radius: 12px; padding: 16px 24px; margin: 0 auto 32px; max-width: 580px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; animation: glow-red 2s ease-in-out infinite alternate; }
+@keyframes glow-red { from { box-shadow: 0 0 10px rgba(255,64,64,0.1); } to { box-shadow: 0 0 20px rgba(255,64,64,0.3); } }
+.discount-label { font-size: 13px; color: var(--text-dim); font-weight: 700; }
+.discount-countdown { display: flex; gap: 8px; align-items: center; }
+.countdown-unit { text-align: center; }
+.countdown-num { display: block; font-family: var(--display-font); font-size: 28px; color: var(--red); line-height: 1; min-width: 40px; }
+.countdown-text { display: block; font-size: 9px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; }
+.countdown-sep { font-size: 22px; color: var(--red); line-height: 1; align-self: flex-start; padding-top: 2px; }
+.discount-pct { background: var(--red); color: white; font-weight: 900; font-size: 18px; padding: 4px 12px; border-radius: 8px; }
+
+/* TICKER — auto-height, full text, wraps naturally */
+.ticker { background: var(--ticker-bg, linear-gradient(90deg, #005a1e, #00a836, #005a1e)); padding: 10px 16px; overflow: hidden; position: relative; }
+.ticker-inner { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: flex-start; justify-content: center; width: 100%; }
+.ticker-item { font-size: clamp(10px, 2vw, 14px); font-weight: 900; letter-spacing: 1px; color: var(--ticker-color, #001a0d); text-transform: uppercase; display: inline; white-space: pre-wrap; word-break: break-word; line-height: 1.7; text-align: center; width: 100%; }
+
+/* TRUST BAR */
+.trust-bar { display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid var(--border); max-width: 1000px; margin: 0 auto; }
+.trust-item {
+  display: flex; align-items: center; gap: 10px; padding: 16px 20px;
+  border-left: 1px solid var(--border); color: var(--text-dim); font-size: 13px; font-weight: 700;
+  transition: color 0.2s, background 0.2s;
 }
-.res-dir-wrap.sell{
-  background:rgba(255,61,90,0.07);
-  border:1px solid rgba(255,61,90,0.25);
-  box-shadow:0 0 20px rgba(255,61,90,0.08),inset 0 0 12px rgba(255,61,90,0.04);
+.trust-item:hover { color: var(--primary-color); background: rgba(212,168,67,0.04); }
+.trust-item:last-child { border-left: none; }
+.trust-ico {
+  font-size: 24px;
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.12), rgba(212,168,67,0.05));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
-.dir-arrow{font-size:22px;line-height:1;transition:all .3s;filter:drop-shadow(0 0 8px currentColor);}
-.dir-arrow.buy{color:var(--green);}
-.dir-arrow.sell{color:var(--red);}
-.res-dir{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;transition:all .3s;}
-.res-dir.buy{color:var(--green);text-shadow:0 0 14px rgba(0,255,157,0.5);}
-.res-dir.sell{color:var(--red);text-shadow:0 0 14px rgba(255,61,90,0.5);}
-.res-dir-wrap.buy .dir-arrow{animation:buyPulse 1.8s ease-in-out infinite;}
-.res-dir-wrap.sell .dir-arrow{animation:sellPulse 1.8s ease-in-out infinite;}
-@keyframes buyPulse{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
-@keyframes sellPulse{0%,100%{transform:translateY(0);}50%{transform:translateY(3px);}}
+.trust-item:hover .trust-ico { border-color: var(--primary-color); box-shadow: 0 0 14px rgba(212,168,67,0.2); }
 
-/* ── Meta row with signal countdown ── */
-.res-meta{display:flex;gap:16px;font-size:12px;color:var(--text2);align-items:center;flex-wrap:wrap;justify-content:center;}
-.res-meta span{color:var(--text);font-weight:700;}
-.res-meta .acc{color:var(--gold-light)!important;}
+/* SECTIONS */
+.section-wrap { padding: 32px 20px; max-width: 1100px; margin: 0 auto; }
+.section-wrap-full { padding: 32px 20px; }
+.sec-label { font-size: 10px; letter-spacing: 4px; color: var(--primary-color); text-transform: uppercase; margin-bottom: 6px; display: block; }
+.sec-title { font-weight: 900; font-size: clamp(22px, 4.5vw, 40px); color: var(--text); margin-bottom: 8px; line-height: 1.1; }
+.sec-title span { color: var(--primary-color); }
+.sec-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; max-width: 600px; margin-bottom: 12px; }
+.gold-line { width: 44px; height: 2px; background: linear-gradient(90deg, var(--primary-color), transparent); margin-bottom: 20px; border-radius: 1px; }
 
-/* ── Signal countdown box (next to signal) ── */
-.sig-countdown-box{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(4,6,18,0.85);
-  border:1px solid rgba(201,168,76,0.15);
-  border-radius:7px;
-  padding:3px 8px;
-  backdrop-filter:blur(4px);
-  transition:all .3s;
+/* CATEGORY CARDS */
+.cat-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.cat-section-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px; cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position: relative; overflow: hidden; text-decoration: none; display: block;
 }
-.sig-countdown-box.hidden{display:none;}
-.sig-countdown-box.buy-c{border-color:rgba(0,255,157,0.22);box-shadow:0 0 8px rgba(0,255,157,0.08);}
-.sig-countdown-box.sell-c{border-color:rgba(255,61,90,0.22);box-shadow:0 0 8px rgba(255,61,90,0.08);}
-.sig-cd-label{font-size:9px;color:var(--text2);letter-spacing:1px;}
-.sig-cd-val{
-  font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:1px;color:rgba(240,192,64,0.9);
-  min-width:28px;text-align:center;
+.cat-section-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-gold 2.5s linear infinite;
+  transform: scaleX(0); transform-origin: center;
+  transition: transform 0.35s;
 }
-.sig-cd-val.buy-v{color:rgba(0,255,157,0.9);}
-.sig-cd-val.sell-v{color:rgba(255,61,90,0.9);}
-
-/* ── Wait overlay toast ── */
-.wait-toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);z-index:999;
-  background:rgba(6,10,26,0.96);border:1px solid rgba(201,168,76,0.28);border-radius:12px;
-  padding:10px 20px;text-align:center;
-  box-shadow:0 8px 32px rgba(0,0,0,0.5),0 0 18px rgba(201,168,76,0.08);
-  backdrop-filter:blur(12px);
-  opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.22,1,.36,1);
-  min-width:220px;max-width:320px;
+.cat-section-card::after {
+  content: '';
+  position: absolute; inset: 0; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.06), transparent 60%);
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
 }
-.wait-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.wt-title{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1.5px;margin-bottom:5px;}
-.wt-cd{
-  font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;
-  color:rgba(0,212,255,0.9);letter-spacing:3px;
-  text-shadow:0 0 12px rgba(0,212,255,0.5);
-  line-height:1;
+.cat-section-card:hover {
+  border-color: rgba(212,168,67,0.55);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px var(--shadow), 0 0 35px rgba(212,168,67,0.15);
 }
-.wt-sub{font-size:10px;color:var(--text2);margin-top:4px;letter-spacing:1px;}
+.cat-section-card:hover::before { transform: scaleX(1); }
+.cat-section-card:hover::after { opacity: 1; }
+.cat-section-icon { width: 54px; height: 54px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; transition: background 0.3s, box-shadow 0.3s; }
+.cat-section-card:hover .cat-section-icon { background: rgba(212,168,67,0.18); box-shadow: 0 0 18px rgba(212,168,67,0.25); }
+.cat-section-title { font-weight: 900; font-size: 19px; color: var(--text); margin-bottom: 8px; }
+.cat-section-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 16px; }
+.cat-section-link { font-size: 12px; color: var(--primary-color); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
 
-/* ── Chart section ── */
-.chart-sec{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;position:relative;}
-.chart-head{display:flex;align-items:center;justify-content:space-between;padding:13px 17px;border-bottom:1px solid var(--border);}
-.chart-ttl{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;}
-.chart-badge{font-size:11px;color:var(--text2);}
-#chartbox{width:100%;height:300px;background:transparent;position:relative;}
+/* PRODUCTS GRID */
+.products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media(max-width:480px){ .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@media(min-width:900px){ .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media(min-width:1200px){ .products-grid { grid-template-columns: repeat(4, 1fr); } }
+.product-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--product-card-radius); overflow: hidden; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); position: relative; }
+.product-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 24px 60px var(--shadow); }
+.product-card.featured { border-color: rgba(212,168,67,0.35); box-shadow: 0 0 25px rgba(212,168,67,0.1); }
+.product-img { width: 100%; background: linear-gradient(135deg, var(--bg3), var(--bg4)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; aspect-ratio: 1 / 1; }
+.product-img.ratio-square { aspect-ratio: 1 / 1; }
+.product-img.ratio-portrait { aspect-ratio: 3 / 4; }
+.product-img.ratio-wide { aspect-ratio: 1 / 1; }
+.product-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; display: block !important; }
+.product-img-emoji { position: relative; z-index: 1; font-size: 64px; }
+.badge { position: absolute; top: 12px; font-size: 11px; font-weight: 900; letter-spacing: 1px; padding: 5px 10px; border-radius: 6px; text-transform: uppercase; z-index: 2; }
+.badge-l { right: 12px; }
+.badge-r { left: 12px; }
+.badge-gold { background: var(--primary-color); color: #1a1610; }
+.badge-green { background: var(--accent-color); color: #001a0d; }
+.badge-red { background: var(--red); color: white; }
+.product-body { padding: 18px 16px; }
+.product-name { font-weight: 900; font-size: 16px; color: var(--text); margin-bottom: 6px; }
+.product-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; margin-bottom: 12px; }
+.product-features { list-style: none; margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
+.product-features li { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 7px; }
+.product-features li::before { content: '✓'; color: var(--accent-color); font-size: 11px; font-weight: 900; flex-shrink: 0; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; gap: 6px; flex-wrap: wrap; }
+.price-old { font-size: 12px; color: var(--red); text-decoration: line-through; font-weight: 700; margin-left: 4px; }
+.price-new { font-size: 16px; font-weight: 900; color: var(--accent-color); }
+.buy-btn { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 10px 20px; border-radius: 8px; font-weight: 900; font-size: 12px; letter-spacing: 1px; text-decoration: none; transition: box-shadow 0.2s, transform 0.15s; white-space: nowrap; }
+.buy-btn:hover { box-shadow: 0 0 20px rgba(212,168,67,0.4); transform: scale(1.04); }
+.product-countdown-bar { background: rgba(255,64,64,0.08); border-top: 1px solid rgba(255,64,64,0.15); padding: 8px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.pcd-label { font-size: 10px; color: var(--red); letter-spacing: 1px; font-weight: 700; }
+.pcd-nums { font-family: var(--display-font); font-size: 16px; color: var(--red); letter-spacing: 2px; }
+.cat-products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+@media(min-width:900px){ .cat-products-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* ── Candle countdown timer ── */
-.candle-timer{
-  position:absolute;top:10px;z-index:15;
-  font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;
-  color:rgba(0,212,255,0.9);
-  background:rgba(4,8,22,0.82);
-  border:1px solid rgba(0,212,255,0.22);
-  border-radius:8px;
-  padding:4px 11px;
-  letter-spacing:2px;
-  pointer-events:none;
-  backdrop-filter:blur(6px);
-  box-shadow:0 0 12px rgba(0,212,255,0.15);
-  text-shadow:0 0 8px rgba(0,212,255,0.6);
+/* ===== CUSTOM VIDEO PLAYER ===== */
+.custom-video-wrap { position:relative; background:#000; border-radius:0; overflow:hidden; }
+.custom-video-wrap video { display:block; width:100%; object-fit:cover; }
+.cvp-overlay {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.25); cursor:pointer; transition:background 0.2s;
 }
-[dir=rtl] .candle-timer{left:12px;}
-[dir=ltr] .candle-timer{right:12px;}
-
-/* ── Pocket Option badge ── */
-.po-badge{
-  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:10;pointer-events:none;
-  display:flex;align-items:center;gap:7px;
-  background:rgba(4,6,18,0.88);border:1px solid rgba(0,180,255,0.22);border-radius:10px;
-  padding:5px 12px 5px 8px;backdrop-filter:blur(8px);
-  box-shadow:0 0 18px rgba(0,120,255,0.18),inset 0 0 8px rgba(0,180,255,0.04);
+.cvp-overlay.playing { background:transparent; }
+.cvp-overlay.playing:hover { background:rgba(0,0,0,0.15); }
+.cvp-play-btn {
+  width:60px; height:60px; border-radius:50%;
+  background:linear-gradient(135deg,var(--primary-color),var(--primary-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:#1a1610; box-shadow:0 0 24px rgba(212,168,67,0.5);
+  transition:transform 0.2s, opacity 0.3s; pointer-events:none;
 }
-.po-logo-img{width:26px;height:26px;border-radius:6px;object-fit:cover;filter:brightness(1.1) saturate(1.2);box-shadow:0 0 8px rgba(0,180,255,0.35);flex-shrink:0;}
-.po-texts{display:flex;flex-direction:column;gap:1px;}
-.po-name{font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:2px;text-shadow:0 0 8px rgba(0,200,255,0.5);}
-.po-sub{font-family:'Cairo',sans-serif;font-size:8px;color:rgba(0,212,255,0.5);letter-spacing:1px;}
+.cvp-overlay.playing .cvp-play-btn { opacity:0; transform:scale(0.7); }
+.cvp-overlay.playing:hover .cvp-play-btn { opacity:1; transform:scale(1); }
+.cvp-bar {
+  position:absolute; bottom:0; left:0; right:0;
+  display:flex; align-items:center; gap:6px; padding:8px 10px;
+  background:linear-gradient(0deg,rgba(0,0,0,0.85),transparent);
+}
+.cvp-progress {
+  flex:1; height:4px; background:rgba(255,255,255,0.25); border-radius:2px;
+  cursor:pointer; position:relative;
+}
+.cvp-progress:hover { height:6px; }
+.cvp-progress-fill { height:100%; background:var(--primary-color); border-radius:2px; width:0%; transition:width 0.1s linear; }
+.cvp-time { font-size:11px; color:#fff; min-width:32px; font-family:monospace; }
+.cvp-btn {
+  background:none; border:none; color:#fff; font-size:14px; cursor:pointer;
+  padding:2px 4px; opacity:0.85; transition:opacity 0.2s;
+}
+.cvp-btn:hover { opacity:1; }
 
-/* ── Signal arrows ── */
-.chart-arrow{position:absolute;z-index:9;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:0px;animation:arrowPop .5s cubic-bezier(.22,1,.36,1) both;}
-.arrow-head{font-size:24px;font-weight:900;line-height:1;}
-.arrow-body{width:3px;height:52px;border-radius:2px;}
-.chart-arrow.up .arrow-head{color:var(--green);text-shadow:0 0 14px rgba(0,255,157,0.9),0 0 28px rgba(0,255,157,0.5);}
-.chart-arrow.up .arrow-body{background:linear-gradient(180deg,rgba(0,255,157,0.7),rgba(0,255,157,0.05));}
-.chart-arrow.down .arrow-head{color:var(--red);text-shadow:0 0 14px rgba(255,61,90,0.9),0 0 28px rgba(255,61,90,0.5);}
-.chart-arrow.down .arrow-body{background:linear-gradient(0deg,rgba(255,61,90,0.7),rgba(255,61,90,0.05));}
-@keyframes arrowPop{from{opacity:0;transform:scale(0.2) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes arrowFade{from{opacity:1}to{opacity:0;transform:translateY(-18px)}}
-.chart-arrow.fading{animation:arrowFade .7s ease forwards;}
+/* ===== SECTION SOCIAL BUTTONS ===== */
+.sec-social-wrap {
+  margin-top:32px; padding-top:24px;
+  border-top:2px solid var(--border);
+}
+.sec-social-label {
+  text-align:center; font-size:12px; letter-spacing:3px; color:var(--primary-color);
+  text-transform:uppercase; margin-bottom:6px; font-weight:900;
+}
+.sec-social-sub {
+  text-align:center; font-size:13px; color:var(--text-dim); margin-bottom:18px; line-height:1.6;
+}
+.sec-social-grid {
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+}
+.sec-social-btn {
+  display:flex; align-items:center; gap:10px;
+  padding:12px 22px; border-radius:12px; text-decoration:none;
+  font-weight:900; font-size:14px; letter-spacing:0.5px;
+  border:1px solid var(--border); background:var(--card-bg);
+  color:var(--text); transition:all 0.25s cubic-bezier(0.23,1,0.32,1);
+  box-shadow:0 2px 12px var(--shadow);
+  min-width:140px; justify-content:center;
+}
+.sec-social-btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px var(--shadow), 0 0 20px rgba(212,168,67,0.2);
+  border-color:var(--primary-color);
+  color:var(--primary-color);
+}
+.sec-social-btn .ssb-icon { font-size:22px; }
+.sec-social-btn .ssb-img { width:28px; height:28px; border-radius:50%; object-fit:cover; flex-shrink:0; }
 
-/* ── Footer ── */
-.ftr{margin-top:28px;text-align:center;padding-top:18px;border-top:1px solid var(--border);}
-.ftr-copy{font-size:10px;color:var(--text2);letter-spacing:2px;}
-.ftr-rights{margin-top:10px;font-size:11px;font-weight:600;color:rgba(201,168,76,0.65);letter-spacing:1px;line-height:1.8;}
-.ftr-brand{font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;background:linear-gradient(90deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;}
-.disc{margin-top:6px;font-size:9px;color:rgba(237,229,204,0.28);}
+/* GUARANTEE */
+.guarantee-box { background: rgba(0,204,68,0.05); border: 1px solid rgba(0,204,68,0.2); border-radius: 14px; padding: 32px; text-align: center; }
+.g-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+.guarantee-box-img { width: 180px; height: 180px; object-fit: cover; border-radius: 18px; display: block; margin: 0 auto 16px; } 
+.guarantee-box h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 10px; }
+.guarantee-box p { font-size: 14px; color: var(--text-dim); line-height: 1.75; max-width: 500px; margin: 0 auto; }
 
-/* ── Animations ── */
-.fi{animation:fi .55s ease both;}
-@keyframes fi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.d1{animation-delay:.06s}.d2{animation-delay:.13s}.d3{animation-delay:.2s}.d4{animation-delay:.27s}
+/* CONTENT CARDS */
+.content-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.content-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+}
+.content-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.content-card:hover { border-color: rgba(212,168,67,0.5); transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow), 0 0 30px rgba(212,168,67,0.12); }
+.content-card:hover::before { opacity: 1; }
+.content-card-body { padding: 22px 20px 20px; }
+.content-card-icon { font-size: 32px; display: block; margin-bottom: 10px; }
+.content-card-title { font-weight: 900; font-size: 17px; color: var(--text); margin-bottom: 10px; }
+.content-card-text { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+/* ===== LUXURY IMAGE HOVER EFFECT ===== */
+.content-card-media img,
+.cat-section-card-img img,
+.store-banner,
+.product-img,
+.upload-preview.show {
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.5s ease, box-shadow 0.5s ease !important;
+}
+.content-card:hover .content-card-media img {
+  transform: scale(1.04);
+  filter: brightness(1.08) saturate(1.15);
+}
+.content-card-media {
+  overflow: hidden;
+}
+/* Gold shimmer overlay on hover */
+.content-card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    transparent 0%,
+    rgba(212,168,67,0.08) 30%,
+    rgba(245,200,66,0.18) 50%,
+    rgba(212,168,67,0.08) 70%,
+    transparent 100%);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+.content-card:hover .content-card-media::before {
+  opacity: 1;
+  animation: goldShimmerHover 1.5s ease infinite;
+}
+@keyframes goldShimmerHover {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+/* Luxury border glow on card hover */
+.content-card {
+  position: relative;
+  overflow: hidden;
+}
+.content-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, rgba(212,168,67,0) 0%, rgba(212,168,67,0.45) 50%, rgba(212,168,67,0) 100%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.content-card:hover::after {
+  opacity: 1;
+}
+/* Product card image effect */
+.product-img-wrap {
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+.product-img-wrap img {
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.4s ease !important;
+  display: block;
+  width: 100%;
+}
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.06);
+  filter: brightness(1.1) saturate(1.2);
+}
+.product-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(212,168,67,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.product-card:hover .product-img-wrap::after {
+  opacity: 1;
+}
+/* Cat section card image */
+.cat-section-card-img {
+  overflow: hidden;
+  position: relative;
+}
+.cat-section-card-img img {
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1), filter 0.4s ease !important;
+  width: 100%;
+  display: block;
+}
+.cat-section-card:hover .cat-section-card-img img {
+  transform: scale(1.05);
+  filter: brightness(1.08) saturate(1.15);
+}
+
+/* Card media (image or video) */
+.content-card-media { position: relative; width: 100%; background: #000; overflow: hidden; border-radius: 12px 12px 0 0; }
+.content-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* VIDEO: full YouTube-like player */
+.content-card-media video {
+  width: 100%; display: block; background: #000;
+  max-height: 320px; object-fit: contain;
+}
+.content-card-media video::-webkit-media-controls { display: flex !important; }
+.content-card-media video::-webkit-media-controls-panel { background: linear-gradient(0deg,rgba(0,0,0,0.85),transparent); }
+.content-card-media-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5; font-size: 16px; line-height:1; }
+.content-card-media-nav.prev { right: 8px; }
+.content-card-media-nav.next { left: 8px; }
+.content-card-media-dots { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; }
+.content-card-media-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background 0.2s; }
+.content-card-media-dot.active { background: white; }
+
+/* GOLD SHIMMER CONNECTOR between video and text */
+.content-card-connector {
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-gold 2s linear infinite;
+  position: relative;
+}
+.content-card-connector::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, transparent, rgba(212,168,67,0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer-gold 2s linear infinite;
+  filter: blur(4px);
+}
+@keyframes shimmer-gold {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+/* Cat section card with image support */
+.cat-section-card-img { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg3); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.cat-section-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cat-section-card-img .cat-no-img { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+/* Smart auto icon pill */
+.cat-section-icon-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.cat-section-icon-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,168,67,0.1); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px 4px 6px; font-size: 13px; color: var(--text-dim); font-weight: 700; }
+
+/* ===== READ MORE on content cards ===== */
+.content-card-text-wrap { position: relative; }
+.content-card-text-wrap.collapsed .content-card-text {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.read-more-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 6px; font-size: 11px; font-weight: 900;
+  color: var(--primary-color); cursor: pointer;
+  letter-spacing: 1px; text-transform: uppercase;
+  background: none; border: none; padding: 0;
+  font-family: var(--body-font); transition: opacity 0.2s;
+}
+.read-more-btn:hover { opacity: 0.75; }
+/* ===== SECTION CTA BUTTON inside cat card ===== */
+.cat-section-cta-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 12px; padding: 8px 16px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: #1a1610; border-radius: 8px;
+  font-size: 12px; font-weight: 900; letter-spacing: 0.5px;
+  text-decoration: none; border: none; cursor: pointer;
+  font-family: var(--body-font);
+  transition: box-shadow 0.25s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(212,168,67,0.3);
+}
+.cat-section-cta-btn:hover { box-shadow: 0 6px 20px rgba(212,168,67,0.5); transform: translateY(-2px); }
+/* CTA button in content cards */
+.content-card-cta-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding: 7px 14px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: #1a1610; border-radius: 7px;
+  font-size: 11px; font-weight: 900; letter-spacing: 0.5px;
+  text-decoration: none; border: none; cursor: pointer;
+  font-family: var(--body-font);
+  transition: box-shadow 0.25s, transform 0.2s;
+  box-shadow: 0 2px 10px rgba(212,168,67,0.25);
+}
+.content-card-cta-btn:hover { box-shadow: 0 5px 18px rgba(212,168,67,0.45); transform: translateY(-2px); }
+
+/* ===== WELCOME NOTIFICATION ===== */
+#welcomeNotif {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  z-index: 99999;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212,168,67,0.4);
+  border-radius: 16px;
+  padding: 14px 44px 14px 18px;
+  width: calc(100vw - 40px);
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,67,0.08);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.23,1,0.32,1), opacity 0.4s ease;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#welcomeNotif.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+#welcomeNotif.hide { transform: translateX(-50%) translateY(-30px); opacity: 0; pointer-events: none; }
+.welcome-notif-icon { font-size: 30px; flex-shrink: 0; }
+.welcome-notif-body { flex: 1; min-width: 0; }
+.welcome-notif-title { font-size: 13px; font-weight: 900; color: var(--primary-color); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.welcome-notif-msg { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+.welcome-notif-close { position: absolute; top: 10px; right: 12px; left: auto; font-size: 15px; cursor: pointer; color: var(--text-faint); background: none; border: none; padding: 0; line-height: 1; transition: color 0.2s; }
+.welcome-notif-close:hover { color: var(--primary-color); }
+.welcome-notif-bar { position: absolute; bottom: 0; right: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--primary-light)); border-radius: 0 0 16px 16px; animation: notifBar linear forwards; }
+@keyframes notifBar { from { width: 100%; } to { width: 0%; } }
+
+/* FINAL CTA */
+.final-cta { padding: 40px 20px; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent, rgba(212,168,67,0.04), transparent); }
+.final-cta h2 { font-weight: 900; font-size: clamp(22px, 4vw, 44px); color: var(--text); margin-bottom: 10px; }
+.final-cta h2 span { color: var(--primary-color); }
+.final-cta p { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; }
+
+/* STORE BANNER */
+.store-banner { width: 100%; max-height: 280px; object-fit: cover; border-radius: 16px; margin-bottom: 36px; display: block; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item.open { border-color: var(--border-hover); }
+.faq-q { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.faq-q:hover { color: var(--primary-color); }
+.faq-arrow { color: var(--primary-color); font-size: 18px; transition: transform 0.3s; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { padding: 0 22px; max-height: 0; overflow: hidden; font-size: 14px; color: var(--text-dim); line-height: 1.75; transition: max-height 0.3s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: center; }
+@media(max-width:768px) { .about-grid { grid-template-columns: 1fr; } }
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.value-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.value-icon { font-size: 22px; display: block; margin-bottom: 8px; }
+.value-title { font-weight: 900; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+.value-text { font-size: 12px; color: var(--text-dim); line-height: 1.55; }
+.about-visual { display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 20px; min-height: 200px; background: var(--bg3); border: 1px solid var(--border); }
+.about-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; display: block; }
+.about-visual-emoji { font-size: 120px; opacity: 0.6; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; }
+@media(max-width:768px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; align-items: center; gap: 16px; padding: 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; }
+.contact-item-icon { font-size: 24px; flex-shrink: 0; }
+.contact-item-label { font-size: 11px; color: var(--text-faint); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 3px; }
+.contact-item-value { font-size: 14px; color: var(--text); font-weight: 700; }
+.contact-form { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 32px; }
+.contact-form h3 { font-weight: 900; font-size: 20px; color: var(--text); margin-bottom: 24px; }
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: 11px; color: var(--primary-color); letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.form-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--primary-color); }
+.form-textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; height: 120px; resize: vertical; }
+.form-textarea:focus { border-color: var(--primary-color); }
+.form-submit { width: 100%; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border: none; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px; font-family: var(--body-font); transition: box-shadow 0.2s; }
+.form-submit:hover { box-shadow: 0 0 24px rgba(212,168,67,0.4); }
+
+/* SOCIAL — Compact icon cards */
+.social-links-section { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.social-link-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px 12px; text-decoration: none; color: var(--text); font-weight: 700; font-size: 12px; transition: all 0.25s cubic-bezier(0.23,1,0.32,1); width: 80px; min-height: 80px; position: relative; overflow: hidden; }
+.social-link-btn::before { content:''; position:absolute; inset:0; background:var(--btn-color,var(--primary-color)); opacity:0; transition:opacity 0.25s; border-radius:14px; }
+.social-link-btn:hover { border-color: var(--btn-color,var(--primary-color)); transform: translateY(-4px); box-shadow: 0 8px 22px rgba(0,0,0,0.25); }
+.social-link-btn:hover::before { opacity: 0.09; }
+.social-link-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; z-index: 1; border: 2px solid transparent; transition: border-color 0.25s, transform 0.25s; overflow: hidden; }
+.social-link-btn:hover .social-link-icon { transform: scale(1.12); }
+.social-link-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.social-link-label { font-size: 11px; font-weight: 900; z-index: 1; text-align: center; line-height: 1.2; }
+
+/* PRIVACY */
+.privacy-content { max-width: 800px; }
+.privacy-content h3 { font-weight: 900; font-size: 20px; color: var(--primary-color); margin: 32px 0 12px; }
+.privacy-content p { font-size: 15px; color: var(--text-dim); line-height: 1.85; margin-bottom: 16px; }
+.privacy-content ul { padding-right: 20px; margin-bottom: 16px; }
+.privacy-content ul li { font-size: 14px; color: var(--text-dim); line-height: 1.8; margin-bottom: 6px; }
+
+/* FOOTER */
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 52px 28px 28px; transition: background 0.4s; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
+@media(max-width:800px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px) { .footer-top { grid-template-columns: 1fr; } }
+.footer-brand-name { font-family: var(--display-font); font-size: 26px; color: var(--primary-color); letter-spacing: 4px; }
+.footer-brand-sub { font-size: 11px; color: var(--accent-color); letter-spacing: 1px; display: block; margin-bottom: 14px; }
+.footer-brand-desc { font-size: 14px; color: var(--text-faint); line-height: 1.75; max-width: 280px; margin-bottom: 22px; }
+.footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
+.social-btn { width: 38px; height: 38px; background: rgba(212,168,67,0.08); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; transition: all 0.2s; text-decoration: none; overflow: hidden; }
+.social-btn:hover { background: rgba(212,168,67,0.18); border-color: var(--primary-color); transform: translateY(-3px); }
+.social-btn img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.footer-col-title { font-weight: 900; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--primary-color); margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-links a { color: var(--text-faint); text-decoration: none; font-size: 14px; transition: color 0.2s; cursor: pointer; }
+.footer-links a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--text-faint); }
+.footer-tag { font-family: var(--display-font); font-size: 14px; letter-spacing: 4px; color: rgba(212,168,67,0.35); }
+.admin-trigger { cursor: pointer; }
+
+/* TOAST */
+#toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); z-index: 9999; background: #1e1e1e; border: 1px solid var(--primary-color); border-radius: 12px; padding: 14px 24px; font-size: 14px; color: var(--text); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.4s; opacity: 0; pointer-events: none; white-space: nowrap; }
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* NOTIFICATION */
+#notifBanner { display: none; position: fixed; top: 0; left: 0; right: 0; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; padding: 10px 24px; text-align: center; font-weight: 700; font-size: 14px; z-index: 2100; }
+#notifBannerImg { height: 28px; vertical-align: middle; margin-left: 10px; border-radius: 4px; display: none; }
+
+/* ADMIN */
+.admin-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.85); display: none; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+.admin-overlay.open { display: flex; }
+.admin-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 980px; padding: 32px; margin: auto; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.admin-title { font-family: var(--display-font); font-size: 28px; color: var(--primary-color); letter-spacing: 3px; }
+.admin-close { width: 36px; height: 36px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text); transition: border-color 0.2s; }
+.admin-close:hover { border-color: var(--red); color: var(--red); }
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.admin-tab { padding: 8px 20px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--text-dim); background: var(--bg3); transition: all 0.2s; }
+.admin-tab.active { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border-color: transparent; }
+.admin-content { display: none; }
+.admin-content.active { display: block; }
+.admin-products-grid { display: grid; gap: 16px; }
+.admin-product-row { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:600px) { .admin-product-row { grid-template-columns: 1fr; } }
+.admin-field { display: flex; flex-direction: column; gap: 6px; }
+.admin-field label { font-size: 11px; color: var(--primary-color); letter-spacing: 2px; text-transform: uppercase; }
+.admin-field input,.admin-field textarea,.admin-field select { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-family: var(--body-font); font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; }
+.admin-field input:focus,.admin-field textarea:focus,.admin-field select:focus { border-color: var(--primary-color); }
+.admin-field textarea { height: 80px; resize: none; }
+.admin-field select { cursor: pointer; }
+.admin-row-full { grid-column: 1 / -1; }
+.admin-actions { display: flex; gap: 10px; align-items: center; grid-column: 1 / -1; margin-top: 8px; flex-wrap: wrap; }
+.admin-btn { padding: 9px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 900; font-size: 13px; letter-spacing: 1px; transition: all 0.2s; font-family: var(--body-font); }
+.admin-btn-gold { background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; }
+.admin-btn-gold:hover { box-shadow: 0 4px 16px rgba(212,168,67,0.4); }
+.admin-btn-green { background: var(--accent-color); color: #001a0d; }
+.admin-btn-red { background: var(--red); color: white; }
+.admin-btn-gray { background: var(--bg4); color: var(--text-dim); border: 1px solid var(--border); }
+.admin-btn-blue { background: #2563eb; color: white; }
+.admin-add-btn { display: flex; align-items: center; gap: 10px; padding: 16px 22px; border: 2px dashed var(--border); border-radius: 14px; cursor: pointer; color: var(--text-faint); font-size: 14px; font-weight: 700; background: transparent; width: 100%; justify-content: center; transition: border-color 0.2s, color 0.2s; font-family: var(--body-font); }
+.admin-add-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.admin-save-bar { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+.admin-notice { background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: var(--primary-color); line-height: 1.7; }
+.admin-section-block { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+.admin-section-block h4 { font-weight: 900; font-size: 15px; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.admin-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:600px) { .admin-grid-2 { grid-template-columns: 1fr; } }
+.admin-grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+@media(max-width:700px) { .admin-grid-4 { grid-template-columns: 1fr 1fr; } }
+.social-admin-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+.social-admin-row input { flex: 1; min-width: 80px; }
+.social-admin-icon-preview { width: 44px; height: 44px; background: rgba(212,168,67,0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+.social-admin-icon-preview:hover { border-color: var(--primary-color); }
+.social-admin-icon-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.toggle-switch { width: 36px; height: 20px; background: var(--bg4); border-radius: 100px; position: relative; transition: background 0.2s; cursor: pointer; }
+.toggle-switch.on { background: var(--accent-color); }
+.toggle-switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 14px; height: 14px; background: white; border-radius: 50%; transition: transform 0.2s; }
+.toggle-switch.on::after { transform: translateX(-16px); }
+.product-drag-handle { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; cursor: grab; color: var(--text-faint); font-size: 14px; transition: border-color 0.2s; flex-shrink: 0; }
+.product-drag-handle:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.color-picker-row { display: flex; align-items: center; gap: 12px; }
+.color-picker-row input[type="color"] { width: 44px; height: 36px; background: none; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; padding: 2px; }
+.color-preview-swatch { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
+.upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 28px; text-align: center; cursor: pointer; transition: border-color 0.2s; }
+.upload-area:hover { border-color: var(--primary-color); }
+.upload-area p { font-size: 13px; color: var(--text-faint); margin-top: 10px; }
+.upload-preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: 10px; margin-top: 10px; display: none; }
+.upload-preview.show { display: block; }
+.img-ratio-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.img-ratio-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 700; color: var(--text-dim); background: var(--bg3); transition: all 0.2s; font-family: var(--body-font); }
+.img-ratio-btn.active { background: var(--primary-color); color: #1a1610; border-color: var(--primary-color); }
+
+/* FIX #3: Image scale slider */
+.img-scale-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.img-scale-row label { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+.img-scale-row input[type=range] { flex: 1; accent-color: var(--primary-color); }
+.img-scale-row span { font-size: 12px; color: var(--primary-color); min-width: 36px; }
+
+/* LOGIN */
+.admin-login { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 400px; text-align: center; margin: auto; }
+.admin-login-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+.admin-login h2 { font-weight: 900; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+.admin-login p { font-size: 14px; color: var(--text-dim); margin-bottom: 28px; }
+.admin-login input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; color: var(--text); font-size: 16px; outline: none; text-align: center; letter-spacing: 6px; margin-bottom: 16px; font-family: var(--body-font); transition: border-color 0.2s; }
+.admin-login input:focus { border-color: var(--primary-color); }
+.admin-login button { width: 100%; background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: #1a1610; border: none; padding: 14px; border-radius: 10px; font-weight: 900; font-size: 15px; cursor: pointer; letter-spacing: 1px; font-family: var(--body-font); }
+.admin-login-error { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
+
+/* EXPORT BUTTON — FIX: Export entire site as self-contained HTML */
+.export-btn-wrap { background: linear-gradient(135deg, rgba(0,204,68,0.08), rgba(0,204,68,0.04)); border: 1px solid rgba(0,204,68,0.25); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.export-btn-wrap p { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.6; }
+.export-btn-wrap strong { display: block; font-size: 15px; color: var(--accent-color); margin-bottom: 4px; }
+
+/* Font selector */
+.font-select-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 10px; }
+.font-opt-btn { padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; background: var(--bg2); color: var(--text-dim); font-size: 14px; font-weight: 700; transition: all 0.2s; text-align: center; }
+.font-opt-btn.active { border-color: var(--primary-color); background: rgba(212,168,67,0.1); color: var(--primary-color); }
+.font-opt-btn:hover { border-color: var(--primary-color); }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-badge { animation: fadeInUp 0.6s ease both; }
+.hero-title { animation: fadeInUp 0.6s ease 0.1s both; }
+.hero-en { animation: fadeInUp 0.6s ease 0.2s both; }
+.hero-desc { animation: fadeInUp 0.6s ease 0.3s both; }
+.hero-cta { animation: fadeInUp 0.6s ease 0.4s both; }
+.hero-note { animation: fadeInUp 0.6s ease 0.45s both; }
+.hero-stats { animation: fadeInUp 0.6s ease 0.5s both; }
+input[type="range"] { width: 100%; accent-color: var(--primary-color); }
+
+/* PRODUCT GALLERY */
+.product-gallery { position: relative; }
+.gallery-slides { position: relative; overflow: hidden; }
+.gallery-slide { display: none; }
+.gallery-slide.active { display: block; }
+.gallery-dots { display: flex; justify-content: center; gap: 5px; padding: 8px 0 4px; }
+.gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; border: none; padding: 0; }
+.gallery-dot.active { background: var(--primary-color); transform: scale(1.3); }
+.gallery-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.2); color: white; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background 0.2s; line-height: 1; }
+.gallery-arrow:hover { background: rgba(212,168,67,0.8); }
+.gallery-arrow-prev { right: 8px; }
+.gallery-arrow-next { left: 8px; }
+.gallery-counter { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.6); color: white; font-size: 10px; padding: 2px 7px; border-radius: 10px; z-index: 5; }
+
+/* MULTI IMG UPLOAD */
+.multi-img-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px,1fr)); gap: 8px; margin-top: 10px; }
+.multi-img-thumb { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.multi-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.multi-img-thumb .del-img { position: absolute; top: 2px; left: 2px; background: rgba(255,64,64,0.85); color: white; border: none; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.multi-img-add { aspect-ratio: 1; border: 2px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; color: var(--text-faint); transition: border-color 0.2s; }
+.multi-img-add:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+/* PUBLISH BUTTON */
+.publish-btn-wrap { background: linear-gradient(135deg, rgba(0,100,255,0.1), rgba(0,60,200,0.06)); border: 1px solid rgba(0,120,255,0.3); border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.publish-btn-wrap p { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.6; }
+.publish-btn-wrap strong { display: block; font-size: 15px; color: #60a5fa; margin-bottom: 4px; }
+.publish-status { font-size: 12px; margin-top: 6px; color: var(--text-faint); }
+.publish-status.ok { color: var(--accent-color); }
+.publish-status.err { color: var(--red); }
+
+/* MOBILE */
+@media(max-width:768px) {
+  nav { padding: 10px 14px; }
+  .nav-shop-btn { display: none; }
+  .hero { padding: 68px 14px 22px; }
+  .section-wrap,.section-wrap-full,.content-section { padding: 28px 14px; }
+  .final-cta { padding: 32px 14px; }
+  footer { padding: 28px 14px 18px; }
+  .stat-box { min-width: 80px; padding: 14px 10px; }
+  .stat-num { font-size: 26px; }
+  .admin-panel { padding: 22px 16px; }
+  .admin-login { padding: 36px 24px; }
+  .about-values { grid-template-columns: 1fr; }
+  .social-link-btn { width: 100px; }
+  .trust-item { padding: 10px 10px; font-size: 11px; }
+  .trust-ico { width: 36px; height: 36px; font-size: 18px; }
+  .gold-line { margin-bottom: 14px; }
+}
 </style>
 </head>
-<body dir="rtl">
+<body>
 
-<!-- Wait Toast -->
-<div class="wait-toast" id="waitToast">
-  <div class="wt-title" id="wtTitle">يرجى الانتظار</div>
-  <div class="wt-cd" id="wtCd">--</div>
-  <div class="wt-sub" id="wtSub">انتظر حتى تنتهي الصفقة</div>
+<!-- NOTIFICATION BANNER -->
+<div id="notifBanner">
+  <img id="notifBannerImg" src="" alt="">
+  <span id="notifBannerText">🔥 عرض محدود — خصم حتى 60% على جميع المنتجات!</span>
 </div>
 
-<div class="page">
-  <header class="hdr fi">
-    <div class="logo">
-      <div class="logo-box logo-burst" id="logoBox" onclick="logoClick()">
-        <img src="https://i.postimg.cc/FRdZg1g0/20260325-144030.jpg" alt="Aivex" id="logoImg">
-      </div>
-      <div class="logo-txts">
-        <div class="logo-name">AIVEX</div>
-        <div class="logo-vip">VIP</div>
-        <div class="logo-sub" data-ar="روبوت أيفيكس برو للتداول الذكي" data-en="Aivex Pro Smart Trading Bot">روبوت أيفيكس برو للتداول الذكي</div>
-      </div>
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-brand" onclick="showPage('home')">
+    <div class="nav-icon" id="navIcon">💹</div>
+    <div>
+      <span class="nav-name" id="navBrandName">AIVEX GLOBAL</span>
+      <span class="nav-sub" id="navBrandSub">أيفيكس العالمية</span>
     </div>
-    <div class="lang-tog">
-      <div class="lopt active" id="l-ar" onclick="setLang('ar')">AR</div>
-      <div class="lopt" id="l-en" onclick="setLang('en')">EN</div>
+  </a>
+  <div class="nav-right">
+    <div class="bg-switcher" id="bgSwitcher">
+      <div class="bg-dot active" data-bg="black"  style="background:linear-gradient(135deg,#555,#222);--dot-glow:rgba(200,200,200,0.5);" onclick="switchBg('black')"  title="أسود"></div>
+      <div class="bg-dot"        data-bg="blue"   style="background:linear-gradient(135deg,#3b82f6,#1a56db);--dot-glow:rgba(59,130,246,0.6);" onclick="switchBg('blue')"   title="أزرق داكن"></div>
+      <div class="bg-dot"        data-bg="green"  style="background:linear-gradient(135deg,#22c55e,#15803d);--dot-glow:rgba(34,197,94,0.6);" onclick="switchBg('green')"  title="أخضر داكن"></div>
+      <div class="bg-dot"        data-bg="purple" style="background:linear-gradient(135deg,#a855f7,#7c3aed);--dot-glow:rgba(168,85,247,0.6);" onclick="switchBg('purple')" title="بنفسجي داكن"></div>
     </div>
-  </header>
-
-  <div class="fi d1">
-    <label class="flabel" data-ar="اختر الزوج" data-en="Select Pair">اختر الزوج</label>
-    <div class="swrap">
-      <select id="s-pair" onchange="pairChange()">
-        <optgroup label="── OTC ──">
-          <option>EUR/USD OTC</option><option>GBP/USD OTC</option><option>USD/JPY OTC</option>
-          <option>AUD/USD OTC</option><option>USD/CAD OTC</option><option>EUR/GBP OTC</option>
-          <option>EUR/JPY OTC</option><option>GBP/JPY OTC</option><option>AUD/NZD OTC</option>
-          <option>USD/RUB OTC</option><option>CAD/JPY OTC</option><option>CHF/JPY OTC</option>
-          <option>EUR/CHF OTC</option><option>AUD/CAD OTC</option>
-        </optgroup>
-        <optgroup label="── REAL ──">
-          <option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option>
-          <option>USD/CHF</option><option>AUD/USD</option><option>USD/CAD</option>
-          <option>NZD/USD</option><option>XAU/USD</option><option>BTC/USD</option><option>ETH/USD</option>
-        </optgroup>
-      </select>
+    <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
+      <div class="theme-toggle-ball" id="themeBall">🌙</div>
+    </div>
+    <a id="navStoreBtn" href="https://payhip.com/AIVEXGlobal" class="nav-shop-btn" target="_blank">🛒 <span class="ar">المتجر</span><span class="en">Store</span></a>
+    <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
     </div>
   </div>
+</nav>
 
-  <div class="fi d2">
-    <label class="flabel" data-ar="الإطار الزمني" data-en="Timeframe">الإطار الزمني</label>
-    <div class="swrap">
-      <select id="s-tf">
-        <option value="3s"  data-ar="3 ثواني"  data-en="3 seconds">3 ثواني</option>
-        <option value="5s"  data-ar="5 ثواني"  data-en="5 seconds">5 ثواني</option>
-        <option value="10s" data-ar="10 ثواني" data-en="10 seconds">10 ثواني</option>
-        <option value="15s" data-ar="15 ثانية" data-en="15 seconds">15 ثانية</option>
-        <option value="30s" data-ar="30 ثانية" data-en="30 seconds">30 ثانية</option>
-        <option value="1"   data-ar="1 دقيقة"  data-en="1 minute">1 دقيقة</option>
-        <option value="2"   data-ar="2 دقيقة"  data-en="2 minutes">2 دقيقة</option>
-        <option value="3"   data-ar="3 دقائق"  data-en="3 minutes">3 دقائق</option>
-        <option value="5"   data-ar="5 دقائق"  data-en="5 minutes">5 دقائق</option>
-        <option value="10"  data-ar="10 دقائق" data-en="10 minutes">10 دقائق</option>
-        <option value="15"  data-ar="15 دقيقة" data-en="15 minutes">15 دقيقة</option>
-        <option value="30"  data-ar="30 دقيقة" data-en="30 minutes">30 دقيقة</option>
-        <option value="60"  data-ar="1 ساعة"   data-en="1 hour">1 ساعة</option>
-      </select>
+<!-- SIDEBAR -->
+<div id="page-transition-overlay"></div>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon" id="sidebarIcon">💹</div>
+    <div>
+      <span class="sidebar-logo-name" id="sidebarBrandName">AIVEX</span>
+      <span class="sidebar-logo-sub" id="sidebarBrandSub">أيفيكس العالمية</span>
     </div>
   </div>
-
-  <div class="fi d3">
-    <button class="sig-btn" id="sbtn" onclick="doSignal()">
-      <span id="blbl" data-ar="الحصول على إشارة" data-en="Get signal">الحصول على إشارة</span>
-    </button>
+  <span class="sidebar-section-title"><span class="ar">الصفحات الرئيسية</span><span class="en">Main Pages</span></span>
+  <a class="sidebar-nav-item" onclick="showPage('home')"><div class="nav-item-icon">🏠</div> <span class="ar">الرئيسية</span><span class="en">Home</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('store')"><div class="nav-item-icon">🛒</div> <span class="ar">المتجر</span><span class="en">Store</span></a>
+  <span class="sidebar-section-title"><span class="ar">أقسام التعلم</span><span class="en">Learning</span></span>
+  <div id="sidebarSectionsGroup">
+  <a class="sidebar-nav-item" onclick="showPage('trading')"><div class="nav-item-icon">📈</div> <span class="ar">تعلم التداول</span><span class="en">Trading</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('digital')"><div class="nav-item-icon">💰</div> <span class="ar">الربح من الإنترنت</span><span class="en">Online Income</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('freelance')"><div class="nav-item-icon">💻</div> <span class="ar">العمل الحر</span><span class="en">Freelance</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('selfdev')"><div class="nav-item-icon">🧠</div> <span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a>
   </div>
+  <div class="sidebar-divider"></div>
+  <span class="sidebar-section-title"><span class="ar">معلومات</span><span class="en">Info</span></span>
+  <a class="sidebar-nav-item" onclick="showPage('about')"><div class="nav-item-icon">ℹ️</div> <span class="ar">من نحن</span><span class="en">About</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('contact')"><div class="nav-item-icon">📩</div> <span class="ar">اتصل بنا</span><span class="en">Contact</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('social')"><div class="nav-item-icon">🌐</div> <span class="ar">تواصل اجتماعي</span><span class="en">Social Media</span></a>
+  <a class="sidebar-nav-item" onclick="showPage('privacy')"><div class="nav-item-icon">🔒</div> <span class="ar">سياسة الخصوصية</span><span class="en">Privacy</span></a>
+  <div class="sidebar-divider"></div>
+  <a id="sidebarStoreBtn" href="https://payhip.com/AIVEXGlobal" class="sidebar-shop-btn" target="_blank">🛒 <span class="ar">تسوق الآن</span><span class="en">Shop Now</span></a>
+</div>
 
-  <div class="sig-card fi d4" id="scard">
-    <div class="sc-head">
-      <div class="sc-title" data-ar="الإشارة" data-en="Signal">الإشارة</div>
-      <div class="sc-time-wrap" id="stimeWrap" style="display:none;">
-        <div class="sc-time-dot"></div>
-        <div class="sc-time" id="stime"></div>
-      </div>
-    </div>
-    <div class="sc-body">
-      <div class="idle-txt" id="idletxt" data-ar='اضغط "الحصول على إشارة"' data-en='Press "Get signal"'>اضغط "الحصول على إشارة"</div>
-      <div class="res" id="resbox">
-        <div class="res-pair" id="rpair"></div>
-        <div class="res-dir-wrap" id="rdirWrap">
-          <div class="dir-arrow" id="darrow"></div>
-          <div class="res-dir" id="rdir"></div>
-        </div>
-        <div class="res-meta">
-          <div id="rtf"></div>
-          <div id="racc"></div>
-          <!-- Signal countdown box -->
-          <div class="sig-countdown-box hidden" id="sigCdBox">
-            <div class="sig-cd-label" id="sigCdLabel">⏱</div>
-            <div class="sig-cd-val" id="sigCdVal">--</div>
+<!-- PAGE: HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><div class="badge-dot"></div> <span id="heroBadgeText">منتجات رقمية احترافية · متاحة الآن</span></div>
+      <h1 class="hero-title" id="heroTitle">تداول بذكاء</h1>
+      <span class="hero-en" id="heroSubtitle">AIVEX GLOBAL</span>
+      <p class="hero-desc" id="heroDesc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</p>
+      <div class="discount-banner" id="discountBannerEl" style="display:none">
+        <div><div class="discount-pct" id="discountPct">-50%</div></div>
+        <div>
+          <div class="discount-label" id="discountLabel">ينتهي العرض خلال:</div>
+          <div class="discount-countdown">
+            <div class="countdown-unit"><span class="countdown-num" id="cd-h">00</span><span class="countdown-text">ساعة</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-m">00</span><span class="countdown-text">دقيقة</span></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-text">ثانية</span></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="chart-sec fi d4">
-    <div class="chart-head">
-      <div class="chart-ttl" data-ar="الرسم البياني" data-en="Chart">الرسم البياني</div>
-      <div class="chart-badge" id="cbadge">EUR/USD OTC</div>
-    </div>
-    <div style="position:relative;">
-      <div id="chartbox"></div>
-      <div class="candle-timer" id="candleTimer">10s</div>
-      <div class="po-badge">
-        <img class="po-logo-img" src="https://i.postimg.cc/0jh4fkx9/7685d8464c9b6e3e6bdba81649786ce8-1-.jpg" alt="Pocket Option">
-        <div class="po-texts">
-          <div class="po-name">POCKET OPTION</div>
-          <div class="po-sub">Binary Trading</div>
-        </div>
+      <a id="heroCta" href="#" class="hero-cta" onclick="event.preventDefault();heroCtaClick(this,'store')">🎯 <span class="ar">اكتشف ما نقدمه</span><span class="en">Explore Our Products</span></a>
+      <div style="width:100%;text-align:center;margin-top:14px;">
+        <span class="hero-note" id="heroNote">✓ تسليم فوري &nbsp;·&nbsp; ✓ دفع آمن &nbsp;·&nbsp; ✓ ضمان 30 يوم</span>
       </div>
-      <div id="arrowLayer" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
+    </div>
+  </section>
+  <div class="ticker"><div class="ticker-inner"><span class="ticker-item">📈 تداول احترافي <span>◆</span></span><span class="ticker-item">💰 ربح رقمي <span>◆</span></span><span class="ticker-item">✅ ضمان 30 يوم <span>◆</span></span><span class="ticker-item">⚡ تسليم فوري <span>◆</span></span><span class="ticker-item">🌍 AIVEX GLOBAL <span>◆</span></span><span class="ticker-item">🔒 دفع آمن</span></div></div>
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-ico">🔒</span> <span class="ar">دفع آمن 100%</span><span class="en">100% Secure</span></div>
+    <div class="trust-item"><span class="trust-ico">⚡</span> <span class="ar">تسليم فوري</span><span class="en">Instant Delivery</span></div>
+    <div class="trust-item"><span class="trust-ico">↩️</span> <span class="ar">ضمان 30 يوم</span><span class="en">30-Day Guarantee</span></div>
+    <div class="trust-item"><span class="trust-ico">⭐</span> <span class="ar">تقييم 4.9/5</span><span class="en">4.9/5 Rating</span></div>
+    <div class="trust-item"><span class="trust-ico">🌍</span> <span class="ar">متاح عالمياً</span><span class="en">Worldwide</span></div>
+  </div>
+  <div class="section-wrap">
+    <span class="sec-label"><span class="ar">استكشف المحتوى</span><span class="en">Explore</span></span>
+    <h2 class="sec-title"><span class="ar">أقسام <span>AIVEX</span></span><span class="en">AIVEX <span>Sections</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="cat-sections" id="homeCatSections">
+      <!-- يتم ملؤها تلقائياً من JS -->
     </div>
   </div>
+  <div class="final-cta">
+    <h2><span class="ar">جاهز تبدأ <span>رحلتك؟</span></span><span class="en">Ready to Start <span>Your Journey?</span></span></h2>
+    <p><span class="ar">انضم لأكثر من 500 عميل اختاروا AIVEX Global</span><span class="en">Join 500+ customers who chose AIVEX Global</span></p>
+    <a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">تسوق الآن</span><span class="en">Shop Now</span></a>
+  </div>
 
-  <div class="ftr">
-    <div class="ftr-copy">2026 AIVEX &copy;</div>
-    <div class="ftr-rights">
-      جميع الحقوق محفوظة لدى فريق<br>
-      <span class="ftr-brand">AIVEX TRADING</span>
+  <!-- REVIEWS at bottom -->
+  <div id="reviewsSectionHome" style="padding:40px 28px 20px;max-width:1100px;margin:0 auto;display:none">
+    <span class="sec-label"><span class="ar">آراء العملاء</span><span class="en">Reviews</span></span>
+    <h2 class="sec-title"><span class="ar">ماذا قالوا <span>عنا؟</span></span><span class="en">What They <span>Say?</span></span></h2>
+    <div class="gold-line"></div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+
+  <!-- FAQ at very bottom -->
+  <div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section-wrap">
+      <span class="sec-label"><span class="ar">أسئلة شائعة</span><span class="en">FAQ</span></span>
+      <h2 class="sec-title"><span class="ar">لديك <span>سؤال؟</span></span><span class="en">Have a <span>Question?</span></span></h2>
+      <div class="gold-line"></div>
+      <div class="faq-list" id="faqListHome"></div>
     </div>
-    <div class="disc" data-ar="للأغراض التعليمية فقط — ليست نصيحة مالية" data-en="For educational purposes only — Not financial advice">للأغراض التعليمية فقط — ليست نصيحة مالية</div>
+  </div>
+  <!-- STATS BAR — bottom of home page, above contact -->
+  <div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 20px">
+    <div class="hero-stats" style="max-width:700px;margin:0 auto">
+      <div class="stat-box"><span class="stat-num" id="stat1Num">500+</span><span class="stat-lbl" id="stat1Lbl">عميل راضٍ</span></div>
+      <div class="stat-box"><span class="stat-num" id="stat2Num">12</span><span class="stat-lbl" id="stat2Lbl">منتج رقمي</span></div>
+      <div class="stat-box"><span class="stat-num" id="stat3Num">4.9★</span><span class="stat-lbl" id="stat3Lbl">تقييم</span></div>
+      <div class="stat-box"><span class="stat-num" id="stat4Num">30</span><span class="stat-lbl" id="stat4Lbl">ضمان يوم</span></div>
+    </div>
   </div>
 </div>
 
-<script src="https://unpkg.com/lightweight-charts@3.8.0/dist/lightweight-charts.standalone.production.js"></script>
-<script>
-// ─────────────────────────────────────────────
-//  Base prices
-// ─────────────────────────────────────────────
-var P={
-  'EUR/USD OTC':1.08432,'GBP/USD OTC':1.27134,'USD/JPY OTC':149.842,
-  'AUD/USD OTC':0.64821,'USD/CAD OTC':1.36541,'EUR/GBP OTC':0.85521,
-  'EUR/JPY OTC':163.42,'GBP/JPY OTC':191.85,'AUD/NZD OTC':1.0832,
-  'USD/RUB OTC':92.5,'CAD/JPY OTC':110.42,'CHF/JPY OTC':167.32,
-  'EUR/CHF OTC':0.9621,'AUD/CAD OTC':0.9015,
-  'EUR/USD':1.08432,'GBP/USD':1.27134,'USD/JPY':149.842,
-  'USD/CHF':0.91234,'AUD/USD':0.64821,'USD/CAD':1.36541,
-  'NZD/USD':0.59821,'XAU/USD':2034.5,'BTC/USD':67432.5,'ETH/USD':3241.8
-};
+<!-- PAGE: STORE -->
+<div class="page" id="page-store">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">منتجاتنا الرقمية</span><span class="en">Our Digital Products</span></span>
+    <h2 class="sec-title"><span class="ar">متجر <span>AIVEX</span></span><span class="en">AIVEX <span>Store</span></span></h2>
+    <div class="gold-line"></div>
+    <img id="storeBannerImg" class="store-banner" src="" alt="" style="display:none">
+    <div class="products-grid" id="productsGrid"></div>
+    <div style="margin-top:48px">
+      <div class="guarantee-box" id="guaranteeBox">
+        <span class="g-icon" id="guaranteeIcon">🛡️</span>
+        <img id="guaranteeImg" class="guarantee-box-img" src="" alt="" style="display:none">
+        <h3><span class="ar">ضمان استرداد كامل لمدة 30 يوم</span><span class="en">Full 30-Day Money Back Guarantee</span></h3>
+        <p><span class="ar">إذا لم تكن راضياً عن أي منتج لأي سبب، سنعيد لك المبلغ كاملاً خلال 30 يوماً — بدون أسئلة.</span><span class="en">If you're not satisfied, we'll refund you in full within 30 days — no questions asked.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-var lang='ar',cObj=null,cSer=null,cData=[],cTmr=null,ctCountdown=null;
-var bias=null,bcnt=0,busy=false;
-var CANDLE_SEC=10;
-var candleRemain=CANDLE_SEC;
+<!-- PAGE: TRADING -->
+<div class="page" id="page-trading">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning Section</span></span>
+    <h2 class="sec-title"><span class="ar">تعلم <span>التداول</span></span><span class="en">Learn <span>Trading</span></span></h2>
+    <p class="sec-desc"><span class="ar">اكتسب المهارات الاحترافية في التداول من الصفر حتى الاحتراف</span><span class="en">Acquire professional trading skills from scratch to mastery</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📊</span><div class="content-card-title">الدعم والمقاومة</div><div class="content-card-text">تعلم كيف تحدد مستويات الدعم والمقاومة وتستخدمها للدخول والخروج الصحيح من الصفقات.</div></div>
+      <div class="content-card"><span class="content-card-icon">📉</span><div class="content-card-title">قراءة الشموع اليابانية</div><div class="content-card-text">فهم أنماط الشموع وكيفية قراءة اتجاهات السوق من خلالها بدقة عالية.</div></div>
+      <div class="content-card"><span class="content-card-icon">⚡</span><div class="content-card-title">إدارة رأس المال</div><div class="content-card-text">استراتيجيات إدارة المخاطر وتحديد حجم الصفقة المناسب لحماية رأس مالك.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">نقاط الدخول والخروج</div><div class="content-card-text">كيف تحدد أفضل نقاط الدخول والخروج لتعظيم الأرباح وتقليل الخسائر.</div></div>
+      <div class="content-card"><span class="content-card-icon">🤖</span><div class="content-card-title">التداول الآلي</div><div class="content-card-text">مقدمة في بوتات التداول وكيفية استخدامها لتنفيذ الاستراتيجيات تلقائياً.</div></div>
+      <div class="content-card"><span class="content-card-icon">🧭</span><div class="content-card-title">تحليل الاتجاهات</div><div class="content-card-text">كيف تحدد اتجاه السوق وتتداول معه لا ضده لتحقيق نتائج أفضل.</div></div>
+    </div>
+    <div id="cat-products-trading" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">هل أنت مستعد <span>للتداول؟</span></span><span class="en">Ready to <span>Trade?</span></span></h2><p><span class="ar">احصل على دليل الدعم والمقاومة الشامل الآن</span><span class="en">Get the comprehensive guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Wait lock system
-// ─────────────────────────────────────────────
-var waitLock=false;       // true = button locked
-var waitTimer=null;       // interval for toast countdown
-var sigCdTimer=null;      // interval for signal box countdown
+<!-- PAGE: DIGITAL -->
+<div class="page" id="page-digital">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">الربح من <span>الإنترنت</span></span><span class="en">Online <span>Income</span></span></h2>
+    <p class="sec-desc"><span class="ar">اكتشف طرق الربح الحقيقية من الإنترنت — من إنستقرام إلى التسويق بالعمولة</span><span class="en">Discover real ways to make money online</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">📸</span><div class="content-card-title">الربح من إنستقرام</div><div class="content-card-text">استراتيجيات بناء حساب مربح على إنستقرام وتحقيق أول 100$ بدون رأس مال.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔗</span><div class="content-card-title">التسويق بالعمولة</div><div class="content-card-text">كيف تربح عمولات من ترويج منتجات الآخرين عبر الإنترنت بدون امتلاك منتج خاص.</div></div>
+      <div class="content-card"><span class="content-card-icon">📦</span><div class="content-card-title">المنتجات الرقمية</div><div class="content-card-text">إنشاء وبيع منتجات رقمية مثل الكتب والدورات والقوالب لتحقيق دخل سلبي.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎬</span><div class="content-card-title">يوتيوب والمحتوى</div><div class="content-card-text">كيف تبني قناة يوتيوب ناجحة وتحقق دخلاً من المحتوى الرقمي.</div></div>
+      <div class="content-card"><span class="content-card-icon">📧</span><div class="content-card-title">التسويق بالبريد</div><div class="content-card-text">بناء قائمة بريدية وكيفية تحويلها إلى مصدر دخل مستمر وموثوق.</div></div>
+      <div class="content-card"><span class="content-card-icon">🏪</span><div class="content-card-title">التجارة الإلكترونية</div><div class="content-card-text">أساسيات فتح متجر إلكتروني وبيع المنتجات عبر الإنترنت بشكل احترافي.</div></div>
+    </div>
+    <div id="cat-products-digital" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">ابدأ رحلة <span>الربح الرقمي</span></span><span class="en">Start <span>Digital Earning</span></span></h2><p><span class="ar">احصل على دليل الربح من إنستقرام الآن</span><span class="en">Get the Instagram income guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
 
-// waitSeconds per timeframe value
-var WAIT_SECS={
-  '3s':3,'5s':5,'10s':10,'15s':15,'30s':20,
-  '1':40,'2':55,'3':75,'5':90,'10':120,'15':150,'30':180,'60':240
-};
+<!-- PAGE: FREELANCE -->
+<div class="page" id="page-freelance">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">العمل <span>الحر</span></span><span class="en">Free<span>lance</span></span></h2>
+    <p class="sec-desc"><span class="ar">ابدأ مسيرتك في العمل الحر من الصفر وحقق دخلاً حقيقياً</span><span class="en">Start your freelance career from scratch</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🎨</span><div class="content-card-title">تحديد مجالك</div><div class="content-card-text">كيف تختار المجال المناسب لمهاراتك وتبني تخصصاً قوياً يجذب العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">💼</span><div class="content-card-title">بناء محفظة الأعمال</div><div class="content-card-text">كيف تبني محفظة أعمال جذابة تثبت كفاءتك للعملاء المحتملين.</div></div>
+      <div class="content-card"><span class="content-card-icon">🔍</span><div class="content-card-title">إيجاد العملاء</div><div class="content-card-text">استراتيجيات إيجاد أول عميل والحصول على مشاريع مستمرة ومتكررة.</div></div>
+      <div class="content-card"><span class="content-card-icon">💰</span><div class="content-card-title">تسعير خدماتك</div><div class="content-card-text">كيف تحدد أسعار عادلة لخدماتك وتتفاوض بثقة مع العملاء.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌐</span><div class="content-card-title">منصات العمل الحر</div><div class="content-card-text">أفضل المنصات مثل Upwork وFreelancer وكيف تنجح فيها.</div></div>
+      <div class="content-card"><span class="content-card-icon">📈</span><div class="content-card-title">تطوير دخلك</div><div class="content-card-text">كيف تنتقل من العمل بالساعة إلى نماذج دخل أكثر ربحية واستدامة.</div></div>
+    </div>
+    <div id="cat-products-freelance" class="cat-products-grid"></div>
+  </div>
+  <div class="final-cta"><h2><span class="ar">ابدأ <span>العمل الحر</span> اليوم</span><span class="en">Start <span>Freelancing</span> Today</span></h2><p><span class="ar">احصل على دليل العمل الحر الشامل الآن</span><span class="en">Get the comprehensive freelance guide now</span></p><a href="https://payhip.com/AIVEXGlobal" class="hero-cta" target="_blank">🛒 <span class="ar">اشترِ الآن</span><span class="en">Buy Now</span></a></div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Persist signal
-// ─────────────────────────────────────────────
-function saveSignal(obj){try{localStorage.setItem('aivex_signal',JSON.stringify(obj));}catch(e){}}
-function loadSignal(){try{var s=localStorage.getItem('aivex_signal');return s?JSON.parse(s):null;}catch(e){return null;}}
+<!-- PAGE: SELFDEV -->
+<div class="page" id="page-selfdev">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">قسم التعلم</span><span class="en">Learning</span></span>
+    <h2 class="sec-title"><span class="ar">تطوير <span>الذات</span></span><span class="en">Self <span>Development</span></span></h2>
+    <p class="sec-desc"><span class="ar">طور مهاراتك وعقليتك لتحقيق النجاح المالي والشخصي</span><span class="en">Develop your skills and mindset for success</span></p>
+    <div class="gold-line"></div>
+    <div class="content-cards">
+      <div class="content-card"><span class="content-card-icon">🧠</span><div class="content-card-title">عقلية الثراء</div><div class="content-card-text">كيف تطور عقلية الوفرة وتتخلص من المعتقدات المحدودة التي تعيق نجاحك المالي.</div></div>
+      <div class="content-card"><span class="content-card-icon">⏰</span><div class="content-card-title">إدارة الوقت</div><div class="content-card-text">تقنيات فعالة لإدارة وقتك وزيادة إنتاجيتك اليومية بشكل ملحوظ.</div></div>
+      <div class="content-card"><span class="content-card-icon">🎯</span><div class="content-card-title">تحديد الأهداف</div><div class="content-card-text">كيف تضع أهدافاً واضحة وقابلة للتحقيق وتبني خطة عمل عملية لتحقيقها.</div></div>
+      <div class="content-card"><span class="content-card-icon">💪</span><div class="content-card-title">بناء العادات</div><div class="content-card-text">كيف تبني عادات يومية إيجابية تدعم أهدافك وتقودك للنجاح المستمر.</div></div>
+      <div class="content-card"><span class="content-card-icon">📚</span><div class="content-card-title">التعلم المستمر</div><div class="content-card-text">كيف تتعلم بسرعة وفعالية وتطبق ما تتعلمه لتحقيق نتائج ملموسة.</div></div>
+      <div class="content-card"><span class="content-card-icon">🌟</span><div class="content-card-title">بناء الثقة بالنفس</div><div class="content-card-text">استراتيجيات بناء الثقة بالنفس والتغلب على الخوف من الفشل.</div></div>
+    </div>
+    <div id="cat-products-selfdev" class="cat-products-grid"></div>
+  </div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Saudi Arabia time (UTC+3) — plain digits
-// ─────────────────────────────────────────────
-function getSaudiTime(){
-  var now=new Date();
-  // Offset to UTC+3
-  var utc=now.getTime()+(now.getTimezoneOffset()*60000);
-  var sa=new Date(utc+(3*3600000));
-  var h=sa.getHours(),m=sa.getMinutes(),s=sa.getSeconds();
-  // Pad with leading zero — plain numbers, no fancy chars
-  function p(n){return n<10?'0'+n:''+n;}
-  return p(h)+':'+p(m)+':'+p(s);
-}
+<!-- PAGE: SOCIAL — FIX #5 & #6 -->
+<div class="page" id="page-social">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label"><span class="ar">تواصل معنا</span><span class="en">Connect</span></span>
+    <h2 class="sec-title"><span class="ar">حساباتنا على <span>التواصل الاجتماعي</span></span><span class="en">Our <span>Social Media</span></span></h2>
+    <p class="sec-desc"><span class="ar">تابعنا للحصول على آخر الأخبار والعروض الحصرية</span><span class="en">Follow us for the latest news and exclusive offers</span></p>
+    <div class="gold-line"></div>
+    <div class="social-links-section" id="socialLinksDisplay"></div>
+  </div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Logo click
-// ─────────────────────────────────────────────
-function logoClick(){
-  var box=document.getElementById('logoBox');
-  box.classList.add('pulse-click');
-  setTimeout(function(){box.classList.remove('pulse-click');},650);
-}
+<!-- PAGE: ABOUT — FIX #9 -->
+<div class="page" id="page-about">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">تعرف علينا</span>
+    <h2 class="sec-title">من <span>نحن</span></h2>
+    <div class="gold-line"></div>
+    <div class="about-grid">
+      <div>
+        <div id="aboutTextContent">
+          <p class="sec-desc">AIVEX Global منصة رقمية متخصصة في التعليم المالي والتداول والربح من الإنترنت. نؤمن بأن المعرفة المالية حق للجميع وليست حكراً على النخبة.</p>
+          <p class="sec-desc">نقدم محتوى تعليمياً عالي الجودة بأسعار في متناول الجميع، مع ضمان رضا تام أو استرداد كامل خلال 30 يوماً.</p>
+        </div>
+        <div class="about-values" id="aboutValuesGrid">
+          <div class="value-item"><span class="value-icon">🎯</span><div class="value-title">مهمتنا</div><div class="value-text">تمكين الأفراد مالياً من خلال التعليم العملي</div></div>
+          <div class="value-item"><span class="value-icon">💎</span><div class="value-title">رؤيتنا</div><div class="value-text">أن نكون المنصة التعليمية الأولى في الوطن العربي</div></div>
+          <div class="value-item"><span class="value-icon">🤝</span><div class="value-title">قيمنا</div><div class="value-text">الشفافية، الجودة، ورضا العميل أولاً</div></div>
+          <div class="value-item"><span class="value-icon">🌍</span><div class="value-title">وصولنا</div><div class="value-text">500+ عميل في أكثر من 20 دولة عربية</div></div>
+        </div>
+      </div>
+      <div class="about-visual" id="aboutVisual">
+        <span class="about-visual-emoji" id="aboutVisualEmoji">💹</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Language
-// ─────────────────────────────────────────────
-function setLang(l){
-  lang=l;
-  document.body.dir=l==='ar'?'rtl':'ltr';
-  document.documentElement.lang=l;
-  document.getElementById('l-ar').classList.toggle('active',l==='ar');
-  document.getElementById('l-en').classList.toggle('active',l==='en');
-  document.querySelectorAll('[data-ar][data-en]').forEach(function(e){e.textContent=e.dataset[l];});
-  document.querySelectorAll('#s-tf option').forEach(function(o){o.textContent=o.dataset[l]||o.textContent;});
-  if(!busy&&!waitLock){var b=document.getElementById('blbl');b.textContent=b.dataset[l];}
-  if(_lastSig){renderSignal(_lastSig);}
-}
+<!-- PAGE: CONTACT -->
+<div class="page" id="page-contact">
+  <div class="section-wrap" style="padding-top:110px;text-align:center">
+    <span class="sec-label">تواصل معنا</span>
+    <h2 class="sec-title">اتصل <span>بنا</span></h2>
+    <div class="gold-line" style="margin:0 auto 20px"></div>
+    <div class="contact-info" style="max-width:500px;margin:0 auto 24px" id="contactInfoList"></div>
+    <div id="contactHoursBlock" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px 20px;max-width:500px;margin:0 auto 28px;text-align:center">
+      <span style="font-size:20px">⏰</span>
+      <span style="font-size:11px;color:var(--text-faint);letter-spacing:2px;text-transform:uppercase;display:block;margin:4px 0 2px">ساعات العمل</span>
+      <span class="contact-item-value" id="contactHours">السبت – الخميس: 9ص – 10م</span>
+    </div>
+    <button class="hero-cta" onclick="showPage('social')" style="font-size:14px;padding:14px 36px">📱 تواصل اجتماعي</button>
+  </div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Pair change
-// ─────────────────────────────────────────────
-function pairChange(){
-  document.getElementById('cbadge').textContent=document.getElementById('s-pair').value;
-  initChart();
-}
+<!-- PAGE: PRIVACY -->
+<div class="page" id="page-privacy">
+  <div class="section-wrap" style="padding-top:110px">
+    <span class="sec-label">معلومات قانونية</span>
+    <h2 class="sec-title">سياسة <span>الخصوصية</span></h2>
+    <div class="gold-line"></div>
+    <div class="privacy-content" id="privacyContent">
+      <p>آخر تحديث: مايو 2026</p>
+      <h3>1. المعلومات التي نجمعها</h3><p>نجمع المعلومات التي تقدمها لنا مباشرة عند الشراء أو التواصل معنا. لا نجمع أي معلومات حساسة.</p>
+      <h3>2. كيف نستخدم معلوماتك</h3><ul><li>لمعالجة طلباتك وتسليم المنتجات الرقمية</li><li>للتواصل معك بشأن طلباتك</li><li>لإرسال تحديثات المنتجات التي اشتريتها</li></ul>
+      <h3>3. مشاركة المعلومات</h3><p>لا نبيع أو نشارك معلوماتك الشخصية مع أطراف ثالثة. المعلومات محمية ومشفرة بالكامل.</p>
+      <h3>4. الأمان</h3><p>نستخدم أحدث تقنيات التشفير لحماية معلوماتك. جميع المعاملات تتم عبر منصة Payhip الآمنة.</p>
+      <h3>5. حقوقك</h3><ul><li>الحق في الوصول إلى معلوماتك</li><li>الحق في تصحيح معلوماتك</li><li>الحق في حذف معلوماتك</li></ul>
+      <h3>6. التواصل</h3><p>لأي استفسار: support@aivex-global.com</p>
+    </div>
+    <div style="text-align:left;margin-top:6px">
+      <div onclick="openAdmin()" style="cursor:default;opacity:0;display:inline-block;width:18px;height:18px"></div>
+    </div>
+  </div>
+</div>
 
-// ─────────────────────────────────────────────
-//  Get timeframe in seconds
-// ─────────────────────────────────────────────
-function getTfSeconds(){
-  var v=document.getElementById('s-tf').value;
-  if(v.endsWith('s'))return parseInt(v);
-  return parseInt(v)*60;
-}
+<!-- FOOTER -->
+<footer id="mainFooter">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name" id="footerBrandName">AIVEX GLOBAL</div>
+        <span class="footer-brand-sub" id="footerBrandSub">أيفيكس العالمية</span>
+        <p class="footer-brand-desc" id="footerDesc">منصتك الأولى للتعليم المالي والمنتجات الرقمية.</p>
+        <div class="footer-social" id="footerSocialIcons"></div>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">الأقسام</span><span class="en">Sections</span></div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('trading')"><span class="ar">التداول</span><span class="en">Trading</span></a></li>
+          <li><a onclick="showPage('digital')"><span class="ar">الربح الرقمي</span><span class="en">Online Income</span></a></li>
+          <li><a onclick="showPage('freelance')"><span class="ar">العمل الحر</span><span class="en">Freelance</span></a></li>
+          <li><a onclick="showPage('selfdev')"><span class="ar">تطوير الذات</span><span class="en">Self-Dev</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">المتجر</span><span class="en">Store</span></div>
+        <ul class="footer-links">
+          <li><a id="footerPayhipLink" href="https://payhip.com/AIVEXGlobal" target="_blank">Payhip</a></li>
+          <li><a onclick="showPage('store')"><span class="ar">جميع المنتجات</span><span class="en">All Products</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title"><span class="ar">معلومات</span><span class="en">Info</span></div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('about')"><span class="ar">من نحن</span><span class="en">About</span></a></li>
+          <li><a onclick="showPage('contact')"><span class="ar">اتصل بنا</span><span class="en">Contact</span></a></li>
+          <li><a onclick="showPage('social')"><span class="ar">تواصل اجتماعي</span><span class="en">Social</span></a></li>
+          <li><a onclick="showPage('privacy')"><span class="ar">سياسة الخصوصية</span><span class="en">Privacy</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footerCopy">© 2026 AIVEX Global — جميع الحقوق محفوظة</div>
+      <div class="footer-tag">LEARN · TRADE · GROW</div>
+    </div>
+  </div>
+</footer>
 
-// ─────────────────────────────────────────────
-//  Format seconds as mm:ss or just ss
-// ─────────────────────────────────────────────
-function fmtSecs(s){
-  if(s>=60){var m=Math.floor(s/60);var r=s%60;return m+':'+(r<10?'0':'')+r;}
-  return s+'s';
-}
+<div id="toast"></div>
 
-// ─────────────────────────────────────────────
-//  Show wait toast with countdown
-// ─────────────────────────────────────────────
-function showWaitToast(seconds){
-  var toast=document.getElementById('waitToast');
-  var cdEl=document.getElementById('wtCd');
-  var titleEl=document.getElementById('wtTitle');
-  var subEl=document.getElementById('wtSub');
+<!-- WELCOME NOTIFICATION -->
+<div id="welcomeNotif">
+  <button class="welcome-notif-close" onclick="closeWelcomeNotif()">✕</button>
+  <span class="welcome-notif-icon" id="welcomeNotifIcon">👋</span>
+  <div class="welcome-notif-body">
+    <div class="welcome-notif-title" id="welcomeNotifTitle">مرحباً بك في أيفيكس العالمية</div>
+    <div class="welcome-notif-msg" id="welcomeNotifMsg">منصتك الأولى للمنتجات الرقمية في التداول وتطوير الذات 🌟</div>
+  </div>
+  <div class="welcome-notif-bar" id="welcomeNotifBar"></div>
+</div>
 
-  titleEl.textContent=lang==='ar'?'يرجى الانتظار':'Please Wait';
-  subEl.textContent=lang==='ar'?'انتظر حتى تنتهي الصفقة':'Wait for the trade to close';
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-login" id="adminLogin">
+    <span class="admin-login-icon">🔐</span>
+    <h2>لوحة التحكم</h2>
+    <p>أدخل كلمة المرور للوصول</p>
+    <input type="password" id="adminPasswordInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPass()">
+    <button onclick="checkAdminPass()">دخول</button>
+    <div class="admin-login-error" id="adminError">كلمة المرور غير صحيحة</div>
+    <div style="margin-top:16px"><button onclick="closeAdmin()" style="background:transparent;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;font-family:var(--body-font)">إلغاء</button></div>
+  </div>
 
-  var remain=seconds;
-  cdEl.textContent=fmtSecs(remain);
-  toast.classList.add('show');
+  <div class="admin-panel" id="adminPanel" style="display:none">
+    <div class="admin-header">
+      <div class="admin-title">⚙️ لوحة التحكم — AIVEX</div>
+      <div class="admin-close" onclick="closeAdmin()">✕</div>
+    </div>
 
-  if(waitTimer)clearInterval(waitTimer);
-  waitTimer=setInterval(function(){
-    remain--;
-    if(remain<=0){
-      clearInterval(waitTimer);waitTimer=null;
-      toast.classList.remove('show');
-      unlockBtn();
-    } else {
-      cdEl.textContent=fmtSecs(remain);
-    }
-  },1000);
-}
+    <!-- PUBLISH BUTTON — JSONBin live sync -->
+    <div class="publish-btn-wrap">
+      <div style="flex:1">
+        <strong>🌐 نشر للجميع — فوري</strong>
+        <p>بعد أي تعديل، اضغط هذا الزر. كل الزوار سيشوفون التحديث فوراً بدون رفع أي ملف.</p>
+        <div class="publish-status" id="publishStatus">● آخر نشر: لم يتم بعد</div>
+      </div>
+      <button class="admin-btn" id="publishBtn" onclick="publishToCloud()" style="white-space:nowrap;padding:14px 28px;font-size:14px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;">🚀 حفظ ونشر للكل</button>
+    </div>
+    <!-- EXPORT BUTTON -->
+    <div class="export-btn-wrap">
+      <div>
+        <strong>💾 تصدير الموقع (نسخة احتياطية)</strong>
+        <p>تحميل الملف كنسخة احتياطية فقط.</p>
+      </div>
+      <button class="admin-btn admin-btn-green" onclick="exportSite()" style="white-space:nowrap;padding:10px 20px;font-size:13px">⬇️ تصدير</button>
+    </div>
 
-// ─────────────────────────────────────────────
-//  Start signal countdown box (next to signal)
-// ─────────────────────────────────────────────
-function startSigCountdown(seconds,isBuy){
-  if(sigCdTimer)clearInterval(sigCdTimer);
-  var box=document.getElementById('sigCdBox');
-  var val=document.getElementById('sigCdVal');
-  box.className='sig-countdown-box '+(isBuy?'buy-c':'sell-c');
-  val.className='sig-cd-val '+(isBuy?'buy-v':'sell-v');
+    <div class="admin-tabs">
+      <div class="admin-tab active" onclick="switchAdminTab('products')">🛒 المنتجات</div>
+      <div class="admin-tab" onclick="switchAdminTab('sections')">📚 الأقسام</div>
+      <div class="admin-tab" onclick="switchAdminTab('hero')">🏠 الرئيسية</div>
+      <div class="admin-tab" onclick="switchAdminTab('colors')">🎨 الألوان</div>
+      <div class="admin-tab" onclick="switchAdminTab('fonts')">🔤 الخطوط</div>
+      <div class="admin-tab" onclick="switchAdminTab('social')">📱 التواصل</div>
+      <div class="admin-tab" onclick="switchAdminTab('notif')">🔔 الإشعار</div>
+      <div class="admin-tab" onclick="switchAdminTab('store')">🏪 إعدادات المتجر</div>
+      <div class="admin-tab" onclick="switchAdminTab('ticker')">📢 الشريط</div>
+      <div class="admin-tab" onclick="switchAdminTab('guarantee')">🛡️ الضمان والأسئلة</div>
+      <div class="admin-tab" onclick="switchAdminTab('about')">ℹ️ من نحن</div>
+      <div class="admin-tab" onclick="switchAdminTab('contact')">📞 التواصل</div>
+      <div class="admin-tab" onclick="switchAdminTab('privacy')">🔒 الخصوصية</div>
+      <div class="admin-tab" onclick="switchAdminTab('welcome')">🔔 الإشعار</div>
+      <div class="admin-tab" onclick="switchAdminTab('settings')">⚙️ الإعدادات</div>
+      <div class="admin-tab" onclick="switchAdminTab('password')">🔐 كلمة المرور</div>
+    </div>
 
-  var remain=seconds;
-  val.textContent=fmtSecs(remain);
+    <!-- TAB: SECTIONS -->
+    <div class="admin-content" id="adminTab-sections">
+      <div class="admin-notice">💡 أضف وعدّل أقسام التعلم. يمكنك إضافة أقسام جديدة كاملة (مثل تعلم AdSense أو التصميم...) أو تعديل البطاقات الموجودة.</div>
+      <div id="sectionsAdminList"></div>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="addSectionCard()">+ إضافة بطاقة</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveSections()">💾 حفظ الأقسام</button>
+      </div>
+      <!-- أزرار التواصل الاجتماعي لقسم التداول -->
+      <div class="admin-section-block" style="margin-top:20px">
+        <h4>📱 أزرار التواصل — قسم التداول</h4>
+        <div class="admin-notice" style="margin-bottom:12px">تظهر في أسفل قسم تعلم التداول كأزرار تواصل اجتماعي مخصصة.</div>
+        <div id="secSocialAdmin"></div>
+      </div>
+    </div>
 
-  sigCdTimer=setInterval(function(){
-    remain--;
-    if(remain<=0){
-      clearInterval(sigCdTimer);sigCdTimer=null;
-      box.classList.add('hidden');
-    } else {
-      val.textContent=fmtSecs(remain);
-    }
-  },1000);
-}
+    <!-- TAB: PRODUCTS — FIX #1,2,3,7,8 -->
+    <div class="admin-content active" id="adminTab-products">
+      <div class="admin-notice">
+        💡 <strong>اسحب المنتج بزر ⠿ لترتيبه.</strong> ارفع صورة لكل منتج — الصور تُحفظ داخل الملف تماماً وتظهر للجميع. اختر القسم الذي يظهر فيه المنتج. اضغط <strong>حفظ وتطبيق</strong> بعد الانتهاء.
+      </div>
+      <div class="admin-products-grid" id="adminProductsList"></div>
+      <button class="admin-add-btn" onclick="addAdminProduct()">+ إضافة منتج جديد</button>
+      <div class="admin-save-bar">
+        <button class="admin-btn admin-btn-gray" onclick="closeAdmin()">إغلاق</button>
+        <button class="admin-btn admin-btn-gold" onclick="saveProducts()">💾 حفظ وتطبيق</button>
+      </div>
+    </div>
 
-// ─────────────────────────────────────────────
-//  Lock / unlock button
-// ─────────────────────────────────────────────
-function lockBtn(tfv){
-  waitLock=true;
-  var btn=document.getElementById('sbtn');
-  var lbl=document.getElementById('blbl');
-  btn.classList.add('locked');
-  btn.disabled=true;
-  lbl.dataset.ar='انتظر حتى تنتهي الصفقة';
-  lbl.dataset.en='Wait for trade to close';
-  lbl.textContent=lang==='ar'?'انتظر حتى تنتهي الصفقة':'Wait for trade to close';
-}
-
-function unlockBtn(){
-  waitLock=false;
-  var btn=document.getElementById('sbtn');
-  var lbl=document.getElementById('blbl');
-  btn.classList.remove('locked');
-  btn.disabled=false;
-  lbl.dataset.ar='إشارة جديدة';
-  lbl.dataset.en='New Signal';
-  lbl.textContent=lang==='ar'?'إشارة جديدة':'New Signal';
-}
-
-// ─────────────────────────────────────────────
-//  Build realistic candles
-// ─────────────────────────────────────────────
-function mkCandles(n,base){
-  var now=Math.floor(Date.now()/1000);
-  var p=base,out=[];
-  var streak=0,dir=1;
-  for(var i=n;i>=0;i--){
-    var v=base*0.00085;
-    var maxStreak=1+Math.floor(Math.random()*2);
-    if(streak>=maxStreak){dir=-dir;streak=0;}else{streak++;}
-    if(Math.random()<0.18){dir=-dir;streak=0;}
-    var bodySize=(0.4+Math.random()*0.9)*v;
-    var o=p;var c=o+dir*bodySize;
-    var wickUp=Math.random()*v*0.5;var wickDown=Math.random()*v*0.5;
-    out.push({time:now-i*CANDLE_SEC,open:parseFloat(o.toFixed(5)),high:parseFloat((Math.max(o,c)+wickUp).toFixed(5)),low:parseFloat((Math.min(o,c)-wickDown).toFixed(5)),close:parseFloat(c.toFixed(5))});
-    p=c;
-  }
-  return out;
-}
-
-// ─────────────────────────────────────────────
-//  Init chart
-// ─────────────────────────────────────────────
-function initChart(){
-  if(cTmr){clearInterval(cTmr);cTmr=null;}
-  if(ctCountdown){clearInterval(ctCountdown);ctCountdown=null;}
-  if(cObj){try{cObj.remove();}catch(e){}cObj=null;cSer=null;}
-  cData=[];clearArrows();
-  _tickStreak=0;_tickDir=1;
-  candleRemain=CANDLE_SEC;updateTimerDisplay();
-  var el=document.getElementById('chartbox');
-  el.innerHTML='';
-  var pair=document.getElementById('s-pair').value;
-  var base=P[pair]||1.0843;
-  var w=el.offsetWidth||el.parentElement.offsetWidth||470;
-  if(w<50)w=470;
-  try{
-    cObj=LightweightCharts.createChart(el,{
-      width:w,height:300,
-      layout:{background:{color:'transparent'},textColor:'rgba(237,229,204,0.42)'},
-      grid:{vertLines:{color:'rgba(0,80,180,0.10)'},horzLines:{color:'rgba(0,80,180,0.10)'}},
-      crosshair:{mode:1},
-      rightPriceScale:{borderColor:'rgba(201,168,76,0.15)'},
-      timeScale:{borderColor:'rgba(201,168,76,0.15)',timeVisible:true,secondsVisible:true}
-    });
-    cSer=cObj.addCandlestickSeries({
-      upColor:'#00FF9D',downColor:'#FF3D5A',
-      borderUpColor:'#00FF9D',borderDownColor:'#FF3D5A',
-      wickUpColor:'rgba(0,255,157,0.6)',wickDownColor:'rgba(255,61,90,0.6)'
-    });
-    cData=mkCandles(80,base);
-    cSer.setData(cData);
-    cObj.timeScale().fitContent();
-    startCandleTick(base);
-    window.onresize=function(){if(cObj){var nw=el.offsetWidth||470;cObj.applyOptions({width:nw});}};
-  }catch(err){console.error('Chart error:',err);}
-}
-
-// ─────────────────────────────────────────────
-//  Candle countdown display
-// ─────────────────────────────────────────────
-function updateTimerDisplay(){
-  var el=document.getElementById('candleTimer');
-  if(el){el.textContent=candleRemain+'s';}
-}
-
-function startCandleTick(base){
-  candleRemain=CANDLE_SEC;updateTimerDisplay();
-  ctCountdown=setInterval(function(){
-    candleRemain--;
-    if(candleRemain<0)candleRemain=CANDLE_SEC;
-    updateTimerDisplay();
-  },1000);
-  cTmr=setInterval(function(){tick(base);candleRemain=CANDLE_SEC;},CANDLE_SEC*1000);
-}
-
-var _tickStreak=0,_tickDir=1,_tickMaxStreak=1;
-function tick(base){
-  if(!cSer||!cData.length)return;
-  try{
-    var last=cData[cData.length-1];
-    var v=base*0.00085;
-    if(_tickStreak===0)_tickMaxStreak=1+Math.floor(Math.random()*2);
-    _tickStreak++;
-    if(_tickStreak>_tickMaxStreak){_tickDir=-_tickDir;_tickStreak=1;_tickMaxStreak=1+Math.floor(Math.random()*2);}
-    if(bias==='buy'&&bcnt>0){_tickDir=1;bcnt--;}
-    if(bias==='sell'&&bcnt>0){_tickDir=-1;bcnt--;}
-    var bodySize=(0.35+Math.random()*0.9)*v;
-    var o=last.close;var c=o+_tickDir*bodySize;
-    var wickUp=Math.random()*v*0.5;var wickDown=Math.random()*v*0.5;
-    var nc={time:last.time+CANDLE_SEC,open:parseFloat(o.toFixed(5)),high:parseFloat((Math.max(o,c)+wickUp).toFixed(5)),low:parseFloat((Math.min(o,c)-wickDown).toFixed(5)),close:parseFloat(c.toFixed(5))};
-    cData.push(nc);if(cData.length>100)cData.shift();
-    cSer.setData(cData);
-  }catch(e){}
-}
-
-// ─────────────────────────────────────────────
-//  Arrow on chart
-// ─────────────────────────────────────────────
-var arrowTimeouts=[];
-function clearArrows(){
-  var layer=document.getElementById('arrowLayer');
-  if(layer)layer.innerHTML='';
-  arrowTimeouts.forEach(function(t){clearTimeout(t);});arrowTimeouts=[];
-}
-function placeArrow(isBuy){
-  clearArrows();
-  var layer=document.getElementById('arrowLayer');if(!layer)return;
-  var el=document.createElement('div');
-  el.className='chart-arrow '+(isBuy?'up':'down');
-  if(isBuy){el.innerHTML='<div class="arrow-head">▲</div><div class="arrow-body"></div>';el.style.left='70%';el.style.top='55%';}
-  else{el.innerHTML='<div class="arrow-body"></div><div class="arrow-head">▼</div>';el.style.left='70%';el.style.top='18%';}
-  layer.appendChild(el);
-  var tfSec=getTfSeconds();var durationMs=Math.max(tfSec*1000,4000);
-  var t1=setTimeout(function(){el.classList.add('fading');var t2=setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},700);arrowTimeouts.push(t2);},durationMs);
-  arrowTimeouts.push(t1);
-}
-
-// ─────────────────────────────────────────────
-//  Timeframe label map
-// ─────────────────────────────────────────────
-var tfLabels={
-  '3s':{ar:'3 ثواني',en:'3 sec'},'5s':{ar:'5 ثواني',en:'5 sec'},
-  '10s':{ar:'10 ثواني',en:'10 sec'},'15s':{ar:'15 ثانية',en:'15 sec'},
-  '30s':{ar:'30 ثانية',en:'30 sec'},'1':{ar:'1 دقيقة',en:'1 min'},
-  '2':{ar:'2 دقيقة',en:'2 min'},'3':{ar:'3 دقائق',en:'3 min'},
-  '5':{ar:'5 دقائق',en:'5 min'},'10':{ar:'10 دقائق',en:'10 min'},
-  '15':{ar:'15 دقيقة',en:'15 min'},'30':{ar:'30 دقيقة',en:'30 min'},
-  '60':{ar:'1 ساعة',en:'1 hr'}
-};
-
-var _lastSig=null;
-
-// ─────────────────────────────────────────────
-//  Render signal
-// ─────────────────────────────────────────────
-function renderSignal(sig){
-  _lastSig=sig;
-  var isBuy=sig.dir==='buy';
-  document.getElementById('stime').textContent=sig.time;
-  document.getElementById('stimeWrap').style.display='inline-flex';
-  document.getElementById('rpair').textContent=sig.pair;
-  var wrap=document.getElementById('rdirWrap');
-  wrap.className='res-dir-wrap '+(isBuy?'buy':'sell');
-  var darrow=document.getElementById('darrow');
-  darrow.className='dir-arrow '+(isBuy?'buy':'sell');
-  darrow.textContent=isBuy?'▲':'▼';
-  var rd=document.getElementById('rdir');
-  rd.textContent=isBuy?(lang==='ar'?'شراء':'BUY'):(lang==='ar'?'بيع':'SELL');
-  rd.className='res-dir '+(isBuy?'buy':'sell');
-  document.getElementById('rtf').innerHTML=(lang==='ar'?'الإطار: ':'TF: ')+'<span>'+(tfLabels[sig.tfv]||{ar:sig.tfv,en:sig.tfv})[lang]+'</span>';
-  document.getElementById('racc').innerHTML=(lang==='ar'?'الدقة: ':'Acc: ')+'<span class="acc">'+sig.acc+'%</span>';
-  document.getElementById('idletxt').style.display='none';
-  document.getElementById('resbox').style.display='flex';
-  document.getElementById('scard').className='sig-card '+(isBuy?'buy':'sell');
-}
-
-// ─────────────────────────────────────────────
-//  Do Signal
-// ─────────────────────────────────────────────
-function doSignal(){
-  if(busy||waitLock)return;
-
-  var tfv=document.getElementById('s-tf').value;
-  var waitSec=WAIT_SECS[tfv]||5;
-
-  busy=true;
-  var btn=document.getElementById('sbtn');
-  var lbl=document.getElementById('blbl');
-  btn.classList.add('waiting');btn.disabled=true;
-  lbl.innerHTML='<span class="spn"></span>'+(lang==='ar'?'جاري التحليل...':'Analyzing...');
-  document.getElementById('idletxt').style.display='block';
-  document.getElementById('resbox').style.display='none';
-  document.getElementById('scard').className='sig-card';
-  document.getElementById('stime').textContent='';
-  document.getElementById('stimeWrap').style.display='none';
-  // Hide sig countdown box
-  document.getElementById('sigCdBox').classList.add('hidden');
-
-  setTimeout(function(){
-    var isBuy=Math.random()>.5;
-    var acc=(85+Math.random()*13).toFixed(2);
-    var pair=document.getElementById('s-pair').value;
-    bias=isBuy?'buy':'sell';bcnt=8;
-
-    // Saudi time
-    var timeStr=getSaudiTime();
-
-    var sig={dir:isBuy?'buy':'sell',pair:pair,tfv:tfv,acc:acc,time:timeStr};
-    saveSignal(sig);
-    renderSignal(sig);
-
-    setTimeout(function(){placeArrow(isBuy);},300);
-
-    // Start signal countdown box
-    startSigCountdown(waitSec,isBuy);
-
-    // Lock button + show wait toast
-    lockBtn(tfv);
-    showWaitToast(waitSec);
-
-    btn.classList.remove('waiting');
-    busy=false;
-  },1200);
-}
-
-// ─────────────────────────────────────────────
-//  On load
-// ─────────────────────────────────────────────
-window.addEventListener('load',function(){
-  setTimeout(function(){
-    initChart();
-    var saved=loadSignal();
-    if(saved){_lastSig=saved;renderSignal(saved);}
-  },200);
-});
-</script>
-</body>
-</html>
-
+    <!-- TAB: HERO -->
+    <div class="admin-content" id="adminTab-hero">
+      <div class="admin-notice">💡 تحكم في نصوص وخلفية الصفحة الرئيسية وعداد الخصم.</div>
+      <div class="admin-section-block">
+        <h4>🖼️ خلفية الهيرو (اختياري)</h4>
+        <div class="admin-field" style="margin-bottom:10px">
+          <label>🔗 رابط الصورة (الأفضل — يظهر للجميع)</label>
+          <div style="display:flex;gap:8px">
+            <input type="text" id="heroBgUrl" placeholder="https://i.postimg.cc/..." style="flex:1">
+            <button class="admin-btn admin-btn-blue" onclick="setHeroBgUrl()" style="white-space:nowrap">✓ تطبيق</button>
+          </div>
+        </div>
+        <div class="upload-area" onclick="document.getElementById('heroBgInput').click()">
+          <div style="font-size:28px">🌅</div>
+          <p>أو انقر لرفع صورة من جهازك (لك أنت فقط)</p>
+          <img class="upload-preview" id="heroBgPreview" src="">
+        </div>
+        <input type="file" id="heroBgInput" accept="image/*" style="display:none" onchange="previewHeroBg(this)">
+        <div style="margin-top:10px;display:flex;gap:10px">
+          <button class="admin-btn admin-btn-gray" onclick="clearHeroBg()">✕ إزالة الخلفية</button>
+        </div>
+      </div>
+      <div class="admin-section-block">
+        <h4>📝 نصوص الهيرو</h4>
+        <div class="admin-grid-2">
+          <div class="admin-field"><label>العنوان الرئيسي</label><input id="h-title" value="تداول بذكاء"></div>
+          <div class="admin-field"><label>العنوان الإنجليزي</label><input id="h-subtitle" value="AIVEX GLOBAL"></div>
+          <div class="admin-field admin-row-full"><label>النص التوضيحي</label><textarea id="h-desc">كتب ودورات رقمية في التداول والربح الرقمي وتطوير الذات — جودة عالمية بأسعار في متناولك</textarea></div>
+          <div class="admin-field"><label>نص الشارة</label><input id="h-badge" value="منتجات رقمية احترافية · متاحة الآن"></div>
+          <div class="admin-field"><label>نص الملاحظة</label><input id="h-note" value="✓ تسليم فوري · ✓ دفع آمن · ✓ ضمان 30 يوم"></div>
+          <div class="admin-field"><label>رابط زر الرئيسية</label><input id="h-ctaurl" value="https://payhip.com/A
